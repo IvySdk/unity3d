@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#e8000000">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:tag="_animation">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:ems="16"
+            android:gravity="center"
+            android:tag="title"
+            android:text="@string/android_sdk_exit_confirm"
+            android:textColor="#ffffff"/>
+
+        <FrameLayout
+            android:layout_width="305dp"
+            android:layout_height="495dp"
+            android:layout_gravity="center_horizontal">
+
+            <androidx.viewpager.widget.ViewPager
+                android:layout_width="280dp"
+                android:layout_height="470dp"
+                android:layout_gravity="center"
+                android:tag="pager" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:contentDescription="@null"
+                android:src="@drawable/android_sdk_dialog_frame" />
+
+            <ImageView
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:layout_gravity="top|right"
+                android:background="@drawable/android_sdk_btn_close"
+                android:contentDescription="@null"
+                android:tag="closebtn" />
+        </FrameLayout>
+
+        <com.ivy.ads.ui.PagerIndicator
+            android:layout_width="match_parent"
+            android:layout_height="12dp"
+            android:layout_gravity="bottom"
+            android:tag="indicator" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_gravity="bottom"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="9"
+            android:gravity="center"
+            android:tag="yesbtn"
+            android:text="@string/android_sdk_exit"
+            android:textColor="#888888" />
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="32dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="15dp"
+            android:layout_weight="20"
+            android:background="@drawable/android_sdk_download_bg"
+            android:tag="morebtn"
+            android:text="@string/android_sdk_more"
+            android:textColor="#ffffff" />
+    </LinearLayout>
+
+</RelativeLayout>

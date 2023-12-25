@@ -1,0 +1,7 @@
+Using template '/Applications/Unity/PlaybackEngines/AndroidPlayer/Apk/UnityManifest.xml'
+
+android.hardware.vulkan.version was added because:
+	One of the graphics devices was Vulkan
+android.permission.INTERNET was added because:
+	UnityEngine.WWW was present in:
+		Assembly-CSharp-firstpass-FeaturesChecked.txt

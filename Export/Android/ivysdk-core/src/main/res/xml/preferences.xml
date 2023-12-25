@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.preference.PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <PreferenceCategory android:title="Development" android:key="development">
+        <CheckBoxPreference android:title="Debug mode" android:key="debugMode" android:defaultValue="false"/>
+        <CheckBoxPreference android:title="Run ads in test mode" android:key="adsInTestMode" android:defaultValue="false"/>
+        <CheckBoxPreference android:title="Cycle through selected ads" android:key="cycleAds" android:defaultValue="false"/>
+        <CheckBoxPreference android:title="Write Log to screen" android:key="debuglayer" android:defaultValue="false"/>
+    </PreferenceCategory>
+    <PreferenceCategory android:title="Ad Providers" android:key="adproviders">
+        <CheckBoxPreference android:title="Admob"  android:key="admob" android:defaultValue="true"/>
+        <CheckBoxPreference android:title="Facebook" android:key="facebook" android:defaultValue="true"/>
+        <CheckBoxPreference android:title="Applovin" android:key="applovin" android:defaultValue="true"/>
+        <CheckBoxPreference android:title="AdColony" android:key="adcolony" android:defaultValue="true"/>
+        <CheckBoxPreference android:title="Vungle" android:key="vungle" android:defaultValue="true"/>
+        <CheckBoxPreference android:title="Chartboost" android:key="chartboost" android:defaultValue="true"/>
+        <CheckBoxPreference android:title="Inmobi" android:key="inmobi" android:defaultValue="true"/>
+        <CheckBoxPreference android:title="Mobvista" android:key="mobvista" android:defaultValue="true"/>
+        <CheckBoxPreference android:title="MyTarget" android:key="mytarget" android:defaultValue="true"/>
+        <CheckBoxPreference android:title="IronSource" android:key="ironsource" android:defaultValue="true"/>
+        <CheckBoxPreference android:title="Unity" android:key="unity" android:defaultValue="true"/>
+        <CheckBoxPreference android:title="Smaato" android:key="smaato" android:defaultValue="true"/>
+        <CheckBoxPreference android:title="Mopub" android:key="mopub" android:defaultValue="true"/>
+        <CheckBoxPreference android:title="Toutiao" android:key="toutiao" android:defaultValue="true"/>
+    </PreferenceCategory>
+</androidx.preference.PreferenceScreen>

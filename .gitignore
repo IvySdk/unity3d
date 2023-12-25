@@ -1,0 +1,7 @@
+./Export/Android/.idea/*
+./Export/Android/.gradle/*
+./Logs/*
+./Temp
+./Temp/*
+./Library/PackageCache
+./Library/PackageCache/*

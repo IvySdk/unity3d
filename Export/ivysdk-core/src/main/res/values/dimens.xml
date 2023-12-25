@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="normal_text_size">15dp</dimen>
+    <dimen name="view_height">480dp</dimen>
+    <dimen name="view_width">320dp</dimen>
+    <dimen name="style_big_text_size">25dp</dimen>
+    <dimen name="news_title_text_size">24dp</dimen>
+    <dimen name="picker_buttons_margin_padding">5dp</dimen>
+    <dimen name="buttonDefaultSizeHeight">54dp</dimen>
+    <dimen name="buttonDefaultSizeWidth">234dp</dimen>
+    <dimen name="push_dialog_title_size">23dp</dimen>
+    <dimen name="button_size">40dp</dimen>
+    <dimen name="dialog_content_padding">16dp</dimen>
+    <dimen name="header_close_bias">0.35</dimen>
+    <dimen name="header_close_factor">1.2</dimen>
+    <dimen name="header_title_bias">0.45</dimen>
+    <dimen name="permissionDialogWidth">300dp</dimen>
+    <dimen name="rate_close_margin">-7dp</dimen>
+    <dimen name="rate_container_edittext_padding">5dp</dimen>
+    <dimen name="rate_container_margin">15dp</dimen>
+    <dimen name="rate_container_padding">20dp</dimen>
+</resources>
