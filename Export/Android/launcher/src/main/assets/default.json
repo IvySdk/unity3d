@@ -41,7 +41,7 @@
     {
       "provider": "admob",
       "p": {
-        "placement": "ca-app-pub-1914768831611213/4106575741"
+        "placement": "ca-app-pub-3940256099942544/6300978111"
       }
     }
   ],
@@ -49,7 +49,7 @@
     {
       "provider": "admob",
       "p": {
-        "placement": "ca-app-pub-1914768831611213/2402557932"
+        "placement": "ca-app-pub-3940256099942544/1033173712"
       }
     }
   ],
@@ -57,7 +57,7 @@
     {
       "provider": "admob",
       "p": {
-        "placement": "ca-app-pub-1914768831611213/5419657410"
+        "placement": "ca-app-pub-3940256099942544/5224354917"
       }
     }
   ],

@@ -264,6 +264,55 @@ public class Unity {
 
                         });
 
+                        builder.setGMSPaidEventListener(new IGMSPaidEventListener() {
+                            @Override
+                            public void onGMSPaid(String currencyCode, int precisionType, long valueMacros) {
+                                sendMessage("onGMSPaid", currencyCode + "|" + precisionType + "|" + valueMacros);
+                            }
+                        });
+
+                        builder.setAppsflyerConversionListener(new IAppsflyerConversionListener() {
+                            @Override
+                            public void onAfInitSuccess() {
+                                sendMessage("onAFInitSuccess", "");
+                            }
+
+                            @Override
+                            public void onAfInitFailed(int i, String s) {
+                                sendMessage("onAFInitFailed", i + "|" + s);
+                            }
+
+                            @Override
+                            public void onAppOpenAttribution(Map<String, String> conversionData) {
+                                try {
+                                    JSONObject data = new JSONObject(conversionData);
+                                    sendMessage("onAFAppOpenAttribution", data.toString());
+                                } catch (Exception e) {
+                                    Logger.error("convert appsflyer App Open Attribution failed:" + e.getMessage());
+                                }
+                            }
+
+                            @Override
+                            public void onConversionDataFail(String s) {
+                                sendMessage("onAFConversionDataFail", (s == null ? "" : s));
+                            }
+
+                            @Override
+                            public void onConversionDataSuccess(Map<String, Object> conversionData) {
+                                try {
+                                    JSONObject data = new JSONObject(conversionData);
+                                    sendMessage("onAFConversionDataSuccess", data.toString());
+                                } catch (Exception e) {
+                                    Logger.error("convert appsflyer Conversion Data failed:" + e.getMessage());
+                                }
+                            }
+
+                            @Override
+                            public void onAttributionFailure(String s) {
+                                sendMessage("onAFAttributionFailure", (s == null ? "" : s));
+                            }
+                        });
+
                         builder.setHelpEngagementListener(data -> sendMessage("onReceiveHelpEngagementMessage", data));
 
                         AndroidSdk.onCreate(activityWeakReference.get(), builder);

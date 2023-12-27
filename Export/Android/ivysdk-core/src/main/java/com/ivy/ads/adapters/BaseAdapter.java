@@ -7,6 +7,7 @@ import android.os.CountDownTimer;
 import android.os.Handler;
 import android.util.Log;
 
+import com.android.client.AndroidSdk;
 import com.google.firebase.analytics.FirebaseAnalytics;
 import com.ivy.ads.events.BaseEventHandler;
 import com.ivy.ads.events.EventID;
@@ -527,6 +528,7 @@ public abstract class BaseAdapter<T extends BaseAdapter.GridParams> implements A
       mEventHandler.getEventLogger().logToFirebase(EventID.GMS_AD_IMPRESSION_PING, bundle);
       mEventHandler.getEventLogger().parfkaLog(EventID.GMS_AD_IMPRESSION_PING, bundle);
       mEventHandler.getEventLogger().afAdImpressionPing(bundle, revenue);
+      AndroidSdk.onGMSPaid(currencyCode,precisionType,valueMacros);
 
       if ("banner".equals(ad_format)){
         Bundle pam = new Bundle();

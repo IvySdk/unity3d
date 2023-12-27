@@ -64,6 +64,64 @@ public class RiseSdkListener : MonoBehaviour
     }
 
     /// <summary>
+    /// 广告价值事件回调
+    /// </summary>
+    /// <param name="data">用｜ 分隔的价值信息；currencyCode｜precisionType｜valueMacros</param>
+    public void onGMSPaid(string data){
+
+    }
+
+    /// <summary>
+    /// AF 初始化成功
+    /// </summary>
+    /// <param name="data"></param>
+    public void onAFInitSuccess(string data){
+
+    }
+
+    /// <summary>
+    /// AF 初始化失败
+    /// </summary>
+    /// <param name="data">用｜ 分隔的失败信息</param>
+    public void onAFInitFailed(string data){
+
+    }
+
+    /// <summary>
+    /// AF conversion事件
+    /// </summary>
+    /// <param name="data">JSONObject 格式</param>
+    public void onAFAppOpenAttribution(string data){
+
+    }
+
+    /// <summary>
+    /// AF conversion事件
+    /// </summary>
+    /// <param name="data">失败信息</param>
+    public void onAFConversionDataFail(string data){
+
+    }
+
+    /// <summary>
+    /// AF conversion事件
+    /// </summary>
+    /// <param name="data">JSONObject 格式</param>
+    public void onAFConversionDataSuccess(string data){
+
+    }
+
+    /// <summary>
+    /// AF conversion事件
+    /// </summary>
+    /// <param name="data">失败信息</param>
+    public void onAFAttributionFailure(string data){
+
+    }
+
+
+
+    /// <summary>
     /// ��ʾ��Ƶ���Ľ���ص�������SDK�Զ����á�
     /// </summary>
     /// <param name="data">���صĽ������</param>
@@ -767,6 +825,8 @@ public class RiseSdkListener : MonoBehaviour {
         }
     }
 
+
+
     void OnApplicationPause (bool pauseStatus) {
         if (pauseStatus) {
             RiseSdk.Instance.OnPause ();
@@ -866,6 +926,62 @@ public class RiseSdkListener : MonoBehaviour {
             Debug.LogError ("RiseSdkListener Check Error:::\n" + e.StackTrace + "\n" + e.Message);
 #endif
         }
+    }
+
+    /// <summary>
+    /// 广告价值事件回调
+    /// </summary>
+    /// <param name="data">用｜ 分隔的价值信息；currencyCode｜precisionType｜valueMacros</param>
+    public void onGMSPaid(string data){
+
+    }
+
+    /// <summary>
+    /// AF 初始化成功
+    /// </summary>
+    /// <param name="data"></param>
+    public void onAFInitSuccess(string data){
+
+    }
+
+    /// <summary>
+    /// AF 初始化失败
+    /// </summary>
+    /// <param name="data">用｜ 分隔的失败信息</param>
+    public void onAFInitFailed(string data){
+
+    }
+
+    /// <summary>
+    /// AF conversion事件
+    /// </summary>
+    /// <param name="data">JSONObject 格式</param>
+    public void onAFAppOpenAttribution(string data){
+
+    }
+
+    /// <summary>
+    /// AF conversion事件
+    /// </summary>
+    /// <param name="data">失败信息</param>
+    public void onAFConversionDataFail(string data){
+
+    }
+
+    /// <summary>
+    /// AF conversion事件
+    /// </summary>
+    /// <param name="data">JSONObject 格式</param>
+    public void onAFConversionDataSuccess(string data){
+
+    }
+
+    /// <summary>
+    /// AF conversion事件
+    /// </summary>
+    /// <param name="data">失败信息</param>
+    public void onAFAttributionFailure(string data){
+
     }
 
 

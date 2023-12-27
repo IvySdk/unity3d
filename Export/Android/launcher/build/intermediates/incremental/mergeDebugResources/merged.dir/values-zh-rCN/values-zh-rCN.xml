@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:ns1="urn:oasis:names:tc:xliff:document:1.2">
+    <string msgid="5976598919945601918" name="abc_action_bar_home_description">"转到首页"</string>
+    <string msgid="8388173803310557296" name="abc_action_bar_up_description">"转到上一层级"</string>
+    <string msgid="3937310113216875497" name="abc_action_menu_overflow_description">"更多选项"</string>
+    <string msgid="4692188335987374352" name="abc_action_mode_done">"完成"</string>
+    <string msgid="1189761859438369441" name="abc_activity_chooser_view_see_all">"查看全部"</string>
+    <string msgid="2165779757652331008" name="abc_activitychooserview_choose_application">"选择应用"</string>
+    <string msgid="4215997306490295099" name="abc_capital_off">"关闭"</string>
+    <string msgid="884982626291842264" name="abc_capital_on">"开启"</string>
+    <string msgid="8833365367933412986" name="abc_menu_alt_shortcut_label">"Alt+"</string>
+    <string msgid="2223301931652355242" name="abc_menu_ctrl_shortcut_label">"Ctrl+"</string>
+    <string msgid="838001238306846836" name="abc_menu_delete_shortcut_label">"Delete 键"</string>
+    <string msgid="7986526966204849475" name="abc_menu_enter_shortcut_label">"Enter 键"</string>
+    <string msgid="375214403600139847" name="abc_menu_function_shortcut_label">"Fn+"</string>
+    <string msgid="4192209724446364286" name="abc_menu_meta_shortcut_label">"Meta+"</string>
+    <string msgid="4741552369836443843" name="abc_menu_shift_shortcut_label">"Shift+"</string>
+    <string msgid="5473865519181928982" name="abc_menu_space_shortcut_label">"空格键"</string>
+    <string msgid="6180552449598693998" name="abc_menu_sym_shortcut_label">"Sym+"</string>
+    <string msgid="5520303668377388990" name="abc_prepend_shortcut_label">"Menu+"</string>
+    <string msgid="7208076849092622260" name="abc_search_hint">"搜索…"</string>
+    <string msgid="3741173234950517107" name="abc_searchview_description_clear">"清除查询"</string>
+    <string msgid="693312494995508443" name="abc_searchview_description_query">"搜索查询"</string>
+    <string msgid="3417662926640357176" name="abc_searchview_description_search">"搜索"</string>
+    <string msgid="1486535517437947103" name="abc_searchview_description_submit">"提交查询"</string>
+    <string msgid="2293578557972875415" name="abc_searchview_description_voice">"语音搜索"</string>
+    <string msgid="8875138169939072951" name="abc_shareactionprovider_share_with">"分享对象"</string>
+    <string msgid="9055268688411532828" name="abc_shareactionprovider_share_with_application">"与<ns1:g id="APPLICATION_NAME">%s</ns1:g>分享"</string>
+    <string msgid="1656852541809559762" name="abc_toolbar_collapse_description">"收起"</string>
+    <string name="aihelp_albums">相册</string>
+    <string name="aihelp_chat_hint">请输入内容</string>
+    <string name="aihelp_click_copy">点击复制</string>
+    <string name="aihelp_copy_failed">复制失败</string>
+    <string name="aihelp_copy_success">复制成功</string>
+    <string name="aihelp_data_not_found_msg">当前暂无内容</string>
+    <string name="aihelp_enter_content">请输入内容</string>
+    <string name="aihelp_enter_email_address">请输入邮箱</string>
+    <string name="aihelp_enter_number">请输入数字</string>
+    <string name="aihelp_faq_feedback">请对我们提出宝贵建议</string>
+    <string name="aihelp_faq_feedback_suggest">提建议</string>
+    <string name="aihelp_faq_feedback_thanks">感谢您的反馈！</string>
+    <string name="aihelp_faq_fetching_faqs">正在获取您的答案……</string>
+    <string name="aihelp_faq_helpful">有帮助</string>
+    <string name="aihelp_faq_search_empty">未找到常见问题解答</string>
+    <string name="aihelp_faq_search_hint">请说明您遇到的问题</string>
+    <string name="aihelp_faq_unhelpful">没有帮助</string>
+    <string name="aihelp_file">文件</string>
+    <string name="aihelp_fill_in">填写</string>
+    <string name="aihelp_form_hint">填写表单联系人工客服</string>
+    <string name="aihelp_friday">周五</string>
+    <string name="aihelp_image_format_unsupport">不支持该图片格式</string>
+    <string name="aihelp_is_Answer_helpful">下方的答案是否有帮助</string>
+    <string name="aihelp_media_upload_err_format">文件格式不支持，请上传 mp4, png, jpg, jpeg 格式的文件</string>
+    <string name="aihelp_media_upload_err_net">网络传输超时，文件上传失败</string>
+    <string name="aihelp_media_upload_err_size">文件大小超过限制，请上传小于 %dM 的文件</string>
+    <string name="aihelp_monday">周一</string>
+    <string name="aihelp_network_check_fine">当前网络状态良好</string>
+    <string name="aihelp_network_check_in_progress">正在进行网络检测，如果现在退出将中断检测</string>
+    <string name="aihelp_network_check_poor">是否将网络状况发送给我们，这将帮助我们改善与您的网络连接质量</string>
+    <string name="aihelp_network_checking">网络检测中</string>
+    <string name="aihelp_network_error_msg">哎呀，网络好像有点问题</string>
+    <string name="aihelp_network_no_connect">请检查网络连接及网络管理软件相关设置</string>
+    <string name="aihelp_network_upload_log_title">当前网络状态不佳</string>
+    <string name="aihelp_new_conversation">新对话</string>
+    <string name="aihelp_no">取消</string>
+    <string name="aihelp_op_cs">HELP</string>
+    <string name="aihelp_open_browser">在浏览器打开下载</string>
+    <string name="aihelp_permission_denied">此应用需要获取读取设备存储权限，才能提供上传图片功能。</string>
+    <string name="aihelp_permission_ignored">要使用上传图片功能，请依次启用“设置”>“权限”>“存储”。</string>
+    <string name="aihelp_permission_settings">设置</string>
+    <string name="aihelp_rate_additional_feedback_message">其他意见或建议吗（可选）</string>
+    <string name="aihelp_rate_app_hint">喜欢这个应用，给它打分？</string>
+    <string name="aihelp_rate_button">去评价</string>
+    <string name="aihelp_rate_dissatisfied">很不满意</string>
+    <string name="aihelp_rate_finished">感谢您为我们评价！</string>
+    <string name="aihelp_rate_request">请对我们的服务进行评价</string>
+    <string name="aihelp_rate_satisfied">非常满意</string>
+    <string name="aihelp_resolution_no">未解决</string>
+    <string name="aihelp_resolution_request">您的问题解决了吗？</string>
+    <string name="aihelp_resolution_yes">已解决</string>
+    <string name="aihelp_resource_not_support">系统不支持该格式的资源</string>
+    <string name="aihelp_saturday">周六</string>
+    <string name="aihelp_save_failed">保存失败</string>
+    <string name="aihelp_save_seccessfully">保存成功</string>
+    <string name="aihelp_select">选取</string>
+    <string name="aihelp_select_date">请选择日期</string>
+    <string name="aihelp_select_option">请选择选项</string>
+    <string name="aihelp_select_photo">选取照片</string>
+    <string name="aihelp_send">发送</string>
+    <string name="aihelp_storage_permission">请开启存储权限，以便选择图片或视频上传反馈给客服</string>
+    <string name="aihelp_sunday">周日</string>
+    <string name="aihelp_thursday">周四</string>
+    <string name="aihelp_ticket_closed">当前客诉单已关闭</string>
+    <string name="aihelp_tuesday">周二</string>
+    <string name="aihelp_upload_attachment">上传附件</string>
+    <string name="aihelp_video_format_unsupport">不支持该视频格式</string>
+    <string name="aihelp_view_details">查看详情</string>
+    <string name="aihelp_wednesday">周三</string>
+    <string name="aihelp_yes">确定</string>
+    <string name="aihelp_yesterday">昨天</string>
+    <string gender="unknown" name="com_facebook_device_auth_instructions">访问&lt;b>facebook.com/device&lt;/b>并输入上方显示的验证码。</string>
+    <string gender="unknown" name="com_facebook_image_download_unknown_error">下载图片时出现意外错误。</string>
+    <string gender="unknown" name="com_facebook_internet_permission_error_message">WebView 登录需要访问网络</string>
+    <string gender="unknown" name="com_facebook_internet_permission_error_title">AndroidManifest 错误</string>
+    <string gender="unknown" name="com_facebook_like_button_liked">赞了</string>
+    <string gender="unknown" name="com_facebook_like_button_not_liked">赞</string>
+    <string gender="unknown" name="com_facebook_loading">正在加载…</string>
+    <string gender="unknown" name="com_facebook_loginview_cancel_action">取消</string>
+    <string gender="unknown" name="com_facebook_loginview_log_in_button">登录</string>
+    <string gender="unknown" name="com_facebook_loginview_log_in_button_continue">使用 Facebook 登录</string>
+    <string gender="unknown" name="com_facebook_loginview_log_in_button_long">使用 Facebook 登录</string>
+    <string gender="unknown" name="com_facebook_loginview_log_out_action">退出</string>
+    <string gender="unknown" name="com_facebook_loginview_log_out_button">退出</string>
+    <string gender="unknown" name="com_facebook_loginview_logged_in_as">登录身份：%1$s</string>
+    <string gender="unknown" name="com_facebook_loginview_logged_in_using_facebook">已通过 Facebook 登录</string>
+    <string gender="unknown" name="com_facebook_send_button_text">发送</string>
+    <string gender="unknown" name="com_facebook_share_button_text">分享</string>
+    <string gender="unknown" name="com_facebook_smart_device_instructions">要关联帐户，请在移动设备上打开 Facebook 应用并查看通知。</string>
+    <string gender="unknown" name="com_facebook_smart_device_instructions_or">- 或 -</string>
+    <string gender="unknown" name="com_facebook_smart_login_confirmation_cancel">不是你？</string>
+    <string gender="unknown" name="com_facebook_smart_login_confirmation_continue_as">以%1$s的身份继续</string>
+    <string gender="unknown" name="com_facebook_smart_login_confirmation_title">确认登录</string>
+    <string gender="unknown" name="com_facebook_tooltip_default">应用分享内容由你掌控。</string>
+    <string msgid="2523291102206661146" name="common_google_play_services_enable_button">启用</string>
+    <string msgid="227660514972886228" name="common_google_play_services_enable_text">您必须先启用 Google Play 服务，然后才能运行%1$s。</string>
+    <string msgid="5122002158466380389" name="common_google_play_services_enable_title">启用 Google Play 服务</string>
+    <string msgid="7153882981874058840" name="common_google_play_services_install_button">安装</string>
+    <string name="common_google_play_services_install_text">您的设备没有安装 Google Play 服务，因此无法运行%1$s。</string>
+    <string msgid="7215213145546190223" name="common_google_play_services_install_title">获取 Google Play 服务</string>
+    <string name="common_google_play_services_notification_channel_name">Google Play 服务的适用范围</string>
+    <string name="common_google_play_services_notification_ticker">Google Play服务出错</string>
+    <string name="common_google_play_services_unknown_issue">%1$s无法访问 Google Play 服务，请重试。</string>
+    <string name="common_google_play_services_unsupported_text">您的设备不支持 Google Play 服务，因此无法运行%1$s。</string>
+    <string msgid="6556509956452265614" name="common_google_play_services_update_button">更新</string>
+    <string msgid="9053896323427875356" name="common_google_play_services_update_text">您必须先更新 Google Play 服务，然后才能运行%1$s。</string>
+    <string msgid="6006316683626838685" name="common_google_play_services_update_title">更新 Google Play 服务</string>
+    <string name="common_google_play_services_updating_text">Google Play 服务当前正在更新，因此您无法运行%1$s。</string>
+    <string name="common_google_play_services_wear_update_text">必须使用新版 Google Play 服务。该服务很快就会自行更新。</string>
+    <string name="common_open_on_phone">在手机上打开</string>
+    <string name="common_signin_button_text">登录</string>
+    <string name="common_signin_button_text_long">使用 Google 帐号登录</string>
+    <string msgid="3260749812566568062" name="copy_toast_msg">"链接已复制到剪贴板"</string>
+    <string msgid="4566929209979330987" name="fallback_menu_item_copy_link">"复制链接"</string>
+    <string msgid="3413186855122069269" name="fallback_menu_item_open_in_browser">"在浏览器中打开"</string>
+    <string msgid="7145444925855055364" name="fallback_menu_item_share_link">"分享链接"</string>
+    <string name="native_body">主体</string>
+    <string name="native_headline">标题</string>
+    <string name="native_media_view">媒体视图</string>
+    <string name="offline_notification_text">点按即可打开广告</string>
+    <string name="offline_notification_title">查看您在离线时保存的广告</string>
+    <string name="offline_opt_in_confirm">确定</string>
+    <string name="offline_opt_in_confirmation">您会在重新联网后收到包含该链接的通知</string>
+    <string name="offline_opt_in_decline">不用了</string>
+    <string name="offline_opt_in_message">我们会向您发送包含广告客户网站链接的通知。</string>
+    <string name="offline_opt_in_title">在您重新联网后打开广告。</string>
+    <string name="s1">保存图片</string>
+    <string name="s2">允许广告将图片存储在图库中吗？</string>
+    <string name="s3">接受</string>
+    <string name="s4">拒绝</string>
+    <string name="s5">创建日历活动</string>
+    <string name="s6">允许广告创建日历活动吗？</string>
+    <string name="s7">测试广告</string>
+    <string msgid="6264217191555673260" name="search_menu_title">"搜索"</string>
+    <string msgid="6277540029070332960" name="status_bar_notification_info_overflow">"999+"</string>
+    <string name="watermark_label_prefix">AdMob - </string>
+</resources>

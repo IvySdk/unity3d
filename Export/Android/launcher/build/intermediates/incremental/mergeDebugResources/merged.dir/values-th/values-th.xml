@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:ns1="urn:oasis:names:tc:xliff:document:1.2">
+    <string msgid="5976598919945601918" name="abc_action_bar_home_description">"นำทางไปหน้าแรก"</string>
+    <string msgid="8388173803310557296" name="abc_action_bar_up_description">"กลับ"</string>
+    <string msgid="3937310113216875497" name="abc_action_menu_overflow_description">"ตัวเลือกอื่น"</string>
+    <string msgid="4692188335987374352" name="abc_action_mode_done">"เสร็จ"</string>
+    <string msgid="1189761859438369441" name="abc_activity_chooser_view_see_all">"ดูทั้งหมด"</string>
+    <string msgid="2165779757652331008" name="abc_activitychooserview_choose_application">"เลือกแอป"</string>
+    <string msgid="4215997306490295099" name="abc_capital_off">"ปิด"</string>
+    <string msgid="884982626291842264" name="abc_capital_on">"เปิด"</string>
+    <string msgid="8833365367933412986" name="abc_menu_alt_shortcut_label">"Alt+"</string>
+    <string msgid="2223301931652355242" name="abc_menu_ctrl_shortcut_label">"Ctrl+"</string>
+    <string msgid="838001238306846836" name="abc_menu_delete_shortcut_label">"ลบ"</string>
+    <string msgid="7986526966204849475" name="abc_menu_enter_shortcut_label">"Enter"</string>
+    <string msgid="375214403600139847" name="abc_menu_function_shortcut_label">"Function+"</string>
+    <string msgid="4192209724446364286" name="abc_menu_meta_shortcut_label">"Meta+"</string>
+    <string msgid="4741552369836443843" name="abc_menu_shift_shortcut_label">"Shift+"</string>
+    <string msgid="5473865519181928982" name="abc_menu_space_shortcut_label">"Space"</string>
+    <string msgid="6180552449598693998" name="abc_menu_sym_shortcut_label">"Sym+"</string>
+    <string msgid="5520303668377388990" name="abc_prepend_shortcut_label">"เมนู+"</string>
+    <string msgid="7208076849092622260" name="abc_search_hint">"ค้นหา…"</string>
+    <string msgid="3741173234950517107" name="abc_searchview_description_clear">"ล้างคำค้นหา"</string>
+    <string msgid="693312494995508443" name="abc_searchview_description_query">"คำค้นหา"</string>
+    <string msgid="3417662926640357176" name="abc_searchview_description_search">"ค้นหา"</string>
+    <string msgid="1486535517437947103" name="abc_searchview_description_submit">"ส่งคำค้นหา"</string>
+    <string msgid="2293578557972875415" name="abc_searchview_description_voice">"ค้นหาด้วยเสียง"</string>
+    <string msgid="8875138169939072951" name="abc_shareactionprovider_share_with">"แชร์กับ"</string>
+    <string msgid="9055268688411532828" name="abc_shareactionprovider_share_with_application">"แชร์ทาง <ns1:g id="APPLICATION_NAME">%s</ns1:g>"</string>
+    <string msgid="1656852541809559762" name="abc_toolbar_collapse_description">"ยุบ"</string>
+    <string name="aihelp_albums">อัลบั้ม</string>
+    <string name="aihelp_chat_hint">กรุณาเข้าทางนี้</string>
+    <string name="aihelp_click_copy">คลิกเพื่อคัดลอก</string>
+    <string name="aihelp_copy_failed">การคัดลอกล้มเหลว</string>
+    <string name="aihelp_copy_success">คัดลอกความสำเร็จ</string>
+    <string name="aihelp_data_not_found_msg">อุ๊ย ไม่พบข้อมูล</string>
+    <string name="aihelp_enter_content">กรุณาเข้าตรงนี้</string>
+    <string name="aihelp_enter_email_address">กรอกอีเมลของท่าน</string>
+    <string name="aihelp_enter_number">กรอกเบอร์โทรของท่าน</string>
+    <string name="aihelp_faq_feedback">ช่วยบอกให้เราพัฒนาดีขึ้น</string>
+    <string name="aihelp_faq_feedback_suggest">ข้อเสนอ</string>
+    <string name="aihelp_faq_feedback_thanks">ขอบคุณที่ให้ฟีดแบ็ค</string>
+    <string name="aihelp_faq_fetching_faqs">ได้รับคำตอบ...</string>
+    <string name="aihelp_faq_helpful">ช่วยได้</string>
+    <string name="aihelp_faq_search_empty">ไม่ค้นพบคำถามประจำ</string>
+    <string name="aihelp_faq_search_hint">บรรยายคำถามของท่าน</string>
+    <string name="aihelp_faq_unhelpful">ช่วยไม่ได้</string>
+    <string name="aihelp_file">ไฟล์</string>
+    <string name="aihelp_fill_in">กรอก</string>
+    <string name="aihelp_form_hint">กรอกแบบฟอร์ม เพื่อให้ทีมบริการของเราติดต่อท่าน</string>
+    <string name="aihelp_friday">วันศุกร์</string>
+    <string name="aihelp_image_format_unsupport">ไม่รองรับรูปแบบภาพนี้</string>
+    <string name="aihelp_is_Answer_helpful">คำตอบพวกนี้ช่วยท่านได้หรือไม่</string>
+    <string name="aihelp_media_upload_err_format">ไม่สนับสนุนรูปแบบนี้ ท่านสามารถอัพโหลดไฟล์ mp4,png,jpg หรือ jpeg</string>
+    <string name="aihelp_media_upload_err_net">การส่งผ่านหมดเวลา ไม่สามารถอัพโหลดได้</string>
+    <string name="aihelp_media_upload_err_size">ไฟล์ใหญ่เกินไป  %dM ใหญ่สุด</string>
+    <string name="aihelp_monday">วันจันทร์</string>
+    <string name="aihelp_network_check_fine">อินเตอร์เน็ตของท่านเสถียร</string>
+    <string name="aihelp_network_check_in_progress">กำลังตรวจสัญญาณอินเตอร์เน็ตอยู่ หากท่านออกไปตอนนี้ การตรวจอาจไม่สำเร็จ</string>
+    <string name="aihelp_network_check_poor">ท่านส่งผลตรวจสภาพอินเตอร์เน็ตของท่านให้เราได้หรือไม่ จะได้ช่วยเราทำให้อินเตอร์เน็ตของท่านดีขึ้น</string>
+    <string name="aihelp_network_checking">ตรวจสัญญาณของท่าน…</string>
+    <string name="aihelp_network_error_msg">อุ๊ย สัญญาณอินเตอร์เน็ตเกิดปัญหา</string>
+    <string name="aihelp_network_no_connect">กรุณาช่วยเช็คสัญญาณ อินเตอร์เน็ตและการอนุมัติ อินเตอร์เน็ตของท่าน</string>
+    <string name="aihelp_network_upload_log_title">สัญญาณอินเตอร์เน็ตแย่มาก</string>
+    <string name="aihelp_new_conversation">การแชทใหม่</string>
+    <string name="aihelp_no">การยกเลิก</string>
+    <string name="aihelp_op_cs">ความช่วยเหลือ</string>
+    <string name="aihelp_open_browser">เปิดในเบราว์เซอร์ของคุณเพื่อดาวน์โหลด</string>
+    <string name="aihelp_permission_denied">เราต้องการเข้าสู่ตัวเก็บข้อมูลของท่าน เพื่อจะได้อัพโหลดรูปภาพให้ท่าน</string>
+    <string name="aihelp_permission_ignored">กรุณาตั้งค่าให้เราเข้าสู่ตัวเก็บข้อมูลก่อนอัพโหลดรูปภาพ</string>
+    <string name="aihelp_permission_settings">การตั้งค่า</string>
+    <string name="aihelp_rate_additional_feedback_message">ข้อเสนออื่น(ตัวเลือก)</string>
+    <string name="aihelp_rate_app_hint">ท่านอยากประเมินแอพพลิเคชั่นนี้หรือไม่</string>
+    <string name="aihelp_rate_button">ประเมินตอนนี้</string>
+    <string name="aihelp_rate_dissatisfied">แย่</string>
+    <string name="aihelp_rate_finished">ขอบคุณที่ให้การประเมิน</string>
+    <string name="aihelp_rate_request">กรุณาประเมินคุณภาพการบริการของเรา</string>
+    <string name="aihelp_rate_satisfied">เยี่ยม</string>
+    <string name="aihelp_resolution_no">ไม่ใช่</string>
+    <string name="aihelp_resolution_request">ปัญหาของท่านถูกแก้ไขหรือไม่</string>
+    <string name="aihelp_resolution_yes">ใช่</string>
+    <string name="aihelp_resource_not_support">ระบบไม่รองรับทรัพยากรในรูปแบบนี้</string>
+    <string name="aihelp_saturday">วันเสาร์</string>
+    <string name="aihelp_save_failed">บันทึกไม่สำเร็จ</string>
+    <string name="aihelp_save_seccessfully">บันทึกเรียบร้อยแล้ว</string>
+    <string name="aihelp_select">เลือก</string>
+    <string name="aihelp_select_date">เลือกวันที่</string>
+    <string name="aihelp_select_option">กรุณาเลือก</string>
+    <string name="aihelp_select_photo">เลือกรูปภาพ</string>
+    <string name="aihelp_send">ส่ง</string>
+    <string name="aihelp_storage_permission">โปรดเปิดใช้งานสิทธิ์ในการจัดเก็บเพื่อให้คุณสามารถเลือกรูปภาพหรือวิดีโอที่จะอัปโหลดเพื่อส่งข้อเสนอแนะไปยังฝ่ายบริการลูกค้า</string>
+    <string name="aihelp_sunday">วันอาทิตย์</string>
+    <string name="aihelp_thursday">วันพฤหัสบดี</string>
+    <string name="aihelp_ticket_closed">ตั๋วในตอนนี้ถูกปิด</string>
+    <string name="aihelp_tuesday">วันอังคาร</string>
+    <string name="aihelp_upload_attachment">อัพโหลดไฟล์แนบ</string>
+    <string name="aihelp_video_format_unsupport">ไม่รองรับรูปแบบวิดีโอ</string>
+    <string name="aihelp_view_details">ดูรายละเอียด</string>
+    <string name="aihelp_wednesday">วันพุธ</string>
+    <string name="aihelp_yes">โอเค</string>
+    <string name="aihelp_yesterday">เมื่อวาน</string>
+    <string gender="unknown" name="com_facebook_device_auth_instructions">ไปที่ &lt;b>facebook.com/device&lt;/b> แล้วป้อนรหัสที่แสดงด้านบน</string>
+    <string gender="unknown" name="com_facebook_image_download_unknown_error">เกิดข้อผิดพลาดที่ไม่คาดคิดขณะดาวน์โหลดภาพ</string>
+    <string gender="unknown" name="com_facebook_internet_permission_error_message">การเข้าสู่ระบบ WebView ต้องได้รับสิทธิ์การอนุญาตอินเทอร์เน็ต</string>
+    <string gender="unknown" name="com_facebook_internet_permission_error_title">ข้อผิดพลาด AndroidManifest</string>
+    <string gender="unknown" name="com_facebook_like_button_liked">ถูกใจแล้ว</string>
+    <string gender="unknown" name="com_facebook_like_button_not_liked">ถูกใจ</string>
+    <string gender="unknown" name="com_facebook_loading">กำลังโหลด…</string>
+    <string gender="unknown" name="com_facebook_loginview_cancel_action">ยกเลิก</string>
+    <string gender="unknown" name="com_facebook_loginview_log_in_button">เข้าสู่ระบบ</string>
+    <string gender="unknown" name="com_facebook_loginview_log_in_button_continue">ดำเนินการต่อด้วย Facebook</string>
+    <string gender="unknown" name="com_facebook_loginview_log_in_button_long">เข้าสู่ระบบด้วย Facebook</string>
+    <string gender="unknown" name="com_facebook_loginview_log_out_action">ออกจากระบบ</string>
+    <string gender="unknown" name="com_facebook_loginview_log_out_button">ออกจากระบบ</string>
+    <string gender="unknown" name="com_facebook_loginview_logged_in_as">เข้าสู่ระบบแล้วในชื่อ %1$s</string>
+    <string gender="unknown" name="com_facebook_loginview_logged_in_using_facebook">เข้าสู่ระบบแล้วโดยใช้ Facebook</string>
+    <string gender="unknown" name="com_facebook_send_button_text">ส่ง</string>
+    <string gender="unknown" name="com_facebook_share_button_text">แชร์</string>
+    <string gender="unknown" name="com_facebook_smart_device_instructions">หากต้องการเชื่อมต่อกับบัญชีผู้ใช้ของคุณ ให้เปิดแอพ Facebook บนอุปกรณ์มือถือของคุณแล้วตรวจสอบการแจ้งเตือน</string>
+    <string gender="unknown" name="com_facebook_smart_device_instructions_or">- หรือ -</string>
+    <string gender="unknown" name="com_facebook_smart_login_confirmation_cancel">ไม่ใช่คุณใช่ไหม</string>
+    <string gender="unknown" name="com_facebook_smart_login_confirmation_continue_as">ดำเนินการต่อในชื่อ %1$s</string>
+    <string gender="unknown" name="com_facebook_smart_login_confirmation_title">ยืนยันการเข้าสู่ระบบ</string>
+    <string gender="unknown" name="com_facebook_tooltip_default">คุณควบคุมได้ เลือกว่าคุณต้องการแชร์ข้อมูลใดกับแอพ</string>
+    <string msgid="2523291102206661146" name="common_google_play_services_enable_button">เปิดใช้</string>
+    <string msgid="227660514972886228" name="common_google_play_services_enable_text">%1$s จะไม่ทำงานจนกว่าคุณจะเปิดใช้บริการ Google Play</string>
+    <string msgid="5122002158466380389" name="common_google_play_services_enable_title">เปิดใช้บริการ Google Play</string>
+    <string msgid="7153882981874058840" name="common_google_play_services_install_button">ติดตั้ง</string>
+    <string name="common_google_play_services_install_text">%1$s จะไม่ทำงานหากไม่มีบริการ Google Play ซี่งไม่มีในอุปกรณ์ของคุณ</string>
+    <string msgid="7215213145546190223" name="common_google_play_services_install_title">ติดตั้งบริการ Google Play</string>
+    <string name="common_google_play_services_notification_channel_name">ความพร้อมใช้งานของบริการ Google Play</string>
+    <string name="common_google_play_services_notification_ticker">ข้อผิดพลาดของบริการ Google Play</string>
+    <string name="common_google_play_services_unknown_issue">%1$s มีปัญหาเกี่ยวกับบริการของ Google Play โปรดลองอีกครั้ง</string>
+    <string name="common_google_play_services_unsupported_text">%1$s จะไม่ทำงานหากไม่มีบริการ Google Play ซึ่งอุปกรณ์ของคุณไม่สนับสนุน</string>
+    <string msgid="6556509956452265614" name="common_google_play_services_update_button">อัปเดต</string>
+    <string msgid="9053896323427875356" name="common_google_play_services_update_text">%1$s จะไม่ทำงานจนกว่าคุณจะอัปเดตบริการ Google Play</string>
+    <string msgid="6006316683626838685" name="common_google_play_services_update_title">อัปเดตบริการ Google Play</string>
+    <string name="common_google_play_services_updating_text">%1$s จะไม่ทำงานหากไม่มีบริการ Google Play ซึ่งกำลังอัปเดตอยู่ในขณะนี้</string>
+    <string name="common_google_play_services_wear_update_text">จำเป็นต้องใช้บริการ Google Play เวอร์ชันใหม่ ซึ่งจะอัปเดตอัตโนมัติในอีกไม่ช้า</string>
+    <string name="common_open_on_phone">เปิดบนโทรศัพท์</string>
+    <string name="common_signin_button_text">ลงชื่อเข้าใช้</string>
+    <string name="common_signin_button_text_long">ลงชื่อเข้าใช้ด้วย Google</string>
+    <string msgid="3260749812566568062" name="copy_toast_msg">"คัดลอกลิงก์ไปยังคลิปบอร์ดแล้ว"</string>
+    <string msgid="4566929209979330987" name="fallback_menu_item_copy_link">"คัดลอกลิงก์"</string>
+    <string msgid="3413186855122069269" name="fallback_menu_item_open_in_browser">"เปิดในเบราว์เซอร์"</string>
+    <string msgid="7145444925855055364" name="fallback_menu_item_share_link">"แชร์ลิงก์"</string>
+    <string name="native_body">เนื้อความ</string>
+    <string name="native_headline">บรรทัดแรก</string>
+    <string name="native_media_view">มุมมองสื่อ</string>
+    <string name="offline_notification_text">แตะเพื่อเปิดโฆษณา</string>
+    <string name="offline_notification_title">ดูโฆษณาที่คุณบันทึกไว้ขณะออฟไลน์</string>
+    <string name="offline_opt_in_confirm">ตกลง</string>
+    <string name="offline_opt_in_confirmation">คุณจะได้รับการแจ้งเตือนพร้อมลิงก์เมื่อกลับมาออนไลน์</string>
+    <string name="offline_opt_in_decline">ไม่เป็นไร</string>
+    <string name="offline_opt_in_message">เราจะส่งการแจ้งเตือนให้คุณพร้อมลิงก์ไปยังเว็บไซต์ของผู้ลงโฆษณา</string>
+    <string name="offline_opt_in_title">เปิดโฆษณาเมื่อคุณกลับมาออนไลน์</string>
+    <string name="s1">บันทึกรูปภาพ</string>
+    <string name="s2">อนุญาตให้โฆษณาจัดเก็บรูปภาพในแกลเลอรีภาพไหม</string>
+    <string name="s3">ยอมรับ</string>
+    <string name="s4">ปฏิเสธ</string>
+    <string name="s5">สร้างกิจกรรมในปฏิทิน</string>
+    <string name="s6">อนุญาตให้โฆษณาสร้างกิจกรรมในปฏิทินไหม</string>
+    <string name="s7">โฆษณาทดสอบ</string>
+    <string msgid="6264217191555673260" name="search_menu_title">"ค้นหา"</string>
+    <string msgid="6277540029070332960" name="status_bar_notification_info_overflow">"999+"</string>
+    <string name="watermark_label_prefix">AdMob - </string>
+</resources>

@@ -5,12 +5,17 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.PixelFormat;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.os.Process;
+import android.widget.Button;
+import android.widget.FrameLayout;
+
+import com.android.client.Unity;
 
 public class UnityPlayerActivity extends Activity implements IUnityPlayerLifecycleEvents
 {
@@ -40,6 +45,20 @@ public class UnityPlayerActivity extends Activity implements IUnityPlayerLifecyc
         mUnityPlayer = new UnityPlayer(this, this);
         setContentView(mUnityPlayer);
         mUnityPlayer.requestFocus();
+
+//        Button button = new Button(this);
+//        button.setText("showad");
+//        button.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Unity.showFullAd("default");
+////                Unity.showRewardAd(1);
+////                Unity.showBanner(0);
+//            }
+//        });
+//        button.setGravity(Gravity.CENTER);
+//        ((FrameLayout)getWindow().getDecorView()).addView(button);
+
     }
 
     // When Unity player unloaded move task to background

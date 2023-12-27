@@ -16,7 +16,6 @@ import android.media.AudioManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.provider.Settings;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -24,7 +23,6 @@ import android.view.View;
 
 import androidx.annotation.NonNull;
 
-import com.adsfall.R;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.RequestConfiguration;
 import com.google.android.gms.common.GoogleApiAvailability;
@@ -42,7 +40,6 @@ import com.ivy.ads.managers.PromoteAdManager;
 import com.ivy.billing.PurchaseManager;
 import com.ivy.billing.PurchaseStateChangeData;
 import com.ivy.billing.impl.IPurchaseQueryCallback;
-import com.ivy.cmp.CMPUtil;
 import com.ivy.event.CommonEvents;
 import com.ivy.event.EventBus;
 import com.ivy.event.EventListener;
@@ -116,6 +113,10 @@ public class AndroidSdk {
         InAppMessageClickListener inAppMessageClickListener;
         OnHelpEngagementListener onHelpEngagementListener;
         GoogleListener googleListener;
+
+        IGMSPaidEventListener gmsPaidEventListener;
+
+        IAppsflyerConversionListener appsflyerConversionListener;
 
         public Builder setPaymentListener(PaymentSystemListener listener) {
             this.paymentResultListener = listener;
@@ -191,6 +192,15 @@ public class AndroidSdk {
             return this;
         }
 
+        public Builder setGMSPaidEventListener(IGMSPaidEventListener gmsPaidEventListener) {
+            this.gmsPaidEventListener = gmsPaidEventListener;
+            return this;
+        }
+
+        public Builder setAppsflyerConversionListener(IAppsflyerConversionListener appsflyerConversionListener) {
+            this.appsflyerConversionListener = appsflyerConversionListener;
+            return this;
+        }
     }
 
     @Deprecated
@@ -1471,10 +1481,10 @@ public class AndroidSdk {
         IvySdk.getPurchaseHistory(skuType, new IPurchaseQueryCallback<List<JSONObject>>() {
             @Override
             public void onResult(List<JSONObject> data) {
-                if (data == null){
+                if (data == null) {
                     if (callback != null) callback.onResult("[]");
                 } else {
-                    if (callback != null){
+                    if (callback != null) {
                         callback.onResult(new JSONArray(data).toString());
                     }
                 }
@@ -1493,11 +1503,11 @@ public class AndroidSdk {
         IvySdk.getPurchaseHistory("subs", new IPurchaseQueryCallback<List<JSONObject>>() {
             @Override
             public void onResult(List<JSONObject> data) {
-                if (data == null){
+                if (data == null) {
                     if (callback != null) callback.onResult(false);
                 } else {
                     for (JSONObject item : data) {
-                        if (item.optInt("billId") == billId){
+                        if (item.optInt("billId") == billId) {
                             if (callback != null) callback.onResult(true);
                             return;
                         }
@@ -1865,7 +1875,7 @@ public class AndroidSdk {
         return "";
     }
 
-    public static void openFacebook(String userId, String userName){
+    public static void openFacebook(String userId, String userName) {
         Intent intent = new Intent(Intent.ACTION_VIEW);
         try {
             //打开Facebook应用，xxxxxx为账户id，是一串数字，例如：101480009140700
@@ -1874,13 +1884,13 @@ public class AndroidSdk {
             IvySdk.getActivity().startActivity(intent);
         } catch (Exception e) {
             //若未安装app，则打开Facebook网页，xxx为账户名
-          try{
-              Uri uri = Uri.parse("https://www.facebook.com/" + userName);
-              intent.setData(uri);
-              IvySdk.getActivity().startActivity(intent);
-          } catch (Exception e1){
-              Logger.error("open facebook page error:" + e.getMessage());
-          }
+            try {
+                Uri uri = Uri.parse("https://www.facebook.com/" + userName);
+                intent.setData(uri);
+                IvySdk.getActivity().startActivity(intent);
+            } catch (Exception e1) {
+                Logger.error("open facebook page error:" + e.getMessage());
+            }
         }
     }
 
@@ -2292,7 +2302,7 @@ public class AndroidSdk {
             }
             int max = activity.getResources().getDisplayMetrics().heightPixels / 20;
             if (notchHeight > 0) {
-                if (notchHeight > max){
+                if (notchHeight > max) {
                     notchHeight = max;
                 }
                 return notchHeight;
@@ -2302,7 +2312,7 @@ public class AndroidSdk {
             if (resourceId > 0) {
                 notchHeight = activity.getResources().getDimensionPixelSize(resourceId);
             }
-            if (notchHeight > max){
+            if (notchHeight > max) {
                 notchHeight = max;
             }
             return notchHeight;
@@ -2427,7 +2437,7 @@ public class AndroidSdk {
             }
             NotchScreenManager.getInstance().setDisplayInNotch(activity);
         } catch (Throwable ex) {
-          //  ex.printStackTrace();
+            //  ex.printStackTrace();
         }
     }
 
@@ -2729,9 +2739,10 @@ public class AndroidSdk {
         }
     }
 
-    public static boolean isAIHelpInitialized(){
+    public static boolean isAIHelpInitialized() {
         return AIHelp.getInstance().isHasInitialized();
     }
+
     public static void showAIHelp(String entranceId, String welcomeMessage, String meta, String tags) {
         if (!AIHelp.getInstance().isHasInitialized()) {
             Log.e(AIHelp.TAG, "AIHelp was not initialized");
@@ -2741,7 +2752,7 @@ public class AndroidSdk {
         AIHelp.getInstance().show(entranceId, welcomeMessage);
     }
 
-    public static void showSingleFAQ(String faqId, int moment){
+    public static void showSingleFAQ(String faqId, int moment) {
         if (!AIHelp.getInstance().isHasInitialized()) {
             Log.e(AIHelp.TAG, "AIHelp was not initialized");
             return;
@@ -2992,19 +3003,61 @@ public class AndroidSdk {
         IvySdk.logIvyEvent("track_screen_end", bundle);
     }
 
-    public static void recordException(String err){
+    public static void recordException(String err) {
         try {
             FirebaseCrashlytics.getInstance().recordException(new Throwable(err));
-        } catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    public static void logException(String err){
+    public static void logException(String err) {
         try {
             FirebaseCrashlytics.getInstance().log(err);
-        } catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
+        }
+    }
+
+    public static void onGMSPaid(String currencyCode, int precisionType, long valueMacros) {
+        if (builder != null && builder.gmsPaidEventListener != null) {
+            builder.gmsPaidEventListener.onGMSPaid(currencyCode, precisionType, valueMacros);
+        }
+    }
+
+    public static void onAfInitSuccess(){
+        if (builder != null && builder.appsflyerConversionListener != null) {
+            builder.appsflyerConversionListener.onAfInitSuccess();
+        }
+    }
+
+    public static void onAfInitFailed(int i, String s){
+        if (builder != null && builder.appsflyerConversionListener != null) {
+            builder.appsflyerConversionListener.onAfInitFailed(i, s);
+        }
+    }
+
+    public static void onAppOpenAttribution(Map<String, String> conversionData){
+        if (builder != null && builder.appsflyerConversionListener != null) {
+            builder.appsflyerConversionListener.onAppOpenAttribution(conversionData);
+        }
+    }
+
+    public static void onConversionDataFail(String s){
+        if (builder != null && builder.appsflyerConversionListener != null) {
+            builder.appsflyerConversionListener.onConversionDataFail(s);
+        }
+    }
+
+    public static  void onConversionDataSuccess(Map<String, Object> conversionData){
+        if (builder != null && builder.appsflyerConversionListener != null) {
+            builder.appsflyerConversionListener.onConversionDataSuccess(conversionData);
+        }
+    }
+
+    public static  void onAttributionFailure(String s){
+        if (builder != null && builder.appsflyerConversionListener != null) {
+            builder.appsflyerConversionListener.onAttributionFailure(s);
         }
     }
 

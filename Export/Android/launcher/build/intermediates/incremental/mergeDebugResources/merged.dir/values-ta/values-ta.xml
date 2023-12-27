@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:ns1="urn:oasis:names:tc:xliff:document:1.2">
+    <string msgid="5976598919945601918" name="abc_action_bar_home_description">"முகப்பிற்குச் செல்லும்"</string>
+    <string msgid="8388173803310557296" name="abc_action_bar_up_description">"மேலே செல்லும்"</string>
+    <string msgid="3937310113216875497" name="abc_action_menu_overflow_description">"மேலும் விருப்பங்கள்"</string>
+    <string msgid="4692188335987374352" name="abc_action_mode_done">"முடிந்தது"</string>
+    <string msgid="1189761859438369441" name="abc_activity_chooser_view_see_all">"அனைத்தையும் காட்டு"</string>
+    <string msgid="2165779757652331008" name="abc_activitychooserview_choose_application">"ஆப்ஸைத் தேர்வுசெய்க"</string>
+    <string msgid="4215997306490295099" name="abc_capital_off">"ஆஃப்"</string>
+    <string msgid="884982626291842264" name="abc_capital_on">"ஆன்"</string>
+    <string msgid="8833365367933412986" name="abc_menu_alt_shortcut_label">"Alt மற்றும்"</string>
+    <string msgid="2223301931652355242" name="abc_menu_ctrl_shortcut_label">"Ctrl மற்றும்"</string>
+    <string msgid="838001238306846836" name="abc_menu_delete_shortcut_label">"delete"</string>
+    <string msgid="7986526966204849475" name="abc_menu_enter_shortcut_label">"enter"</string>
+    <string msgid="375214403600139847" name="abc_menu_function_shortcut_label">"Function மற்றும்"</string>
+    <string msgid="4192209724446364286" name="abc_menu_meta_shortcut_label">"Meta மற்றும்"</string>
+    <string msgid="4741552369836443843" name="abc_menu_shift_shortcut_label">"Shift மற்றும்"</string>
+    <string msgid="5473865519181928982" name="abc_menu_space_shortcut_label">"space"</string>
+    <string msgid="6180552449598693998" name="abc_menu_sym_shortcut_label">"Sym மற்றும்"</string>
+    <string msgid="5520303668377388990" name="abc_prepend_shortcut_label">"Menu மற்றும்"</string>
+    <string msgid="7208076849092622260" name="abc_search_hint">"தேடுக…"</string>
+    <string msgid="3741173234950517107" name="abc_searchview_description_clear">"வினவலை அழிக்கும்"</string>
+    <string msgid="693312494995508443" name="abc_searchview_description_query">"தேடல் வினவல்"</string>
+    <string msgid="3417662926640357176" name="abc_searchview_description_search">"தேடும்"</string>
+    <string msgid="1486535517437947103" name="abc_searchview_description_submit">"வினவலைச் சமர்ப்பிக்கும்"</string>
+    <string msgid="2293578557972875415" name="abc_searchview_description_voice">"குரல் தேடல்"</string>
+    <string msgid="8875138169939072951" name="abc_shareactionprovider_share_with">"இதில் பகிர்"</string>
+    <string msgid="9055268688411532828" name="abc_shareactionprovider_share_with_application">"<ns1:g id="APPLICATION_NAME">%s</ns1:g> மூலம் பகிர்"</string>
+    <string msgid="1656852541809559762" name="abc_toolbar_collapse_description">"சுருக்கும்"</string>
+    <string name="aihelp_albums">ஆல்பங்கள்</string>
+    <string name="aihelp_chat_hint">உங்கள் செய்தியை உள்ளிடவும்</string>
+    <string name="aihelp_click_copy">நகலெடுக்க கிளிக் செய்யவும்</string>
+    <string name="aihelp_copy_failed">நகலெடுக்க முடியவில்லை</string>
+    <string name="aihelp_copy_success">நகல் வெற்றி</string>
+    <string name="aihelp_data_not_found_msg">அச்சச்சோ, தொடர்புடைய தரவு எதுவும் கிடைக்கவில்லை.</string>
+    <string name="aihelp_enter_content">உள்ளடக்கத்தை உள்ளிடவும்</string>
+    <string name="aihelp_enter_email_address">தயவுசெய்து உங்கள் மின்னஞ்சலை உள்ளிடவும்</string>
+    <string name="aihelp_enter_number">எண்ணை உள்ளிடவும்</string>
+    <string name="aihelp_faq_feedback">உங்கள் கருத்தை உள்ளிடவும்</string>
+    <string name="aihelp_faq_feedback_suggest">பரிந்துரைகள்</string>
+    <string name="aihelp_faq_feedback_thanks">கருத்துக்கு நன்றி.</string>
+    <string name="aihelp_faq_fetching_faqs">உங்கள் பதில்களைப் பெறுதல்…</string>
+    <string name="aihelp_faq_helpful">உதவிகரமானது</string>
+    <string name="aihelp_faq_search_empty">அடிக்கடி கேட்கப்படும் கேள்விகள் எதுவும் கிடைக்கவில்லை.</string>
+    <string name="aihelp_faq_search_hint">உங்கள் சிக்கலை விவரிக்கவும்</string>
+    <string name="aihelp_faq_unhelpful">உதவாதது</string>
+    <string name="aihelp_file">கோப்பு</string>
+    <string name="aihelp_fill_in">பூர்த்தி செய்</string>
+    <string name="aihelp_form_hint">கையேடு சேவையைத் தொடர்புகொள்ள படிவத்தை நிரப்பவும்</string>
+    <string name="aihelp_friday">வெள்ளி</string>
+    <string name="aihelp_image_format_unsupport">இந்த பட வடிவம் ஆதரிக்கப்படவில்லை</string>
+    <string name="aihelp_is_Answer_helpful">கீழே உள்ள பதில் உதவுமா?</string>
+    <string name="aihelp_media_upload_err_format">ஆதரிக்கப்படாத கோப்புகள். தற்போது, பதிவேற்றும்போது mp4, png, jpg, jpeg மட்டுமே கிடைக்கிறது.</string>
+    <string name="aihelp_media_upload_err_net">Transmission timed out, file uploading failed.</string>
+    <string name="aihelp_media_upload_err_size">கோப்பு அளவு வரம்பை மீறுகிறது, தயவுசெய்து கோப்பை %dM ஐ விட சிறியதாக பதிவேற்றவும்.</string>
+    <string name="aihelp_monday">திங்கட்கிழமை</string>
+    <string name="aihelp_network_check_fine">சரிபார்த்த பிறகு, உங்கள் பிணையம் நன்றாக உள்ளது</string>
+    <string name="aihelp_network_check_in_progress">பிணைய சோதனை செயலில் உள்ளது. நீங்கள் இப்போது வெளியேறினால், சோதனை தடைபடும்.</string>
+    <string name="aihelp_network_check_poor">நெட்வொர்க் நிலைமைகளை எங்களுக்கு அனுப்ப உறுதிப்படுத்தவும், இது உங்கள் பிணைய இணைப்பின் தரத்தை மேம்படுத்த எங்களுக்கு உதவும்.</string>
+    <string name="aihelp_network_checking">பிணைய சோதனை செயலில் உள்ளது</string>
+    <string name="aihelp_network_error_msg">அச்சச்சோ! ஏதோ தவறு நடைபெற்றிருக்கிறது</string>
+    <string name="aihelp_network_no_connect">உங்கள் பிணைய இணைப்பைச் சரிபார்க்கவும்.</string>
+    <string name="aihelp_network_upload_log_title">மோசமான பிணைய இணைப்பு</string>
+    <string name="aihelp_new_conversation">புதிய உரையாடல்</string>
+    <string name="aihelp_no">ரத்துசெய்</string>
+    <string name="aihelp_op_cs">HELP</string>
+    <string name="aihelp_open_browser">பதிவிறக்க உங்கள் உலாவியில் திறக்கவும்</string>
+    <string name="aihelp_permission_denied">பதிவேற்ற படத்திற்கு சேமிப்பகத்தை அணுக அனுமதி தேவை.</string>
+    <string name="aihelp_permission_ignored">பதிவேற்ற பட செயல்பாட்டைப் பயன்படுத்த அமைப்புகள்> அனுமதிகள்> சேமிப்பிடத்தை இயக்கவும்.</string>
+    <string name="aihelp_permission_settings">அமைப்புகள்</string>
+    <string name="aihelp_rate_additional_feedback_message">வேறு ஏதேனும் கருத்து (விரும்பினால்)</string>
+    <string name="aihelp_rate_app_hint">பயன்பாட்டை மதிப்பிட விரும்புகிறீர்களா?</string>
+    <string name="aihelp_rate_button">மதிப்பீடு செய்ய</string>
+    <string name="aihelp_rate_dissatisfied">பிடிக்கவில்லை</string>
+    <string name="aihelp_rate_finished">எங்களை மதிப்பிட்டதற்கு நன்றி.</string>
+    <string name="aihelp_rate_request">எங்கள் சேவையை மதிப்பிடுங்கள்.</string>
+    <string name="aihelp_rate_satisfied">பிடித்திருந்தது</string>
+    <string name="aihelp_resolution_no">தீர்க்கப்படாதது</string>
+    <string name="aihelp_resolution_request">உங்கள் பிரச்சனை தீர்க்கப்பட்டதா?</string>
+    <string name="aihelp_resolution_yes">தீர்க்கப்பட்டது</string>
+    <string name="aihelp_resource_not_support">இந்த வடிவத்தில் உள்ள ஆதாரங்களை கணினி ஆதரிக்காது</string>
+    <string name="aihelp_saturday">சனிக்கிழமை</string>
+    <string name="aihelp_save_failed">சேமிக்க முடியவில்லை</string>
+    <string name="aihelp_save_seccessfully">வெற்றிகரமாக சேமிக்கப்பட்டது</string>
+    <string name="aihelp_select">தேர்ந்தெடு</string>
+    <string name="aihelp_select_date">தேதியைத் தேர்ந்தெடுக்கவும்</string>
+    <string name="aihelp_select_option">தயவுசெய்து ஒரு விருப்பத்தைத் தேர்ந்தெடுக்கவும்</string>
+    <string name="aihelp_select_photo">புகைப்படத்தைத் தேர்ந்தெடுக்கவும்</string>
+    <string name="aihelp_send">அனுப்பு</string>
+    <string name="aihelp_storage_permission">தயவு செய்து சேமிப்பக அனுமதிகளை இயக்கவும், இதன் மூலம் வாடிக்கையாளர் சேவைக்கு கருத்து தெரிவிப்பதற்கு படங்களை அல்லது வீடியோக்களை நீங்கள் தேர்ந்தெடுக்கலாம்</string>
+    <string name="aihelp_sunday">ஞாயிற்றுக்கிழமை</string>
+    <string name="aihelp_thursday">வியாழக்கிழமை</string>
+    <string name="aihelp_ticket_closed">தற்போதைய வாடிக்கையாளர் புகார் டிக்கெட் மூடப்பட்டுள்ளது.</string>
+    <string name="aihelp_tuesday">செவ்வாய்</string>
+    <string name="aihelp_upload_attachment">இணைப்பைப் பதிவேற்றவும்</string>
+    <string name="aihelp_video_format_unsupport">வீடியோ வடிவம் ஆதரிக்கப்படவில்லை</string>
+    <string name="aihelp_view_details">விவரங்களைக் காண்க</string>
+    <string name="aihelp_wednesday">புதன்கிழமை</string>
+    <string name="aihelp_yes">ஆம்</string>
+    <string name="aihelp_yesterday">நேற்று</string>
+    <string gender="unknown" name="com_facebook_device_auth_instructions">&lt;b>facebook.com/device&lt;/b>என்ற இணைப்பிற்குச் சென்று, மேலே காட்டப்படும் குறியீட்டை உள்ளிடவும்.</string>
+    <string gender="unknown" name="com_facebook_image_download_unknown_error">படத்தைப் பதிவிறக்கும்போது எதிர்பாராத பிழை ஏற்பட்டது.</string>
+    <string gender="unknown" name="com_facebook_internet_permission_error_message">WebView உள்நுழைவுக்கு இணைய அனுமதித் தேவை</string>
+    <string gender="unknown" name="com_facebook_internet_permission_error_title">AndroidManifest பிழை</string>
+    <string gender="unknown" name="com_facebook_like_button_liked">விரும்பியவை</string>
+    <string gender="unknown" name="com_facebook_like_button_not_liked">பிடித்திருக்கிறது</string>
+    <string gender="unknown" name="com_facebook_loading">ஏற்றுகிறது…</string>
+    <string gender="unknown" name="com_facebook_loginview_cancel_action">ரத்துசெய்க</string>
+    <string gender="unknown" name="com_facebook_loginview_log_in_button">உள்நுழைக</string>
+    <string gender="unknown" name="com_facebook_loginview_log_in_button_continue">Facebook மூலம் தொடரவும்</string>
+    <string gender="unknown" name="com_facebook_loginview_log_in_button_long">Facebook மூலம் உள்நுழையவும்</string>
+    <string gender="unknown" name="com_facebook_loginview_log_out_action">வெளியேறு</string>
+    <string gender="unknown" name="com_facebook_loginview_log_out_button">வெளியேறு</string>
+    <string gender="unknown" name="com_facebook_loginview_logged_in_as">%1$s ஆக உள்நுழைந்துள்ளீர்கள்</string>
+    <string gender="unknown" name="com_facebook_loginview_logged_in_using_facebook">Facebook ஐப் பயன்படுத்தி உள்நுழைந்துள்ளீர்கள்</string>
+    <string gender="unknown" name="com_facebook_send_button_text">அனுப்பு</string>
+    <string gender="unknown" name="com_facebook_share_button_text">பகிர்க</string>
+    <string gender="unknown" name="com_facebook_smart_device_instructions">உங்கள் கணக்கை இணைக்க, உங்கள் மொபைல் சாதனத்தில் Facebook பயன்பாட்டைத் திறந்து, அறிவிப்புகளைப் பார்க்கவும்.</string>
+    <string gender="unknown" name="com_facebook_smart_device_instructions_or">- அல்லது -</string>
+    <string gender="unknown" name="com_facebook_smart_login_confirmation_cancel">நீங்கள் அல்ல?</string>
+    <string gender="unknown" name="com_facebook_smart_login_confirmation_continue_as">%1$s ஆகத் தொடர்</string>
+    <string gender="unknown" name="com_facebook_smart_login_confirmation_title">உள்நுழைதலை உறுதிப்படுத்தவும்</string>
+    <string gender="unknown" name="com_facebook_tooltip_default">கட்டுப்பாடு உங்களிடம் உள்ளது. பயன்பாடுகளுடன் நீங்கள் பகிர விரும்பும் தகவல்களைத் தேர்வுசெய்யவும்.</string>
+    <string msgid="2523291102206661146" name="common_google_play_services_enable_button">இயக்கு</string>
+    <string msgid="227660514972886228" name="common_google_play_services_enable_text">Google Play சேவைகளை இயக்கினால் மட்டுமே, %1$s செயல்படும்.</string>
+    <string msgid="5122002158466380389" name="common_google_play_services_enable_title">Google Play சேவைகளை இயக்கவும்</string>
+    <string msgid="7153882981874058840" name="common_google_play_services_install_button">நிறுவு</string>
+    <string name="common_google_play_services_install_text">Google Play சேவைகள் இருந்தால் மட்டுமே, %1$s இயங்கும். அவை உங்கள் சாதனத்தில் இல்லை.</string>
+    <string msgid="7215213145546190223" name="common_google_play_services_install_title">Google Play சேவைகளைப் பெறவும்</string>
+    <string name="common_google_play_services_notification_channel_name">கிடைக்கும் Google Play சேவைகள்</string>
+    <string name="common_google_play_services_notification_ticker">Google Play சேவைகள் பிழை</string>
+    <string name="common_google_play_services_unknown_issue">Google Play சேவைகளில் சிக்கல் ஏற்பட்டதால், %1$s ஆப்ஸை அணுக முடியவில்லை. மீண்டும் முயலவும்.</string>
+    <string name="common_google_play_services_unsupported_text">Google Play சேவைகள் இருந்தால் மட்டுமே %1$s ஆப்ஸ் இயங்கும். ஆனால், உங்கள் சாதனத்தில் அவை ஆதரிக்கப்படவில்லை.</string>
+    <string msgid="6556509956452265614" name="common_google_play_services_update_button">புதுப்பி</string>
+    <string msgid="9053896323427875356" name="common_google_play_services_update_text">Google Play சேவைகளை இயக்கினால் மட்டுமே, %1$s செயல்படும்.</string>
+    <string msgid="6006316683626838685" name="common_google_play_services_update_title">Google Play சேவைகளைப் புதுப்பிக்கவும்</string>
+    <string name="common_google_play_services_updating_text">தற்போது புதுப்பிக்கப்படும், Google Play சேவைகள் இருந்தால் மட்டுமே, %1$s செயல்படும்.</string>
+    <string name="common_google_play_services_wear_update_text">Google Play சேவைகளின் புதிய பதிப்பு தேவை. அது விரைவில் தானாகவே புதுப்பிக்கப்படும்.</string>
+    <string name="common_open_on_phone">மொபைலில் திற</string>
+    <string name="common_signin_button_text">உள்நுழைக</string>
+    <string name="common_signin_button_text_long">Google மூலம் உள்நுழைக</string>
+    <string msgid="3260749812566568062" name="copy_toast_msg">"கிளிப்-போர்டுக்கு இணைப்பு நகலெடுக்கப்பட்டது"</string>
+    <string msgid="4566929209979330987" name="fallback_menu_item_copy_link">"இணைப்பை நகலெடு"</string>
+    <string msgid="3413186855122069269" name="fallback_menu_item_open_in_browser">"உலாவியில் திற"</string>
+    <string msgid="7145444925855055364" name="fallback_menu_item_share_link">"இணைப்பைப் பகிர்"</string>
+    <string name="native_body">உள்ளடக்கம்</string>
+    <string name="native_headline">தலைப்பு</string>
+    <string name="native_media_view">மீடியா காட்சி</string>
+    <string name="offline_notification_text">விளம்பரத்தைத் திறக்க தட்டுக</string>
+    <string name="offline_notification_title">ஆஃப்லைனில் இருந்தபோது சேமிக்கப்பட்ட விளம்பரத்தைக் காண்க</string>
+    <string name="offline_opt_in_confirm">சரி</string>
+    <string name="offline_opt_in_confirmation">மீண்டும் ஆன்லைனுக்கு வரும்போது இணைப்புடன் கூடிய அறிவிப்பைப் பெறுவீர்கள்</string>
+    <string name="offline_opt_in_decline">வேண்டாம்</string>
+    <string name="offline_opt_in_message">விளம்பரதாரரின் தளத்திற்கான இணைப்புடன் கூடிய அறிவிப்பை உங்களுக்கு அனுப்புவோம்.</string>
+    <string name="offline_opt_in_title">மீண்டும் ஆன்லைனுக்கு வரும்போது விளம்பரம் திறக்கப்படும்.</string>
+    <string name="s1">படத்தைச் சேமி</string>
+    <string name="s2">பட கேலரியில் படத்தைச் சேமிக்க, விளம்பரத்தை அனுமதிக்கவா?</string>
+    <string name="s3">அனுமதி</string>
+    <string name="s4">நிராகரி</string>
+    <string name="s5">கேலெண்டர் நிகழ்வை உருவாக்கு</string>
+    <string name="s6">கேலெண்டர் நிகழ்வை உருவாக்க, விளம்பரத்தை அனுமதிக்கவா?</string>
+    <string name="s7">சோதனை விளம்பரம்</string>
+    <string msgid="6264217191555673260" name="search_menu_title">"தேடல்"</string>
+    <string msgid="6277540029070332960" name="status_bar_notification_info_overflow">"999+"</string>
+    <string name="watermark_label_prefix">AdMob - </string>
+</resources>

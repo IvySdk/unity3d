@@ -1,0 +1,39 @@
+{
+    "logs": [
+        {
+            "outputFile": "/Users/ivy/Desktop/project/unity/RiseSdk/Export/Android/launcher/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v28/values-v28.xml",
+            "map": [
+                {
+                    "source": "/Users/ivy/Desktop/project/unity/RiseSdk/Export/Android/launcher/src/main/res/values-v28/styles.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "0",
+                        "startOffsets": "53",
+                        "endLines": "4",
+                        "endColumns": "8",
+                        "endOffsets": "229"
+                    },
+                    "to": {
+                        "startLines": "12",
+                        "startColumns": "4",
+                        "startOffsets": "689",
+                        "endLines": "14",
+                        "endColumns": "8",
+                        "endOffsets": "863"
+                    }
+                },
+                {
+                    "source": "/Users/ivy/.gradle/caches/transforms-2/files-2.1/c9e6406d9b60b7e899430725aac22932/appcompat-1.2.0/res/values-v28/values-v28.xml",
+                    "from": {
+                        "startLines": "2,3,4,8",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "55,130,217,447",
+                        "endLines": "2,3,7,11",
+                        "endColumns": "74,86,12,12",
+                        "endOffsets": "125,212,442,684"
+                    }
+                }
+            ]
+        }
+    ]
+}

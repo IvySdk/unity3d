@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:ns1="urn:oasis:names:tc:xliff:document:1.2">
+    <string msgid="5976598919945601918" name="abc_action_bar_home_description">"Přejít na plochu"</string>
+    <string msgid="8388173803310557296" name="abc_action_bar_up_description">"Přejít nahoru"</string>
+    <string msgid="3937310113216875497" name="abc_action_menu_overflow_description">"Více možností"</string>
+    <string msgid="4692188335987374352" name="abc_action_mode_done">"Hotovo"</string>
+    <string msgid="1189761859438369441" name="abc_activity_chooser_view_see_all">"Zobrazit vše"</string>
+    <string msgid="2165779757652331008" name="abc_activitychooserview_choose_application">"Vybrat aplikaci"</string>
+    <string msgid="4215997306490295099" name="abc_capital_off">"VYP"</string>
+    <string msgid="884982626291842264" name="abc_capital_on">"ZAP"</string>
+    <string msgid="8833365367933412986" name="abc_menu_alt_shortcut_label">"Alt+"</string>
+    <string msgid="2223301931652355242" name="abc_menu_ctrl_shortcut_label">"Ctrl+"</string>
+    <string msgid="838001238306846836" name="abc_menu_delete_shortcut_label">"delete"</string>
+    <string msgid="7986526966204849475" name="abc_menu_enter_shortcut_label">"enter"</string>
+    <string msgid="375214403600139847" name="abc_menu_function_shortcut_label">"Fn+"</string>
+    <string msgid="4192209724446364286" name="abc_menu_meta_shortcut_label">"Meta+"</string>
+    <string msgid="4741552369836443843" name="abc_menu_shift_shortcut_label">"Shift+"</string>
+    <string msgid="5473865519181928982" name="abc_menu_space_shortcut_label">"mezerník"</string>
+    <string msgid="6180552449598693998" name="abc_menu_sym_shortcut_label">"Sym+"</string>
+    <string msgid="5520303668377388990" name="abc_prepend_shortcut_label">"Menu+"</string>
+    <string msgid="7208076849092622260" name="abc_search_hint">"Vyhledat…"</string>
+    <string msgid="3741173234950517107" name="abc_searchview_description_clear">"Smazat dotaz"</string>
+    <string msgid="693312494995508443" name="abc_searchview_description_query">"Dotaz pro vyhledávání"</string>
+    <string msgid="3417662926640357176" name="abc_searchview_description_search">"Hledat"</string>
+    <string msgid="1486535517437947103" name="abc_searchview_description_submit">"Odeslat dotaz"</string>
+    <string msgid="2293578557972875415" name="abc_searchview_description_voice">"Hlasové vyhledávání"</string>
+    <string msgid="8875138169939072951" name="abc_shareactionprovider_share_with">"Sdílet s"</string>
+    <string msgid="9055268688411532828" name="abc_shareactionprovider_share_with_application">"Sdílet s aplikací <ns1:g id="APPLICATION_NAME">%s</ns1:g>"</string>
+    <string msgid="1656852541809559762" name="abc_toolbar_collapse_description">"Sbalit"</string>
+    <string name="aihelp_albums">alba</string>
+    <string name="aihelp_chat_hint">Zadejte svůj vzkaz</string>
+    <string name="aihelp_click_copy">Kliknutím zkopírujete</string>
+    <string name="aihelp_copy_failed">Kopírování se nezdařilo</string>
+    <string name="aihelp_copy_success">Kopírovat úspěch</string>
+    <string name="aihelp_data_not_found_msg">Ups, nebyly nalezeny žádné relevantní údaje.</string>
+    <string name="aihelp_enter_content">Zadejte prosím obsah</string>
+    <string name="aihelp_enter_email_address">zadejte prosím svůj email</string>
+    <string name="aihelp_enter_number">Zadejte číslo</string>
+    <string name="aihelp_faq_feedback">Dejte nám prosím své návrhy</string>
+    <string name="aihelp_faq_feedback_suggest">Návrhy</string>
+    <string name="aihelp_faq_feedback_thanks">Děkujeme za vaši zpětnou vazbu!</string>
+    <string name="aihelp_faq_fetching_faqs">Získávání odpovědí...</string>
+    <string name="aihelp_faq_helpful">Ochotný</string>
+    <string name="aihelp_faq_search_empty">Často kladené otázky nebyly nalezeny</string>
+    <string name="aihelp_faq_search_hint">Popište svůj problém</string>
+    <string name="aihelp_faq_unhelpful">Neužitečné</string>
+    <string name="aihelp_file">Soubor</string>
+    <string name="aihelp_fill_in">Vyplňte</string>
+    <string name="aihelp_form_hint">Pro kontaktování manuálního servisu vyplňte formulář</string>
+    <string name="aihelp_friday">Pátek</string>
+    <string name="aihelp_image_format_unsupport">Tento formát obrázku není podporován</string>
+    <string name="aihelp_is_Answer_helpful">Pomohly vám následující odpovědi?</string>
+    <string name="aihelp_media_upload_err_format">Formát souboru není podporován, nahrajte prosím soubory ve formátu mp4, png, jpg, jpeg.</string>
+    <string name="aihelp_media_upload_err_net">Časový limit síťového přenosu, odeslání souboru se nezdařilo</string>
+    <string name="aihelp_media_upload_err_size">Velikost souboru přesahuje limit, nahrajte prosím soubor menší než %dM</string>
+    <string name="aihelp_monday">Pondělí</string>
+    <string name="aihelp_network_check_fine">Aktuální stav sítě je dobrý</string>
+    <string name="aihelp_network_check_in_progress">Probíhá detekce sítě, pokud ji nyní ukončíte, bude detekce přerušena.</string>
+    <string name="aihelp_network_check_poor">zda nám pošlete stav sítě, což nám pomůže zlepšit kvalitu připojení k vaší síti.</string>
+    <string name="aihelp_network_checking">Probíhá testování sítě</string>
+    <string name="aihelp_network_error_msg">Ups, zdá se, že je problém s internetem</string>
+    <string name="aihelp_network_no_connect">Zkontrolujte síťové připojení a příslušná nastavení softwaru pro správu sítě.</string>
+    <string name="aihelp_network_upload_log_title">Aktuální stav sítě je špatný</string>
+    <string name="aihelp_new_conversation">Nový dialog</string>
+    <string name="aihelp_no">zrušení</string>
+    <string name="aihelp_op_cs">HELP</string>
+    <string name="aihelp_open_browser">Otevřete v prohlížeči a stáhněte si</string>
+    <string name="aihelp_permission_denied">Tato aplikace potřebuje získat přístup ke čtení do úložiště zařízení, aby mohla nahrávat obrázky.</string>
+    <string name="aihelp_permission_ignored">Chcete-li používat funkci nahrávání obrázků, povolte v pořadí Nastavení > Oprávnění > Úložiště.</string>
+    <string name="aihelp_permission_settings">Nastavení</string>
+    <string name="aihelp_rate_additional_feedback_message">Jakékoli další připomínky nebo návrhy (nepovinné)</string>
+    <string name="aihelp_rate_app_hint">Chcete aplikaci ohodnotit?</string>
+    <string name="aihelp_rate_button">Hodnotit</string>
+    <string name="aihelp_rate_dissatisfied">Nelíbí se to</string>
+    <string name="aihelp_rate_finished">Děkujeme za hodnocení!</string>
+    <string name="aihelp_rate_request">Ohodnoťte prosím naši službu</string>
+    <string name="aihelp_rate_satisfied">Oblíbené to</string>
+    <string name="aihelp_resolution_no">Nevyřešeno</string>
+    <string name="aihelp_resolution_request">Byl váš problém vyřešen?</string>
+    <string name="aihelp_resolution_yes">Vyřešeno</string>
+    <string name="aihelp_resource_not_support">Systém nepodporuje zdroje v tomto formátu</string>
+    <string name="aihelp_saturday">Sobota</string>
+    <string name="aihelp_save_failed">Uložení se nezdařilo</string>
+    <string name="aihelp_save_seccessfully">Úspěšně uloženo</string>
+    <string name="aihelp_select">Vybrat</string>
+    <string name="aihelp_select_date">Vyberte prosím datum</string>
+    <string name="aihelp_select_option">Prosím vyberte možnost</string>
+    <string name="aihelp_select_photo">Vyberte fotografii</string>
+    <string name="aihelp_send">Poslat</string>
+    <string name="aihelp_storage_permission">Povolte prosím oprávnění k úložišti, abyste mohli vybrat obrázky nebo videa, která chcete nahrát pro zpětnou vazbu zákaznickému servisu</string>
+    <string name="aihelp_sunday">Neděle</string>
+    <string name="aihelp_thursday">Čtvrtek</string>
+    <string name="aihelp_ticket_closed">Aktuální seznam hostů je uzavřen</string>
+    <string name="aihelp_tuesday">Úterý</string>
+    <string name="aihelp_upload_attachment">Nahrát přílohu</string>
+    <string name="aihelp_video_format_unsupport">Formát videa není podporován</string>
+    <string name="aihelp_view_details">Zobrazit podrobnosti</string>
+    <string name="aihelp_wednesday">Středa</string>
+    <string name="aihelp_yes">Potvrdit</string>
+    <string name="aihelp_yesterday">Včera</string>
+    <string gender="unknown" name="com_facebook_device_auth_instructions">Tento kód zadejte na webu &lt;b>facebook.com/device&lt;/b>.</string>
+    <string gender="unknown" name="com_facebook_image_download_unknown_error">Neočekávaná chyba při stahování obrázku.</string>
+    <string gender="unknown" name="com_facebook_internet_permission_error_message">WebView vyžaduje oprávnění pro INTERNET</string>
+    <string gender="unknown" name="com_facebook_internet_permission_error_title">Chyba AndroidManifest</string>
+    <string gender="unknown" name="com_facebook_like_button_liked">To se mi už líbí</string>
+    <string gender="unknown" name="com_facebook_like_button_not_liked">To se mi líbí</string>
+    <string gender="unknown" name="com_facebook_loading">Načítání…</string>
+    <string gender="unknown" name="com_facebook_loginview_cancel_action">Zrušit</string>
+    <string gender="unknown" name="com_facebook_loginview_log_in_button">Přihlášení</string>
+    <string gender="unknown" name="com_facebook_loginview_log_in_button_continue">Pokračovat přes Facebook</string>
+    <string gender="unknown" name="com_facebook_loginview_log_in_button_long">Přihlásit se přes Facebook</string>
+    <string gender="unknown" name="com_facebook_loginview_log_out_action">Odhlásit se</string>
+    <string gender="unknown" name="com_facebook_loginview_log_out_button">Odhlásit se</string>
+    <string gender="unknown" name="com_facebook_loginview_logged_in_as">Přihlášen(a) jako: %1$s</string>
+    <string gender="unknown" name="com_facebook_loginview_logged_in_using_facebook">Přihlášení přes Facebook</string>
+    <string gender="unknown" name="com_facebook_send_button_text">Odeslat</string>
+    <string gender="unknown" name="com_facebook_share_button_text">Sdílet</string>
+    <string gender="unknown" name="com_facebook_smart_device_instructions">Pokud chcete připojit svůj účet, spusťte aplikaci Facebook ve svém mobilním zařízení a zkontrolujte upozornění.</string>
+    <string gender="unknown" name="com_facebook_smart_device_instructions_or">- NEBO -</string>
+    <string gender="unknown" name="com_facebook_smart_login_confirmation_cancel">Nejste to vy?</string>
+    <string gender="unknown" name="com_facebook_smart_login_confirmation_continue_as">Pokračovat jako %1$s</string>
+    <string gender="unknown" name="com_facebook_smart_login_confirmation_title">Potvrďte přihlášení</string>
+    <string gender="unknown" name="com_facebook_tooltip_default">Je to jen na vás – nastavte si, které informace chcete s aplikacemi sdílet.</string>
+    <string msgid="2523291102206661146" name="common_google_play_services_enable_button">Povolit</string>
+    <string msgid="227660514972886228" name="common_google_play_services_enable_text">Ke spuštění aplikace %1$s je třeba aktivovat služby Google Play.</string>
+    <string msgid="5122002158466380389" name="common_google_play_services_enable_title">Aktivace služeb Google Play</string>
+    <string msgid="7153882981874058840" name="common_google_play_services_install_button">Instalovat</string>
+    <string name="common_google_play_services_install_text">Ke spuštění aplikace %1$s jsou potřeba služby Google Play, které v zařízení nemáte.</string>
+    <string msgid="7215213145546190223" name="common_google_play_services_install_title">Instalace služeb Google Play</string>
+    <string name="common_google_play_services_notification_channel_name">Dostupnost služeb Google Play</string>
+    <string name="common_google_play_services_notification_ticker">Chyba služeb Google Play</string>
+    <string name="common_google_play_services_unknown_issue">Aplikace %1$s má potíže se službami Google Play. Zkuste to prosím znovu.</string>
+    <string name="common_google_play_services_unsupported_text">Ke spuštění aplikace %1$s jsou potřeba služby Google Play, které v tomto zařízení nejsou podporovány.</string>
+    <string msgid="6556509956452265614" name="common_google_play_services_update_button">Aktualizovat</string>
+    <string msgid="9053896323427875356" name="common_google_play_services_update_text">Ke spuštění aplikace %1$s je třeba aktualizovat služby Google Play.</string>
+    <string msgid="6006316683626838685" name="common_google_play_services_update_title">Aktualizace služeb Google Play</string>
+    <string name="common_google_play_services_updating_text">Ke spuštění aplikace %1$s jsou potřeba služby Google Play, které jsou právě aktualizovány.</string>
+    <string name="common_google_play_services_wear_update_text">Je vyžadována nová verze služeb Google Play. Nová verze se brzy sama nainstaluje.</string>
+    <string name="common_open_on_phone">Otevřít v telefonu</string>
+    <string name="common_signin_button_text">Přihlásit se</string>
+    <string name="common_signin_button_text_long">Přihlásit se k účtu Google</string>
+    <string msgid="3260749812566568062" name="copy_toast_msg">"Odkaz zkopírován do schránky"</string>
+    <string msgid="4566929209979330987" name="fallback_menu_item_copy_link">"Kopírovat odkaz"</string>
+    <string msgid="3413186855122069269" name="fallback_menu_item_open_in_browser">"Otevřít v prohlížeči"</string>
+    <string msgid="7145444925855055364" name="fallback_menu_item_share_link">"Sdílet odkaz"</string>
+    <string name="native_body">Text</string>
+    <string name="native_headline">Nadpis</string>
+    <string name="native_media_view">Zobrazení mediálního souboru</string>
+    <string name="offline_notification_text">Klepnutím reklamu otevřete</string>
+    <string name="offline_notification_title">Zobrazte reklamu, kterou jste si uložili, když jste byli offline</string>
+    <string name="offline_opt_in_confirm">OK</string>
+    <string name="offline_opt_in_confirmation">Až budete znovu online, dostanete oznámení s odkazem</string>
+    <string name="offline_opt_in_decline">Ne, díky</string>
+    <string name="offline_opt_in_message">Pošleme vám oznámení s odkazem na web inzerenta.</string>
+    <string name="offline_opt_in_title">Reklama se otevře, až budete znovu online.</string>
+    <string name="s1">Uložení obrázku</string>
+    <string name="s2">Povolit reklamě, aby uložila obrázek do galerie fotek?</string>
+    <string name="s3">Přijmout</string>
+    <string name="s4">Odmítnout</string>
+    <string name="s5">Vytvoření události kalendáře</string>
+    <string name="s6">Povolit reklamě, aby vytvořila událost kalendáře?</string>
+    <string name="s7">Zkušební reklama</string>
+    <string msgid="6264217191555673260" name="search_menu_title">"Hledat"</string>
+    <string msgid="6277540029070332960" name="status_bar_notification_info_overflow">"999+"</string>
+    <string name="watermark_label_prefix">AdMob – </string>
+</resources>

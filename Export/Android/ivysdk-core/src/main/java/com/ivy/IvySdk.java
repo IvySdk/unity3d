@@ -42,6 +42,7 @@ import com.android.client.PlayGameProfileListener;
 import com.android.client.SKUDetail;
 import com.appsflyer.AppsFlyerConversionListener;
 import com.appsflyer.AppsFlyerLib;
+import com.appsflyer.attribution.AppsFlyerRequestListener;
 import com.google.android.gms.ads.AdInspectorError;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.OnAdInspectorClosedListener;
@@ -230,7 +231,7 @@ public final class IvySdk {
             purchaseManagerWrapper.getPurchaseHistory(skuType, callback);
             return;
         } else {
-         if (callback != null) callback.onResult(null);
+            if (callback != null) callback.onResult(null);
         }
     }
 
@@ -528,6 +529,7 @@ public final class IvySdk {
                     @Override
                     public void onConversionDataSuccess(Map<String, Object> conversionData) {
                         Logger.debug(TAG, "onConversionDataSuccess");
+                        AndroidSdk.onConversionDataSuccess(conversionData);
                         if (afConversionTracked) {
                             return;
                         }
@@ -566,11 +568,12 @@ public final class IvySdk {
 
                     @Override
                     public void onConversionDataFail(String s) {
-
+                        AndroidSdk.onConversionDataFail(s);
                     }
 
                     @Override
                     public void onAppOpenAttribution(Map<String, String> conversionData) {
+                        AndroidSdk.onAppOpenAttribution(conversionData);
                         if (eventTracker != null && conversionData != null) {
                             Bundle bundle = new Bundle();
                             for (String attrName : conversionData.keySet()) {
@@ -582,11 +585,22 @@ public final class IvySdk {
 
                     @Override
                     public void onAttributionFailure(String s) {
-
+                        AndroidSdk.onAttributionFailure(s);
                     }
                 };
                 AppsFlyerLib.getInstance().init(appflyersDevKey, conversionListener, activity.getApplicationContext());
-                AppsFlyerLib.getInstance().start(activity);
+//                AppsFlyerLib.getInstance().start(activity);
+                AppsFlyerLib.getInstance().start(activity, appflyersDevKey, new AppsFlyerRequestListener() {
+                    @Override
+                    public void onSuccess() {
+                        AndroidSdk.onAfInitSuccess();
+                    }
+
+                    @Override
+                    public void onError(int i, @NonNull String s) {
+                        AndroidSdk.onAfInitFailed(i, s);
+                    }
+                });
             }
         }
 
@@ -597,17 +611,17 @@ public final class IvySdk {
         }
 
         userAttributeUrl = gridData.optString("user.attribute.url", "");
-        try{
+        try {
             long _duration = mmGetLongValue("sdk_running_time", -1);
             Log.e("IvySdk", "play time:" + _duration);
-            if(_duration > 0) {
+            if (_duration > 0) {
                 Bundle bundle = new Bundle();
                 bundle.putLong("duration", _duration);
                 long trackDate = mmGetLongValue("sdk_running_date", System.currentTimeMillis());
                 bundle.putString("trackDate", trackDate + "");
                 eventTracker.logToFirebase("play_time", bundle);
             }
-        }  catch (Exception e){
+        } catch (Exception e) {
         } finally {
             mmSetLongValue("sdk_running_time", 0);
         }
@@ -644,7 +658,8 @@ public final class IvySdk {
                         e.printStackTrace();
                     }
 
-                } catch (Exception e){}
+                } catch (Exception e) {
+                }
             }
         });
 
@@ -1123,7 +1138,7 @@ public final class IvySdk {
                 eventTracker.onResume();
             }
 
-          //  Activity activity = getActivity();
+            //  Activity activity = getActivity();
 
 //      IronSource.onResume(activity);
 
@@ -1157,10 +1172,11 @@ public final class IvySdk {
         }
     }
 
-    public static void setupGamePlayTime(long time) throws Exception{
+    public static void setupGamePlayTime(long time) throws Exception {
         mmSetLongValue("sdk_running_time", time);
         mmSetLongValue("sdk_running_date", System.currentTimeMillis());
     }
+
     public static void onDestroy() {
         Logger.debug(TAG, "OnDestroy called");
         try {
@@ -1441,8 +1457,9 @@ public final class IvySdk {
             }
         });
     }
-// 不重复创建banner 容器
-    public static void showBannerNonExistent(final int adPos){
+
+    // 不重复创建banner 容器
+    public static void showBannerNonExistent(final int adPos) {
         if (!adEnabled) {
             return;
         }

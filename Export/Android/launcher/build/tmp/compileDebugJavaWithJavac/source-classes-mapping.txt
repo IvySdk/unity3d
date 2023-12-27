@@ -1,0 +1,2 @@
+com/DefaultCompany/RiseSdk/BuildConfig.java
+ com.DefaultCompany.RiseSdk.BuildConfig

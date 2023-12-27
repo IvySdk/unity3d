@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:ns1="urn:oasis:names:tc:xliff:document:1.2">
+    <string msgid="5976598919945601918" name="abc_action_bar_home_description">"Chỉ đường về nhà"</string>
+    <string msgid="8388173803310557296" name="abc_action_bar_up_description">"Di chuyển lên"</string>
+    <string msgid="3937310113216875497" name="abc_action_menu_overflow_description">"Tùy chọn khác"</string>
+    <string msgid="4692188335987374352" name="abc_action_mode_done">"Xong"</string>
+    <string msgid="1189761859438369441" name="abc_activity_chooser_view_see_all">"Xem tất cả"</string>
+    <string msgid="2165779757652331008" name="abc_activitychooserview_choose_application">"Chọn một ứng dụng"</string>
+    <string msgid="4215997306490295099" name="abc_capital_off">"TẮT"</string>
+    <string msgid="884982626291842264" name="abc_capital_on">"BẬT"</string>
+    <string msgid="8833365367933412986" name="abc_menu_alt_shortcut_label">"Alt+"</string>
+    <string msgid="2223301931652355242" name="abc_menu_ctrl_shortcut_label">"Ctrl+"</string>
+    <string msgid="838001238306846836" name="abc_menu_delete_shortcut_label">"delete"</string>
+    <string msgid="7986526966204849475" name="abc_menu_enter_shortcut_label">"enter"</string>
+    <string msgid="375214403600139847" name="abc_menu_function_shortcut_label">"Function+"</string>
+    <string msgid="4192209724446364286" name="abc_menu_meta_shortcut_label">"Meta+"</string>
+    <string msgid="4741552369836443843" name="abc_menu_shift_shortcut_label">"Shift+"</string>
+    <string msgid="5473865519181928982" name="abc_menu_space_shortcut_label">"space"</string>
+    <string msgid="6180552449598693998" name="abc_menu_sym_shortcut_label">"Sym+"</string>
+    <string msgid="5520303668377388990" name="abc_prepend_shortcut_label">"Menu+"</string>
+    <string msgid="7208076849092622260" name="abc_search_hint">"Tìm kiếm…"</string>
+    <string msgid="3741173234950517107" name="abc_searchview_description_clear">"Xóa truy vấn"</string>
+    <string msgid="693312494995508443" name="abc_searchview_description_query">"Truy vấn tìm kiếm"</string>
+    <string msgid="3417662926640357176" name="abc_searchview_description_search">"Tìm kiếm"</string>
+    <string msgid="1486535517437947103" name="abc_searchview_description_submit">"Gửi truy vấn"</string>
+    <string msgid="2293578557972875415" name="abc_searchview_description_voice">"Tìm kiếm bằng giọng nói"</string>
+    <string msgid="8875138169939072951" name="abc_shareactionprovider_share_with">"Chia sẻ với"</string>
+    <string msgid="9055268688411532828" name="abc_shareactionprovider_share_with_application">"Chia sẻ với <ns1:g id="APPLICATION_NAME">%s</ns1:g>"</string>
+    <string msgid="1656852541809559762" name="abc_toolbar_collapse_description">"Thu gọn"</string>
+    <string name="aihelp_albums">Tập ảnh</string>
+    <string name="aihelp_chat_hint">Nhập tin nhắn của bạn</string>
+    <string name="aihelp_click_copy">Nhấp để sao chép</string>
+    <string name="aihelp_copy_failed">Sao chép không thành công</string>
+    <string name="aihelp_copy_success">Sao chép thành công</string>
+    <string name="aihelp_data_not_found_msg">Rất tiếc, không có dữ liệu liên quan được tìm thấy.</string>
+    <string name="aihelp_enter_content">Vui lòng nhập nội dung</string>
+    <string name="aihelp_enter_email_address">vui lòng nhập email của bạn</string>
+    <string name="aihelp_enter_number">Vui lòng nhập số</string>
+    <string name="aihelp_faq_feedback">Vui lòng nhập phản hồi của bạn</string>
+    <string name="aihelp_faq_feedback_suggest">Gợi ý</string>
+    <string name="aihelp_faq_feedback_thanks">Cảm ơn bạn đã phản hồi.</string>
+    <string name="aihelp_faq_fetching_faqs">Nhận câu trả lời của bạn</string>
+    <string name="aihelp_faq_helpful">Hữu ích</string>
+    <string name="aihelp_faq_search_empty">Không có câu hỏi thường gặp.</string>
+    <string name="aihelp_faq_search_hint">Hãy miêu tả vấn đề của bạn</string>
+    <string name="aihelp_faq_unhelpful">Không hữu ích</string>
+    <string name="aihelp_file">Tài liệu</string>
+    <string name="aihelp_fill_in">điền vào</string>
+    <string name="aihelp_form_hint">Điền vào biểu mẫu để liên hệ với dịch vụ thủ công</string>
+    <string name="aihelp_friday">Thứ sáu</string>
+    <string name="aihelp_image_format_unsupport">Định dạng hình ảnh này không được hỗ trợ</string>
+    <string name="aihelp_is_Answer_helpful">Câu trả lời dưới đây có giúp ích gì không?</string>
+    <string name="aihelp_media_upload_err_format">Tệp không được hỗ trợ. Hiện tại, chỉ có mp4, png, jpg, jpeg khi tải lên.</string>
+    <string name="aihelp_media_upload_err_net">Transmission timed out, file uploading failed.</string>
+    <string name="aihelp_media_upload_err_size">Kích thước tệp vượt quá giới hạn, vui lòng tải lên tệp nhỏ hơn %dM.</string>
+    <string name="aihelp_monday">Thứ hai</string>
+    <string name="aihelp_network_check_fine">Sau khi kiểm tra, mạng của bạn vẫn ổn</string>
+    <string name="aihelp_network_check_in_progress">Đang kiểm tra mạng. Nếu bạn thoát ngay bây giờ, việc kiểm tra sẽ bị gián đoạn.</string>
+    <string name="aihelp_network_check_poor">Vui lòng xác nhận để gửi cho chúng tôi các điều kiện mạng, điều này sẽ giúp chúng tôi cải thiện chất lượng kết nối mạng của bạn.</string>
+    <string name="aihelp_network_checking">Đang kiểm tra mạng</string>
+    <string name="aihelp_network_error_msg">Giáo sư! Đã xảy ra lỗi</string>
+    <string name="aihelp_network_no_connect">Vui lòng kiểm tra kết nối mạng của bạn.</string>
+    <string name="aihelp_network_upload_log_title">Kết nối mạng kém</string>
+    <string name="aihelp_new_conversation">cuộc trò chuyện mới</string>
+    <string name="aihelp_no">hủy bỏ</string>
+    <string name="aihelp_op_cs">HELP</string>
+    <string name="aihelp_open_browser">Mở trong trình duyệt của bạn để tải xuống</string>
+    <string name="aihelp_permission_denied">Tải lên hình ảnh yêu cầu quyền truy cập bộ nhớ.</string>
+    <string name="aihelp_permission_ignored">Vui lòng bật Cài đặt> Quyền> Bộ nhớ để sử dụng chức năng tải ảnh lên.</string>
+    <string name="aihelp_permission_settings">Cài đặt</string>
+    <string name="aihelp_rate_additional_feedback_message">Bất kỳ phản hồi khác (tùy chọn)</string>
+    <string name="aihelp_rate_app_hint">Bạn có muốn đánh giá ứng dụng này không?</string>
+    <string name="aihelp_rate_button">Đi tới Đánh giá</string>
+    <string name="aihelp_rate_dissatisfied">Không thích nó</string>
+    <string name="aihelp_rate_finished">Cảm ơn đã đánh giá chúng tôi.</string>
+    <string name="aihelp_rate_request">Vui lòng đánh giá dịch vụ của chúng tôi.</string>
+    <string name="aihelp_rate_satisfied">Thích nó</string>
+    <string name="aihelp_resolution_no">Chưa giải quyết</string>
+    <string name="aihelp_resolution_request">Vấn đề của bạn đã được giải quyết chưa?</string>
+    <string name="aihelp_resolution_yes">Đã giải quyết</string>
+    <string name="aihelp_resource_not_support">Hệ thống không hỗ trợ tài nguyên ở định dạng này</string>
+    <string name="aihelp_saturday">ngày thứ bảy</string>
+    <string name="aihelp_save_failed">Lưu thất bại</string>
+    <string name="aihelp_save_seccessfully">Lưu thành công</string>
+    <string name="aihelp_select">Lựa chọn</string>
+    <string name="aihelp_select_date">Vui lòng chọn một ngày</string>
+    <string name="aihelp_select_option">Vui lòng chọn một tùy chọn</string>
+    <string name="aihelp_select_photo">Chọn tấm ảnh</string>
+    <string name="aihelp_send">Gửi</string>
+    <string name="aihelp_storage_permission">Vui lòng bật quyền lưu trữ để bạn có thể chọn hình ảnh hoặc video để tải lên phản hồi cho dịch vụ khách hàng</string>
+    <string name="aihelp_sunday">chủ nhật</string>
+    <string name="aihelp_thursday">Thứ năm</string>
+    <string name="aihelp_ticket_closed">Phiếu khiếu nại của khách hàng hiện tại đã được đóng lại.</string>
+    <string name="aihelp_tuesday">Thứ ba</string>
+    <string name="aihelp_upload_attachment">tải tập tin đính kèm</string>
+    <string name="aihelp_video_format_unsupport">Định dạng video không được hỗ trợ</string>
+    <string name="aihelp_view_details">xem chi tiết</string>
+    <string name="aihelp_wednesday">Thứ tư</string>
+    <string name="aihelp_yes">mục đích</string>
+    <string name="aihelp_yesterday">Hôm qua</string>
+    <string gender="unknown" name="com_facebook_device_auth_instructions">Truy cập &lt;b>facebook.com/device&lt;/b> và nhập mã hiển thị bên dưới.</string>
+    <string gender="unknown" name="com_facebook_image_download_unknown_error">Lỗi không mong muốn khi tải hình ảnh xuống.</string>
+    <string gender="unknown" name="com_facebook_internet_permission_error_message">Đăng nhập chế độ xem web yêu cầu quyền INTERNET</string>
+    <string gender="unknown" name="com_facebook_internet_permission_error_title">Lỗi AndroidManifest</string>
+    <string gender="unknown" name="com_facebook_like_button_liked">Đã thích</string>
+    <string gender="unknown" name="com_facebook_like_button_not_liked">Thích</string>
+    <string gender="unknown" name="com_facebook_loading">Đang tải…</string>
+    <string gender="unknown" name="com_facebook_loginview_cancel_action">Hủy</string>
+    <string gender="unknown" name="com_facebook_loginview_log_in_button">Đăng nhập</string>
+    <string gender="unknown" name="com_facebook_loginview_log_in_button_continue">Tiếp tục với Facebook</string>
+    <string gender="unknown" name="com_facebook_loginview_log_in_button_long">Đăng nhập bằng Facebook</string>
+    <string gender="unknown" name="com_facebook_loginview_log_out_action">Đăng xuất</string>
+    <string gender="unknown" name="com_facebook_loginview_log_out_button">Đăng xuất</string>
+    <string gender="unknown" name="com_facebook_loginview_logged_in_as">Đã đăng nhập với tên: %1$s</string>
+    <string gender="unknown" name="com_facebook_loginview_logged_in_using_facebook">Đã đăng nhập bằng Facebook</string>
+    <string gender="unknown" name="com_facebook_send_button_text">Gửi</string>
+    <string gender="unknown" name="com_facebook_share_button_text">Chia sẻ</string>
+    <string gender="unknown" name="com_facebook_smart_device_instructions">Để kết nối tài khoản của bạn, hãy mở ứng dụng Facebook trên thiết bị di động và kiểm tra thông báo.</string>
+    <string gender="unknown" name="com_facebook_smart_device_instructions_or">- HOẶC -</string>
+    <string gender="unknown" name="com_facebook_smart_login_confirmation_cancel">Không phải bạn?</string>
+    <string gender="unknown" name="com_facebook_smart_login_confirmation_continue_as">Tiếp tục dưới tên %1$s</string>
+    <string gender="unknown" name="com_facebook_smart_login_confirmation_title">Xác nhận đăng nhập</string>
+    <string gender="unknown" name="com_facebook_tooltip_default">Bạn nắm quyền kiểm soát - chọn thông tin bạn muốn chia sẻ với ứng dụng.</string>
+    <string msgid="2523291102206661146" name="common_google_play_services_enable_button">Bật</string>
+    <string msgid="227660514972886228" name="common_google_play_services_enable_text">%1$s sẽ không hoạt động nếu bạn không bật dịch vụ của Google Play.</string>
+    <string msgid="5122002158466380389" name="common_google_play_services_enable_title">Bật dịch vụ của Google Play</string>
+    <string msgid="7153882981874058840" name="common_google_play_services_install_button">Cài đặt</string>
+    <string name="common_google_play_services_install_text">%1$s sẽ không chạy nếu không có dịch vụ của Google Play. Thiết bị của bạn bị thiếu dịch vụ này.</string>
+    <string msgid="7215213145546190223" name="common_google_play_services_install_title">Cài đặt dịch vụ của Google Play</string>
+    <string name="common_google_play_services_notification_channel_name">Phạm vi cung cấp Dịch vụ Google Play</string>
+    <string name="common_google_play_services_notification_ticker">Lỗi dịch vụ của Google Play</string>
+    <string name="common_google_play_services_unknown_issue">%1$s đang gặp sự cố với Dịch vụ Google Play. Hãy thử lại.</string>
+    <string name="common_google_play_services_unsupported_text">%1$s sẽ không chạy nếu không có Dịch vụ Google Play. Thiết bị của bạn không hỗ trợ các dịch vụ này.</string>
+    <string msgid="6556509956452265614" name="common_google_play_services_update_button">Cập nhật</string>
+    <string msgid="9053896323427875356" name="common_google_play_services_update_text">%1$s sẽ không chạy trừ khi bạn cập nhật Dịch vụ Google Play.</string>
+    <string msgid="6006316683626838685" name="common_google_play_services_update_title">Cập nhật dịch vụ của Google Play</string>
+    <string name="common_google_play_services_updating_text">%1$s sẽ không chạy nếu không có dịch vụ của Google Play. Dịch vụ này hiện đang cập nhật.</string>
+    <string name="common_google_play_services_wear_update_text">Cần phiên bản mới của dịch vụ Google Play. Dịch vụ sẽ sớm tự động cập nhật.</string>
+    <string name="common_open_on_phone">Mở trên điện thoại</string>
+    <string name="common_signin_button_text">Đăng nhập</string>
+    <string name="common_signin_button_text_long">Đăng nhập bằng Google</string>
+    <string msgid="3260749812566568062" name="copy_toast_msg">"Đã sao chép đường liên kết vào bảng nhớ tạm"</string>
+    <string msgid="4566929209979330987" name="fallback_menu_item_copy_link">"Sao chép đường liên kết"</string>
+    <string msgid="3413186855122069269" name="fallback_menu_item_open_in_browser">"Mở trong trình duyệt"</string>
+    <string msgid="7145444925855055364" name="fallback_menu_item_share_link">"Chia sẻ liên kết"</string>
+    <string name="native_body">Nội dung</string>
+    <string name="native_headline">Tiêu đề</string>
+    <string name="native_media_view">Nội dung nghe nhìn</string>
+    <string name="offline_notification_text">Nhấn để mở quảng cáo</string>
+    <string name="offline_notification_title">Xem quảng cáo đã lưu khi bạn không có kết nối mạng</string>
+    <string name="offline_opt_in_confirm">OK</string>
+    <string name="offline_opt_in_confirmation">Bạn sẽ nhận được thông báo kèm theo đường liên kết khi có kết nối mạng trở lại</string>
+    <string name="offline_opt_in_decline">Để sau</string>
+    <string name="offline_opt_in_message">Chúng tôi sẽ gửi thông báo cho bạn kèm theo đường liên kết đến trang web của nhà quảng cáo.</string>
+    <string name="offline_opt_in_title">Mở quảng cáo khi bạn có kết nối mạng trở lại.</string>
+    <string name="s1">Lưu hình ảnh</string>
+    <string name="s2">Cho phép Quảng cáo lưu trữ hình ảnh trong thư viện Ảnh?</string>
+    <string name="s3">Chấp nhận</string>
+    <string name="s4">Từ chối</string>
+    <string name="s5">Tạo sự kiện lịch</string>
+    <string name="s6">Cho phép Quảng cáo tạo sự kiện lịch?</string>
+    <string name="s7">Quảng cáo thử nghiệm</string>
+    <string msgid="6264217191555673260" name="search_menu_title">"Tìm kiếm"</string>
+    <string msgid="6277540029070332960" name="status_bar_notification_info_overflow">"999+"</string>
+    <string name="watermark_label_prefix">AdMob – </string>
+</resources>
