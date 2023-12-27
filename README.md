@@ -60,8 +60,26 @@
     public *;
 }
 ```
+## 2, 添加firebase
+1. 在Firebase控制台创建项目
+2. 在Firebase项目中点击Android机器人图标，开始设置Android应用，添加正确的包名及签名文件的SHA-1
+3. 点击注册应用
+4. 在对应Android应用目录下下载配置文件(google-services.json),并放置在应用的模块(应用级)根目录中
+5. 在根级build.gradle中添加
+    
+```js
+   dependencies {
+       //...
+        classpath 'com.google.gms:google-services:4.3.0'
+    }
+```
+6. 在模块(应用级)的build.gradle文件末尾添加插件
 
-## 2, 配置 Firebase crashlytics
+```js
+apply plugin: 'com.google.gms.google-services'
+```
+
+## 3, 配置 Firebase crashlytics
 1. 引入 Firebase crashlytics 插件
 在项目Build.gradle中增加以下配置:
 ```js
@@ -81,7 +99,7 @@ RiseSdk.Instance.recordException(string err);//err 为异常信息
 ```
 
 
-## 2, Initialize 初始化SDK
+## 4, Initialize 初始化SDK
 在第一个场景中的一个脚本中的Awake方法中调用RiseSdk.Instance.Init()方法 Call the Init function in a gameObject's Awake function in your initialize scene
 ```js
 void Awake() {
@@ -92,7 +110,7 @@ void Awake() {
 }
 ```
 
-## 3, ADs 广告
+## 5, ADs 广告
 ### 1，激励视频
 * 如果你想使用视频奖励广告，你需要添加以下方法
     
@@ -157,7 +175,7 @@ RiseSdk.Instance.CloseBanner()
 ```
     
 
-## 4, Firebase events 谷歌后台统计分析
+## 6, Firebase events 谷歌后台统计分析
 * 事件打点
 
 ```js
@@ -178,7 +196,7 @@ RiseSdk.Instance.trackEvent(string event, string data);
 `RiseSdk.Instance.setUserProperty(key: string, value: string); `
 
 
-## 5, Firebase Remote Config 读取
+## 7, Firebase Remote Config 读取
 * 获取对应类型值
 ```js
 RiseSdk.getRemoteConfigInt(string key);
@@ -192,7 +210,7 @@ RiseSdk.getRemoteConfigBoolean(string key);
 RiseSdk.getRemoteConfigString(string key);
 ```
 
-## 6, In-App billing 应用中内付费
+## 8, In-App billing 应用中内付费
 * 如果你想使用google內付，你需要添加以下方法
 ```js
 void InitListeners() {
@@ -282,7 +300,7 @@ RiseSdk.Instance.getPaymentDatas();
 `RiseSdk.Instance.HasPaid(int billId);`
 
 
-## 7, Google 相关操作
+## 9, Google 相关操作
 
 * 是否已登录
 `RiseSdk.Instance.IsGoogleLogin();`
@@ -313,7 +331,7 @@ RiseSdk.Instance.getPaymentDatas();
 
 
 
-## 8, SNS facebook相关操作接口
+## 10, SNS facebook相关操作接口
 如果你想使用facebook相关功能，需要添加以下方法
 
 ```js
@@ -396,7 +414,7 @@ object friends = MiniJSON.jsonDecode (friendstring);
 
 ```
 
-## 9, Firestore 云存档
+## 11, Firestore 云存档
 
 ### 登陆云存档
 // provider 可选方式
@@ -450,7 +468,7 @@ object friends = MiniJSON.jsonDecode (friendstring);
 
 
 
-## 10, Misc 其他
+## 12, Misc 其他
 * 判断网络是否连接
 `boolean isNetworkConnected = RiseSdk.Instance.isNetworkConnected();`
 * 退出游戏（无回调）
