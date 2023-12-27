@@ -824,6 +824,14 @@ public class RiseSdkListener : MonoBehaviour {
     /// </summary>
     public static event Action<RiseSdk.GoogleEventType, string> OnUpdateAchievementEvent;
 
+    /// <summary>
+    /// GMS 事件
+    /// </summary>
+    public static event Actin<RiseSdk.GMSEventType, string> OnGMSEvent;
+    /// <summary>
+    /// AF 事件
+    /// </summary>
+    public static event Actin<RiseSdk.AFEventType, string> OnAFEvent;
 
     private static RiseSdkListener _instance;
 
