@@ -2427,7 +2427,7 @@ public class AndroidSdk {
             }
             NotchScreenManager.getInstance().setDisplayInNotch(activity);
         } catch (Throwable ex) {
-            ex.printStackTrace();
+          //  ex.printStackTrace();
         }
     }
 

@@ -468,7 +468,7 @@ public class IvyAdsManager implements IvyAdCallbacks, IvySoftCallbacks {
         fetchRewardedInterstitial(main);
       }
     } catch(Exception ex) {
-      ex.printStackTrace();
+     // ex.printStackTrace();
     }
   }
 

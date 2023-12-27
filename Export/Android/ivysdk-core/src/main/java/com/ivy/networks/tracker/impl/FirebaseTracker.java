@@ -49,6 +49,7 @@ public class FirebaseTracker implements EventTrackerProvider {
         try {
             netWorkStatus = IvyUtils.isOnline(IvySdk.getActivity().getApplicationContext());
         } catch (Exception e) {
+
         }
         if (bundle == null) {
             bundle = new Bundle();
@@ -58,17 +59,6 @@ public class FirebaseTracker implements EventTrackerProvider {
         bundle.putBoolean("sdkNetStatus", netWorkStatus);
         mFirebaseAnalytics.logEvent(eventName, bundle);
 
-        try {
-            if (IvySdk.isDebugMode()) {
-                JSONObject data = new JSONObject();
-                for (String s : bundle.keySet()) {
-                    data.put(s, bundle.getString(s, "err"));
-                }
-                Log.e("firebase-event", eventName + ":" + data.toString());
-            }
-        } catch (Exception e) {
-            Log.e("firebase-event", "error---");
-        }
     }
 
     public void setUserProperty(String key, String value) {

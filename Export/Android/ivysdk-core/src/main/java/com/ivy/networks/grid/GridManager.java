@@ -133,7 +133,7 @@ public final class GridManager {
   }
 
   private String checkCountryGrid() {
-    String sdkCg = IvyUtils.readSecureText(activity, "sdk_cg");
+    String sdkCg = null;//IvyUtils.readSecureText(activity, "sdk_cg");
     if (sdkCg == null) {
       IvySdk.debugToast("没有设置分国家配置");
       return null;

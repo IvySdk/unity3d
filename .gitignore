@@ -5,3 +5,4 @@
 ./Temp/*
 ./Library/PackageCache
 ./Library/PackageCache/*
+./Export/*/build/*
