@@ -266,8 +266,13 @@ public class Unity {
 
                         builder.setGMSPaidEventListener(new IGMSPaidEventListener() {
                             @Override
-                            public void onGMSPaid(String currencyCode, int precisionType, long valueMacros) {
-                                sendMessage("onGMSPaid", currencyCode + "|" + precisionType + "|" + valueMacros);
+                            public void onGMSPaid(Map<String, Object> map) {
+                                try {
+                                    JSONObject data = new JSONObject(map);
+                                    sendMessage("onGMSPaid", data.toString());
+                                } catch (Exception e){
+                                    Logger.error("convert gms paid data failed:" + e.getMessage());
+                                }
                             }
                         });
 

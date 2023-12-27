@@ -3865,6 +3865,20 @@ public enum AdEventType : int
         IconAdClicked,
         NativeAdClicked
     }
+
+    public enum AFEventType : int {
+        InitSuccess = 1,
+        InitFail,
+        AppOpenAttribution,
+        AttributionFailure,
+        ConversionDataSuccess,
+        ConversionDataFail
+    }
+
+    public enum GMSEventType : int {
+        GMSPaid = 1
+    }
+
 #endif
 
     public enum PaymentResult : int {

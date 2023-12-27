@@ -1,7 +1,9 @@
 package com.android.client;
 
+import java.util.Map;
+
 public interface IGMSPaidEventListener {
 
-    void onGMSPaid(String currencyCode, int precisionType, long valueMacros);
+    void onGMSPaid(Map<String, Object> map);
 
 }

@@ -3019,9 +3019,9 @@ public class AndroidSdk {
         }
     }
 
-    public static void onGMSPaid(String currencyCode, int precisionType, long valueMacros) {
+    public static void onGMSPaid(Map<String, Object> map) {
         if (builder != null && builder.gmsPaidEventListener != null) {
-            builder.gmsPaidEventListener.onGMSPaid(currencyCode, precisionType, valueMacros);
+            builder.gmsPaidEventListener.onGMSPaid(map);
         }
     }
 
