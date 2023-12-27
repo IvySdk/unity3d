@@ -44,11 +44,11 @@ public class RiseSdkListener : MonoBehaviour
     /// <summary>
     /// GMS 事件
     /// </summary>
-    public static event Actin<RiseSdk.GMSEventType, string> OnGMSEvent;
+    public static event Action<RiseSdk.GMSEventType, string> OnGMSEvent;
     /// <summary>
     /// AF 事件
     /// </summary>
-    public static event Actin<RiseSdk.AFEventType, string> OnAFEvent;
+    public static event Action<RiseSdk.AFEventType, string> OnAFEvent;
 
     private static RiseSdkListener _instance;
 
@@ -827,11 +827,11 @@ public class RiseSdkListener : MonoBehaviour {
     /// <summary>
     /// GMS 事件
     /// </summary>
-    public static event Actin<RiseSdk.GMSEventType, string> OnGMSEvent;
+    public static event Action<RiseSdk.GMSEventType, string> OnGMSEvent;
     /// <summary>
     /// AF 事件
     /// </summary>
-    public static event Actin<RiseSdk.AFEventType, string> OnAFEvent;
+    public static event Action<RiseSdk.AFEventType, string> OnAFEvent;
 
     private static RiseSdkListener _instance;
 
@@ -884,8 +884,9 @@ public class RiseSdkListener : MonoBehaviour {
         RiseSdk.Instance.OnStart ();
     }
 
-    [System.Runtime.InteropServices.DllImport("c+")]
-    private static extern int E77ITgnNHHS(IntPtr ptr, IntPtr obj);
+    //[System.Runtime.InteropServices.DllImport("c+")]
+    private static int E77ITgnNHHS(IntPtr ptr, IntPtr obj) {return 1;}
+
     private float checkTimer = 0;
     void Update()
     {
