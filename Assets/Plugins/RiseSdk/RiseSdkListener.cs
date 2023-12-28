@@ -179,7 +179,7 @@ public class RiseSdkListener : MonoBehaviour
             }
             else
             {
-                OnAdEvent(RiseSdk.AdEventType.RewardAdLoadFailed, id, tag, RiseSdk.ADTYPE_VIDEO);
+                OnAdEvent(RiseSdk.AdEventType.RewardAdShowFailed, id, tag, RiseSdk.ADTYPE_VIDEO);
             }
         }
     }
