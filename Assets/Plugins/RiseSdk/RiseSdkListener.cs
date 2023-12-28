@@ -235,6 +235,7 @@ public class RiseSdkListener : MonoBehaviour
         if (OnAdEvent != null && OnAdEvent.GetInvocationList().Length > 0)
         {
             string tag = "Default";
+            int id = -1;
             int type = RiseSdk.ADTYPE_INTERTITIAL;
             if (!string.IsNullOrEmpty(data))
             {
@@ -243,6 +244,9 @@ public class RiseSdkListener : MonoBehaviour
                 {
                     int.TryParse(msg[0], out type);
                     tag = msg[1];
+                     if(msg.Length >= 3){
+                       int.TryParse (msg[2], out id);
+                    }
                 }
             }
             RiseSdk.AdEventType eventType = RiseSdk.AdEventType.FullAdClicked;
@@ -260,7 +264,7 @@ public class RiseSdkListener : MonoBehaviour
                     eventType = RiseSdk.AdEventType.AdShown;
                     break;
             }
-            OnAdEvent(eventType, -1, tag, type);
+            OnAdEvent(eventType, id, tag, type);
         }
     }
 
@@ -1287,11 +1291,15 @@ public class RiseSdkListener : MonoBehaviour {
         if (OnAdEvent != null && OnAdEvent.GetInvocationList ().Length > 0) {
             string tag = "Default";
             int type = RiseSdk.ADTYPE_INTERTITIAL;
+            int id = -1;
             if (!string.IsNullOrEmpty (data)) {
                 string[] msg = data.Split ('|');
                 if (msg != null && msg.Length > 1) {
                     int.TryParse (msg[0], out type);
                     tag = msg[1];
+                    if(msg.Length >= 3){
+                       int.TryParse (msg[2], out id);
+                    }
                 }
             }
             RiseSdk.AdEventType eventType = RiseSdk.AdEventType.FullAdClicked;
@@ -1309,7 +1317,7 @@ public class RiseSdkListener : MonoBehaviour {
                     eventType = RiseSdk.AdEventType.AdShown;
                     break;
             }
-            OnAdEvent (eventType, -1, tag, type);
+            OnAdEvent (eventType, id, tag, type);
         }
     }
 

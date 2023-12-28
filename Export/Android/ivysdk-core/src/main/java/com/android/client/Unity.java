@@ -504,13 +504,14 @@ public class Unity {
 
             @Override
             public void onAdShow() {
-                sendMessage("onFullAdShown", tag);
+                sendMessage("onAdShow", 1 + "|" + tag);
             }
 
             @Override
             public void onAdClicked() {
                 sendMessage("onFullAdClicked", tag);
             }
+
         });
     }
 
@@ -552,13 +553,13 @@ public class Unity {
             @Override
             public void onAdClosed() {
                 Logger.debug(TAG, "onAdClosed, ");
-                sendMessage("onVideoAdClosed", tag);
+                sendMessage("onVideoAdClosed", tag + "|" + id);
             }
 
             @Override
             public void onAdShow() {
                 super.onAdShow();
-                sendMessage("onVideoAdShow", tag);
+                sendMessage("onAdShow", tag + "|" + id);
             }
         });
     }
@@ -1392,6 +1393,7 @@ public class Unity {
             public void onAdLoadSuccess() {
                 Logger.debug(TAG, "onAdLoadSuccess");
                 sendMessage("onAdLoadSuccess", "" + id);
+
             }
 
             @Override
@@ -1404,6 +1406,17 @@ public class Unity {
             public void onAdClosed() {
                 Logger.debug(TAG, "onAdClosed, ");
                 sendMessage("onVideoAdClosed", tag);
+            }
+
+            @Override
+            public void onAdShow() {
+                super.onAdShow();
+                sendMessage("onAdShow", 2 + "|" + tag + "|" + id);
+            }
+
+            @Override
+            public void onAdClicked() {
+                super.onAdClicked();
             }
         });
     }
