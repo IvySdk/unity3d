@@ -46,18 +46,19 @@ public class UnityPlayerActivity extends Activity implements IUnityPlayerLifecyc
         setContentView(mUnityPlayer);
         mUnityPlayer.requestFocus();
 
-//        Button button = new Button(this);
-//        button.setText("showad");
-//        button.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
+        Button button = new Button(this);
+        button.setText("showad");
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 //                Unity.showFullAd("default");
-////                Unity.showRewardAd(1);
-////                Unity.showBanner(0);
-//            }
-//        });
-//        button.setGravity(Gravity.CENTER);
-//        ((FrameLayout)getWindow().getDecorView()).addView(button);
+                Unity.showRewardAd(1);
+//                Unity.showBanner(0);
+            }
+        });
+        button.setGravity(Gravity.CENTER);
+        FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(200, 140);
+        ((FrameLayout)getWindow().getDecorView()).addView(button, params);
 
     }
 

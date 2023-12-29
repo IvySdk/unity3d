@@ -48,6 +48,7 @@ public class AdmobRewardedAdapter extends FullpageAdapter<BaseAdapter.GridParams
     }
 
     public void onAdClicked() {
+      AdmobRewardedAdapter.this.onAdClicked();
     }
   };
 

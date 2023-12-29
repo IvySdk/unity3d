@@ -559,7 +559,8 @@ public class Unity {
             @Override
             public void onAdShow() {
                 super.onAdShow();
-                sendMessage("onAdShow", tag + "|" + id);
+                Logger.debug(TAG, "onAdShow, ");
+                sendMessage("onAdShow", 2 + "|" + tag + "|" + id);
             }
         });
     }
