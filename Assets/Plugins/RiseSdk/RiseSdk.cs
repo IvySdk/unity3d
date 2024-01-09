@@ -129,6 +129,32 @@ public sealed class RiseSdk {
         _class.CallStatic("logException", err);
     }
 
+    public bool IsXsollaSupport(){
+        if (_class != null) {
+            return _class.CallStatic<bool>("isXsollaSupport");
+        }
+        return false;
+    }
+
+    public bool IsXsollaLoggedIn(){
+        if (_class != null) {
+            return _class.CallStatic<bool>("isXsollaLoggedIn");
+        }
+        return false;
+    }
+    
+    public void LoginXsolla(){
+        if (_class != null) {
+            _class.CallStatic<bool>("loginXsolla");
+        }
+    }
+
+    public void LogoutXsolla(){
+        if (_class != null) {
+            _class.CallStatic<bool>("logoutXsolla");
+        }
+    }
+
 
 //    private void InitUnityFacade()
 //    {

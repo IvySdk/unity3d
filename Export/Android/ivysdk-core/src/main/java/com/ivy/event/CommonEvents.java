@@ -17,4 +17,9 @@ public interface CommonEvents {
   int DEEPLINK_RECEIVED = -504;
 
   int DELICIOUS_ICON_CLICKED = -505;
+
+  int XSOLLA_BILLING_VALID = -601;
+  int XSOLLA_BILLING_RESULT = -602;
+  int XSOLLA_LOGIN_RESULT = -603;
+
 }

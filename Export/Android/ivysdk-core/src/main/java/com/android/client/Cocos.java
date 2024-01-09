@@ -670,8 +670,8 @@ public class Cocos {
   }
 
   public static String getPaymentData(int bill) {
-    SKUDetail skuDetail = AndroidSdk.getSKUDetail(bill);
-    return skuDetail == null ? "{}" : skuDetail.toJson().toString();
+    String skuDetail = AndroidSdk.getSKUDetail(bill);
+    return skuDetail == null ? "{}" : skuDetail;
   }
 
   public static void trackEvent(String eventName, String action, String label, int value) {

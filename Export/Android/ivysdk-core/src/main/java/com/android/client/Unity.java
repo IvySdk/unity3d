@@ -23,6 +23,7 @@ import com.ivy.billing.impl.IPurchaseQueryCallback;
 import com.ivy.facebook.FacebookLoginListener;
 import com.ivy.firestore.FirestoreAdapter;
 import com.ivy.util.Logger;
+import com.ivy.xsolla.IXsollaLoginListener;
 import com.unity3d.player.UnityPlayer;
 
 import net.aihelp.ui.listener.OnMessageCountArrivedCallback;
@@ -263,7 +264,6 @@ public class Unity {
                             }
 
                         });
-
                         builder.setGMSPaidEventListener(new IGMSPaidEventListener() {
                             @Override
                             public void onGMSPaid(Map<String, Object> map) {
@@ -275,7 +275,6 @@ public class Unity {
                                 }
                             }
                         });
-
                         builder.setAppsflyerConversionListener(new IAppsflyerConversionListener() {
                             @Override
                             public void onAfInitSuccess() {
@@ -317,8 +316,18 @@ public class Unity {
                                 sendMessage("onAFAttributionFailure", (s == null ? "" : s));
                             }
                         });
-
                         builder.setHelpEngagementListener(data -> sendMessage("onReceiveHelpEngagementMessage", data));
+                        builder.setXSollaLoginListener(new IXsollaLoginListener() {
+                            @Override
+                            public void onSuccess() {
+                                sendMessage("OnXsollaLoginState", TRUE);
+                            }
+
+                            @Override
+                            public void onFail() {
+                                sendMessage("OnXsollaLoginState", FALSE);
+                            }
+                        });
 
                         AndroidSdk.onCreate(activityWeakReference.get(), builder);
                         AndroidSdk.registerAdEventListener(new AdEventListener() {
@@ -632,8 +641,24 @@ public class Unity {
     }
 
     public static String getPaymentData(int bill) {
-        SKUDetail skuDetail = AndroidSdk.getSKUDetail(bill);
-        return skuDetail == null ? "{}" : skuDetail.toJson().toString();
+        String skuDetail = AndroidSdk.getSKUDetail(bill);
+        return skuDetail == null ? "{}" : skuDetail;
+    }
+
+    public static boolean isXsollaSupport() {
+        return AndroidSdk.isXsollaSupport();
+    }
+
+    public static boolean isXsollaLoggedIn() {
+        return AndroidSdk.isXsollaLoggedIn();
+    }
+
+    public static void loginXsolla() {
+        AndroidSdk.loginXsolla();
+    }
+
+    public static void logoutXsolla() {
+        AndroidSdk.logoutXsolla();
     }
 
     public static void share(final String shareId, String url, String quote, String hashtag) {

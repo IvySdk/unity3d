@@ -466,9 +466,63 @@ object friends = MiniJSON.jsonDecode (friendstring);
 ### 删除存档
 `RiseSdk.Instance.DeleteFirestore(string collectionName)`
 
+## 12, Xsolla
+1. [xsolla 后台配置部分请参考文档](https://developers.xsolla.com/zh/sdk/android/store/)
+需要配置部分
+* 商店 虚拟物品
+* 登陆管理器，创建登陆管理器后，请选择**社交登陆并创建oauth2.0**
+* 支付中心选择支持的支付方式，**在设置中设置重定向策略**
+* 如有订阅付费需要，在订阅项中配置订阅计划
+2. SDK 接口
+
+```js
+//查询是否支持xsolla
+RiseSdk.Instance.IsXsollaSupport();
+//查询登陆状态
+RiseSdk.Instance.IsXsollaLoggedIn();
+//登陆xsolla， 目前仅支持vk登陆
+RiseSdk.Instance.LoginXsolla();
+//退出登陆
+RiseSdk.Instance.LogoutXsolla();
+```
+3. 监听登陆结果
+**在支持xsolla的环境下，开启游戏时sdk会主动回调xsolla的登陆状态**
+```js
+  RiseSdkListener.onXsollaLoginState -= onXsollaLoginState;
+  RiseSdkListener.onXsollaLoginState += onXsollaLoginState;
+```
+4. 计费配置
+    
+```js
+   //default.json 中增加
+    "xsolla": {
+    "projectId": "252538",
+    "oauthId": "8375"
+      }
+   //计费点配置
+    "payment": {
+    "checkout": {
+      "billId": {
+        "feename": "com.ivymerge.20gems",
+        "repeat": 1,
+        "usd": 1.99
+      },
+      "2": {
+        "feename": "70coins",
+        "repeat": 1,
+        "usd": 4.99
+      }
+    }
+  } 
+  TIP:
+  1. billId: 开发人员自定义的计费点编号，在pay接口中使用，用以付费对应计费点
+  2. feename: 虚拟物品的sku、订阅计划的名称
+  3. repeat: 1 为订阅商品，  0 为虚拟物品
+  4. usd : 计费点的配置价格
+```
 
 
-## 12, Misc 其他
+## 13, Misc 其他
 * 判断网络是否连接
 `boolean isNetworkConnected = RiseSdk.Instance.isNetworkConnected();`
 * 退出游戏（无回调）

@@ -46,20 +46,28 @@ public class UnityPlayerActivity extends Activity implements IUnityPlayerLifecyc
         setContentView(mUnityPlayer);
         mUnityPlayer.requestFocus();
 
+        Unity.onCreate(this);
+
         Button button = new Button(this);
-        button.setText("showad");
+        button.setText("pay xsolla");
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 //                Unity.showFullAd("default");
-                Unity.showRewardAd(1);
+                Unity.pay(1);
 //                Unity.showBanner(0);
             }
         });
         button.setGravity(Gravity.CENTER);
-        FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(200, 140);
+        FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(320, 140);
         ((FrameLayout)getWindow().getDecorView()).addView(button, params);
 
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        Unity.onActivityResult(requestCode, resultCode, data);
+        super.onActivityResult(requestCode, resultCode, data);
     }
 
     // When Unity player unloaded move task to background

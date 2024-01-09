@@ -50,6 +50,9 @@ public class RiseSdkListener : MonoBehaviour
     /// </summary>
     public static event Action<RiseSdk.AFEventType, string> OnAFEvent;
 
+    public static event Action<bool> onXsollaLoginState;
+
+
     private static RiseSdkListener _instance;
 
     public static RiseSdkListener Instance
@@ -69,6 +72,20 @@ public class RiseSdkListener : MonoBehaviour
                 }
             }
             return _instance;
+        }
+    }
+
+    /// <summary>
+    /// xsolla 登陆状态回调，在支持xsolla的配置下， sdk会主动回调此方法
+    /// </summary>
+    /// <param name="data">JSONObject格式</param>
+    public void OnXsollaLoginState(string data){
+        if (onXsollaLoginState != null && onXsollaLoginState.GetInvocationList().Length > 0){
+            if(data == "0"){
+                onXsollaLoginState(true);
+            } else {
+                onXsollaLoginState(false);
+            }
         }
     }
 
@@ -964,6 +981,20 @@ public class RiseSdkListener : MonoBehaviour {
         }
     }
 
+
+    /// <summary>
+    /// xsolla 登陆状态回调，在支持xsolla的配置下， sdk会主动回调此方法
+    /// </summary>
+    /// <param name="data">JSONObject格式</param>
+    public void OnXsollaLoginState(string data){
+        if (onXsollaLoginState != null && onXsollaLoginState.GetInvocationList().Length > 0){
+            if(data == "0"){
+                onXsollaLoginState(true);
+            } else {
+                onXsollaLoginState(false);
+            }
+        }
+    }
  
     /// <summary>
     /// 广告价值事件回调

@@ -50,6 +50,10 @@ import com.ivy.internal.WebViewActivity;
 import com.ivy.networks.grid.GridManager;
 import com.ivy.util.CommonUtil;
 import com.ivy.util.Logger;
+import com.ivy.xsolla.DLog;
+import com.ivy.xsolla.IXsollaLoginListener;
+import com.ivy.xsolla.PayResult;
+import com.ivy.xsolla.Product;
 import com.smarx.notchlib.NotchScreenManager;
 
 import org.json.JSONArray;
@@ -117,6 +121,7 @@ public class AndroidSdk {
         IGMSPaidEventListener gmsPaidEventListener;
 
         IAppsflyerConversionListener appsflyerConversionListener;
+        IXsollaLoginListener xsollaLoginListener;
 
         public Builder setPaymentListener(PaymentSystemListener listener) {
             this.paymentResultListener = listener;
@@ -201,6 +206,11 @@ public class AndroidSdk {
             this.appsflyerConversionListener = appsflyerConversionListener;
             return this;
         }
+
+        public Builder setXSollaLoginListener(IXsollaLoginListener iXsollaLoginListener) {
+            this.xsollaLoginListener = iXsollaLoginListener;
+            return this;
+        }
     }
 
     @Deprecated
@@ -235,6 +245,84 @@ public class AndroidSdk {
         }
 
         sdkInitialized = true;
+
+
+        EventBus.getInstance().addListener(CommonEvents.XSOLLA_LOGIN_RESULT, new EventListener() {
+            @Override
+            public void onEvent(int i, Object obj) {
+                if (i != CommonEvents.XSOLLA_LOGIN_RESULT) {
+                    return;
+                }
+                try {
+                    if (builder != null && builder.xsollaLoginListener != null) {
+                        if (obj instanceof Boolean) {
+                            boolean result = (boolean) obj;
+                            if (result) {
+                                builder.xsollaLoginListener.onSuccess();
+                            } else {
+                                builder.xsollaLoginListener.onFail();
+                            }
+                        }
+                    }
+                } catch (Throwable t) {
+                    // ignore
+                    paymentSystemValid = false;
+                }
+            }
+        });
+
+        EventBus.getInstance().addListener(CommonEvents.XSOLLA_BILLING_VALID, new EventListener() {
+            @Override
+            public void onEvent(int i, Object obj) {
+                if (i != CommonEvents.XSOLLA_BILLING_VALID) {
+                    return;
+                }
+                try {
+                    if (builder != null && builder.paymentResultListener != null) {
+                        DLog.d("xsolla is ready to pay");
+                        paymentSystemValid = true;
+                        builder.paymentResultListener.onPaymentSystemValid();
+                    }
+                } catch (Throwable t) {
+                    // ignore
+                    paymentSystemValid = false;
+                }
+            }
+        });
+
+        EventBus.getInstance().addListener(CommonEvents.XSOLLA_BILLING_RESULT, new EventListener() {
+            @Override
+            public void onEvent(int i, Object obj) {
+                if (i != CommonEvents.XSOLLA_BILLING_RESULT) {
+                    return;
+                }
+                try {
+                    if (obj instanceof PayResult) {
+                        PayResult payResult = (PayResult) obj;
+                        DLog.d("xsolla pay result:" + payResult.toString());
+                        int billId = Integer.parseInt(payResult.billId);
+                        if (payResult.result) {
+                            if (payResult.payload == null) {
+                                if (builder != null && builder.paymentResultListener != null) {
+                                    builder.paymentResultListener.onPaymentSuccess(billId);
+                                }
+                            } else {
+                                if (builder != null && builder.paymentResultListener != null) {
+                                    builder.paymentResultListener.onPaymentSuccess(billId, payResult.payload);
+                                }
+                            }
+                        } else {
+                            if (builder != null && builder.paymentResultListener != null) {
+                                builder.paymentResultListener.onPaymentFail(billId);
+                            }
+                        }
+                    }
+                } catch (Exception e) {
+                    DLog.d("xsolla pay result parse error:" + e.getMessage());
+                }
+            }
+        });
+
 
         IvySdk.initialize(activity, null, new IvySdk.InitializeCallback() {
             @Override
@@ -475,6 +563,7 @@ public class AndroidSdk {
                 }
             }
         });
+
 
         boolean slientLoginGoogle = IvySdk.getGridConfigBoolean("slientLoginGoogle");
         if (slientLoginGoogle) {
@@ -1392,7 +1481,17 @@ public class AndroidSdk {
         IvySdk.querySKUDetail(iapIds, onSkuDetailsListener);
     }
 
-    public static SKUDetail getSKUDetail(int billId) {
+    public static String getSKUDetail(int billId) {
+        if (isXsollaSupport()) {
+            DLog.d("Android xsolla pay called, id: " + billId);
+            if (IvySdk.xsollaPurchaseImpl != null) {
+                Product product = IvySdk.xsollaPurchaseImpl.getProductDetail(billId + "");
+                if (product != null) return product.toJson().toString();
+            } else {
+                DLog.e("xsolla impl is null, has called onCreate??");
+            }
+            return null;
+        }
         JSONObject gridData = GridManager.getGridData();
         if (gridData == null) {
             Log.d(TAG, "No grid data found");
@@ -1408,7 +1507,9 @@ public class AndroidSdk {
             return null;
         }
         String productId = product.optString("feename");
-        return IvySdk.getSKUDetail(productId);
+        SKUDetail skuDetail = IvySdk.getSKUDetail(productId);
+        if (skuDetail != null) return skuDetail.toString();
+        return null;
     }
 
     public static void setPayVerifyUrl(String verifyUrl) {
@@ -1423,6 +1524,15 @@ public class AndroidSdk {
         try {
             if (builder != null && builder.paymentResultListener != null) {
                 Log.d(TAG, "Android pay called, id: " + bill);
+                if (isXsollaSupport()) {
+                    DLog.d("Android xsolla pay called, id: " + bill);
+                    if (IvySdk.xsollaPurchaseImpl != null) {
+                        IvySdk.xsollaPurchaseImpl.buy(bill + "", payload);
+                    } else {
+                        DLog.e("xsolla impl is null, has called onCreate??");
+                    }
+                    return;
+                }
                 JSONObject gridData = GridManager.getGridData();
                 if (gridData == null) {
                     Log.d(TAG, "No grid data found");
@@ -1537,6 +1647,15 @@ public class AndroidSdk {
         try {
             JSONObject gridData = GridManager.getGridData();
             if (gridData == null || !gridData.has("payment")) {
+                return;
+            }
+            if (isXsollaSupport()) {
+                DLog.d("xsolla start query:" + bill);
+                if (IvySdk.xsollaPurchaseImpl != null) {
+                    IvySdk.xsollaPurchaseImpl.queryPaymentState(bill + "");
+                } else {
+                    DLog.e("xsolla impl is null, has called onCreate??");
+                }
                 return;
             }
 
@@ -3025,40 +3144,92 @@ public class AndroidSdk {
         }
     }
 
-    public static void onAfInitSuccess(){
+    public static void onAfInitSuccess() {
         if (builder != null && builder.appsflyerConversionListener != null) {
             builder.appsflyerConversionListener.onAfInitSuccess();
         }
     }
 
-    public static void onAfInitFailed(int i, String s){
+    public static void onAfInitFailed(int i, String s) {
         if (builder != null && builder.appsflyerConversionListener != null) {
             builder.appsflyerConversionListener.onAfInitFailed(i, s);
         }
     }
 
-    public static void onAppOpenAttribution(Map<String, String> conversionData){
+    public static void onAppOpenAttribution(Map<String, String> conversionData) {
         if (builder != null && builder.appsflyerConversionListener != null) {
             builder.appsflyerConversionListener.onAppOpenAttribution(conversionData);
         }
     }
 
-    public static void onConversionDataFail(String s){
+    public static void onConversionDataFail(String s) {
         if (builder != null && builder.appsflyerConversionListener != null) {
             builder.appsflyerConversionListener.onConversionDataFail(s);
         }
     }
 
-    public static  void onConversionDataSuccess(Map<String, Object> conversionData){
+    public static void onConversionDataSuccess(Map<String, Object> conversionData) {
         if (builder != null && builder.appsflyerConversionListener != null) {
             builder.appsflyerConversionListener.onConversionDataSuccess(conversionData);
         }
     }
 
-    public static  void onAttributionFailure(String s){
+    public static void onAttributionFailure(String s) {
         if (builder != null && builder.appsflyerConversionListener != null) {
             builder.appsflyerConversionListener.onAttributionFailure(s);
         }
+    }
+
+    public static boolean isXsollaSupport() {
+        JSONObject gridData = GridManager.getGridData();
+        if (gridData == null) {
+            return false;
+        }
+        JSONObject obj = gridData.optJSONObject("xsolla");
+        if (obj != null &&
+                !TextUtils.isEmpty(obj.optString("projectId")) &&
+                !TextUtils.isEmpty(obj.optString("oauthId"))) {
+            if (DLog.isEnable()) {
+                return true;
+            } else {
+                return isRussia();
+            }
+        }
+        return false;
+    }
+
+    public static boolean isXsollaLoggedIn() {
+        if (IvySdk.xsollaPurchaseImpl != null) {
+            return IvySdk.xsollaPurchaseImpl.isLogIn();
+        } else {
+            DLog.e("xsolla impl is null, has called onCreate??");
+        }
+        return false;
+    }
+
+    public static void loginXsolla() {
+        if (IvySdk.xsollaPurchaseImpl != null) {
+            IvySdk.xsollaPurchaseImpl.login();
+        } else {
+            DLog.e("xsolla impl is null, has called onCreate??");
+        }
+    }
+
+    public static void logoutXsolla() {
+        if (IvySdk.xsollaPurchaseImpl != null) {
+            IvySdk.xsollaPurchaseImpl.logout();
+        } else {
+            DLog.e("xsolla impl is null, has called onCreate??");
+        }
+    }
+
+    public static boolean isRussia() {
+        try {
+            return "ru".equals(IvySdk.getActivity().getResources().getConfiguration().locale.getCountry().toLowerCase());
+        } catch (Exception e) {
+
+        }
+        return false;
     }
 
 }

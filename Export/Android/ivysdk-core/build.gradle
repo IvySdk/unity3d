@@ -99,6 +99,12 @@ dependencies {
 
     implementation 'com.google.android.ump:user-messaging-platform:2.1.0'
 
+    implementation 'com.xsolla.android:login:6.0.4'
+    implementation 'com.xsolla.android:store:2.5.3'
+    implementation 'com.xsolla.android:payments:1.1.0'
+    implementation 'com.xsolla.android:inventory:2.0.3'
+    implementation 'com.xsolla.android:subscriptions:0.0.2'
+
 }
 
 

@@ -20,6 +20,10 @@
       }
     ]
   },
+  "xsolla": {
+    "projectId": "251208",
+    "oauthId": "8350"
+  },
   "sns": {
     "api": "facebook",
     "invite_url": "",
@@ -205,7 +209,7 @@
   "payment": {
     "checkout": {
       "1": {
-        "feename": "25coins",
+        "feename": "testsku",
         "repeat": 1,
         "usd": 1.99
       },
@@ -328,8 +332,7 @@
         "feename": "event1005",
         "repeat": 1,
         "usd": 19.99
-      },
-      "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAtpVDxkfuv2T6jkErdllxnHeMr4JqFucU+gontr0yYlvM4qt3PHlg1VY/1CQeLskBs2K420cQDaAIfCvAqil3VB6NWSci0SbMGkCidPQmlQRn90MCFAX3t+dRwgAlFwvlj4yVP53giV9GKfWVQ4EehWTg9h8fgRtILEEGgNFJMFz3MUS3erBBSOpuc9UDDtnvEo4NRaH6yUI4zUn46nrgskchYlUTeYEQo1y4lS3uPHpgriBk8XLxFIXSyKjHnnNwSeRSqeX6gEKUrzVpxzp122qv4ebdqPfyzxLUySqhkKkr3dkt45OP+/7xn3jYT5V8ClUA9GgoMwZv80bASfh9wwIDAQAB"
+      }
     }
   },
   "gts": 1692666353000,

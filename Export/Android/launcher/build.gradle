@@ -16,7 +16,7 @@ android {
     defaultConfig {
         minSdkVersion 22
         targetSdkVersion 33
-        applicationId 'com.DefaultCompany.RiseSdk'
+        applicationId 'com.solou.catendless.run'
         ndk {
             abiFilters 'armeabi-v7a', 'arm64-v8a'
         }
