@@ -2211,6 +2211,10 @@ public sealed class RiseSdk {
     [DllImport ("__Internal")]
     private static extern void logEventWithData (string eventId, string data);
     [DllImport ("__Internal")]
+    private static extern void logFirebaseEventWithData (string eventId, string data);
+    [DllImport ("__Internal")]
+    private static extern void logErrorInFirebase (int errorCode, string domain, string reason, string desc, string suggest);
+    [DllImport ("__Internal")]
     private static extern void logEventLikeGA (string category, string action, string label, int value);
     [DllImport ("__Internal")]
     private static extern void logStartLevel (string level);
@@ -2297,6 +2301,8 @@ public sealed class RiseSdk {
     public int useopenbackhomeAd = 1;
     private int homeAdMinPauseMillisecond = 1000;
     private int homeAdMinDeltaMillisecond = 1000;
+
+
 
     public void enableBackHomeAd(bool enabled)
     {
@@ -2476,6 +2482,22 @@ public sealed class RiseSdk {
 #endif
      //   lruCache = new FileLRUCache (20);
     }
+
+    public void FireBaseTrackEvent(string category, string keyValueData)
+    {
+#if UNITY_EDITOR
+       return;
+#endif
+     logFirebaseEventWithData(category, keyValueData);
+    }
+
+    public void recordException(int errorCode, string domain, string reason, string desc, string suggest){
+#if UNITY_EDITOR
+       return;
+#endif
+     logErrorInFirebase(category, keyValueData);
+    }
+
 
 #if Headline
     public  bool IsRecording()
