@@ -933,6 +933,8 @@ public class RiseSdkListener : MonoBehaviour {
     /// </summary>
     public static event Action<RiseSdk.AFEventType, string> OnAFEvent;
 
+    public static event Action<bool> OnXsollaLoginEvent;
+
     private static RiseSdkListener _instance;
 
     /// <summary>
