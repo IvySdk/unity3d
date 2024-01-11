@@ -1,0 +1,350 @@
+
+//初始化
+onCreator(Activity activity);
+回调：
+    void onInitialized(string data);
+    void onReceiveServerExtra(string data);
+
+
+<!-----------  通知 ---------->
+//本地通知
+ void pushLocalMessage(String key, String title, String content, int pushTime, int interval, boolean useSound, String soundName, String userInfo)
+
+//取消通知
+void cancelLocalMessage(String key)
+
+<!-----------  通知 ---------->
+
+网络状态变化回调
+void onNetworkChanged(string data);
+
+广告加载回调：
+void onAdLoaded(string data);
+
+<!-----------  banner ---------->
+
+boolean hasBanner(String tag)
+
+void showBanner(int pos)
+
+void showBanner(String tag, int pos)
+
+void showBanner(String tag, int pos, int animate) 
+
+void closeBanner()
+
+void closeBanner(String tag)
+
+void showRectBanner(int x, int y, int w, int h)
+
+void closeRectBanner() 
+
+<!-----------  banner ---------->
+
+
+<!-----------  推广 ---------->
+
+void showPromoteAd(String tag)
+
+void showDeliciousIcon(int x, int y, int width, int height, String promotepackage)
+
+void closeDeliciousIconAd()
+
+boolean hasDeliciousIconAd()
+
+boolean hasDeliciousBannerAd()
+
+void showDeliciousBanner(int x, int y, int w, int h, String defaultpackage)
+
+void closeDeliciousBanner()
+
+boolean hasDeliciousVideoAd()
+
+void showDeliciousVideoAd(final String config)
+
+void moreGame()
+
+void showDeliciousIconAd(final int x, final int y, final int w, final int h, final String config)
+
+void closeDeliciousIconAd()
+
+void showDeliciousBannerAd(final int x, final int y, final int w, final int h, final String config)
+
+boolean hasDeliciousBannerAd()
+
+void closeDeliciousBannerAd()
+
+boolean hasDeliciousVideoAd()
+
+void showDeliciousVideoAd(final String config)
+
+boolean hasDeliciousAd()
+
+回调：
+void onDeliciousIconClicked(string data);
+
+<!-----------  推广 ---------->
+
+
+<!-----------  插屏 ---------->
+
+ boolean hasFull(String tag)
+
+void showFullAd(final String tag)
+
+ loadFullAd(final String tag)
+
+回调：
+    void onFullAdClosed(string tag);
+    void onFullAdShown(string tag);
+    void onFullAdClicked(string tag);
+    void onFullAdLoadSuccess(string tag);
+    void onFullAdLoadFails(string tag);
+
+
+<!-----------  插屏 ---------->
+
+
+<!-----------  激励 ---------->
+
+    boolean hasRewardAd()
+
+    boolean hasRewardAd(String tag)
+
+    void showRewardAd(int id)
+
+    void showRewardAd(final String tag, final int id)
+
+回调：
+    void onReceiveReward(string tag);
+    void onAdLoadFailed(string tag);
+    void onAdLoadSuccess(string tag);
+    void onReceiveReward(string tag);
+    void onVideoAdClosed(string tag);
+    void onVideoAdShow(string tag);  
+
+<!-----------  激励 ---------->
+
+<!-----------  native ---------->
+
+String showNativeAd(String tag)
+
+void closeNativeAd(String tag)
+
+
+
+<!-----------  native ---------->
+
+
+<!-----------  native banner ---------->
+
+boolean showNativeBanner(final String tag, final int x, final int y, final int w, final int h, final String configFile)
+
+boolean showNativeBanner(final String tag, final float x, final float y, final float w, final float h)
+
+boolean showNativeBanner(final String tag, final int x, final int y, final int w, final int h, final int sw, final int sh)
+
+void closeNativeBanner(String tag)
+
+boolean hasNative(String tag)
+
+<!-----------  native banner ---------->
+
+
+<!-----------  计费 ---------->
+
+void pay(int id)
+
+void pay(int id, String payload)
+
+void pay(int id, String itemName, String payload)
+
+void changeSku(int oldId, int newId)
+
+void changeSku(int oldId, int newId, String payload)
+
+void query(int id)
+
+void getPurchaseHistory(String skuType)
+
+void getPaymentDataAsyn(int bill)
+
+String getPaymentData(int bill)
+
+boolean isPaymentValid()
+
+String getPaymentDatas()
+
+String getPrices()
+
+回调：
+    void onPaymentSuccess(string data);
+    void onPaymentSuccessWithPayload(string data);
+    void onPaymentSuccessWithPayloadAndOrderInfo(string data);
+    void onPaymentFail(string data);
+    void onStoreLoaded(string data);
+    void onPaymentSystemValid(string data);
+    void onPaymentCanceled(string data);
+    void onPaymentSystemError(string data);
+
+    void onPurchaseHistory(string data);
+    void onPaymentData(string data);
+
+<!-----------  计费 ---------->
+
+
+<!-----------  xsolla ---------->
+
+boolean isXsollaSupport()
+
+boolean isXsollaLoggedIn() 
+
+void loginXsolla() 
+
+void logoutXsolla()
+
+回调：
+    void OnXsollaLoginState(string data);
+
+<!-----------  xsolla ---------->
+
+<!-----------  分享 ---------->
+
+void share()
+
+void share(String url)
+
+void shareMessage(String msg, boolean sysOnly)
+
+void shareVideo(String url)
+
+void share(final String shareId, String url, String quote, String hashtag)
+回调：
+    void onShareSuccess(string data);
+    void onShareCancel(string data);
+    void onShareError(string data);
+
+<!-----------  分享 ---------->
+
+
+<!-----------  评价 ---------->
+
+void rate()
+
+void inAppReview()
+
+void rate(float star)
+
+<!-----------  评价 ---------->
+
+
+<!-----------  统计 ---------->
+
+void trackEvent(String category, String action, String label, int value)
+
+void trackScreen(String screenClass, String screenName)
+
+void trackIvyEvent(String event, String data)
+
+void trackEvent(String event, String data)
+
+void trackEventToConversion(String event, String data) 
+
+void trackEventToFirebase(String event, String data)
+
+void trackEventToFacebook(String event, String data)
+
+void trackEventToAppsflyer(String event, String data)
+
+void trackEventToIvy(String event, String data)
+
+void setUserProperty(String key, String value)
+
+<!-----------  统计 ---------->
+
+
+<!-----------  Remote Config ---------->
+
+int getRemoteConfigInt(String key)
+
+long getRemoteConfigLong(String key)
+
+double getRemoteConfigDouble(String key)
+
+boolean getRemoteConfigBoolean(String key)
+
+String getRemoteConfigString(String key)
+
+<!-----------  Remote Config ---------->
+
+void login()
+
+void logout() 
+
+boolean isLogin()
+
+void invite()
+
+void challenge(String title, String message)
+
+String me()
+
+String friends()
+
+boolean isOtherMusicOn()
+
+boolean hasNotch()
+
+int getNotchHeight()
+
+boolean hasGDPR()
+
+void resetGDPR()
+
+void onQuit() 
+
+String cacheUrl(String url)
+
+String getExtraData() 
+
+ boolean isNetworkConnected()
+
+ void openFacebook(String userId, String userName) 
+
+ String getConfig(int configKey)
+
+ boolean hasApp(String packageName)
+
+ void launchApp(String packageName)
+
+void getApp(String packageName)
+
+void alert(String title, String message)
+
+void toast(String message)
+
+String getConfig(String packageName, int configKey)
+
+void onKill()
+
+void setUserTag(String userTag)
+
+
+
+
+//不再生效
+void pushMessage(String key, String title, String content, int pushTime, boolean localTimeZone, String fbIds, String uuids, String topics, int iosBadge, boolean useSound, String soundName, String extraData)
+
+//不再生效
+void cancelMessage(String key)
+
+void showNative(String tag, int yPercent)
+
+boolean showNativeBanner(String tag, int xPercent, int yPercent, String configFile)
+
+void hideNative(String tag) 
+
+void clickNativeAd(String tag)
+
+void cacheUrl(int tag, String url)
+

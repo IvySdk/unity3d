@@ -2172,8 +2172,8 @@ public class Unity {
         }
     }
 
-    public static void recordException(String err) {
-        AndroidSdk.recordException(err);
+    public static void recordException(String message, String error) {
+        AndroidSdk.recordException(message, error);
     }
 
     public static void logException(String err) {

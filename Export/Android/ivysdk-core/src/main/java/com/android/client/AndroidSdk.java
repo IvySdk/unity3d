@@ -61,6 +61,7 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.IllegalFormatCodePointException;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
@@ -3122,9 +3123,9 @@ public class AndroidSdk {
         IvySdk.logIvyEvent("track_screen_end", bundle);
     }
 
-    public static void recordException(String err) {
+    public static void recordException(String message, String error) {
         try {
-            FirebaseCrashlytics.getInstance().recordException(new Throwable(err));
+            FirebaseCrashlytics.getInstance().recordException(new Exception(message, new Throwable(error)));
         } catch (Exception e) {
             e.printStackTrace();
         }

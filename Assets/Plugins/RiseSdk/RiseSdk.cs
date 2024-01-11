@@ -121,8 +121,8 @@ public sealed class RiseSdk {
 #endif
     }
 
-    public void recordException(string err){
-        _class.CallStatic("recordException", err);
+    public void recordException(string title, string err){
+        _class.CallStatic("recordException", title, err);
     }
 
     public void logException(string err){
