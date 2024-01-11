@@ -1682,6 +1682,15 @@ public class RiseSdkListener : MonoBehaviour {
     public static event Action<string> OnSignInAppleSuccess;
     public static event Action<string> OnSignInAppleFailure;
 
+          /// <summary>
+    /// GMS 事件
+    /// </summary>
+    public static event Action<RiseSdk.GMSEventType, string> OnGMSEvent;
+    /// <summary>
+    /// AF 事件
+    /// </summary>
+    public static event Action<RiseSdk.AFEventType, string> OnAFEvent;
+
     public static RiseSdkListener Instance {
         get {
             if (!_instance) {
@@ -1695,6 +1704,76 @@ public class RiseSdkListener : MonoBehaviour {
                 }
             }
             return _instance;
+        }
+    }
+
+/// <summary>
+    /// 广告价值事件回调
+    /// </summary>
+    /// <param name="data">JSONObject格式</param>
+    public void onGMSPaid(string data){
+        if (OnGMSEvent != null && OnGMSEvent.GetInvocationList().Length > 0){
+            OnGMSEvent(RiseSdk.GMSEventType.GMSPaid, data);
+        }
+    }
+
+    /// <summary>
+    /// AF 初始化成功
+    /// </summary>
+    /// <param name="data"></param>
+    public void onAFInitSuccess(string data){
+        if (OnAFEvent != null && OnAFEvent.GetInvocationList().Length > 0){
+            OnAFEvent(RiseSdk.AFEventType.InitSuccess, data);
+        }
+    }
+
+    /// <summary>
+    /// AF 初始化失败
+    /// </summary>
+    /// <param name="data">用｜ 分隔的失败信息</param>
+    public void onAFInitFailed(string data){
+        if (OnAFEvent != null && OnAFEvent.GetInvocationList().Length > 0){
+            OnAFEvent(RiseSdk.AFEventType.InitFail, data);
+        }
+    }
+
+    /// <summary>
+    /// AF conversion事件
+    /// </summary>
+    /// <param name="data">JSONObject 格式</param>
+    public void onAFAppOpenAttribution(string data){
+       if (OnAFEvent != null && OnAFEvent.GetInvocationList().Length > 0){
+            OnAFEvent(RiseSdk.AFEventType.AppOpenAttribution, data);
+        }
+    }
+
+    /// <summary>
+    /// AF conversion事件
+    /// </summary>
+    /// <param name="data">失败信息</param>
+    public void onAFConversionDataFail(string data){
+      if (OnAFEvent != null && OnAFEvent.GetInvocationList().Length > 0){
+            OnAFEvent(RiseSdk.AFEventType.ConversionDataFail, data);
+        }
+    }
+
+    /// <summary>
+    /// AF conversion事件
+    /// </summary>
+    /// <param name="data">JSONObject 格式</param>
+    public void onAFConversionDataSuccess(string data){
+      if (OnAFEvent != null && OnAFEvent.GetInvocationList().Length > 0){
+            OnAFEvent(RiseSdk.AFEventType.ConversionDataSuccess, data);
+        }
+    }
+
+    /// <summary>
+    /// AF conversion事件
+    /// </summary>
+    /// <param name="data">失败信息</param>
+    public void onAFAttributionFailure(string data){
+      if (OnAFEvent != null && OnAFEvent.GetInvocationList().Length > 0){
+            OnAFEvent(RiseSdk.AFEventType.AttributionFailure, data);
         }
     }
 
