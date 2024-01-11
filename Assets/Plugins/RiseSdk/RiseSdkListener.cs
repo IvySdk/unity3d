@@ -50,7 +50,7 @@ public class RiseSdkListener : MonoBehaviour
     /// </summary>
     public static event Action<RiseSdk.AFEventType, string> OnAFEvent;
 
-    public static event Action<bool> onXsollaLoginState;
+    public static event Action<bool> OnXsollaLoginEvent;
 
 
     private static RiseSdkListener _instance;
@@ -80,11 +80,11 @@ public class RiseSdkListener : MonoBehaviour
     /// </summary>
     /// <param name="data">JSONObject格式</param>
     public void OnXsollaLoginState(string data){
-        if (onXsollaLoginState != null && onXsollaLoginState.GetInvocationList().Length > 0){
+        if (OnXsollaLoginEvent != null && OnXsollaLoginEvent.GetInvocationList().Length > 0){
             if(data == "0"){
-                onXsollaLoginState(true);
+                OnXsollaLoginEvent(true);
             } else {
-                onXsollaLoginState(false);
+                OnXsollaLoginEvent(false);
             }
         }
     }
@@ -1066,11 +1066,11 @@ public class RiseSdkListener : MonoBehaviour {
     /// </summary>
     /// <param name="data">JSONObject格式</param>
     public void OnXsollaLoginState(string data){
-        if (onXsollaLoginState != null && onXsollaLoginState.GetInvocationList().Length > 0){
+        if (OnXsollaLoginEvent != null && OnXsollaLoginEvent.GetInvocationList().Length > 0){
             if(data == "0"){
-                onXsollaLoginState(true);
+                OnXsollaLoginEvent(true);
             } else {
-                onXsollaLoginState(false);
+                OnXsollaLoginEvent(false);
             }
         }
     }
