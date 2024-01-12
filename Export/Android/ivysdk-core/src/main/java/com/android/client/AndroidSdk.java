@@ -49,6 +49,7 @@ import com.ivy.help.TiledeskActivity;
 import com.ivy.internal.WebViewActivity;
 import com.ivy.networks.grid.GridManager;
 import com.ivy.util.CommonUtil;
+import com.ivy.util.CustomThrowable;
 import com.ivy.util.Logger;
 import com.ivy.xsolla.DLog;
 import com.ivy.xsolla.IXsollaLoginListener;
@@ -3125,7 +3126,7 @@ public class AndroidSdk {
 
     public static void recordException(String message, String error) {
         try {
-            FirebaseCrashlytics.getInstance().recordException(new Exception(message, new Throwable(error)));
+            FirebaseCrashlytics.getInstance().recordException(CustomThrowable.convertUnityStackTraceToAndroid(message, error));
         } catch (Exception e) {
             e.printStackTrace();
         }
