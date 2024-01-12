@@ -2495,7 +2495,7 @@ public sealed class RiseSdk {
 #if UNITY_EDITOR
        return;
 #endif
-     logErrorInFirebase(category, keyValueData);
+    logErrorInFirebase(errorCode, domain, reason, desc, suggest);
     }
 
 
