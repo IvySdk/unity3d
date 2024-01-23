@@ -12,3 +12,5 @@
 *.sln
 **/symbols
 **/symbols/*
+/UserSettings
+
