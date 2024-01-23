@@ -1,0 +1,171 @@
+apply plugin: 'com.android.library'
+
+
+android {
+    compileSdkVersion 32
+
+    buildToolsVersion = '30.0.3'
+
+    defaultConfig {
+        minSdkVersion 16
+        targetSdkVersion 32
+        versionCode 1
+        versionName "1.0"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+
+    lintOptions {
+        abortOnError true
+    }
+
+}
+
+dependencies {
+
+    compileOnly files('libs/unity3d.jar')
+
+//    implementation project(':parfka')
+
+  //  implementation 'com.parfka:parfka:3.4.0'
+
+    implementation 'com.squareup.okhttp3:okhttp:3.12.12'
+    implementation 'com.squareup.okio:okio:1.17.5'
+    implementation 'com.tencent:mmkv:1.2.14'
+
+//    implementation 'com.android.billingclient:billing:6.0.1'
+
+    implementation 'androidx.multidex:multidex:2.0.1'
+    implementation "androidx.work:work-runtime:2.7.1"
+
+    implementation platform('com.google.firebase:firebase-bom:31.5.0')
+    implementation 'com.google.firebase:firebase-analytics'
+    implementation 'com.google.firebase:firebase-config'
+//    implementation 'com.google.firebase:firebase-messaging'
+//    implementation 'com.google.firebase:firebase-firestore'
+//    implementation 'com.google.firebase:firebase-auth'
+//    implementation 'com.google.firebase:firebase-functions'
+//    implementation 'com.google.firebase:firebase-inappmessaging'
+//    implementation 'com.google.firebase:firebase-database'
+    implementation 'com.google.firebase:firebase-crashlytics'
+
+    implementation 'com.alibaba:fastjson:1.1.72.android'
+
+    // Google Admob
+    implementation "com.google.android.gms:play-services-ads:22.0.0"
+
+    // Ad sdk
+    implementation 'com.unity3d.ads:unity-ads:4.6.1'
+
+    implementation 'com.google.ads.mediation:facebook:6.14.0.0'
+    implementation 'com.google.ads.mediation:unity:4.6.1.1'
+    implementation 'com.google.ads.mediation:applovin:11.9.0.0'
+    implementation 'com.yandex.android:mobileads:5.8.0'
+
+    implementation 'com.appsflyer:af-android-sdk:6.12.1'
+    implementation "com.android.installreferrer:installreferrer:2.2"
+    implementation "com.miui.referrer:homereferrer:1.0.0.6"
+
+    // google sign in
+//    implementation 'com.google.android.gms:play-services-auth:20.3.0'
+//    // google games service
+//    implementation 'com.google.android.gms:play-services-games:23.0.0'
+
+    implementation 'com.facebook.android:facebook-login:14.1.1'
+//    implementation 'com.facebook.android:facebook-share:14.1.1'
+
+//    implementation 'com.smaato.android.sdk:admob-banner-adapter:22.1.1'
+//    implementation 'com.pubmatic.sdk:openwrap:2.7.1'
+    implementation 'com.google.android.gms:play-services-ads-identifier:18.0.1'
+//    implementation 'com.google.ads.mediation:gadopenwrapadapter:1.2.0'
+
+//    implementation 'com.my.target:mytarget-sdk:5.16.3'
+
+//    implementation 'com.amazon.android:aps-sdk:9.5.7'
+ //   implementation ('com.ivy.adsdk.mediation:admob-aps:8.1.12-test4')
+
+//    implementation 'net.aihelp:android-aihelp-aar:4.3.+'
+
+    implementation 'com.google.android.ump:user-messaging-platform:2.1.0'
+
+//    implementation 'com.xsolla.android:login:6.0.4'
+//    implementation 'com.xsolla.android:store:2.5.3'
+//    implementation 'com.xsolla.android:payments:1.1.0'
+//    implementation 'com.xsolla.android:inventory:2.0.3'
+//    implementation 'com.xsolla.android:subscriptions:0.0.2'
+
+}
+
+
+
+//task depsize {
+//    doLast {
+//        final formatStr = "%,10.2f"
+//        final conf = configurations._debugApk
+//        conf.forEach{
+//            println(it.length() + "B");
+//            println("size")
+//        }
+//        final size = conf.collect {
+//            it.length()/(1024 * 1024)
+//        }.sum()
+//        final out = new StringBuffer()
+//        out << 'Total dependencies size:'.padRight(45)
+//        out << "${String.format(formatStr, size)} Mb\n\n"
+//        conf.sort { -it.length() }
+//                .each {
+//                    out << "${it.name}".padRight(45)
+//                    out << "${String.format(formatStr, (it.length()/1024))} kb\n"
+//                }
+//        println(out)
+//    }
+//}
+
+tasks.register("depsize") {
+    description = 'Prints dependencies for "default" configuration'
+    doLast() {
+        listConfigurationDependencies(configurations.default)
+    }
+}
+
+tasks.register("depsize-all-configurations") {
+    description = 'Prints dependencies for all available configurations'
+    doLast() {
+        configurations
+                .findAll { it.isCanBeResolved() }
+                .each { listConfigurationDependencies(it) }
+    }
+}
+
+def listConfigurationDependencies(Configuration configuration) {
+    def formatStr = "%,10.2f"
+
+    def size = configuration.collect { it.length() / (1024 * 1024) }.sum()
+
+    def out = new StringBuffer()
+    out << "\nConfiguration name: \"${configuration.name}\"\n"
+    if (size) {
+        out << 'Total dependencies size:'.padRight(65)
+        out << "${String.format(formatStr, size)} Mb\n\n"
+
+        configuration.sort { -it.length() }
+                .each {
+                    out << "${it.name}".padRight(65)
+                    out << "${String.format(formatStr, (it.length() / 1024 / 1024))} Mb\n"
+                }
+    } else {
+        out << 'No dependencies found';
+    }
+    println(out)
+}

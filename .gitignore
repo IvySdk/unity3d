@@ -1,0 +1,14 @@
+/Export/Android/.idea/*
+/Export/Android/.gradle/*
+/Export/**/build/
+/Export/**/build/*
+/Logs/*
+/Temp
+/Temp/*
+/Library/
+/Library/*
+./Export/*/build/*
+*.csproj
+*.sln
+**/symbols
+**/symbols/*

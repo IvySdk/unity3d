@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#000000</color>
+    <color name="btn_div">#e9eaed</color>
+    <color name="buttonGray">#555555</color>
+    <color name="buttonLightGray">#bbbbbb</color>
+    <color name="buttonVeryLightGray">#ddd</color>
+    <color name="button_text_style_black">#000000</color>
+    <color name="button_text_style_gold">#423600</color>
+    <color name="button_text_style_grey">#333333</color>
+    <color name="button_text_style_nobutton">#000000</color>
+    <color name="button_text_style_sky">#3d4243</color>
+    <color name="button_text_style_white">#000000</color>
+    <color name="button_text_style_white_black">#000000</color>
+    <color name="button_text_style_white_red">#ff0000</color>
+    <color name="button_text_style_yellow">#423600</color>
+    <color name="cardview_dark_background">#ff424242</color>
+    <color name="cardview_light_background">#ffffffff</color>
+    <color name="cardview_shadow_end_color">#03000000</color>
+    <color name="cardview_shadow_start_color">#37000000</color>
+    <color name="com_smart_login_code">#3c6499</color>
+    <color name="continue_click">#6d737b</color>
+    <color name="dark_bg_color">#ebecf0</color>
+    <color name="exo_edit_mode_background_color">#fff4f3f0</color>
+    <color name="exo_error_message_background_color">#aa000000</color>
+    <color name="free_button_color">#000000</color>
+    <color name="gray_color">#7d7d7d</color>
+    <color name="green">#008000</color>
+    <color name="grey">#5f6061</color>
+    <color name="lollipop_notification_color">#1987e1</color>
+    <color name="red_color">#d63633</color>
+    <color name="text_color">#373f54</color>
+    <color name="video_controls_bg">#4d000000</color>
+    <color name="view_color">#b9b9b9</color>
+    <color name="white">#ffffff</color>
+    <color name="white_color">#ffffff</color>
+
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+
+</resources>
