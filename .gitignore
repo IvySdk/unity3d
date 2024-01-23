@@ -15,3 +15,5 @@
 /UserSettings
 /UserSettings/*
 *.meta
+/Export_*
+/Export_*/**
