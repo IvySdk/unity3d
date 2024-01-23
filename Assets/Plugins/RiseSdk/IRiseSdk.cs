@@ -58,7 +58,30 @@ namespace RiseSdk
             }
         }
 
-
+        // protected void CallSafeOnMainThread2(Action<AndroidJavaObject> action)
+        // {
+        //     try
+        //     {
+        //         // 确保在主线程上执行JNI调用
+        //         if (Application.platform == RuntimePlatform.Android)
+        //         {
+        //             using (AndroidJavaClass unityPlayer = new AndroidJavaClass("com.unity3d.player.UnityPlayer"))
+        //             {
+        //                 using (AndroidJavaObject activity = unityPlayer.GetStatic<AndroidJavaObject>("currentActivity"))
+        //                 {
+        //                     activity.Call("runOnUiThread", new AndroidJavaRunnable(() =>
+        //                     {
+        //                         action?.Invoke(activity);
+        //                     }));
+        //                 }
+        //             }
+        //         }
+        //     }
+        //     catch (Exception e)
+        //     {
+        //         Debug.LogError("RiseSdk Init Error:::\n" + e.StackTrace + "\n" + e.Message);
+        //     }
+        // }
 
 
     }

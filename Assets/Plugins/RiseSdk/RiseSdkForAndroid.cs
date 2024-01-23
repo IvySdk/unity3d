@@ -59,6 +59,10 @@ using UnityEngine.EventSystems;
         {
             if (Application.platform == RuntimePlatform.Android)
             {
+                // CallSafeOnMainThread2((activity) =>
+                // {
+                //     _javaClass?.CallStatic("onCreate", activity);
+                // });
                 using (AndroidJavaClass unityPlayer = new AndroidJavaClass("com.unity3d.player.UnityPlayer"))
                 {
                     using (AndroidJavaObject context = unityPlayer.GetStatic<AndroidJavaObject>("currentActivity"))

@@ -36,8 +36,8 @@ namespace RiseSdk
             RiseSdkListener.Instance.enabled = true;
             _riseSdk = new RiseSdkForAndroid();
 #elif UNITY_IOS
-            // RiseSdkListener.Instance.enabled = true;
-            // _riseSdk = new RiseSdkForIOS();
+            RiseSdkListener.Instance.enabled = true;
+            _riseSdk = new RiseSdkForIOS();
 #elif UNITY_EDITOR
             _riseSdk = new RiseSdkForEditor();
 #endif
