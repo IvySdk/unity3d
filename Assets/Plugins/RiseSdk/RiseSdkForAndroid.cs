@@ -56,33 +56,47 @@ using UnityEngine.EventSystems;
             }
         }
 
+        protected void CallSafeOnMainThread(Action action)
+        {
+            try
+            {
+                // 确保在主线程上执行JNI调用
+                if (Application.platform == RuntimePlatform.Android)
+                {
+                    using (AndroidJavaClass unityPlayer = new AndroidJavaClass("com.unity3d.player.UnityPlayer"))
+                    {
+                        using (AndroidJavaObject activity = unityPlayer.GetStatic<AndroidJavaObject>("currentActivity"))
+                        {
+                            activity.Call("runOnUiThread", new AndroidJavaRunnable(() =>
+                            {
+                                action?.Invoke();
+                            }));
+                        }
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.LogError("RiseSdk Init Error:::\n" + e.StackTrace + "\n" + e.Message);
+            }
+        }
+
         public override void OnInit()
         {
-
             CallSafeOnMainThread(() =>
-                       {
-                           if (Application.platform == RuntimePlatform.Android)
-                           {
-                               // CallSafeOnMainThread2((activity) =>
-                               // {
-                               //     _javaClass?.CallStatic("onCreate", activity);
-                               // });
-                               using (AndroidJavaClass unityPlayer = new AndroidJavaClass("com.unity3d.player.UnityPlayer"))
-                               {
-                                   using (AndroidJavaObject context = unityPlayer.GetStatic<AndroidJavaObject>("currentActivity"))
-                                   {
-                                       Debug.Log($"RiseSdkForAndroid::OnInit:{_javaClass}");
-                                       _javaClass?.CallStatic("onCreate", context);
-
-                                       // CallSafeOnMainThread(() =>
-                                       // {
-                                       //     Debug.Log($"RiseSdkForAndroid::OnInit:{_javaClass}");
-                                       //     _javaClass.CallStatic("onCreate", context);
-                                       // });
-                                   }
-                               }
-                           }
-                       });
+            {
+                if (Application.platform == RuntimePlatform.Android)
+                {
+                    using (AndroidJavaClass unityPlayer = new AndroidJavaClass("com.unity3d.player.UnityPlayer"))
+                    {
+                        using (AndroidJavaObject context = unityPlayer.GetStatic<AndroidJavaObject>("currentActivity"))
+                        {
+                            Debug.Log($"RiseSdkForAndroid::OnInit:{_javaClass}");
+                             _javaClass?.CallStatic("onCreate", context);
+                        }
+                    }
+                }
+            });
         }
 
         public override void OnPause()
