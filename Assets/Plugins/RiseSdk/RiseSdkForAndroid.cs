@@ -1,4 +1,5 @@
 
+#if UNITY_ANDROID
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
@@ -21,7 +22,7 @@ using UnityEngine.EventSystems;
 #endif
 
 
-    public sealed class RiseSdkForAndroid : IRiseSdk
+    public sealed class RiseSdkForAndroid : AbstractRiseSdk
     {
 
         private AndroidJavaClass _class = null;
@@ -57,92 +58,84 @@ using UnityEngine.EventSystems;
 
         public override void OnInit()
         {
-            if (Application.platform == RuntimePlatform.Android)
-            {
-                // CallSafeOnMainThread2((activity) =>
-                // {
-                //     _javaClass?.CallStatic("onCreate", activity);
-                // });
-                using (AndroidJavaClass unityPlayer = new AndroidJavaClass("com.unity3d.player.UnityPlayer"))
-                {
-                    using (AndroidJavaObject context = unityPlayer.GetStatic<AndroidJavaObject>("currentActivity"))
-                    {
-                        Debug.Log($"RiseSdkForAndroid::OnInit:{_javaClass}");
-                        _javaClass?.CallStatic("onCreate", context);
 
-                        // CallSafeOnMainThread(() =>
-                        // {
+            CallSafeOnMainThread(() =>
+                       {
+                           if (Application.platform == RuntimePlatform.Android)
+                           {
+                               // CallSafeOnMainThread2((activity) =>
+                               // {
+                               //     _javaClass?.CallStatic("onCreate", activity);
+                               // });
+                               using (AndroidJavaClass unityPlayer = new AndroidJavaClass("com.unity3d.player.UnityPlayer"))
+                               {
+                                   using (AndroidJavaObject context = unityPlayer.GetStatic<AndroidJavaObject>("currentActivity"))
+                                   {
+                                       Debug.Log($"RiseSdkForAndroid::OnInit:{_javaClass}");
+                                       _javaClass?.CallStatic("onCreate", context);
 
-                        // });
-                    }
-                }
-            }
+                                       // CallSafeOnMainThread(() =>
+                                       // {
+                                       //     Debug.Log($"RiseSdkForAndroid::OnInit:{_javaClass}");
+                                       //     _javaClass.CallStatic("onCreate", context);
+                                       // });
+                                   }
+                               }
+                           }
+                       });
         }
 
         public override void OnPause()
         {
-#if UNITY_ANDROID
             CallSafeOnMainThread(() =>
             {
                 _javaClass?.CallStatic("onPause");
             });
-#endif
         }
 
         public override void OnResume()
         {
-#if UNITY_ANDROID
             CallSafeOnMainThread(() =>
             {
                 _javaClass?.CallStatic("onResume");
             });
-#endif
         }
 
         public override void OnStart()
         {
-#if UNITY_ANDROID
             CallSafeOnMainThread(() =>
             {
                 _javaClass?.CallStatic("onStart");
             });
-#endif
         }
 
         public override void OnStop()
         {
-#if UNITY_ANDROID
             CallSafeOnMainThread(() =>
             {
                 _javaClass?.CallStatic("onStop");
             });
-#endif
         }
 
 
         public override void FireBaseTrackEvent(string category, string keyValueData)
         {
-#if UNITY_ANDROID
             CallSafeOnMainThread(() =>
             {
                 _javaClass?.CallStatic("trackEventToFirebase", category, keyValueData);
             });
-#endif
         }
 
         public override void recordException(string title, string err)
         {
-#if UNITY_ANDROID
             CallSafeOnMainThread(() =>
             {
                 _javaClass?.CallStatic("recordException", title, err);
             });
-#endif
         }
 
         public override bool HasRewardAd()
         {
-#if UNITY_ANDROID
             Debug.Log("Java class call from android");
             if (_javaClass == null)
             {
@@ -150,28 +143,22 @@ using UnityEngine.EventSystems;
                 return false;
             }
             return _javaClass.CallStatic<bool>("hasRewardAd");
-#endif
-            return false;
         }
 
         public override void ShowRewardAd(int rewardId)
         {
-#if UNITY_ANDROID
             CallSafeOnMainThread(() =>
             {
                 _javaClass?.CallStatic("showRewardAd", rewardId);
             });
-#endif
         }
 
         public override void ShowRewardAd(string tag, int rewardId)
         {
-#if UNITY_ANDROID
             CallSafeOnMainThread(() =>
             {
                 _javaClass?.CallStatic("showRewardAd", tag, rewardId);
             });
-#endif
         }
 
         public override bool GetAdsEnabledState()
@@ -186,12 +173,11 @@ using UnityEngine.EventSystems;
 
         public override void ToastMsg(string str)
         {
-#if UNITY_ANDROID
             CallSafeOnMainThread(() =>
           {
               _javaClass?.CallStatic("toast", str);
           });
-#endif
         }
     }
 }
+#endif

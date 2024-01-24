@@ -1,23 +1,17 @@
+#if UNITY_EDITOR
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 using System.Security.Cryptography;
 using System.IO;
-
+using UnityEditor;
 
 
 namespace RiseSdk
 {
-
-#if UNITY_EDITOR
-    using UnityEditor;
-#endif
-
-#if UNITY_EDITOR
     [UnityEditor.InitializeOnLoad]
-#endif
-    public sealed class RiseSdkForEditor : IRiseSdk
+    public sealed class RiseSdkForEditor : AbstractRiseSdk
     {
 
         private bool _isAdsEnabled = true;
@@ -59,17 +53,19 @@ namespace RiseSdk
 
         public override bool HasRewardAd()
         {
-            return Random.Range(0, 100) % 2 == 0;
+            return true;//Random.Range(0, 100) % 2 == 0;
         }
 
         public override void ShowRewardAd(int rewardId)
         {
             Debug.Log($"Editor show reward ad with reward id:{rewardId}");
+            RiseSdkEditorAd.EditorAdInstance.ShowRewardAd(rewardId);
         }
 
         public override void ShowRewardAd(string tag, int rewardId)
         {
             Debug.Log($"Editor show reward ad with tag:{tag} and reward id:{rewardId}");
+            RiseSdkEditorAd.EditorAdInstance.ShowRewardAd(tag, rewardId);
         }
 
         public override bool GetAdsEnabledState()
@@ -90,3 +86,4 @@ namespace RiseSdk
     }
 }
 
+#endif

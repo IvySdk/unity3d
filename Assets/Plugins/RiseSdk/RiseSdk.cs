@@ -5,7 +5,7 @@ using UnityEngine;
 namespace RiseSdk
 {
 
-    public sealed class RiseSdk : IRiseSdk
+    public sealed class RiseSdk : AbstractRiseSdk
     {
         //其他广告类型
         public const int ADTYPE_OTHER = -1;
@@ -23,14 +23,7 @@ namespace RiseSdk
 
         private static readonly Lazy<RiseSdk> _instance = new Lazy<RiseSdk>(() => new RiseSdk());
 
-        private RiseSdk() { }
-
-        public static RiseSdk Instance => _instance.Value;
-
-        private IRiseSdk _riseSdk = null;
-
-
-        public override void OnInit()
+        private RiseSdk()
         {
 #if UNITY_ANDROID
             RiseSdkListener.Instance.enabled = true;
@@ -39,8 +32,18 @@ namespace RiseSdk
             RiseSdkListener.Instance.enabled = true;
             _riseSdk = new RiseSdkForIOS();
 #elif UNITY_EDITOR
+            RiseSdkListener.Instance.enabled = true;
             _riseSdk = new RiseSdkForEditor();
 #endif
+        }
+
+        public static RiseSdk Instance => _instance.Value;
+
+        private AbstractRiseSdk _riseSdk = null;
+
+
+        public override void OnInit()
+        {
             _riseSdk?.OnInit();
         }
 
@@ -106,6 +109,39 @@ namespace RiseSdk
         {
             _riseSdk?.ToastMsg(str);
         }
+
+
+
+        /// <summary>
+        /// 在左上角显示banner广告参数常量
+        /// </summary>
+        public const int POS_BANNER_LEFT_TOP = 1;
+        /// <summary>
+        /// 在顶部居中显示banner广告参数常量
+        /// </summary>
+        public const int POS_BANNER_MIDDLE_TOP = 3;
+        /// <summary>
+        /// 在右上角显示banner广告参数常量
+        /// </summary>
+        public const int POS_BANNER_RIGHT_TOP = 6;
+        /// <summary>
+        /// 在中间居中显示banner广告参数常量
+        /// </summary>
+        public const int POS_BANNER_MIDDLE_MIDDLE = 5;
+        /// <summary>
+        /// 在左下角显示banner广告参数常量
+        /// </summary>
+        public const int POS_BANNER_LEFT_BOTTOM = 2;
+        /// <summary>
+        /// 在底部居中显示banner广告参数常量
+        /// </summary>
+        public const int POS_BANNER_MIDDLE_BOTTOM = 4;
+        /// <summary>
+        /// 在右下角显示banner广告参数常量
+        /// </summary>
+        public const int POS_BANNER_RIGHT_BOTTOM = 7;
+        public const int POS_BANNER_LEFT_MIDDLE = 8;
+        public const int POS_BANNER_RIGHT_MIDDLE = 9;
 
         public enum AdEventType : int
         {

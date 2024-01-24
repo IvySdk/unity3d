@@ -28,9 +28,9 @@ public class Dem : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
         transform.Find("rewarded").GetComponent<Button>().onClick.AddListener(() =>
         {
+
             Debug.Log("call show Reward Ad");
             RiseSdk.RiseSdk.Instance.ToastMsg("call show Reward Ad");
             // #if UNITY_ANDROID

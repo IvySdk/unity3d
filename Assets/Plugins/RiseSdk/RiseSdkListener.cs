@@ -11,7 +11,7 @@ namespace RiseSdk
 public class RiseSdkListener : MonoBehaviour
 {
 
-#if UNITY_ANDROID
+#if UNITY_ANDROID || UNITY_EDITOR
     /// <summary>
     /// ��������Ƶ���Ļص��¼�
     /// 1.RiseSdk.AdEventType
@@ -480,7 +480,7 @@ public class RiseSdkListener : MonoBehaviour
     }
 #endif
 
-#if UNITY_IOS
+#if UNITY_IOS || UNITY_EDITOR
     /// <summary>
     /// ��������Ƶ���Ļص��¼�
     /// 1.RiseSdk.AdEventType
@@ -857,7 +857,7 @@ public class RiseSdkListener : MonoBehaviour
     /// </summary>
     public class RiseSdkListener : MonoBehaviour
     {
-#if UNITY_ANDROID
+#if UNITY_ANDROID || UNITY_EDITOR
         /// <summary>
         /// ֧���Ľ���ص��¼�
         /// </summary>
@@ -1175,6 +1175,35 @@ public class RiseSdkListener : MonoBehaviour
                 int id = int.Parse(billId);
                 OnPaymentEvent(RiseSdk.PaymentResult.Success, id);
             }
+        }
+
+        /// <summary>
+        /// payload支付成功结果回调，SDK自动调用。
+        /// </summary>
+        /// <param name="data"></param>
+        public void onPaymentSuccessWithPayload(string data)
+        {
+            // if (OnPaymentWithPayloadEvent != null && OnPaymentWithPayloadEvent.GetInvocationList().Length > 0)
+            // {
+            //     if (!string.IsNullOrEmpty(data))
+            //     {
+            //         string[] strArray = data.Split('|');
+            //         int id = 0;
+            //         if (strArray.Length > 1 && int.TryParse(strArray[0], out id))
+            //         {
+            //             OnPaymentWithPayloadEvent(RiseSdk.PaymentResult.Success, id, strArray[1]);
+            //         }
+            //     }
+            // }
+            // else
+            // {
+            //     if (!string.IsNullOrEmpty(data))
+            //     {
+            //         if (LastPayWithLoadSuccessData == null)
+            //             LastPayWithLoadSuccessData = new List<string>();
+            //         LastPayWithLoadSuccessData.Add(data);
+            //     }
+            // }
         }
 
         /// <summary>
@@ -1638,7 +1667,7 @@ public class RiseSdkListener : MonoBehaviour
 
 
 
-#elif UNITY_IOS
+#elif UNITY_IOS || UNITY_EDITOR
     /// <summary>
     /// ��������Ƶ���Ļص��¼�
     /// 1.RiseSdk.AdEventType

@@ -63,6 +63,8 @@ struct DelegateU5BU5D_tC5AB7E8F745616680F337909D3A8E6C722CDF771;
 struct ObjectU5BU5D_t8061030B0A12A55D5AD8652A20C922FE99450918;
 // UnityEngine.UI.Selectable[]
 struct SelectableU5BU5D_t4160E135F02A40F75A63F787D36F31FEC6FE91A9;
+// RiseSdk.AbstractRiseSdk
+struct AbstractRiseSdk_tB6D360E38F67DD8829E3555CCE0DAE48AAE7B735;
 // UnityEngine.UI.AnimationTriggers
 struct AnimationTriggers_tA0DC06F89C5280C6DD972F6F4C8A56D7F4F79074;
 // UnityEngine.UI.Button
@@ -77,8 +79,6 @@ struct Dem_t6592DFECB824CB85C1FC4ED36BAA5DFE3F94B565;
 struct Enum_t2A1A94B24E3B776EEF4E5E485E290BB9D4D072E2;
 // UnityEngine.UI.Graphic
 struct Graphic_tCBFCA4585A19E2B75465AECFEAC43F4016BF7931;
-// RiseSdk.IRiseSdk
-struct IRiseSdk_t35FCEF17B8A43522A815134E8841D8C61D57979E;
 // UnityEngine.Events.InvokableCallList
 struct InvokableCallList_t309E1C8C7CE885A0D2F98C84CEA77A8935688382;
 // System.Reflection.MethodInfo
@@ -146,8 +146,8 @@ struct U3CModuleU3E_tBB65183F1134474D09FF49B95625D25472B9BA8B
 {
 };
 
-// RiseSdk.IRiseSdk
-struct IRiseSdk_t35FCEF17B8A43522A815134E8841D8C61D57979E  : public RuntimeObject
+// RiseSdk.AbstractRiseSdk
+struct AbstractRiseSdk_tB6D360E38F67DD8829E3555CCE0DAE48AAE7B735  : public RuntimeObject
 {
 };
 
@@ -274,10 +274,10 @@ struct Navigation_t4D2E201D65749CF4E104E8AC1232CF1D6F14795C_marshaled_com
 };
 
 // RiseSdk.RiseSdk
-struct RiseSdk_tE6B5D17EB8471B27C55E5E71F7A07E0F0014132F  : public IRiseSdk_t35FCEF17B8A43522A815134E8841D8C61D57979E
+struct RiseSdk_tE6B5D17EB8471B27C55E5E71F7A07E0F0014132F  : public AbstractRiseSdk_tB6D360E38F67DD8829E3555CCE0DAE48AAE7B735
 {
-	// RiseSdk.IRiseSdk RiseSdk.RiseSdk::_riseSdk
-	IRiseSdk_t35FCEF17B8A43522A815134E8841D8C61D57979E* ____riseSdk_7;
+	// RiseSdk.AbstractRiseSdk RiseSdk.RiseSdk::_riseSdk
+	AbstractRiseSdk_tB6D360E38F67DD8829E3555CCE0DAE48AAE7B735* ____riseSdk_7;
 };
 
 // UnityEngine.UI.SpriteState
@@ -540,9 +540,9 @@ struct Button_t6786514A57F7AFDEE5431112FEA0CAB24F5AE098  : public Selectable_t32
 
 // <Module>
 
-// RiseSdk.IRiseSdk
+// RiseSdk.AbstractRiseSdk
 
-// RiseSdk.IRiseSdk
+// RiseSdk.AbstractRiseSdk
 
 // System.String
 struct String_t_StaticFields
@@ -782,7 +782,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Dem_Awake_m50BD72BC35448A624222834A17CC9
 		RiseSdk_tE6B5D17EB8471B27C55E5E71F7A07E0F0014132F* L_0;
 		L_0 = RiseSdk_get_Instance_mF7B692D4BF44E697C87CCC5FA0ECCA2C846F54E2(NULL);
 		NullCheck(L_0);
-		VirtualActionInvoker0::Invoke(4 /* System.Void RiseSdk.IRiseSdk::OnInit() */, L_0);
+		VirtualActionInvoker0::Invoke(4 /* System.Void RiseSdk.AbstractRiseSdk::OnInit() */, L_0);
 		// RiseSdk.RiseSdkListener.OnGMSEvent += (eventType, str) =>
 		// {
 		//     RiseSdk.RiseSdk.Instance.ToastMsg($"{eventType.ToString()} + {str}");
@@ -865,6 +865,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Dem_Start_mD388CD02D61B81F04344B4C56E2CA
 	{
 		// transform.Find("rewarded").GetComponent<Button>().onClick.AddListener(() =>
 		// {
+		// 
 		//     Debug.Log("call show Reward Ad");
 		//     RiseSdk.RiseSdk.Instance.ToastMsg("call show Reward Ad");
 		//     // #if UNITY_ANDROID
@@ -998,7 +999,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void U3CU3Ec_U3CAwakeU3Eb__0_0_mFB197724A49D6
 		String_t* L_4;
 		L_4 = String_Concat_m8855A6DE10F84DA7F4EC113CADDB59873A25573B(L_2, _stringLiteral41D7D721EB92533F364B02AAC885BBC1473C5589, L_3, NULL);
 		NullCheck(L_0);
-		VirtualActionInvoker1< String_t* >::Invoke(16 /* System.Void RiseSdk.IRiseSdk::ToastMsg(System.String) */, L_0, L_4);
+		VirtualActionInvoker1< String_t* >::Invoke(16 /* System.Void RiseSdk.AbstractRiseSdk::ToastMsg(System.String) */, L_0, L_4);
 		// };
 		return;
 	}
@@ -1051,7 +1052,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void U3CU3Ec_U3CAwakeU3Eb__0_1_mEAEEED4F4C190
 		String_t* L_15;
 		L_15 = String_Format_m918500C1EFB475181349A79989BB79BB36102894(_stringLiteralF85AEFA2373E122E97FE725A1AB51D2B600388A5, L_11, NULL);
 		NullCheck(L_0);
-		VirtualActionInvoker1< String_t* >::Invoke(16 /* System.Void RiseSdk.IRiseSdk::ToastMsg(System.String) */, L_0, L_15);
+		VirtualActionInvoker1< String_t* >::Invoke(16 /* System.Void RiseSdk.AbstractRiseSdk::ToastMsg(System.String) */, L_0, L_15);
 		// };
 		return;
 	}
@@ -1077,13 +1078,13 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void U3CU3Ec_U3CStartU3Eb__1_0_mE3C87DDFAD264
 		RiseSdk_tE6B5D17EB8471B27C55E5E71F7A07E0F0014132F* L_0;
 		L_0 = RiseSdk_get_Instance_mF7B692D4BF44E697C87CCC5FA0ECCA2C846F54E2(NULL);
 		NullCheck(L_0);
-		VirtualActionInvoker1< String_t* >::Invoke(16 /* System.Void RiseSdk.IRiseSdk::ToastMsg(System.String) */, L_0, _stringLiteralD95B46DD5A8F2E37BE8E4990A2BA38328B655B42);
+		VirtualActionInvoker1< String_t* >::Invoke(16 /* System.Void RiseSdk.AbstractRiseSdk::ToastMsg(System.String) */, L_0, _stringLiteralD95B46DD5A8F2E37BE8E4990A2BA38328B655B42);
 		// if (RiseSdk.RiseSdk.Instance.HasRewardAd())
 		RiseSdk_tE6B5D17EB8471B27C55E5E71F7A07E0F0014132F* L_1;
 		L_1 = RiseSdk_get_Instance_mF7B692D4BF44E697C87CCC5FA0ECCA2C846F54E2(NULL);
 		NullCheck(L_1);
 		bool L_2;
-		L_2 = VirtualFuncInvoker0< bool >::Invoke(10 /* System.Boolean RiseSdk.IRiseSdk::HasRewardAd() */, L_1);
+		L_2 = VirtualFuncInvoker0< bool >::Invoke(10 /* System.Boolean RiseSdk.AbstractRiseSdk::HasRewardAd() */, L_1);
 		if (!L_2)
 		{
 			goto IL_0031;
@@ -1095,7 +1096,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void U3CU3Ec_U3CStartU3Eb__1_0_mE3C87DDFAD264
 		RiseSdk_tE6B5D17EB8471B27C55E5E71F7A07E0F0014132F* L_3;
 		L_3 = RiseSdk_get_Instance_mF7B692D4BF44E697C87CCC5FA0ECCA2C846F54E2(NULL);
 		NullCheck(L_3);
-		VirtualActionInvoker1< int32_t >::Invoke(11 /* System.Void RiseSdk.IRiseSdk::ShowRewardAd(System.Int32) */, L_3, 1);
+		VirtualActionInvoker1< int32_t >::Invoke(11 /* System.Void RiseSdk.AbstractRiseSdk::ShowRewardAd(System.Int32) */, L_3, 1);
 		return;
 	}
 
@@ -1106,7 +1107,7 @@ IL_0031:
 		RiseSdk_tE6B5D17EB8471B27C55E5E71F7A07E0F0014132F* L_4;
 		L_4 = RiseSdk_get_Instance_mF7B692D4BF44E697C87CCC5FA0ECCA2C846F54E2(NULL);
 		NullCheck(L_4);
-		VirtualActionInvoker1< String_t* >::Invoke(16 /* System.Void RiseSdk.IRiseSdk::ToastMsg(System.String) */, L_4, _stringLiteral07EA54B4E84E67CF011182812F21EE1357F7BA9E);
+		VirtualActionInvoker1< String_t* >::Invoke(16 /* System.Void RiseSdk.AbstractRiseSdk::ToastMsg(System.String) */, L_4, _stringLiteral07EA54B4E84E67CF011182812F21EE1357F7BA9E);
 		// });
 		return;
 	}
