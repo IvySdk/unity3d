@@ -545,7 +545,7 @@ RiseSdk.Instance.LogoutXsolla();
 `RiseSdk.Instance.toast(messageContent);`
 
 
-## default.json 各部分说明
+## default.json
 sdk配置文件,放置在`native/engine/android/app/src/main/assets`目录下，广告、计费、打点等功能均需要通过此文件配置
 * 完整default.json 示例
 
