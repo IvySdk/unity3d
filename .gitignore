@@ -1,0 +1,11 @@
+Export/Android/.idea/*
+Export/Android/.gradle/*
+
+Logs/*
+Temp/*
+Library/*
+Export/*/build/*
+Packages/*
+UserSettings/*
+Export/Launcher/*
+Export/unityLibrary/*

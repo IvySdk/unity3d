@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="android_sdk_return">Return</string>
+    <string name="android_sdk_download">Download</string>
+    <string name="android_sdk_guess_you_like">You may like this game</string>
+    <string name="android_sdk_exit"><u>Quit</u></string>
+    <string name="android_sdk_exit_confirm">Do you want to exit?</string>
+    <string name="android_sdk_more">More Games</string>
+    <string name="android_sdk_expired">Expired</string>
+    <string name="google_signin_other_error">Google Sign in Error</string>
+    <string name="google_signin_title">Google Sign In</string>
+    <string name="risesdk_gameactivity_title">Download these apps for free</string>
+    <string name="risesdk_ad_disabled">Thanks for your support, Ad will be not displayed.</string>
+    <string name="google_leaderboard_not_available">Google leaderboards not available on this device.</string>
+    <string name="transaction_cannot_be_completed">Transaction cannot be completed.</string>
+    <string name="ok">OK</string>
+    <string name="reward_video_load_failed">No reward video available now, please try again later.</string>
+    <string name="reward_loading_title">Loading Offers&#8230;</string>
+    <string name="risesdk_payment_received">Thanks for your payment!</string>
+    <string name="risesdk_install">Play</string>
+    <string name="risesdk_reward_install">Install</string>
+    <string name="banner_title_placeholder">Find more games</string>
+    <string name="banner_placeholder">Search IVY in Google Play Store to get more addictive games.</string>
+    <string name="promotion_skip_format">Skip | %s</string>
+    <string name="show_saved_game_title">Show My Game Savings</string>
+    <string name="user_survey">Help us improve</string>
+
+</resources>
