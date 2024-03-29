@@ -1,7 +1,7 @@
 # RiseSDK for CocosCreator
 
 # 前言
-[**default.json: sdk配置文件, 广告、计费、打点等功能均需要通过此文件配置；对各部分配置详细说明见文档最底部**](#default.json 各部分说明)
+[**default.json: sdk配置文件, 广告、计费、打点等功能均需要通过此文件配置；对各部分配置详细说明见文档最底部**](#default.json)
 
 ## 1, 添加引用
 1. 添加default.json到native/engine/android/app/src/main/assets目录
