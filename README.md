@@ -1,4 +1,4 @@
-# RiseSDK for CocosCreator
+# RiseSDK for Unity
 
 # 前言
 [**default.json: sdk配置文件, 广告、计费、打点等功能均需要通过此文件配置；对各部分配置详细说明见文档最底部**](#default.json组成部分说明)
