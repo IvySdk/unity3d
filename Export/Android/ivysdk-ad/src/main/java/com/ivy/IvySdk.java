@@ -40,6 +40,9 @@ import org.json.JSONObject;
 import java.lang.ref.WeakReference;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
+
+import okhttp3.OkHttpClient;
 
 public final class IvySdk {
     private static final String TAG = IvySdk.class.getCanonicalName();
@@ -860,6 +863,18 @@ public final class IvySdk {
         }
     }
 
+    private static OkHttpClient okHttpClient = null;
+
+    public static OkHttpClient getOkHttpClient() {
+        if (okHttpClient == null) {
+            okHttpClient = new OkHttpClient.Builder()
+                    .connectTimeout(60, TimeUnit.SECONDS)
+                    .readTimeout(60, TimeUnit.SECONDS)
+                    .retryOnConnectionFailure(true)
+                    .build();
+        }
+        return okHttpClient;
+    }
 
 }
 

@@ -10,9 +10,9 @@ import com.google.firebase.remoteconfig.FirebaseRemoteConfig;
 import com.ivy.IvySdk;
 import com.ivy.IvyUtils;
 import com.ivy.Logger;
+import com.ivy.ads.configuration.ConfigurationParser;
 import com.ivy.networks.tracker.EventTracker;
 import com.ivy.networks.util.Util;
-
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -22,6 +22,11 @@ import java.util.Iterator;
 import java.util.Locale;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.atomic.AtomicBoolean;
+
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
 
 public final class GridManager {
@@ -59,7 +64,7 @@ public final class GridManager {
 
         int localCacheVersion = sp.getInt("gridDataVersion", vc);
         if (localCacheVersion != vc) {
-            Logger.debug( "user upgrade the game, we should local the grid from assets");
+            Logger.debug("user upgrade the game, we should local the grid from assets");
             gridString = null;
         }
 
@@ -79,24 +84,24 @@ public final class GridManager {
                 final String suffix = activity.getPackageName() + versionCode;
                 String fileName = IvyUtils.md5("config_" + suffix);
 
-                Log.d(TAG, "try load security config file:" + fileName);
+                Logger.debug("try load security config file:" + fileName);
 
                 gridString = IvyUtils.readSecureText(activity, fileName);
 
-                Logger.debug( "gridData: " + gridString);
+                Logger.debug("gridData: " + gridString);
 
                 if (gridString == null) {
-                    Log.d(TAG, "Security file is empty, try to load default.json directly");
+                    Logger.debug( "Security file is empty, try to load default.json directly");
                     InputStream in = IvyUtils.openAsset(activity, "default.json");
                     if (in != null) {
-                        Log.d(TAG, "Plain config file is OK, use it");
+                        Logger.debug("Plain config file is OK, use it");
                         gridString = IvyUtils.streamToString(in);
                     }
                 } else {
-                    Log.d(TAG, "Use security config file");
+                    Logger.debug("Use security config file");
                 }
             } else {
-                Logger.debug( "Load country grid for ");
+                Logger.debug("Load country grid for ");
             }
 
             if (gridString != null) {
@@ -114,7 +119,7 @@ public final class GridManager {
             ex.printStackTrace();
         }
 
-//        gridCheck(forceUpdate);
+        gridCheck(forceUpdate);
 
     }
 
@@ -165,7 +170,7 @@ public final class GridManager {
             if (selectedGroupId == null) {
 //                IvySdk.debugToast("No group specified for country " + countryCode);
 
-                Logger.debug( "No group specified for country: " + countryCode);
+                Logger.debug("No group specified for country: " + countryCode);
                 return null;
             }
 
@@ -181,7 +186,7 @@ public final class GridManager {
                     return countryGrid;
                 }
             } else {
-                Logger.debug( "grid file not found for country: " + countryCode);
+                Logger.debug("grid file not found for country: " + countryCode);
             }
         } catch (Exception e) {
             Log.e(TAG, "Can not parse country config data");
@@ -190,166 +195,168 @@ public final class GridManager {
         return null;
     }
 
-//  private synchronized boolean downloadGridData(Activity activity) {
-//    if (gridData == null || activity == null) {
-//      Logger.warning(TAG, "No grid data defined locally");
-//      return false;
-//    }
-//
-//    lastGridNetworkStatus = IvyUtils.isOnline(activity);
-//    if (!lastGridNetworkStatus) {
-//      Logger.warning(TAG, "No network, Check the grid download by worker available");
-//      // if the worker download file exists? if it does, we will check the grid file, and try to use it
-//      return false;
-//    }
-//
-//    Editor preferencesEditor;
-//    JSONObject json;
-//    long nextGridTsLong;
-//
-//    long gts;
-//
-//    SharedPreferences settings = activity.getSharedPreferences("prefs", Context.MODE_PRIVATE);
-//    preferencesEditor = settings.edit();
-//
-//    // 尝试从多个服务器节点下载新的
-//    try {
-//      String localDomain = gridData.optString("domain");
-//
-//      String url = IvySdk.getFirebaseRemoteConfigAsString("json_domain", localDomain);
-//
-//      if (url == null || "".equals(url)) {
-//        Log.w(TAG, "domain url is empty");
-//        return false;
-//      }
-//
-//      StringBuilder urlBuilder = new StringBuilder(url);
-//      // append app_version
-//      String adid = null;//Adjust.getAdid();
-//
-//      urlBuilder.append("&app_version=");
-//      urlBuilder.append(vc);
-//      urlBuilder.append("&language=");
-//      urlBuilder.append(Locale.getDefault().getLanguage());
-//      if (adid != null) {
-//        urlBuilder.append("&gps_adid=");
-//        urlBuilder.append(adid);
-//      }
-//      String country = getClientCountryCode();
-//      if (country != null && !"".equals(country)){
-//        urlBuilder.append("&country=");
-//        urlBuilder.append(country);
-//      }
-//      String installReferrer = settings.getString("parfka_install_referrer", null);
-//      if (installReferrer != null && !"".equals(installReferrer)) {
-//        if (installReferrer.toLowerCase(Locale.ENGLISH).contains("xiaomi")) {
-//          urlBuilder.append("&channel=xiaomi");
-//        }
-//      }
-//
-//      String realGridUrl = urlBuilder.toString();
-//
-//      Logger.debug(TAG, "Get Grid from " + realGridUrl);
-//
-//      OkHttpClient okHttpClient = IvySdk.getOkHttpClient();
-//
-//      Request request = new Request.Builder().url(realGridUrl).build();
-//      Response response = okHttpClient.newCall(request).execute();
-//      if (!response.isSuccessful()) {
-//        Log.w(TAG, "domain response failed, ignore this request");
-//        return false;
-//      }
-//
-//      String data = response.body().string();
-//      String decryptData = IvyUtils.readSecureTextByKeystore(activity, data);
-//      if (decryptData == null) {
-//        Log.w(TAG, "Grid data not valid, ignore " + data);
-//        return false;
-//      }
-//      if ("".equals(decryptData) || "[]".equals(decryptData) || "{}".equals(decryptData)) {
-//        Logger.debug(TAG, "Grid data not changed, just use local version");
-//        return false;
-//      }
-//
-//      Logger.debug(TAG, "DecryptData: " + decryptData);
-//      json = new JSONObject(decryptData);
+    private synchronized boolean downloadGridData(Activity activity) {
+        if (gridData == null || activity == null) {
+            Logger.warn("No grid data defined locally");
+            return false;
+        }
+
+        lastGridNetworkStatus = IvyUtils.isOnline(activity);
+        if (!lastGridNetworkStatus) {
+            Logger.warn("No network, Check the grid download by worker available");
+            // if the worker download file exists? if it does, we will check the grid file, and try to use it
+            return false;
+        }
+
+        SharedPreferences.Editor preferencesEditor;
+        JSONObject json;
+        long nextGridTsLong;
+
+        long gts;
+
+        SharedPreferences settings = activity.getSharedPreferences("prefs", Context.MODE_PRIVATE);
+        preferencesEditor = settings.edit();
+
+        // 尝试从多个服务器节点下载新的
+        try {
+            String localDomain = gridData.optString("domain");
+
+            String url = FirebaseRemoteConfig.getInstance().getString("json_domain");
+            if (url == null || "".equals(url)) {
+                url = localDomain;
+            }
+            if (url == null || "".equals(url)) {
+                Log.w(TAG, "domain url is empty");
+                return false;
+            }
+
+            StringBuilder urlBuilder = new StringBuilder(url);
+            // append app_version
+            String adid = null;//Adjust.getAdid();
+
+            urlBuilder.append("&app_version=");
+            urlBuilder.append(vc);
+            urlBuilder.append("&language=");
+            urlBuilder.append(Locale.getDefault().getLanguage());
+            if (adid != null) {
+                urlBuilder.append("&gps_adid=");
+                urlBuilder.append(adid);
+            }
+            String country = getClientCountryCode();
+            if (country != null && !"".equals(country)) {
+                urlBuilder.append("&country=");
+                urlBuilder.append(country);
+            }
+            String installReferrer = settings.getString("parfka_install_referrer", null);
+            if (installReferrer != null && !"".equals(installReferrer)) {
+                if (installReferrer.toLowerCase(Locale.ENGLISH).contains("xiaomi")) {
+                    urlBuilder.append("&channel=xiaomi");
+                }
+            }
+
+            String realGridUrl = urlBuilder.toString();
+
+            Logger.debug("Get Grid from " + realGridUrl);
+
+            OkHttpClient okHttpClient = IvySdk.getOkHttpClient();
+
+            Request request = new Request.Builder().url(realGridUrl).build();
+            Response response = okHttpClient.newCall(request).execute();
+            if (!response.isSuccessful()) {
+                Logger.warn("domain response failed, ignore this request");
+                return false;
+            }
+
+            String data = response.body().string();
+            String decryptData = IvyUtils.readSecureTextByKeystore(activity, data);
+            if (decryptData == null) {
+                Log.w(TAG, "Grid data not valid, ignore " + data);
+                return false;
+            }
+            if ("".equals(decryptData) || "[]".equals(decryptData) || "{}".equals(decryptData)) {
+                Logger.debug("Grid data not changed, just use local version");
+                return false;
+            }
+
+            Logger.debug("DecryptData: " + decryptData);
+            json = new JSONObject(decryptData);
 //      IvySdk.debugToast("New grid downloaded");
-//    } catch (Exception e5) {
-//      Log.w(TAG, "Grid data remote failed: ", e5);
+        } catch (Exception e5) {
+            Log.w(TAG, "Grid data remote failed: ", e5);
 //      IvySdk.debugToast("Attention! Grid Data Error: " + e5.getMessage());
-//      return false;
-//    }
-//
-//    // 更新本地grid最近下载时间
-//    if (json.has(PREFS_JSON_GTS)) {
-//      gts = json.optLong(PREFS_JSON_GTS);
-//
-//      preferencesEditor.putBoolean("lastConnectivityWasWifi", Util.isWifi(activity));
-//      preferencesEditor.putLong("lastGridDownload", System.currentTimeMillis());
-//
-//      // if current gts bigger than this gts, ignore this grid data
-//      long currentGts = gridData.optLong(PREFS_JSON_GTS);
-//      if (currentGts >= gts) {
-//        preferencesEditor.apply();
-//        Logger.warning(TAG, "current grid data gts is bigger than remote, ignore the remote settings, current: " + currentGts + ", remote: " + gts);
-//        return false;
-//      }
-//      preferencesEditor.putLong(PREFS_JSON_GTS, gts);
-//      setGts(gts);
-//    } else {
-//      Logger.error(TAG, "Invalid grid json, ignore");
-//      return false;
-//    }
-//
-//    if (json.has(PREFS_JSON_GV)) {
-//      int gv = json.optInt(PREFS_JSON_GV);
-//      if (gv < gridData.optInt(PREFS_JSON_GV)) {
-//        Log.w(TAG, "grid version small than local settings, ignore the remote settings");
-//        return false;
-//      }
-//    }
-//
-//    // 下次更新grid的请求时间戳,
-//    // 设定的值, 必须是当前时间1小时后, 如果没有包含此字段, 或小于1 hour, 将触发清除缓存的nextGridTs操作
-//    // 下次打开将请求新的grid数据
-//    if (json.has("nextGridTs")) {
-//      nextGridTsLong = json.optLong("nextGridTs", 0);
-//      if (nextGridTsLong > System.currentTimeMillis() + 3600000) {
-//        preferencesEditor.putString("nextGridTs", nextGridTsLong + "");
-//      } else {
-//        if (settings.contains("nextGridTs")) {
-//          preferencesEditor.remove("nextGridTs");
-//        }
-//      }
-//    } else {
-//      if (settings.contains("nextGridTs")) {
-//        preferencesEditor.remove("nextGridTs");
-//      }
-//    }
-//
-//    // update the client country code by grid data
-//    if (json.has("clientCountryCode")) {
-//      String country = json.optString("clientCountCode", "");
-//      if (!"".equals(country)) {
-//        preferencesEditor.putString("clientCountryCode", country);
-//      }
-//    }
-//
-//    preferencesEditor.putInt("gridDataVersion", Util.getVersionCode(activity));
-//    preferencesEditor.apply();
-//
-//    Util.storeData(activity, FILE_JSON_RESPONSE, json.toString());
-//
-//    Logger.debug(TAG, "new grid saved");
-//    gridData = json;
-//    mergeGridWithRemoteConfig();
-//    ConfigurationParser.clearCache();
-//
-//    // log the grid update event
-//    Log.w(TAG, "grid was override by remote");
-//
-//    return true;
-//  }
+            return false;
+        }
+
+        // 更新本地grid最近下载时间
+        if (json.has(PREFS_JSON_GTS)) {
+            gts = json.optLong(PREFS_JSON_GTS);
+
+            preferencesEditor.putBoolean("lastConnectivityWasWifi", Util.isWifi(activity));
+            preferencesEditor.putLong("lastGridDownload", System.currentTimeMillis());
+
+            // if current gts bigger than this gts, ignore this grid data
+            long currentGts = gridData.optLong(PREFS_JSON_GTS);
+            if (currentGts >= gts) {
+                preferencesEditor.apply();
+                Logger.warn("current grid data gts is bigger than remote, ignore the remote settings, current: " + currentGts + ", remote: " + gts);
+                return false;
+            }
+            preferencesEditor.putLong(PREFS_JSON_GTS, gts);
+            setGts(gts);
+        } else {
+            Logger.error("Invalid grid json, ignore");
+            return false;
+        }
+
+        if (json.has(PREFS_JSON_GV)) {
+            int gv = json.optInt(PREFS_JSON_GV);
+            if (gv < gridData.optInt(PREFS_JSON_GV)) {
+                Log.w(TAG, "grid version small than local settings, ignore the remote settings");
+                return false;
+            }
+        }
+
+        // 下次更新grid的请求时间戳,
+        // 设定的值, 必须是当前时间1小时后, 如果没有包含此字段, 或小于1 hour, 将触发清除缓存的nextGridTs操作
+        // 下次打开将请求新的grid数据
+        if (json.has("nextGridTs")) {
+            nextGridTsLong = json.optLong("nextGridTs", 0);
+            if (nextGridTsLong > System.currentTimeMillis() + 3600000) {
+                preferencesEditor.putString("nextGridTs", nextGridTsLong + "");
+            } else {
+                if (settings.contains("nextGridTs")) {
+                    preferencesEditor.remove("nextGridTs");
+                }
+            }
+        } else {
+            if (settings.contains("nextGridTs")) {
+                preferencesEditor.remove("nextGridTs");
+            }
+        }
+
+        // update the client country code by grid data
+        if (json.has("clientCountryCode")) {
+            String country = json.optString("clientCountCode", "");
+            if (!"".equals(country)) {
+                preferencesEditor.putString("clientCountryCode", country);
+            }
+        }
+
+        preferencesEditor.putInt("gridDataVersion", Util.getVersionCode(activity));
+        preferencesEditor.apply();
+
+        Util.storeData(activity, FILE_JSON_RESPONSE, json.toString());
+
+        Logger.debug("new grid saved");
+        gridData = json;
+        mergeGridWithRemoteConfig();
+        ConfigurationParser.clearCache();
+
+        // log the grid update event
+        Log.w(TAG, "grid was override by remote");
+
+        return true;
+    }
 
     private static void setGts(Long gts) {
         if (gts < 0) {
@@ -359,33 +366,34 @@ public final class GridManager {
     }
 
     private void gridCheck(boolean force) {
-//        if (this.gridSetup != null) {
-//            this.gridSetup.checkGrid(force);
-//        }
+        if (this.gridSetup != null) {
+            this.gridSetup.checkGrid(force);
+        }
     }
 
-//  private AtomicBoolean isDownloading = new AtomicBoolean(false);
-//  public void setupGrid() {
-//    if (this.gridFetchPool != null) {
-//      this.gridFetchPool.execute(new Runnable() {
-//        public void run() {
-//          if (isDownloading.getAndSet(true)) {
-//            Log.w(TAG, "Grid is downloading");
-//            return;
-//          }
-//          try {
-//            if (!downloadGridData(activity)) {
-//              Logger.debug(TAG, "Grid Download failed");
-//            }
-//          } catch (Exception ex) {
-//            Logger.error(TAG, "setupGrid failed", ex);
-//          } finally {
-//            isDownloading.set(false);
-//          }
-//        }
-//      });
-//    }
-//  }
+    private AtomicBoolean isDownloading = new AtomicBoolean(false);
+
+    public void setupGrid() {
+        if (this.gridFetchPool != null) {
+            this.gridFetchPool.execute(new Runnable() {
+                public void run() {
+                    if (isDownloading.getAndSet(true)) {
+                        Log.w(TAG, "Grid is downloading");
+                        return;
+                    }
+                    try {
+                        if (!downloadGridData(activity)) {
+                            Logger.debug("Grid Download failed");
+                        }
+                    } catch (Exception ex) {
+                        Logger.error("setupGrid failed::" + ex.getMessage());
+                    } finally {
+                        isDownloading.set(false);
+                    }
+                }
+            });
+        }
+    }
 
     public interface AdProvidersCallback {
         void setupAdProviders(String str, boolean z);
@@ -418,7 +426,7 @@ public final class GridManager {
                     gridData = jsonObject;
                 }
             } catch (Throwable t) {
-                Logger.error( "remote grid data exception::" + t.getMessage());
+                Logger.error("remote grid data exception::" + t.getMessage());
             }
         }
 

@@ -31,7 +31,7 @@ public class GridSetup {
       e.printStackTrace();
     }
     if (System.currentTimeMillis() >= Math.min(nextGridTsLong, nextGridTsDefault) || force || forceCheckBecauseOfBetterConnectivity || lastGridDownload == 0) {
-//      gridManager.setupGrid();
+      gridManager.setupGrid();
     }
   }
 }
