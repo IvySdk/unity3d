@@ -11,5 +11,8 @@
         android:xlargeScreens="true" />
     <application
         android:icon="@mipmap/app_icon"
-        android:label="@string/app_name" />
+        android:label="@string/app_name" >
+
+
+    </application>
 </manifest>

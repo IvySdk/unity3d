@@ -1,2 +1,4 @@
 include ':launcher', ':unityLibrary'
-include ':ivysdk-core'
+//include ':ivysdk-core'
+include ':ivysdk-ad'
+include ':testapp'

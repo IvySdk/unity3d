@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/showBanner"
+        android:layout_width="144dp"
+        android:layout_height="42dp"
+        android:onClick="onBtnClick"
+        android:text="show banner" />
+
+    <Button
+        android:id="@+id/closeBanner"
+        android:layout_width="144dp"
+        android:layout_height="42dp"
+        android:onClick="onBtnClick"
+        android:text="close banner" />
+
+    <Button
+        android:id="@+id/hasFull"
+        android:layout_width="144dp"
+        android:layout_height="42dp"
+        android:onClick="onBtnClick"
+        android:text="has full" />
+
+    <Button
+        android:id="@+id/showFull"
+        android:layout_width="144dp"
+        android:layout_height="42dp"
+        android:onClick="onBtnClick"
+        android:text="show full" />
+
+    <Button
+        android:id="@+id/hasRewarded"
+        android:layout_width="144dp"
+        android:layout_height="42dp"
+        android:onClick="onBtnClick"
+        android:text="has Rewarded" />
+
+    <Button
+        android:id="@+id/showRewarded"
+        android:layout_width="144dp"
+        android:layout_height="42dp"
+        android:onClick="onBtnClick"
+        android:text="show Rewarded" />
+
+
+</LinearLayout>

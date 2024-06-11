@@ -1,0 +1,181 @@
+{
+  "debug": false,
+  "enableAfAdPing": false,
+  "adPingThreshold": 0.01,
+  "mixAdEvents": false,
+  "providers": [],
+  "data": {
+
+  },
+  "banner": [
+    {
+      "provider": "admob",
+      "p": {
+        "placement": "ca-app-pub-3940256099942544/6300978111"
+      }
+    }
+  ],
+  "full": [
+    {
+      "provider": "admob",
+      "p": {
+        "placement": "ca-app-pub-3940256099942544/1033173712"
+      }
+    }
+  ],
+  "video": [
+    {
+      "provider": "admob",
+      "p": {
+        "placement": "ca-app-pub-3940256099942544/5224354917"
+      }
+    }
+  ],
+  "sleepOnDisplayed": 60,
+  "sleepOnLoadNoFill": 360,
+  "sleepOnLoadOtherError": 360,
+  "forceSkippedTimeoutTimes": 2,
+  "forceSkippedLoadedFailsRatio": 0.4,
+  "clickedRatioCheckedDisplayTimes": 1000,
+  "forceSkippedClickedMinRatio": 0,
+  "forceSkippedClickedMaxRatio": 0.5,
+  "adLoadTimeout": 10,
+  "adRefreshInterval": 1800,
+  "bannerLoadTimeoutSeconds": 5,
+  "gen_events": {
+    "interstitial_shown_2_in1day": [
+      {
+        "e1": "interstitial_shown",
+        "v": 2,
+        "op": ">=",
+        "d": 1,
+        "r": false
+      }
+    ],
+    "S3_1D": [
+      {
+        "e1": "interstitial_shown",
+        "v": 3,
+        "op": ">=",
+        "d": 1,
+        "r": false
+      }
+    ],
+    "S4_1D": [
+      {
+        "e1": "interstitial_shown",
+        "v": 4,
+        "op": ">=",
+        "d": 1,
+        "r": false
+      }
+    ],
+    "S5_1D": [
+      {
+        "e1": "interstitial_shown",
+        "v": 5,
+        "op": ">=",
+        "d": 1,
+        "r": false
+      }
+    ],
+    "interstitial_shown_2_in3day": [
+      {
+        "e1": "interstitial_shown",
+        "v": 2,
+        "op": ">=",
+        "d": 3,
+        "r": false
+      }
+    ],
+    "video_shown_2_in1day": [
+      {
+        "e1": "video_shown",
+        "v": 2,
+        "op": ">=",
+        "d": 1,
+        "r": false
+      }
+    ],
+    "video_shown_2_in3day": [
+      {
+        "e1": "video_shown",
+        "v": 2,
+        "op": ">=",
+        "d": 3,
+        "r": false
+      }
+    ]
+  },
+  "summary_events": {
+    "op": [
+      2,
+      3
+    ],
+    "retention": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "cv": {
+      "count": [
+        1,
+        2,
+        3,
+        5,
+        10,
+        20
+      ],
+      "e": "video_completed"
+    }
+  },
+  "adParallelRequests": 1,
+  "adParallelWaitTime": 5,
+  "dontShowFullPageAdsOnSlowConnection": false,
+  "adFullScreenTimespan": 120,
+  "ad": {
+    "adNextLoadInterval": 15,
+    "timeToWaitForAdToShowSeconds": 5,
+    "updateBanner": [],
+    "adDelayFirstInterstitialCallSec": 30,
+    "adProvidersRefreshInMinutes": 60,
+    "useBannerFingerPrinting": true,
+    "useVideoClipPreloading": true,
+    "rewardedClipsCaps": {
+      "*": {
+        "intervalHours": 24,
+        "maxImpressions": 4
+      }
+    },
+    "iLTS": 10,
+    "bLTS": 10,
+    "aC": {
+      "iTs": [
+        20,
+        120
+      ],
+      "iPTs": [
+        0,
+        60
+      ],
+      "fIPT": 5,
+      "fIPSS": 2,
+      "iSTs": [
+        {
+          "f": "*",
+          "t": "*"
+        }
+      ]
+    }
+  },
+  "gts": 1692666353000,
+  "gv": 1,
+  "ver": 2,
+  "appid": 2712,
+  "v_api": 0,
+  "token": "174f3dc7c2a0d2f56c9dba7946965fb6"
+}

@@ -35,8 +35,6 @@ import com.adsfall.R;
 import com.alibaba.fastjson.JSON;
 import com.android.client.AndroidSdk;
 import com.android.client.GoogleListener;
-import com.android.client.InAppMessageClickListener;
-import com.android.client.OnCloudFunctionResult;
 import com.android.client.OnSkuDetailsListener;
 import com.android.client.PlayGameProfileListener;
 import com.android.client.SKUDetail;

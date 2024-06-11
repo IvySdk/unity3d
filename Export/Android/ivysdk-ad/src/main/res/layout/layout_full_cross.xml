@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/iv_promotion_image"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"/>
+
+    <Button
+        android:id="@+id/bt_promotion_skip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/bt_skip_style"
+        android:minWidth="30dp"
+        android:minHeight="30dp"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
+        android:text="@string/promotion_skip_format"
+        android:textColor="#FFFFFF"
+        android:textAllCaps="false"
+        android:textSize="15sp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp" />
+
+    <ImageView
+        android:layout_marginStart="0dp"
+        android:layout_marginBottom="10dp"
+        android:layout_alignParentBottom="true"
+        android:src="@drawable/delicious_ad"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="0dp" />
+
+</RelativeLayout>

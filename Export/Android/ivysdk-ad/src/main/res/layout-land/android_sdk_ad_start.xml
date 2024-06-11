@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             android:layout_gravity="center_horizontal"
+             android:background="#e8000000"
+             android:orientation="horizontal">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:orientation="horizontal"
+        android:tag="_animation">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="10">
+
+            <androidx.viewpager.widget.ViewPager
+                android:layout_width="180dp"
+                android:layout_height="310dp"
+                android:layout_gravity="center"
+                android:layout_margin="15dp"
+                android:contentDescription="@null"
+                android:tag="pager"/>
+
+            <ImageView
+                android:id="@+id/adLabel"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginLeft="16dp"
+                android:src="@drawable/ad_label_bottom"
+                android:layout_gravity="top|left"
+                android:contentDescription=""/>
+
+            <ImageView
+                android:layout_width="200dp"
+                android:layout_height="320dp"
+                android:layout_gravity="center"
+                android:contentDescription="@null"
+                android:src="@drawable/android_sdk_dialog_frame"
+                android:tag="frame"/>
+
+            <com.ivy.ads.ui.PagerIndicator
+                android:layout_width="match_parent"
+                android:layout_height="12dp"
+                android:layout_gravity="bottom"
+                android:layout_marginBottom="6dp"
+                android:tag="indicator"/>
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_weight="10"
+            android:clickable="true"
+            android:focusable="true"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:ems="16"
+                android:layout_margin="15dp"
+                android:gravity="center"
+                android:tag="title2"
+                android:text="@string/android_sdk_guess_you_like"
+                android:textColor="#ffffff">
+            </TextView>
+
+            <ImageView
+                android:layout_width="96dp"
+                android:layout_height="96dp"
+                android:layout_gravity="center"
+                android:clickable="true"
+                android:focusable="true"
+                android:tag="icon"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"/>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="15dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/android_sdk_download_bg"
+                android:padding="10dp"
+                android:tag="downloadbtn"
+                android:text="@string/android_sdk_download"
+                android:textColor="#ffffff"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:background="@drawable/android_sdk_btn_close"
+        android:padding="10dp"
+        android:tag="closebtn"
+        android:text="@string/android_sdk_return"/>
+</FrameLayout>

@@ -3,7 +3,7 @@ apply plugin: 'com.android.library'
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation project(path: ':ivysdk-core')
+    api project(path: ':ivysdk-ad')
 
 }
 

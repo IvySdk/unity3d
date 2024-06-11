@@ -1,0 +1,87 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /Users/ivy/Desktop/project/unity/RiseSdkDemo/Export/Android/unityLibrary/src/main/AndroidManifest.xml:2:1-31:12
+INJECTED from /Users/ivy/Desktop/project/unity/RiseSdkDemo/Export/Android/unityLibrary/src/main/AndroidManifest.xml:2:1-31:12
+INJECTED from /Users/ivy/Desktop/project/unity/RiseSdkDemo/Export/Android/unityLibrary/src/main/AndroidManifest.xml:2:1-31:12
+	package
+		ADDED from /Users/ivy/Desktop/project/unity/RiseSdkDemo/Export/Android/unityLibrary/src/main/AndroidManifest.xml:2:70-98
+		INJECTED from /Users/ivy/Desktop/project/unity/RiseSdkDemo/Export/Android/unityLibrary/src/main/AndroidManifest.xml
+		INJECTED from /Users/ivy/Desktop/project/unity/RiseSdkDemo/Export/Android/unityLibrary/src/main/AndroidManifest.xml
+	xmlns:tools
+		ADDED from /Users/ivy/Desktop/project/unity/RiseSdkDemo/Export/Android/unityLibrary/src/main/AndroidManifest.xml:2:99-145
+	xmlns:android
+		ADDED from /Users/ivy/Desktop/project/unity/RiseSdkDemo/Export/Android/unityLibrary/src/main/AndroidManifest.xml:2:11-69
+application
+ADDED from /Users/ivy/Desktop/project/unity/RiseSdkDemo/Export/Android/unityLibrary/src/main/AndroidManifest.xml:3:3-26:17
+	android:extractNativeLibs
+		ADDED from /Users/ivy/Desktop/project/unity/RiseSdkDemo/Export/Android/unityLibrary/src/main/AndroidManifest.xml:3:16-48
+meta-data#unity.splash-mode
+ADDED from /Users/ivy/Desktop/project/unity/RiseSdkDemo/Export/Android/unityLibrary/src/main/AndroidManifest.xml:20:5-69
+	android:value
+		ADDED from /Users/ivy/Desktop/project/unity/RiseSdkDemo/Export/Android/unityLibrary/src/main/AndroidManifest.xml:20:49-66
+	android:name
+		ADDED from /Users/ivy/Desktop/project/unity/RiseSdkDemo/Export/Android/unityLibrary/src/main/AndroidManifest.xml:20:16-48
+meta-data#unity.splash-enable
+ADDED from /Users/ivy/Desktop/project/unity/RiseSdkDemo/Export/Android/unityLibrary/src/main/AndroidManifest.xml:21:5-74
+	android:value
+		ADDED from /Users/ivy/Desktop/project/unity/RiseSdkDemo/Export/Android/unityLibrary/src/main/AndroidManifest.xml:21:51-71
+	android:name
+		ADDED from /Users/ivy/Desktop/project/unity/RiseSdkDemo/Export/Android/unityLibrary/src/main/AndroidManifest.xml:21:16-50
+meta-data#unity.launch-fullscreen
+ADDED from /Users/ivy/Desktop/project/unity/RiseSdkDemo/Export/Android/unityLibrary/src/main/AndroidManifest.xml:22:5-78
+	android:value
+		ADDED from /Users/ivy/Desktop/project/unity/RiseSdkDemo/Export/Android/unityLibrary/src/main/AndroidManifest.xml:22:55-75
+	android:name
+		ADDED from /Users/ivy/Desktop/project/unity/RiseSdkDemo/Export/Android/unityLibrary/src/main/AndroidManifest.xml:22:16-54
+meta-data#unity.allow-resizable-window
+ADDED from /Users/ivy/Desktop/project/unity/RiseSdkDemo/Export/Android/unityLibrary/src/main/AndroidManifest.xml:23:5-84
+	android:value
+		ADDED from /Users/ivy/Desktop/project/unity/RiseSdkDemo/Export/Android/unityLibrary/src/main/AndroidManifest.xml:23:60-81
+	android:name
+		ADDED from /Users/ivy/Desktop/project/unity/RiseSdkDemo/Export/Android/unityLibrary/src/main/AndroidManifest.xml:23:16-59
+meta-data#notch.config
+ADDED from /Users/ivy/Desktop/project/unity/RiseSdkDemo/Export/Android/unityLibrary/src/main/AndroidManifest.xml:24:5-81
+	android:value
+		ADDED from /Users/ivy/Desktop/project/unity/RiseSdkDemo/Export/Android/unityLibrary/src/main/AndroidManifest.xml:24:44-78
+	android:name
+		ADDED from /Users/ivy/Desktop/project/unity/RiseSdkDemo/Export/Android/unityLibrary/src/main/AndroidManifest.xml:24:16-43
+meta-data#unity.auto-report-fully-drawn
+ADDED from /Users/ivy/Desktop/project/unity/RiseSdkDemo/Export/Android/unityLibrary/src/main/AndroidManifest.xml:25:5-84
+	android:value
+		ADDED from /Users/ivy/Desktop/project/unity/RiseSdkDemo/Export/Android/unityLibrary/src/main/AndroidManifest.xml:25:61-81
+	android:name
+		ADDED from /Users/ivy/Desktop/project/unity/RiseSdkDemo/Export/Android/unityLibrary/src/main/AndroidManifest.xml:25:16-60
+uses-feature#0x00030000
+ADDED from /Users/ivy/Desktop/project/unity/RiseSdkDemo/Export/Android/unityLibrary/src/main/AndroidManifest.xml:27:3-52
+	android:glEsVersion
+		ADDED from /Users/ivy/Desktop/project/unity/RiseSdkDemo/Export/Android/unityLibrary/src/main/AndroidManifest.xml:27:17-49
+uses-feature#android.hardware.vulkan.version
+ADDED from /Users/ivy/Desktop/project/unity/RiseSdkDemo/Export/Android/unityLibrary/src/main/AndroidManifest.xml:28:3-91
+	android:required
+		ADDED from /Users/ivy/Desktop/project/unity/RiseSdkDemo/Export/Android/unityLibrary/src/main/AndroidManifest.xml:28:64-88
+	android:name
+		ADDED from /Users/ivy/Desktop/project/unity/RiseSdkDemo/Export/Android/unityLibrary/src/main/AndroidManifest.xml:28:17-63
+uses-permission#android.permission.INTERNET
+ADDED from /Users/ivy/Desktop/project/unity/RiseSdkDemo/Export/Android/unityLibrary/src/main/AndroidManifest.xml:29:3-65
+	android:name
+		ADDED from /Users/ivy/Desktop/project/unity/RiseSdkDemo/Export/Android/unityLibrary/src/main/AndroidManifest.xml:29:20-62
+uses-feature#android.hardware.touchscreen
+ADDED from /Users/ivy/Desktop/project/unity/RiseSdkDemo/Export/Android/unityLibrary/src/main/AndroidManifest.xml:30:3-88
+	android:required
+		ADDED from /Users/ivy/Desktop/project/unity/RiseSdkDemo/Export/Android/unityLibrary/src/main/AndroidManifest.xml:30:61-85
+	android:name
+		ADDED from /Users/ivy/Desktop/project/unity/RiseSdkDemo/Export/Android/unityLibrary/src/main/AndroidManifest.xml:30:17-60
+uses-sdk
+INJECTED from /Users/ivy/Desktop/project/unity/RiseSdkDemo/Export/Android/unityLibrary/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /Users/ivy/Desktop/project/unity/RiseSdkDemo/Export/Android/unityLibrary/src/main/AndroidManifest.xml
+INJECTED from /Users/ivy/Desktop/project/unity/RiseSdkDemo/Export/Android/unityLibrary/src/main/AndroidManifest.xml
+INJECTED from /Users/ivy/Desktop/project/unity/RiseSdkDemo/Export/Android/unityLibrary/src/main/AndroidManifest.xml
+INJECTED from /Users/ivy/Desktop/project/unity/RiseSdkDemo/Export/Android/unityLibrary/src/main/AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from /Users/ivy/Desktop/project/unity/RiseSdkDemo/Export/Android/unityLibrary/src/main/AndroidManifest.xml
+		ADDED from /Users/ivy/Desktop/project/unity/RiseSdkDemo/Export/Android/unityLibrary/src/main/AndroidManifest.xml
+		INJECTED from /Users/ivy/Desktop/project/unity/RiseSdkDemo/Export/Android/unityLibrary/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /Users/ivy/Desktop/project/unity/RiseSdkDemo/Export/Android/unityLibrary/src/main/AndroidManifest.xml
+		ADDED from /Users/ivy/Desktop/project/unity/RiseSdkDemo/Export/Android/unityLibrary/src/main/AndroidManifest.xml
+		INJECTED from /Users/ivy/Desktop/project/unity/RiseSdkDemo/Export/Android/unityLibrary/src/main/AndroidManifest.xml

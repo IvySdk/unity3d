@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="google_play_service_appid" translatable="false">847297611955</string>
+    <string name="gms_games_app_id" translatable="false"></string>
+    <string name="google_admob_application_id" translatable="false"></string>
+    <string name="facebook_app_id" translatable="false"></string>
+
+</resources>

@@ -27,34 +27,19 @@ import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.RequestConfiguration;
 import com.google.android.gms.common.GoogleApiAvailability;
 import com.google.firebase.analytics.FirebaseAnalytics;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.crashlytics.FirebaseCrashlytics;
-import com.ivy.AIHelp.AIHelp;
 import com.ivy.IvySdk;
 import com.ivy.IvyUtils;
 import com.ivy.ads.interfaces.IvyAdCallbacks;
 import com.ivy.ads.interfaces.IvyAdInfo;
 import com.ivy.ads.interfaces.IvyAdType;
 import com.ivy.ads.managers.PromoteAdManager;
-import com.ivy.billing.PurchaseManager;
-import com.ivy.billing.PurchaseStateChangeData;
-import com.ivy.billing.impl.IPurchaseQueryCallback;
 import com.ivy.event.CommonEvents;
 import com.ivy.event.EventBus;
 import com.ivy.event.EventListener;
-import com.ivy.facebook.FacebookLoginListener;
-import com.ivy.facebook.FacebookUserManager;
-import com.ivy.help.TiledeskActivity;
-import com.ivy.internal.WebViewActivity;
 import com.ivy.networks.grid.GridManager;
 import com.ivy.util.CommonUtil;
 import com.ivy.util.CustomThrowable;
 import com.ivy.util.Logger;
-import com.ivy.xsolla.DLog;
-import com.ivy.xsolla.IXsollaLoginListener;
-import com.ivy.xsolla.PayResult;
-import com.ivy.xsolla.Product;
 import com.smarx.notchlib.NotchScreenManager;
 
 import org.json.JSONArray;
@@ -62,23 +47,16 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.IllegalFormatCodePointException;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Random;
 
-import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.HttpUrl;
-import okhttp3.Request;
-import okhttp3.Response;
 
 public class AndroidSdk {
     public static final String TAG = "AndroidSdk";
     private static Builder builder;
-    private static FacebookUserManager facebookUserManager = null;
 
     public static final int POS_LEFT_TOP = 1;
     public static final int POS_LEFT_BOTTOM = 2;
@@ -105,7 +83,7 @@ public class AndroidSdk {
         PaymentSystemListener paymentResultListener;
         UserCenterListener userCenterListener;
         UrlListener urlListener;
-        SdkResultListener sdkResultListener;
+        SdkResulListener sdkResultListener;
         AdEventListener adEventListener;
         AdLoadedListener adLoadedListener;
         NetworkChangeListener networkChangeListener;
@@ -123,7 +101,6 @@ public class AndroidSdk {
         IGMSPaidEventListener gmsPaidEventListener;
 
         IAppsflyerConversionListener appsflyerConversionListener;
-        IXsollaLoginListener xsollaLoginListener;
 
         public Builder setPaymentListener(PaymentSystemListener listener) {
             this.paymentResultListener = listener;
@@ -160,23 +137,10 @@ public class AndroidSdk {
             return this;
         }
 
-        public Builder setUserCenterListener(UserCenterListener listener) {
-            this.userCenterListener = listener;
-            return this;
-        }
 
-        public Builder setUrlListener(UrlListener listener) {
-            this.urlListener = listener;
-            return this;
-        }
 
         public Builder setSdkResultListener(SdkResultListener listener) {
             this.sdkResultListener = listener;
-            return this;
-        }
-
-        public Builder setDeliciousIconClickedListener(DeliciousIconClickedListener listener) {
-            this.deliciousIconClickedListener = listener;
             return this;
         }
 
@@ -185,34 +149,14 @@ public class AndroidSdk {
             return this;
         }
 
-        public Builder setSavedGameListener(SavedGameListener listener) {
-            this.savedGameListener = listener;
-            return this;
-        }
-
-        public void setInAppMessageClickListener(InAppMessageClickListener inAppMessageClickListener) {
-            this.inAppMessageClickListener = inAppMessageClickListener;
-        }
-
-        public Builder setHelpEngagementListener(OnHelpEngagementListener onHelpEngagementListener) {
-            this.onHelpEngagementListener = onHelpEngagementListener;
-            return this;
-        }
-
         public Builder setGMSPaidEventListener(IGMSPaidEventListener gmsPaidEventListener) {
             this.gmsPaidEventListener = gmsPaidEventListener;
             return this;
         }
 
-        public Builder setAppsflyerConversionListener(IAppsflyerConversionListener appsflyerConversionListener) {
-            this.appsflyerConversionListener = appsflyerConversionListener;
-            return this;
-        }
 
-        public Builder setXSollaLoginListener(IXsollaLoginListener iXsollaLoginListener) {
-            this.xsollaLoginListener = iXsollaLoginListener;
-            return this;
-        }
+
+
     }
 
     @Deprecated
@@ -247,84 +191,6 @@ public class AndroidSdk {
         }
 
         sdkInitialized = true;
-
-
-        EventBus.getInstance().addListener(CommonEvents.XSOLLA_LOGIN_RESULT, new EventListener() {
-            @Override
-            public void onEvent(int i, Object obj) {
-                if (i != CommonEvents.XSOLLA_LOGIN_RESULT) {
-                    return;
-                }
-                try {
-                    if (builder != null && builder.xsollaLoginListener != null) {
-                        if (obj instanceof Boolean) {
-                            boolean result = (boolean) obj;
-                            if (result) {
-                                builder.xsollaLoginListener.onSuccess();
-                            } else {
-                                builder.xsollaLoginListener.onFail();
-                            }
-                        }
-                    }
-                } catch (Throwable t) {
-                    // ignore
-                    paymentSystemValid = false;
-                }
-            }
-        });
-
-        EventBus.getInstance().addListener(CommonEvents.XSOLLA_BILLING_VALID, new EventListener() {
-            @Override
-            public void onEvent(int i, Object obj) {
-                if (i != CommonEvents.XSOLLA_BILLING_VALID) {
-                    return;
-                }
-                try {
-                    if (builder != null && builder.paymentResultListener != null) {
-                        DLog.d("xsolla is ready to pay");
-                        paymentSystemValid = true;
-                        builder.paymentResultListener.onPaymentSystemValid();
-                    }
-                } catch (Throwable t) {
-                    // ignore
-                    paymentSystemValid = false;
-                }
-            }
-        });
-
-        EventBus.getInstance().addListener(CommonEvents.XSOLLA_BILLING_RESULT, new EventListener() {
-            @Override
-            public void onEvent(int i, Object obj) {
-                if (i != CommonEvents.XSOLLA_BILLING_RESULT) {
-                    return;
-                }
-                try {
-                    if (obj instanceof PayResult) {
-                        PayResult payResult = (PayResult) obj;
-                        DLog.d("xsolla pay result:" + payResult.toString());
-                        int billId = Integer.parseInt(payResult.billId);
-                        if (payResult.result) {
-                            if (payResult.payload == null) {
-                                if (builder != null && builder.paymentResultListener != null) {
-                                    builder.paymentResultListener.onPaymentSuccess(billId);
-                                }
-                            } else {
-                                if (builder != null && builder.paymentResultListener != null) {
-                                    builder.paymentResultListener.onPaymentSuccess(billId, payResult.payload);
-                                }
-                            }
-                        } else {
-                            if (builder != null && builder.paymentResultListener != null) {
-                                builder.paymentResultListener.onPaymentFail(billId);
-                            }
-                        }
-                    }
-                } catch (Exception e) {
-                    DLog.d("xsolla pay result parse error:" + e.getMessage());
-                }
-            }
-        });
-
 
         IvySdk.initialize(activity, null, new IvySdk.InitializeCallback() {
             @Override
@@ -406,167 +272,6 @@ public class AndroidSdk {
             }
         });
 
-        EventBus.getInstance().addListener(CommonEvents.BILLING_STORE_LOADED, new EventListener() {
-            @Override
-            public void onEvent(int i, Object obj) {
-                if (i != CommonEvents.BILLING_STORE_LOADED) {
-                    return;
-                }
-                Logger.debug(TAG, "Billing StoreLoaded " + obj);
-                try {
-                    if (obj instanceof String) {
-                        String skuType = (String) obj;
-                        if (builder != null && builder.paymentResultListener != null) {
-                            builder.paymentResultListener.onStoreLoaded(skuType);
-                        }
-                    }
-                } catch (Throwable t) {
-                    // ignore
-                }
-            }
-        });
-
-        EventBus.getInstance().addListener(CommonEvents.BILLING_PURCHASE_STATE_CHANGE, new EventListener() {
-            @Override
-            public void onEvent(int i, Object obj) {
-                if (i != CommonEvents.BILLING_PURCHASE_STATE_CHANGE) {
-                    return;
-                }
-                Logger.debug(TAG, "purchase event called");
-                try {
-                    if (obj instanceof PurchaseStateChangeData) {
-                        PurchaseStateChangeData changeData = (PurchaseStateChangeData) obj;
-                        Logger.debug(TAG, "Purchased: " + changeData.toString());
-
-                        String itemId = changeData.getItemId();
-                        JSONObject storeItem = IvySdk.getStoreItem(itemId);
-                        if (storeItem == null) {
-                            Logger.error(TAG, "Not found billId for product: " + itemId);
-                            return;
-                        }
-                        int billId = storeItem.optInt("billId");
-                        if (changeData.getPurchaseState() == PurchaseManager.PurchaseState.PURCHASED) {
-                            if (builder != null && builder.paymentResultListener != null) {
-                                String orderId = changeData.getOrderId();
-                                Logger.debug(TAG, "send paymentResult for bill: " + billId);
-                                Logger.debug(TAG, "orderID: " + orderId);
-                                String developerPayload = changeData.getDeveloperPayload();
-
-                                if (IvySdk.isPaymentClientCheck()) {
-                                    JSONObject orderInfo = new JSONObject();
-//                  receipt ：需要发送给apple后台的base64校验数据
-//                  country ： 大写国家码
-//                  platform： 平台
-//                  payId： 计费点id
-//                  payload ： payload
-//                  appid：游戏id
-//                  transactionIdentifier：点单号
-//                  package：包名
-//                  name：游戏名称
-//                  uuid：uuid
-                                    try {
-                                        orderInfo.put("receipt", changeData.getReceipt());
-                                        orderInfo.put("signature", changeData.getSignature());
-                                        orderInfo.put("purchaseToken", changeData.getPurchaseToken());
-                                        orderInfo.put("purchaseTime", changeData.getPurchaseTime());
-                                        orderInfo.put("country", IvySdk.getCountryCode());
-                                        orderInfo.put("platform", "android");
-                                        orderInfo.put("payId", billId);
-                                        orderInfo.put("payload", developerPayload != null ? developerPayload : "");
-                                        orderInfo.put("appid", IvySdk.getGridConfigString("appid"));
-                                        orderInfo.put("transactionIdentifier", orderId);
-                                        orderInfo.put("package", changeData.getPackageName());
-                                        orderInfo.put("name", "");
-                                        orderInfo.put("uuid", IvySdk.getUUID());
-                                        String skuJson = changeData.getSkuJson();
-                                        if (skuJson != null) {
-                                            orderInfo.put("sku_json", skuJson);
-                                        }
-                                    } catch (Exception ex) {
-                                        ex.printStackTrace();
-                                    }
-
-                                    builder.paymentResultListener.onPaymentSuccess(billId, developerPayload != null ? developerPayload : "", orderInfo.toString());
-                                } else {
-                                    if (developerPayload == null) {
-                                        Logger.debug(TAG, "developerPayload is null");
-                                        builder.paymentResultListener.onPaymentSuccess(billId);
-                                    } else {
-                                        Logger.debug(TAG, "developerPayload >>> " + developerPayload);
-                                        builder.paymentResultListener.onPaymentSuccess(billId, developerPayload);
-                                    }
-                                }
-
-                                // if contains ad tag, will disable ad
-                                if (storeItem.has("action") && "removeads".equals(storeItem.optString("action"))) {
-                                    Logger.debug(TAG, "Ad removed");
-                                    IvySdk.updateAdStatus(false);
-                                }
-                            } else {
-                                Logger.error(TAG, "onPaymentSuccess failed, no payment callback");
-                            }
-                        } else if (changeData.getPurchaseState() == PurchaseManager.PurchaseState.CANCELED) {
-                            if (builder != null && builder.paymentResultListener != null) {
-                                Logger.debug(TAG, "send payment cancelled result for bill: " + billId);
-                                builder.paymentResultListener.onPaymentCanceled(billId);
-                            } else {
-                                Logger.error(TAG, "onPaymentCanceled failed, no payment callback");
-                            }
-                        } else if (changeData.getPurchaseState() == PurchaseManager.PurchaseState.ERROR) {
-                            if (builder != null && builder.paymentResultListener != null) {
-                                Logger.debug(TAG, "send payment error result for bill: " + billId);
-                                builder.paymentResultListener.onPaymentFail(billId);
-                            } else {
-                                Logger.error(TAG, "onPaymentFail failed, no payment callback");
-                            }
-                        }
-                    }
-                } catch (Throwable t) {
-                    Logger.error(TAG, "failed to fullfill payment", t);
-                }
-            }
-        });
-
-        EventBus.getInstance().addListener(CommonEvents.BILLING_PAYMENT_SYSTEM_ERROR, new EventListener() {
-            @Override
-            public void onEvent(int i, Object obj) {
-                if (i != CommonEvents.BILLING_PAYMENT_SYSTEM_ERROR) {
-                    return;
-                }
-                Logger.debug(TAG, "Payment System Error: " + obj);
-
-                try {
-                    if (obj != null && obj instanceof Integer) {
-                        if (builder != null && builder.paymentResultListener != null) {
-                            builder.paymentResultListener.onPaymentSystemError((Integer) obj, "error");
-                        }
-                    }
-                } catch (Throwable t) {
-                    // ignore
-                }
-            }
-        });
-
-        EventBus.getInstance().addListener(CommonEvents.BILLING_BECOMES_AVAILABLE, new EventListener() {
-            @Override
-            public void onEvent(int i, Object obj) {
-                if (i != CommonEvents.BILLING_BECOMES_AVAILABLE) {
-                    return;
-                }
-                Logger.debug(TAG, "BILLING_BECOMES_AVAILABLE");
-                try {
-                    if (builder != null && builder.paymentResultListener != null) {
-                        paymentSystemValid = true;
-                        builder.paymentResultListener.onPaymentSystemValid();
-                    }
-                } catch (Throwable t) {
-                    // ignore
-                    paymentSystemValid = false;
-                }
-            }
-        });
-
-
         boolean slientLoginGoogle = IvySdk.getGridConfigBoolean("slientLoginGoogle");
         if (slientLoginGoogle) {
             Logger.debug(TAG, "Set to slient Login");
@@ -575,7 +280,6 @@ public class AndroidSdk {
 
         try {
             sdkListener.onInitialized();
-            facebookUserManager = new FacebookUserManager();
         } catch (Throwable t) {
             Logger.error(TAG, "sdk onInit exception", t);
         }
@@ -630,23 +334,7 @@ public class AndroidSdk {
             IvySdk.registerInAppMessageService(builder.inAppMessageClickListener);
         }
 
-        if (IvySdk.hasGridConfig("AIHelp")) {
-            JSONObject object = IvySdk.getGridConfigJson("AIHelp");
-            try {
-                String appKey = object.optString("appKey", null);
-                if (TextUtils.isEmpty(appKey))
-                    throw new NullPointerException("AIHelp config: app key is null");
-                String appId = object.optString("appId", null);
-                if (TextUtils.isEmpty(appId))
-                    throw new NullPointerException("AIHelp config: app id is null");
-                String domain = object.optString("domain", null);
-                if (TextUtils.isEmpty(domain))
-                    throw new NullPointerException("AIHelp config: domain is null");
-                AIHelp.getInstance().init(activity.getApplicationContext(), appKey, domain, appId);
-            } catch (Exception e) {
-                Log.e(AIHelp.TAG, e.getMessage());
-            }
-        }
+
 
         setDisplayInNotch(activity);
 
