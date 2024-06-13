@@ -164,7 +164,7 @@ public final class IvySdk {
 
         CMPUtil cmpUtil = new CMPUtil();
         boolean finalDebugMode = debugMode;
-        cmpUtil.init(activity, new ICMPCallback() {
+        cmpUtil.init(activity, debugMode, new ICMPCallback() {
             @Override
             public void onResult(boolean ableLoadAds) {
                 try {
