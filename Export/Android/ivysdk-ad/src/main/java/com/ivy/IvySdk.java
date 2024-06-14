@@ -21,6 +21,7 @@ import com.google.android.gms.ads.AdInspectorError;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.OnAdInspectorClosedListener;
 import com.google.android.gms.ads.initialization.AdapterStatus;
+import com.google.firebase.analytics.FirebaseAnalytics;
 import com.ivy.ads.IvyAds;
 import com.ivy.ads.IvyAdsManager;
 import com.ivy.ads.adapters.AdmobManager;
@@ -38,6 +39,7 @@ import com.tencent.mmkv.MMKV;
 import org.json.JSONObject;
 
 import java.lang.ref.WeakReference;
+import java.util.EnumMap;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
@@ -168,6 +170,14 @@ public final class IvySdk {
             @Override
             public void onResult(boolean ableLoadAds) {
                 try {
+                    FirebaseAnalytics.ConsentStatus status = FirebaseAnalytics.ConsentStatus.GRANTED;
+                    Map<FirebaseAnalytics.ConsentType, FirebaseAnalytics.ConsentStatus> consentMap = new EnumMap<>(FirebaseAnalytics.ConsentType.class);
+                    consentMap.put(FirebaseAnalytics.ConsentType.ANALYTICS_STORAGE, status);
+                    consentMap.put(FirebaseAnalytics.ConsentType.AD_STORAGE, status);
+                    consentMap.put(FirebaseAnalytics.ConsentType.AD_USER_DATA, status);
+                    consentMap.put(FirebaseAnalytics.ConsentType.AD_PERSONALIZATION, status);
+                    FirebaseAnalytics.getInstance(activity.getApplicationContext()).setConsent(consentMap);
+
                     Log.d("CMP", "start load ads");
                     try {
                         AdmobManager.getInstance().initialize(activity, initializationStatus -> {
