@@ -56,7 +56,7 @@ public class FirebaseTracker implements EventTrackerProvider {
         } else {
 
         }
-        bundle.putBoolean("sdkNetStatus", netWorkStatus);
+        bundle.putString("sdkNetStatus", netWorkStatus ? "1" : "0");
         mFirebaseAnalytics.logEvent(eventName, bundle);
 
     }
