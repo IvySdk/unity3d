@@ -1,0 +1,6 @@
+framework module SmaatoSDKNative {
+  umbrella header "SmaatoSDKNative.h"
+
+  export *
+  module * { export * }
+}

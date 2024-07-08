@@ -1,0 +1,1 @@
+../../../../../IvyiOSSDK/Classes/Core/Ads/SDKOurInterstitial.h

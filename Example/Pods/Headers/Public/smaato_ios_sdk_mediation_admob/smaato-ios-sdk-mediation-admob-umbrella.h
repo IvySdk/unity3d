@@ -1,0 +1,1 @@
+../../../Target Support Files/smaato-ios-sdk-mediation-admob/smaato-ios-sdk-mediation-admob-umbrella.h

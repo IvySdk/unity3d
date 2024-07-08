@@ -1,0 +1,5 @@
+//Copyright 2019 Smaato Inc.
+//Licensed under the Smaato SDK License Agreement
+//https://www.smaato.com/sdk-license-agreement/ 
+
+By downloading, installing, accessing, or otherwise using this SDK, you accept the terms of the Smaato SDK License Agreement, available at https://www.smaato.com/sdk-license-agreement/.

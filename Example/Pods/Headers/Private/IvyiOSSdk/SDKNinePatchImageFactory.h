@@ -1,0 +1,1 @@
+../../../../../IvyiOSSDK/Classes/Common/Utils/SDKNinePatchImageFactory.h

@@ -1,0 +1,1 @@
+../../../../../IvyiOSSDK/Classes/Core/SDKSNSAdapter.h

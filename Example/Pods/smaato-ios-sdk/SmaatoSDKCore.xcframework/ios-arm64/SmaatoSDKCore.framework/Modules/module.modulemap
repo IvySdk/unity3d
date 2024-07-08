@@ -1,0 +1,6 @@
+framework module SmaatoSDKCore {
+  umbrella header "SmaatoSDKCore.h"
+
+  export *
+  module * { export * }
+}

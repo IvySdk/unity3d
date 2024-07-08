@@ -1,0 +1,11 @@
+${PODS_ROOT}/Target Support Files/smaato-ios-sdk/smaato-ios-sdk-xcframeworks.sh
+${PODS_ROOT}/smaato-ios-sdk/SmaatoSDKBanner.xcframework
+${PODS_ROOT}/smaato-ios-sdk/SmaatoSDKCore.xcframework
+${PODS_ROOT}/smaato-ios-sdk/SmaatoSDKInterstitial.xcframework
+${PODS_ROOT}/smaato-ios-sdk/SmaatoSDKNative.xcframework
+${PODS_ROOT}/smaato-ios-sdk/SmaatoSDKOpenMeasurement.xcframework
+${PODS_ROOT}/smaato-ios-sdk/vendor/OMSDK_Smaato.xcframework
+${PODS_ROOT}/smaato-ios-sdk/SmaatoSDKOutstream.xcframework
+${PODS_ROOT}/smaato-ios-sdk/SmaatoSDKRewardedAds.xcframework
+${PODS_ROOT}/smaato-ios-sdk/SmaatoSDKRichMedia.xcframework
+${PODS_ROOT}/smaato-ios-sdk/SmaatoSDKVideo.xcframework

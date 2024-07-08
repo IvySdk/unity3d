@@ -1,0 +1,6 @@
+module LayoutKitInterface {
+  umbrella header "DivKit_LayoutKitInterface-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -1,0 +1,95 @@
+{
+  "name": "IvyiOSSdk",
+  "version": "0.1.0",
+  "summary": "A short description of IvyiOSSdk.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/siweiqi/IvyiOSSdk",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "siweiqi": "siweiqi@ivymobile.com"
+  },
+  "source": {
+    "git": "https://github.com/siweiqi/IvyiOSSdk.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "12.0"
+  },
+  "source_files": "IvyiOSSdk/Classes/**/*",
+  "frameworks": [
+    "UIKit",
+    "CoreFoundation",
+    "QuartzCore",
+    "AVKit",
+    "AdServices",
+    "StoreKit",
+    "SystemConfiguration",
+    "Security"
+  ],
+  "xcconfig": {
+    "GCC_PREPROCESSOR_DEFINITIONS": "GOOGLE=1"
+  },
+  "libraries": "sqlite3",
+  "dependencies": {
+    "Google-Mobile-Ads-SDK": [
+      "10.10.0"
+    ],
+    "GoogleMobileAdsMediationFyber": [
+      "8.2.4.0"
+    ],
+    "GoogleMobileAdsMediationIronSource": [
+      "7.6.0.0"
+    ],
+    "GoogleMobileAdsMediationVungle": [
+      "7.2.0.0"
+    ],
+    "GoogleMobileAdsMediationFacebook": [
+      "6.14.0.0"
+    ],
+    "GoogleMobileAdsMediationUnity": [
+      "4.9.2.0"
+    ],
+    "GoogleMobileAdsMediationChartboost": [
+      "9.5.1.0"
+    ],
+    "GoogleMobileAdsMediationAppLovin": [
+      "11.10.1.0"
+    ],
+    "GoogleMobileAdsMediationAdColony": [
+      "4.9.0.2"
+    ],
+    "GoogleMobileAdsMediationMintegral": [
+      "7.4.8.0"
+    ],
+    "AdMobPubMaticAdapter": [
+      "2.2.0"
+    ],
+    "smaato-ios-sdk": [
+      "22.6.0"
+    ],
+    "smaato-ios-sdk-mediation-admob": [
+      "10.10.0.0"
+    ],
+    "GoogleUserMessagingPlatform": [
+      "2.1.0"
+    ],
+    "YandexMobileAds": [
+      "5.9.1"
+    ],
+    "Firebase/Core": [
+      "10.19.0"
+    ],
+    "Firebase/Analytics": [
+      "10.19.0"
+    ],
+    "FBSDKCoreKit": [
+      "16.3.1"
+    ],
+    "AppsFlyerFramework": [
+      "6.13.2"
+    ]
+  }
+}

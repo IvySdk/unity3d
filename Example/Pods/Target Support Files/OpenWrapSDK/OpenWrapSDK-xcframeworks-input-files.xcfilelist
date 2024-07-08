@@ -1,0 +1,4 @@
+${PODS_ROOT}/Target Support Files/OpenWrapSDK/OpenWrapSDK-xcframeworks.sh
+${PODS_ROOT}/OpenWrapSDK/OpenWrapSDK/OpenWrapSDK.xcframework
+${PODS_ROOT}/OpenWrapSDK/OpenWrapSDK/OMSDK_Pubmatic.xcframework
+${PODS_ROOT}/OpenWrapSDK/OpenWrapSDK/OpenWrapMeasurement.xcframework

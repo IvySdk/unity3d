@@ -1,0 +1,255 @@
+{
+  
+    "ads": {
+        "backHomeAd": "",
+        "banner": {
+                    "default": {
+                        "cache": true,
+                        "enable": true,
+                        "ids": [
+                            {
+                                "id": "ca-app-pub-3940256099942544/2435281174",
+                                "platform": "admob",
+                                "priority": 1
+                            }
+                        ],
+                        "size": "adaptive",
+                        "timeout": 10
+                    }
+                },
+        "full": {
+            "default": {
+                "cache": true,
+                "enable": true,
+                "ids": [
+                    {
+                        "id": "ca-app-pub-3940256099942544/4411468910",
+                        "platform": "admob",
+                        "priority": 1
+                    }
+                ],
+                "timeout": 30
+            }
+        },
+        "video": {
+            "default": {
+                "cache": true,
+                "enable": true,
+                "ids": [
+                    {
+                        "id": "ca-app-pub-3940256099942544/1712485313",
+                        "platform": "admob",
+                        "priority": 1
+                    }
+                ],
+                "timeout": 30
+            }
+        }
+    },
+    "analyse": [
+        {
+                    "api": "firebase"
+                },
+                {
+                    "api": "facebook"
+                },
+                {
+                    "api": "appsflyer",
+                    "id": "af_app_id",
+                    "key": "af_app_key"
+                }
+        
+    ],
+    "appid": 27002,
+    "appstoreid": 1642687561,
+    "autoRequestIDFA": true,
+    "data": {
+        "code": 1,
+        "shop": 1,
+        "version": "1.5.0"
+    },
+    "domain": "",
+    "event_targets": {
+        "banner_load_failed": 0,
+        "banner_loaded": 0,
+        "interstitial_load_failed": 0,
+        "interstitial_loaded": 0,
+        "retention_1": 3,
+        "retention_2": 3,
+        "retention_3": 3,
+        "retention_4": 3,
+        "retention_5": 3,
+        "retention_6": 3,
+        "retention_7": 3,
+        "video_load_failed": 0,
+        "video_loaded": 0
+    },
+    "gamecenter": {
+        "enable": false
+    },
+    "gen_events": {
+        "appopen10_in3day": [
+            {
+                "d": 3,
+                "e1": "sdk_app_open",
+                "op": ">=",
+                "r": false,
+                "v": 10
+            }
+        ],
+        "appopen2_in1day": [
+            {
+                "d": 1,
+                "e1": "sdk_app_open",
+                "op": ">=",
+                "r": false,
+                "v": 2
+            }
+        ],
+        "appopen5_in3day": [
+            {
+                "d": 3,
+                "e1": "sdk_app_open",
+                "op": ">=",
+                "r": false,
+                "v": 5
+            }
+        ],
+        "intershow14_in3day": [
+            {
+                "d": 3,
+                "e1": "sdk_inter_show",
+                "op": ">=",
+                "r": false,
+                "v": 14
+            }
+        ],
+        "intershow2_in1day": [
+            {
+                "d": 1,
+                "e1": "sdk_inter_show",
+                "op": ">=",
+                "r": false,
+                "v": 2
+            }
+        ],
+        "intershow3_in1day": [
+            {
+                "d": 1,
+                "e1": "sdk_inter_show",
+                "op": ">=",
+                "r": false,
+                "v": 3
+            }
+        ],
+        "intershow7_in1day": [
+            {
+                "d": 1,
+                "e1": "sdk_inter_show",
+                "op": ">=",
+                "r": false,
+                "v": 7
+            }
+        ],
+        "interstitial_shown_2_in1day": [
+            {
+                "d": 1,
+                "e1": "interstitial_shown",
+                "op": ">=",
+                "r": false,
+                "v": 2
+            }
+        ],
+        "interstitial_shown_2_in3day": [
+            {
+                "d": 3,
+                "e1": "interstitial_shown",
+                "op": ">=",
+                "r": false,
+                "v": 2
+            }
+        ],
+        "purchase1_in1day": [
+            {
+                "d": 1,
+                "e1": "in_app_purchase",
+                "op": ">=",
+                "r": false,
+                "v": 1
+            }
+        ],
+        "purchase2_in3day": [
+            {
+                "d": 3,
+                "e1": "in_app_purchase",
+                "op": ">=",
+                "r": false,
+                "v": 2
+            }
+        ],
+        "video_shown_2_in1day": [
+            {
+                "d": 1,
+                "e1": "video_shown",
+                "op": ">=",
+                "r": false,
+                "v": 2
+            }
+        ],
+        "video_shown_2_in3day": [
+            {
+                "d": 3,
+                "e1": "video_shown",
+                "op": ">=",
+                "r": false,
+                "v": 2
+            }
+        ],
+        "videoshow10_in3day": [
+            {
+                "d": 3,
+                "e1": "sdk_video_show",
+                "op": ">=",
+                "r": false,
+                "v": 10
+            }
+        ],
+        "videoshow2_in1day": [
+            {
+                "d": 1,
+                "e1": "sdk_video_show",
+                "op": ">=",
+                "r": false,
+                "v": 2
+            }
+        ],
+        "videoshow3_in1day": [
+            {
+                "d": 1,
+                "e1": "sdk_video_show",
+                "op": ">=",
+                "r": false,
+                "v": 3
+            }
+        ],
+        "videoshow5_in3day": [
+            {
+                "d": 3,
+                "e1": "sdk_video_show",
+                "op": ">=",
+                "r": false,
+                "v": 5
+            }
+        ]
+    },
+    "gts": 0,
+    "init": [],
+   
+    "push": [],
+    "share": "",
+    "sns": [],
+    "stats": "http://stats.goinfun.com:8080",
+    "token": "310ba51e14747e1dcc4dca1a5b97f64f",
+    "v_api": 18,
+    "v_pub": 1
+}

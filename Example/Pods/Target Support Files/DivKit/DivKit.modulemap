@@ -1,0 +1,6 @@
+module DivKit {
+  umbrella header "DivKit-umbrella.h"
+
+  export *
+  module * { export * }
+}

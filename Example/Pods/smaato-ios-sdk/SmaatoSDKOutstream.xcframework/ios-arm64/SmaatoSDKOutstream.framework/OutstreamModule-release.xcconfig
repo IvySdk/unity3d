@@ -1,0 +1,2 @@
+#include "../../Pods/Target Support Files/Pods-SmaatoSDKOutstream/Pods-SmaatoSDKOutstream.release.xcconfig"
+#include "OutstreamModule-common.xcconfig"

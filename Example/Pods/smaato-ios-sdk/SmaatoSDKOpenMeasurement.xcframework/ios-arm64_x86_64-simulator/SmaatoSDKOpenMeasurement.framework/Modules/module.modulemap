@@ -1,0 +1,6 @@
+framework module SmaatoSDKOpenMeasurement {
+  umbrella header "SmaatoSDKOpenMeasurement.h"
+
+  export *
+  module * { export * }
+}

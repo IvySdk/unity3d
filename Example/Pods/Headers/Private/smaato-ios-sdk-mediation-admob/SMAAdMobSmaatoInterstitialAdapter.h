@@ -1,0 +1,1 @@
+../../../smaato-ios-sdk-mediation-admob/SmaatoSDKAdapters/AdMob/Interstitial/SMAAdMobSmaatoInterstitialAdapter.h

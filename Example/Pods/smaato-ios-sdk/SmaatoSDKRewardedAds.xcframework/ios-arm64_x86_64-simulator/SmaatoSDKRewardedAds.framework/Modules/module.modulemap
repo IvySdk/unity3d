@@ -1,0 +1,6 @@
+framework module SmaatoSDKRewardedAds {
+  umbrella header "SmaatoSDKRewardedAds.h"
+
+  export *
+  module * { export * }
+}

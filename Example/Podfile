@@ -1,0 +1,39 @@
+# Uncomment the next line to define a global platform for your project
+platform :ios, '12.0'
+use_modular_headers!
+target 'Example' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  #use_frameworks!
+
+  # Pods for Example
+pod 'IvyiOSSdk', :path => '../'
+
+#pod 'IvyiOSSdk/Core', :path => '../'
+#pod 'IvyiOSSdk/Firebase', :path => '../'
+#pod 'IvyiOSSdk/Facebook', :path => '../'
+#pod 'IvyiOSSdk/Google', :path => '../'
+#pod 'IvyiOSSdk/Appsflyer', :path => '../'
+end
+
+
+post_install do |installer|
+    # Get main project development team id
+    dev_team = ""
+    project = installer.aggregate_targets[0].user_project
+    project.targets.each do |target|
+        target.build_configurations.each do |config|
+            if dev_team.empty? and !config.build_settings['DEVELOPMENT_TEAM'].nil?
+                dev_team = config.build_settings['DEVELOPMENT_TEAM']
+            end
+        end
+    end
+    
+    # Fix bundle targets' 'Signing Certificate' to 'Sign to Run Locally'
+    installer.pods_project.targets.each do |target|
+        if target.respond_to?(:product_type) and target.product_type == "com.apple.product-type.bundle"
+            target.build_configurations.each do |config|
+                config.build_settings['DEVELOPMENT_TEAM'] = dev_team
+            end
+        end
+    end
+end

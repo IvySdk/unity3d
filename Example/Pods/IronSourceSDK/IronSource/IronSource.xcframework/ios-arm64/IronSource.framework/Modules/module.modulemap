@@ -1,0 +1,11 @@
+framework module IronSource {
+  umbrella header "IronSource.h"
+
+  export *
+  module * { export * }
+}
+
+module IronSource.Swift {
+  header "IronSource-Swift.h"
+  requires objc
+}

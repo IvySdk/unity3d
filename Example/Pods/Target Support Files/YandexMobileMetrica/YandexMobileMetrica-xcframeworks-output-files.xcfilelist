@@ -1,0 +1,2 @@
+${PODS_XCFRAMEWORKS_BUILD_DIR}/YandexMobileMetrica/Static/Core/YandexMobileMetrica.framework
+${PODS_XCFRAMEWORKS_BUILD_DIR}/YandexMobileMetrica/Static/Crashes/YandexMobileMetricaCrashes.framework

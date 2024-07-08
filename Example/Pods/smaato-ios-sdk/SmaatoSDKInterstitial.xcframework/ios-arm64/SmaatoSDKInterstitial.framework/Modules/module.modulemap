@@ -1,0 +1,6 @@
+framework module SmaatoSDKInterstitial {
+  umbrella header "SmaatoSDKInterstitial.h"
+
+  export *
+  module * { export * }
+}

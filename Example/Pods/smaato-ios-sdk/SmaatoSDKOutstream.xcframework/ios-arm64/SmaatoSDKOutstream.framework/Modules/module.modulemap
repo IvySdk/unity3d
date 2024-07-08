@@ -1,0 +1,6 @@
+framework module SmaatoSDKOutstream {
+  umbrella header "SmaatoSDKOutstream.h"
+
+  export *
+  module * { export * }
+}
