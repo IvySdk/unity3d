@@ -1,1 +1,1 @@
-../../../../../IvyiOSSDK/Classes/Google/Admob/SDKAdmobBanner.h
+../../../IvyiOSSdk/IvyiOSSDK/Classes/Google/Admob/SDKAdmobBanner.h

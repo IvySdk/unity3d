@@ -1,1 +1,1 @@
-../../../../../IvyiOSSDK/Classes/Common/EasyShowView/EasyTextBgView.h
+../../../IvyiOSSdk/IvyiOSSDK/Classes/Common/EasyShowView/EasyTextBgView.h

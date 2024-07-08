@@ -1,1 +1,1 @@
-../../../../../IvyiOSSDK/Classes/Common/Networking/UIKit+SDKNetworking/UIActivityIndicatorView+SDKNetworking.h
+../../../IvyiOSSdk/IvyiOSSDK/Classes/Common/Networking/UIKit+SDKNetworking/UIActivityIndicatorView+SDKNetworking.h

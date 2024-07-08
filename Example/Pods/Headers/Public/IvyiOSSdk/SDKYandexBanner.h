@@ -1,1 +1,1 @@
-../../../../../IvyiOSSDK/Classes/Yandex/SDKYandexBanner.h
+../../../IvyiOSSdk/IvyiOSSDK/Classes/Yandex/SDKYandexBanner.h

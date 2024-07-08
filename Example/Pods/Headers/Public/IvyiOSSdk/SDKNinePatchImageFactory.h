@@ -1,1 +1,1 @@
-../../../../../IvyiOSSDK/Classes/Common/Utils/SDKNinePatchImageFactory.h
+../../../IvyiOSSdk/IvyiOSSDK/Classes/Common/Utils/SDKNinePatchImageFactory.h

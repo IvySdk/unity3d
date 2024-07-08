@@ -1,1 +1,1 @@
-../../../../../IvyiOSSDK/Classes/Common/EasyShowView/EasyLoadingGlobalConfig.h
+../../../IvyiOSSdk/IvyiOSSDK/Classes/Common/EasyShowView/EasyLoadingGlobalConfig.h

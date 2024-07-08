@@ -1,1 +1,1 @@
-../../../../../IvyiOSSDK/Classes/Common/EasyShowView/EasyEmptyGlobalConfig.h
+../../../IvyiOSSdk/IvyiOSSDK/Classes/Common/EasyShowView/EasyEmptyGlobalConfig.h

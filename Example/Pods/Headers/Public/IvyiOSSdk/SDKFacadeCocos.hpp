@@ -1,1 +1,1 @@
-../../../../../IvyiOSSDK/Classes/Core/SDKFacadeCocos.hpp
+../../../IvyiOSSdk/IvyiOSSDK/Classes/Core/SDKFacadeCocos.hpp

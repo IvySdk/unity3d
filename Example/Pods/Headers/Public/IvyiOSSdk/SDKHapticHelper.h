@@ -1,1 +1,1 @@
-../../../../../IvyiOSSDK/Classes/Common/Utils/SDKHapticHelper.h
+../../../IvyiOSSdk/IvyiOSSDK/Classes/Common/Utils/SDKHapticHelper.h

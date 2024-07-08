@@ -1,1 +1,1 @@
-../../../../../IvyiOSSDK/Classes/Core/Delegates/SDKFirebaseDatabaseDelegate.h
+../../../IvyiOSSdk/IvyiOSSDK/Classes/Core/Delegates/SDKFirebaseDatabaseDelegate.h

@@ -1,1 +1,1 @@
-../../../../../IvyiOSSDK/Classes/Core/Delegates/SDKWebviewDelegate.h
+../../../IvyiOSSdk/IvyiOSSDK/Classes/Core/Delegates/SDKWebviewDelegate.h

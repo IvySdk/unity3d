@@ -1,1 +1,1 @@
-../../../../../IvyiOSSDK/Classes/Common/EasyShowView/EasyLoadingTypes.h
+../../../IvyiOSSdk/IvyiOSSDK/Classes/Common/EasyShowView/EasyLoadingTypes.h

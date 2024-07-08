@@ -1,1 +1,1 @@
-../../../../../IvyiOSSDK/Classes/Common/Networking/SDKNetworkHelper.h
+../../../IvyiOSSdk/IvyiOSSDK/Classes/Common/Networking/SDKNetworkHelper.h

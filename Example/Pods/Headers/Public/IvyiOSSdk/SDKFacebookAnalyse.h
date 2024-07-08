@@ -1,1 +1,1 @@
-../../../../../IvyiOSSDK/Classes/Facebook/SDKFacebookAnalyse.h
+../../../IvyiOSSdk/IvyiOSSDK/Classes/Facebook/SDKFacebookAnalyse.h

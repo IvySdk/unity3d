@@ -1,1 +1,1 @@
-../../../../../IvyiOSSDK/Classes/Core/SDKConstants.h
+../../../IvyiOSSdk/IvyiOSSDK/Classes/Core/SDKConstants.h

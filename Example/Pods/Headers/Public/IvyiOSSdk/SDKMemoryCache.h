@@ -1,1 +1,1 @@
-../../../../../IvyiOSSDK/Classes/Common/Cache/SDKMemoryCache.h
+../../../IvyiOSSdk/IvyiOSSDK/Classes/Common/Cache/SDKMemoryCache.h

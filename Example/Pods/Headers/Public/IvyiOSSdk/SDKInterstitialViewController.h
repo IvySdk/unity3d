@@ -1,1 +1,1 @@
-../../../../../IvyiOSSDK/Classes/Core/Ads/SDKInterstitialViewController.h
+../../../IvyiOSSdk/IvyiOSSDK/Classes/Core/Ads/SDKInterstitialViewController.h

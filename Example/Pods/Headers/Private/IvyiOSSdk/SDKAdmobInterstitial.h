@@ -1,1 +1,1 @@
-../../../../../IvyiOSSDK/Classes/Google/Admob/SDKAdmobInterstitial.h
+../../../IvyiOSSdk/IvyiOSSDK/Classes/Google/Admob/SDKAdmobInterstitial.h

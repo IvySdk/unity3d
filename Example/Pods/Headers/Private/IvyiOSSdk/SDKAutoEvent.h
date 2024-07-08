@@ -1,1 +1,1 @@
-../../../../../IvyiOSSDK/Classes/Core/SDKAutoEvent.h
+../../../IvyiOSSdk/IvyiOSSDK/Classes/Core/SDKAutoEvent.h

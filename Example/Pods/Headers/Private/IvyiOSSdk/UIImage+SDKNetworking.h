@@ -1,1 +1,1 @@
-../../../../../IvyiOSSDK/Classes/Common/Networking/UIKit+SDKNetworking/UIImage+SDKNetworking.h
+../../../IvyiOSSdk/IvyiOSSDK/Classes/Common/Networking/UIKit+SDKNetworking/UIImage+SDKNetworking.h

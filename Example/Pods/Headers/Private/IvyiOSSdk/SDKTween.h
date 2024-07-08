@@ -1,1 +1,1 @@
-../../../../../IvyiOSSDK/Classes/Common/Tween/SDKTween.h
+../../../IvyiOSSdk/IvyiOSSDK/Classes/Common/Tween/SDKTween.h

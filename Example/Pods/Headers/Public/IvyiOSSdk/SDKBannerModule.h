@@ -1,1 +1,1 @@
-../../../../../IvyiOSSDK/Classes/Core/Ads/SDKBannerModule.h
+../../../IvyiOSSdk/IvyiOSSDK/Classes/Core/Ads/SDKBannerModule.h

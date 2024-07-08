@@ -1,1 +1,1 @@
-../../../../../IvyiOSSDK/Classes/Common/Extensions/NSString+Base64.h
+../../../IvyiOSSdk/IvyiOSSDK/Classes/Common/Extensions/NSString+Base64.h

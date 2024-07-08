@@ -1,1 +1,1 @@
-../../../../../IvyiOSSDK/Classes/Core/Ads/SDKOurNative.h
+../../../IvyiOSSdk/IvyiOSSDK/Classes/Core/Ads/SDKOurNative.h

@@ -1,1 +1,1 @@
-../../../../../IvyiOSSDK/Classes/Common/Networking/SDKURLRequestSerialization.h
+../../../IvyiOSSdk/IvyiOSSDK/Classes/Common/Networking/SDKURLRequestSerialization.h

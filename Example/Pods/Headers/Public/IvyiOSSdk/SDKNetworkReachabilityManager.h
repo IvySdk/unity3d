@@ -1,1 +1,1 @@
-../../../../../IvyiOSSDK/Classes/Common/Networking/SDKNetworkReachabilityManager.h
+../../../IvyiOSSdk/IvyiOSSDK/Classes/Common/Networking/SDKNetworkReachabilityManager.h

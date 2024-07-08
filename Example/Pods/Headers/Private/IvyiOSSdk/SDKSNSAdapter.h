@@ -1,1 +1,1 @@
-../../../../../IvyiOSSDK/Classes/Core/SDKSNSAdapter.h
+../../../IvyiOSSdk/IvyiOSSDK/Classes/Core/SDKSNSAdapter.h

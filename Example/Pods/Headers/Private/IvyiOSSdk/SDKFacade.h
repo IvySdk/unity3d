@@ -1,1 +1,1 @@
-../../../../../IvyiOSSDK/Classes/Core/SDKFacade.h
+../../../IvyiOSSdk/IvyiOSSDK/Classes/Core/SDKFacade.h

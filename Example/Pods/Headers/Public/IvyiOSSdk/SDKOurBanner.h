@@ -1,1 +1,1 @@
-../../../../../IvyiOSSDK/Classes/Core/Ads/SDKOurBanner.h
+../../../IvyiOSSdk/IvyiOSSDK/Classes/Core/Ads/SDKOurBanner.h

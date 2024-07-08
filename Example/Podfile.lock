@@ -305,7 +305,7 @@ PODS:
     - YandexMobileMetrica/Static/Core
 
 DEPENDENCIES:
-  - IvyiOSSdk (from `../`)
+  - "IvyiOSSdk (from `git@github.com:IvySdk/unity3d.git`, branch `ad`)"
 
 SPEC REPOS:
   trunk:
@@ -360,7 +360,13 @@ SPEC REPOS:
 
 EXTERNAL SOURCES:
   IvyiOSSdk:
-    :path: "../"
+    :branch: ad
+    :git: "git@github.com:IvySdk/unity3d.git"
+
+CHECKOUT OPTIONS:
+  IvyiOSSdk:
+    :commit: f8358c283af805aae16327b03c19415529976e1a
+    :git: "git@github.com:IvySdk/unity3d.git"
 
 SPEC CHECKSUMS:
   AdColony: af8b7414f317641e0e1e9d23a7b739879e40e4b9
@@ -413,6 +419,6 @@ SPEC CHECKSUMS:
   YandexMobileAds: b4c8789fb2cc1540fc16bc94f2c18ce2d031ccc7
   YandexMobileMetrica: f5368ee93f286c793d73b58da00929babfc897c1
 
-PODFILE CHECKSUM: d8722154f6ab625bfd34df051a65c3ad2ddf848b
+PODFILE CHECKSUM: 337f17985d8f13091e4a027e544d43206f7f1200
 
 COCOAPODS: 1.15.2

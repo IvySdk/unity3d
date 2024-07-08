@@ -1,1 +1,1 @@
-../../../../../IvyiOSSDK/Classes/Core/Ads/SDKDeliciousInterstitial.h
+../../../IvyiOSSdk/IvyiOSSDK/Classes/Core/Ads/SDKDeliciousInterstitial.h

@@ -1,1 +1,1 @@
-../../../../../IvyiOSSDK/Classes/Google/AdsCustomEvent/AdsCustomEventRewardAd.h
+../../../IvyiOSSdk/IvyiOSSDK/Classes/Google/AdsCustomEvent/AdsCustomEventRewardAd.h

@@ -1,1 +1,1 @@
-../../../../../IvyiOSSDK/Classes/Yandex/SDKYandexInterstitial.h
+../../../IvyiOSSdk/IvyiOSSDK/Classes/Yandex/SDKYandexInterstitial.h

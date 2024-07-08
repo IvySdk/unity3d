@@ -1,1 +1,1 @@
-../../../../../IvyiOSSDK/Classes/Common/Networking/SDKURLSessionManager.h
+../../../IvyiOSSdk/IvyiOSSDK/Classes/Common/Networking/SDKURLSessionManager.h

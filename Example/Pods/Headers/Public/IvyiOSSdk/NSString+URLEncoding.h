@@ -1,1 +1,1 @@
-../../../../../IvyiOSSDK/Classes/Common/Extensions/NSString+URLEncoding.h
+../../../IvyiOSSdk/IvyiOSSDK/Classes/Common/Extensions/NSString+URLEncoding.h

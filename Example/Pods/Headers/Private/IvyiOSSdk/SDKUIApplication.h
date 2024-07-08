@@ -1,1 +1,1 @@
-../../../../../IvyiOSSDK/Classes/Core/SDKUIApplication.h
+../../../IvyiOSSdk/IvyiOSSDK/Classes/Core/SDKUIApplication.h

@@ -1,1 +1,1 @@
-../../../../../IvyiOSSDK/Classes/Google/Common/SDKGoogleGdpr.h
+../../../IvyiOSSdk/IvyiOSSDK/Classes/Google/Common/SDKGoogleGdpr.h

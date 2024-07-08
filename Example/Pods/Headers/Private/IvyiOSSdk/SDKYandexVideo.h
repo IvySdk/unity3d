@@ -1,1 +1,1 @@
-../../../../../IvyiOSSDK/Classes/Yandex/SDKYandexVideo.h
+../../../IvyiOSSdk/IvyiOSSDK/Classes/Yandex/SDKYandexVideo.h

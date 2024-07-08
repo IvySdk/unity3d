@@ -1,1 +1,1 @@
-../../../../../IvyiOSSDK/Classes/Core/SDKIvyAnalyse.h
+../../../IvyiOSSdk/IvyiOSSDK/Classes/Core/SDKIvyAnalyse.h

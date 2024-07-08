@@ -1,1 +1,1 @@
-../../../../../IvyiOSSDK/Classes/Common/Networking/UIKit+SDKNetworking/SDKImageDownloader.h
+../../../IvyiOSSdk/IvyiOSSDK/Classes/Common/Networking/UIKit+SDKNetworking/SDKImageDownloader.h

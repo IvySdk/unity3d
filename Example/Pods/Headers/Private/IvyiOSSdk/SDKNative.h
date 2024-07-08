@@ -1,1 +1,1 @@
-../../../../../IvyiOSSDK/Classes/Core/Ads/SDKNative.h
+../../../IvyiOSSdk/IvyiOSSDK/Classes/Core/Ads/SDKNative.h

@@ -1,1 +1,1 @@
-../../../../../IvyiOSSDK/Classes/Common/Networking/UIKit+SDKNetworking/SDKAutoPurgingImageCache.h
+../../../IvyiOSSdk/IvyiOSSDK/Classes/Common/Networking/UIKit+SDKNetworking/SDKAutoPurgingImageCache.h

@@ -1,1 +1,1 @@
-../../../../../IvyiOSSDK/Classes/Common/Base/SDKDebug.h
+../../../IvyiOSSdk/IvyiOSSDK/Classes/Common/Base/SDKDebug.h

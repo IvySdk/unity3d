@@ -1,1 +1,1 @@
-../../../../../IvyiOSSDK/Classes/Core/SDKIAPHelper.h
+../../../IvyiOSSdk/IvyiOSSDK/Classes/Core/SDKIAPHelper.h
