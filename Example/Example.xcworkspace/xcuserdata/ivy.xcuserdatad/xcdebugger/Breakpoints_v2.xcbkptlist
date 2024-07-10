@@ -18,53 +18,6 @@
             endingLineNumber = "1824"
             landmarkName = "-loadNativeAd:"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "F285A121-1470-4A6A-9CCD-05A551A1C3FA - 4de7ba5b006134aa"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[SDKFacade loadNativeAd:]"
-                  moduleName = "Example"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ivy/Desktop/iosSdk/IvySdk/IvyiOSSDK/Classes/Core/SDKFacade.m"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "1825"
-                  endingLineNumber = "1825"
-                  offsetFromSymbolStart = "356">
-               </Location>
-               <Location
-                  uuid = "F285A121-1470-4A6A-9CCD-05A551A1C3FA - 4de7ba5b006134aa"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[SDKFacade loadNativeAd:]"
-                  moduleName = "Example"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ivy/Desktop/iosSdk/IvySdk/IvyiOSSDK/Classes/Core/SDKFacade.m"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "1825"
-                  endingLineNumber = "1825"
-                  offsetFromSymbolStart = "360">
-               </Location>
-               <Location
-                  uuid = "F285A121-1470-4A6A-9CCD-05A551A1C3FA - 4de7ba5b00613489"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[SDKFacade loadNativeAd:]"
-                  moduleName = "Example"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ivy/Desktop/iosSdk/IvySdk/IvyiOSSDK/Classes/Core/SDKFacade.m"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "1824"
-                  endingLineNumber = "1824"
-                  offsetFromSymbolStart = "124">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -81,38 +34,6 @@
             endingLineNumber = "1850"
             landmarkName = "-getNativeAdView:frame:configJson:"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "B7DAA750-CD01-42B8-96CB-0A4510EC977E - 505a95051388a296"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[SDKFacade getNativeAdView:frame:configJson:]"
-                  moduleName = "Example"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ivy/Desktop/iosSdk/IvySdk/IvyiOSSDK/Classes/Core/SDKFacade.m"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "1851"
-                  endingLineNumber = "1851"
-                  offsetFromSymbolStart = "216">
-               </Location>
-               <Location
-                  uuid = "B7DAA750-CD01-42B8-96CB-0A4510EC977E - 505a95051388a296"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[SDKFacade getNativeAdView:frame:configJson:]"
-                  moduleName = "Example"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ivy/Desktop/iosSdk/IvySdk/IvyiOSSDK/Classes/Core/SDKFacade.m"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "1851"
-                  endingLineNumber = "1851"
-                  offsetFromSymbolStart = "80">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -129,38 +50,6 @@
             endingLineNumber = "1204"
             landmarkName = "-setAdsEnable:"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "8E30EF8B-CABD-4566-9A9C-946511BB7C0E - 4776acdc04b6f01f"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[SDKFacade _initAds]"
-                  moduleName = "Example"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ivy/Desktop/iosSdk/IvySdk/IvyiOSSDK/Classes/Core/SDKFacade.m"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "1206"
-                  endingLineNumber = "1206"
-                  offsetFromSymbolStart = "52">
-               </Location>
-               <Location
-                  uuid = "8E30EF8B-CABD-4566-9A9C-946511BB7C0E - aca9b7cfb8fa359c"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[SDKFacade setAdsEnable:]"
-                  moduleName = "Example"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ivy/Desktop/iosSdk/IvySdk/IvyiOSSDK/Classes/Core/SDKFacade.m"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "1204"
-                  endingLineNumber = "1204"
-                  offsetFromSymbolStart = "80">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy

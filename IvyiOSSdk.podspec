@@ -62,8 +62,8 @@ TODO: Add long description of the pod here.
   
   s.dependency 'YandexMobileAds', '5.9.1'
   
-  s.dependency 'Firebase/Core', '10.19.0'
-  s.dependency 'Firebase/Analytics', '10.19.0'
+  s.dependency 'Firebase/Core', '10.24.0'
+  s.dependency 'Firebase/Analytics', '10.24.0'
   
   s.dependency 'FBSDKCoreKit', '16.3.1'
   
