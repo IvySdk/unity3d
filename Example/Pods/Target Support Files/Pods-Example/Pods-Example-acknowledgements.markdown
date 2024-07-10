@@ -5,41 +5,6 @@ This application makes use of the following third party libraries:
 
 You must accept the terms and conditions on the AdColony website by registering in order to legally use the AdColony SDK. U.S. based companies will need to complete the W-9 form and send it to us, as well as complete the section on payment information on clients.adcolony.com, before publisher payments can be issued.
 
-## AdMobPubMaticAdapter
-
-                               /*
-
-* PubMatic Inc. ("PubMatic") CONFIDENTIAL
-
-* Unpublished Copyright (c) 2006-2023 PubMatic, All Rights Reserved.
-
-*
-
-* NOTICE:  All information contained herein is, and remains the property of PubMatic. The intellectual and technical concepts contained
-
-* herein are proprietary to PubMatic and may be covered by U.S. and Foreign Patents, patents in process, and are protected by trade secret or copyright law.
-
-* Dissemination of this information or reproduction of this material is strictly forbidden unless prior written permission is obtained
-
-* from PubMatic.  Access to the source code contained herein is hereby forbidden to anyone except current PubMatic employees, managers or contractors who have executed
-
-* Confidentiality and Non-disclosure agreements explicitly covering such access.
-
-*
-
-* The copyright notice above does not evidence any actual or intended publication or disclosure  of  this source code, which includes
-
-* information that is confidential and/or proprietary, and is a trade secret, of  PubMatic.   ANY REPRODUCTION, MODIFICATION, DISTRIBUTION, PUBLIC  PERFORMANCE,
-
-* OR PUBLIC DISPLAY OF OR THROUGH USE  OF THIS  SOURCE CODE  WITHOUT  THE EXPRESS WRITTEN CONSENT OF PubMatic IS STRICTLY PROHIBITED, AND IN VIOLATION OF APPLICABLE
-
-* LAWS AND INTERNATIONAL TREATIES.  THE RECEIPT OR POSSESSION OF  THIS SOURCE CODE AND/OR RELATED INFORMATION DOES NOT CONVEY OR IMPLY ANY RIGHTS
-
-* TO REPRODUCE, DISCLOSE OR DISTRIBUTE ITS CONTENTS, OR TO MANUFACTURE, USE, OR SELL ANYTHING THAT IT  MAY DESCRIBE, IN WHOLE OR IN PART.
-
-*/
-
-
 ## AppLovinSDK
 
 
@@ -5034,39 +4999,6 @@ You use of this SDK and any technology with it is subject to the MINTEGRAL STAND
 EXCEPT AS OTHERWISE PROVIDED IN THE MINTEGRAL STANDARD TERMS AND CONDITIONS, THIS SDK IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR              IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS           FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR             COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER          IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH USE OF THE SDK OR ANY TECHNOLOGY WITH IT. 
 
 
-## OpenWrapSDK
-
-
-/*
- * PubMatic Inc. ("PubMatic") CONFIDENTIAL
- * Unpublished Copyright (c) 2006-2024 PubMatic, All Rights Reserved.
- *
- * NOTICE:  All information contained herein is, and remains the property of
- * PubMatic. The intellectual and technical concepts contained herein are
- * proprietary to PubMatic and may be covered by U.S. and Foreign Patents,
- * patents in process, and are protected by trade secret or copyright law.
- * Dissemination of this information or reproduction of this material is
- * strictly forbidden unless prior written permission is obtained from PubMatic.
- * Access to the source code contained herein is hereby forbidden to anyone
- * except current PubMatic employees, managers or contractors who have executed
- * Confidentiality and Non-disclosure agreements explicitly covering such access
- * or to such other persons whom are directly authorized by PubMatic to access
- * the source code and are subject to confidentiality and nondisclosure
- * obligations with respect to the source code.
- *
- * The copyright notice above does not evidence any actual or intended
- * publication or disclosure  of  this source code, which includes information
- * that is confidential and/or proprietary, and is a trade secret, of  PubMatic.
- * ANY REPRODUCTION, MODIFICATION, DISTRIBUTION, PUBLIC  PERFORMANCE, OR PUBLIC
- * DISPLAY OF OR THROUGH USE  OF THIS  SOURCE CODE  WITHOUT  THE EXPRESS WRITTEN
- * CONSENT OF PUBMATIC IS STRICTLY PROHIBITED, AND IN VIOLATION OF APPLICABLE
- * LAWS AND INTERNATIONAL TREATIES.  THE RECEIPT OR POSSESSION OF  THIS SOURCE
- * CODE AND/OR RELATED INFORMATION DOES NOT CONVEY OR IMPLY ANY RIGHTS TO
- * REPRODUCE, DISCLOSE OR DISTRIBUTE ITS CONTENTS, OR TO MANUFACTURE, USE, OR
- * SELL ANYTHING THAT IT  MAY DESCRIBE, IN WHOLE OR IN PART.
- */     
-
-
 ## PromisesObjC
 
 
@@ -5567,22 +5499,5 @@ redistribute it freely, subject to the following restrictions:
 
 3. This notice may not be removed or altered from any source 
    distribution.
-
-
-## smaato-ios-sdk
-
-//Copyright 2019 Smaato Inc.
-//Licensed under the Smaato SDK License Agreement
-//https://www.smaato.com/sdk-license-agreement/ 
-
-By downloading, installing, accessing, or otherwise using this SDK, you accept the terms of the Smaato SDK License Agreement, available at https://www.smaato.com/sdk-license-agreement/.
-
-## smaato-ios-sdk-mediation-admob
-
-//Copyright 2021 Smaato Inc.
-//Licensed under the Smaato SDK License Agreement
-//https://www.smaato.com/sdk-license-agreement/ 
-
-By downloading, installing, accessing, or otherwise using this SDK, you accept the terms of the Smaato SDK License Agreement, available at https://www.smaato.com/sdk-license-agreement/.
 
 Generated by CocoaPods - https://cocoapods.org

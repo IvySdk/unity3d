@@ -1,1 +1,1 @@
-../../../IvyiOSSdk/IvyiOSSDK/Classes/Core/Delegates/SDKFirestoreDelegate.h
+../../../../../IvyiOSSDK/Classes/Core/Delegates/SDKFirestoreDelegate.h

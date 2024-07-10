@@ -1,1 +1,1 @@
-../../../IvyiOSSdk/IvyiOSSDK/Classes/Core/Ads/SDKBaseAd.h
+../../../../../IvyiOSSDK/Classes/Core/Ads/SDKBaseAd.h

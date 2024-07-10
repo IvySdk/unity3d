@@ -1,1 +1,1 @@
-../../../IvyiOSSdk/IvyiOSSDK/Classes/Common/EasyShowView/EasyAlertGlobalConfig.h
+../../../../../IvyiOSSDK/Classes/Common/EasyShowView/EasyAlertGlobalConfig.h

@@ -6,9 +6,9 @@ target 'Example' do
   #use_frameworks!
 
   # Pods for Example
-#pod 'IvyiOSSdk', :path => '../'
+pod 'IvyiOSSdk', :path => '../'
 
-pod 'IvyiOSSdk', :git => 'git@github.com:IvySdk/unity3d.git', :branch => 'ad'
+#pod 'IvyiOSSdk', :git => 'git@github.com:IvySdk/unity3d.git', :branch => 'ad'
 
 #pod 'IvyiOSSdk/Core', :path => '../'
 #pod 'IvyiOSSdk/Firebase', :path => '../'

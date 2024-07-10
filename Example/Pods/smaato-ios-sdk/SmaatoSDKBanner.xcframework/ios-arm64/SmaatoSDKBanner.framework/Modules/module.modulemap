@@ -1,6 +1,0 @@
-framework module SmaatoSDKBanner {
-  umbrella header "SmaatoSDKBanner.h"
-
-  export *
-  module * { export * }
-}

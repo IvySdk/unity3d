@@ -97,26 +97,20 @@ EOM
   esac
 }
 if [[ "$CONFIGURATION" == "Debug" ]]; then
-  install_resource "${PODS_ROOT}/AppLovinSDK/applovin-ios-sdk-11.10.1/AppLovinSDKResources.bundle"
+  install_resource "${PODS_ROOT}/AppLovinSDK/applovin-ios-sdk-11.11.3/AppLovinSDKResources.bundle"
   install_resource "${PODS_ROOT}/ChartboostSDK/ChartboostSDKResources.bundle"
   install_resource "${PODS_CONFIGURATION_BUILD_DIR}/FirebaseCoreInternal/FirebaseCoreInternal_Privacy.bundle"
   install_resource "${PODS_CONFIGURATION_BUILD_DIR}/FirebaseInstallations/FirebaseInstallations_Privacy.bundle"
   install_resource "${PODS_CONFIGURATION_BUILD_DIR}/GoogleUtilities/GoogleUtilities_Privacy.bundle"
-  install_resource "${PODS_ROOT}/OpenWrapSDK/OpenWrapSDK/POBResources.bundle"
-  install_resource "${PODS_ROOT}/OpenWrapSDK/OpenWrapSDK/POBNativeResources.bundle"
-  install_resource "${PODS_ROOT}/OpenWrapSDK/OpenWrapSDK/OpenWrapSDKPrivacyManifest.bundle"
   install_resource "${PODS_CONFIGURATION_BUILD_DIR}/PromisesObjC/FBLPromises_Privacy.bundle"
   install_resource "${PODS_ROOT}/YandexMobileAds/YandexMobileAds.xcframework/YandexMobileAdsBundle.bundle"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
-  install_resource "${PODS_ROOT}/AppLovinSDK/applovin-ios-sdk-11.10.1/AppLovinSDKResources.bundle"
+  install_resource "${PODS_ROOT}/AppLovinSDK/applovin-ios-sdk-11.11.3/AppLovinSDKResources.bundle"
   install_resource "${PODS_ROOT}/ChartboostSDK/ChartboostSDKResources.bundle"
   install_resource "${PODS_CONFIGURATION_BUILD_DIR}/FirebaseCoreInternal/FirebaseCoreInternal_Privacy.bundle"
   install_resource "${PODS_CONFIGURATION_BUILD_DIR}/FirebaseInstallations/FirebaseInstallations_Privacy.bundle"
   install_resource "${PODS_CONFIGURATION_BUILD_DIR}/GoogleUtilities/GoogleUtilities_Privacy.bundle"
-  install_resource "${PODS_ROOT}/OpenWrapSDK/OpenWrapSDK/POBResources.bundle"
-  install_resource "${PODS_ROOT}/OpenWrapSDK/OpenWrapSDK/POBNativeResources.bundle"
-  install_resource "${PODS_ROOT}/OpenWrapSDK/OpenWrapSDK/OpenWrapSDKPrivacyManifest.bundle"
   install_resource "${PODS_CONFIGURATION_BUILD_DIR}/PromisesObjC/FBLPromises_Privacy.bundle"
   install_resource "${PODS_ROOT}/YandexMobileAds/YandexMobileAds.xcframework/YandexMobileAdsBundle.bundle"
 fi

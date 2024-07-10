@@ -1,9 +1,6 @@
 PODS:
   - AdColony (4.9.0)
-  - AdMobPubMaticAdapter (2.2.0):
-    - Google-Mobile-Ads-SDK (>= 9.0.0)
-    - OpenWrapSDK (>= 3.1.0)
-  - AppLovinSDK (11.10.1)
+  - AppLovinSDK (11.11.3)
   - AppsFlyerFramework (6.13.2):
     - AppsFlyerFramework/Main (= 6.13.2)
   - AppsFlyerFramework/Main (6.13.2)
@@ -83,7 +80,7 @@ PODS:
     - GoogleUtilities/UserDefaults (~> 7.8)
     - PromisesObjC (~> 2.1)
   - Fyber_Marketplace_SDK (8.2.4)
-  - Google-Mobile-Ads-SDK (10.10.0):
+  - Google-Mobile-Ads-SDK (10.14.0):
     - GoogleAppMeasurement (< 11.0, >= 7.0)
     - GoogleUserMessagingPlatform (>= 1.1)
   - GoogleAppMeasurement (10.19.0):
@@ -109,8 +106,8 @@ PODS:
   - GoogleMobileAdsMediationAdColony (4.9.0.2):
     - AdColony (= 4.9.0)
     - Google-Mobile-Ads-SDK (~> 10.0)
-  - GoogleMobileAdsMediationAppLovin (11.10.1.0):
-    - AppLovinSDK (= 11.10.1)
+  - GoogleMobileAdsMediationAppLovin (11.11.3.0):
+    - AppLovinSDK (= 11.11.3)
     - Google-Mobile-Ads-SDK (~> 10.4)
   - GoogleMobileAdsMediationChartboost (9.5.1.0):
     - ChartboostSDK (= 9.5.1)
@@ -164,14 +161,13 @@ PODS:
     - GoogleUtilities/Privacy
   - IronSourceSDK (7.6.0.0)
   - IvyiOSSdk (0.1.0):
-    - AdMobPubMaticAdapter (= 2.2.0)
     - AppsFlyerFramework (= 6.13.2)
     - FBSDKCoreKit (= 16.3.1)
     - Firebase/Analytics (= 10.19.0)
     - Firebase/Core (= 10.19.0)
-    - Google-Mobile-Ads-SDK (= 10.10.0)
+    - Google-Mobile-Ads-SDK (~> 10.14)
     - GoogleMobileAdsMediationAdColony (= 4.9.0.2)
-    - GoogleMobileAdsMediationAppLovin (= 11.10.1.0)
+    - GoogleMobileAdsMediationAppLovin (= 11.11.3.0)
     - GoogleMobileAdsMediationChartboost (= 9.5.1.0)
     - GoogleMobileAdsMediationFacebook (= 6.14.0.0)
     - GoogleMobileAdsMediationFyber (= 8.2.4.0)
@@ -180,8 +176,6 @@ PODS:
     - GoogleMobileAdsMediationUnity (= 4.9.2.0)
     - GoogleMobileAdsMediationVungle (= 7.2.0.0)
     - GoogleUserMessagingPlatform (= 2.1.0)
-    - smaato-ios-sdk (= 22.6.0)
-    - smaato-ios-sdk-mediation-admob (= 10.10.0.0)
     - YandexMobileAds (= 5.9.1)
   - MintegralAdSDK/All (7.4.8):
     - MintegralAdSDK/BannerAd
@@ -216,77 +210,7 @@ PODS:
     - nanopb/encode (= 2.30909.1)
   - nanopb/decode (2.30909.1)
   - nanopb/encode (2.30909.1)
-  - OpenWrapSDK (3.6.0):
-    - OpenWrapSDK/OpenWrap (= 3.6.0)
-  - OpenWrapSDK/OpenWrap (3.6.0)
   - PromisesObjC (2.4.0)
-  - smaato-ios-sdk (22.6.0):
-    - smaato-ios-sdk/Full (= 22.6.0)
-  - smaato-ios-sdk-mediation-admob (10.10.0.0):
-    - Google-Mobile-Ads-SDK (= 10.10.0)
-    - smaato-ios-sdk-mediation-admob/Adapters (= 10.10.0.0)
-  - smaato-ios-sdk-mediation-admob/Adapters (10.10.0.0):
-    - Google-Mobile-Ads-SDK (= 10.10.0)
-    - smaato-ios-sdk (>= 22.4.0)
-    - smaato-ios-sdk-mediation-admob/Banner
-    - smaato-ios-sdk-mediation-admob/Interstitial
-    - smaato-ios-sdk-mediation-admob/Native
-    - smaato-ios-sdk-mediation-admob/RewardedAds
-  - smaato-ios-sdk-mediation-admob/Banner (10.10.0.0):
-    - Google-Mobile-Ads-SDK (= 10.10.0)
-    - smaato-ios-sdk/Banner (>= 22.4.0)
-  - smaato-ios-sdk-mediation-admob/Interstitial (10.10.0.0):
-    - Google-Mobile-Ads-SDK (= 10.10.0)
-    - smaato-ios-sdk/Interstitial (>= 22.4.0)
-  - smaato-ios-sdk-mediation-admob/Native (10.10.0.0):
-    - Google-Mobile-Ads-SDK (= 10.10.0)
-    - smaato-ios-sdk/Native (>= 22.4.0)
-  - smaato-ios-sdk-mediation-admob/RewardedAds (10.10.0.0):
-    - Google-Mobile-Ads-SDK (= 10.10.0)
-    - smaato-ios-sdk/RewardedAds (>= 22.4.0)
-  - smaato-ios-sdk/Banner (22.6.0):
-    - smaato-ios-sdk/Modules/Banner
-    - smaato-ios-sdk/Modules/Core
-    - smaato-ios-sdk/Modules/RichMedia
-  - smaato-ios-sdk/Full (22.6.0):
-    - smaato-ios-sdk/Banner
-    - smaato-ios-sdk/Interstitial
-    - smaato-ios-sdk/Native
-    - smaato-ios-sdk/Outstream
-    - smaato-ios-sdk/RewardedAds
-  - smaato-ios-sdk/Interstitial (22.6.0):
-    - smaato-ios-sdk/Modules/Interstitial
-    - smaato-ios-sdk/Modules/RichMedia
-    - smaato-ios-sdk/Modules/Video
-  - smaato-ios-sdk/Modules/Banner (22.6.0):
-    - smaato-ios-sdk/Modules/Core
-  - smaato-ios-sdk/Modules/Core (22.6.0)
-  - smaato-ios-sdk/Modules/Interstitial (22.6.0):
-    - smaato-ios-sdk/Modules/Core
-  - smaato-ios-sdk/Modules/Native (22.6.0):
-    - smaato-ios-sdk/Modules/Core
-  - smaato-ios-sdk/Modules/OpenMeasurement (22.6.0):
-    - smaato-ios-sdk/Modules/Core
-  - smaato-ios-sdk/Modules/Outstream (22.6.0):
-    - smaato-ios-sdk/Modules/Banner
-    - smaato-ios-sdk/Modules/Core
-    - smaato-ios-sdk/Modules/RichMedia
-  - smaato-ios-sdk/Modules/RewardedAds (22.6.0):
-    - smaato-ios-sdk/Modules/Core
-  - smaato-ios-sdk/Modules/RichMedia (22.6.0):
-    - smaato-ios-sdk/Modules/Core
-    - smaato-ios-sdk/Modules/OpenMeasurement
-  - smaato-ios-sdk/Modules/Video (22.6.0):
-    - smaato-ios-sdk/Modules/Core
-    - smaato-ios-sdk/Modules/OpenMeasurement
-  - smaato-ios-sdk/Native (22.6.0):
-    - smaato-ios-sdk/Modules/Core
-    - smaato-ios-sdk/Modules/Native
-  - smaato-ios-sdk/Outstream (22.6.0):
-    - smaato-ios-sdk/Modules/Outstream
-  - smaato-ios-sdk/RewardedAds (22.6.0):
-    - smaato-ios-sdk/Modules/RewardedAds
-    - smaato-ios-sdk/Modules/Video
   - UnityAds (4.9.2)
   - VungleAds (7.2.0)
   - YandexMobileAds (5.9.1):
@@ -305,12 +229,11 @@ PODS:
     - YandexMobileMetrica/Static/Core
 
 DEPENDENCIES:
-  - "IvyiOSSdk (from `git@github.com:IvySdk/unity3d.git`, branch `ad`)"
+  - IvyiOSSdk (from `../`)
 
 SPEC REPOS:
   trunk:
     - AdColony
-    - AdMobPubMaticAdapter
     - AppLovinSDK
     - AppsFlyerFramework
     - ChartboostSDK
@@ -349,10 +272,7 @@ SPEC REPOS:
     - IronSourceSDK
     - MintegralAdSDK
     - nanopb
-    - OpenWrapSDK
     - PromisesObjC
-    - smaato-ios-sdk
-    - smaato-ios-sdk-mediation-admob
     - UnityAds
     - VungleAds
     - YandexMobileAds
@@ -360,18 +280,11 @@ SPEC REPOS:
 
 EXTERNAL SOURCES:
   IvyiOSSdk:
-    :branch: ad
-    :git: "git@github.com:IvySdk/unity3d.git"
-
-CHECKOUT OPTIONS:
-  IvyiOSSdk:
-    :commit: f8358c283af805aae16327b03c19415529976e1a
-    :git: "git@github.com:IvySdk/unity3d.git"
+    :path: "../"
 
 SPEC CHECKSUMS:
   AdColony: af8b7414f317641e0e1e9d23a7b739879e40e4b9
-  AdMobPubMaticAdapter: a10573e299be4cf2aa5750bb320da9033cc202ab
-  AppLovinSDK: a76e8ec3d34fb172c7a32c15efe6805e070c918a
+  AppLovinSDK: 623ef78363c0dd2c3ff5446cde37e4920a96b7e0
   AppsFlyerFramework: 39efd4d2523ca9e3234805aea0c6b3c3a4a387d1
   ChartboostSDK: b2c1de25183b867b6c40646f5b79732870daebde
   DivKit: f2151bd0bfc67e0b4ad949e8cd1caa7379253bef
@@ -393,10 +306,10 @@ SPEC CHECKSUMS:
   FirebaseCoreInternal: 58d07f1362fddeb0feb6a857d1d1d1c5e558e698
   FirebaseInstallations: 60c1d3bc1beef809fd1ad1189a8057a040c59f2e
   Fyber_Marketplace_SDK: c51474f63c016c9ff7eb32e3542528d08d456bc5
-  Google-Mobile-Ads-SDK: 509e53bd31c6accb2d9c33b0eb66df1d54dda622
+  Google-Mobile-Ads-SDK: 8f67a72f88d057335b1ac3f501e2b68ad054116e
   GoogleAppMeasurement: 68afe759316673c6554dac35a0c7ae8f5d6cb4ed
   GoogleMobileAdsMediationAdColony: 739e508a44288b54d59d4deb211340008d46d8f5
-  GoogleMobileAdsMediationAppLovin: ab7983054bc0c4156644ccffabf33673a9069664
+  GoogleMobileAdsMediationAppLovin: 33256929837133e3ee330847e77cbbdf3417a1fc
   GoogleMobileAdsMediationChartboost: 850fae786982ff76f0415f159457423768ec9620
   GoogleMobileAdsMediationFacebook: 13b1e1b86cca4f186fdfa0ba50467479b842c342
   GoogleMobileAdsMediationFyber: b5c9e1d139c3460fea228cf084cc0419f9fa591b
@@ -407,18 +320,15 @@ SPEC CHECKSUMS:
   GoogleUserMessagingPlatform: dce302b8f1b84d6e945812ee7a15c3f65a102cbf
   GoogleUtilities: ea963c370a38a8069cc5f7ba4ca849a60b6d7d15
   IronSourceSDK: 276835c7199033724d947c511a372383ac2846de
-  IvyiOSSdk: 9746c4194459fef28ef435eed96e9f461cbad23d
+  IvyiOSSdk: ff023711c145353170711fda9ff796de1ed6d0bb
   MintegralAdSDK: ee69f71e371f25c2459315a1f724d13fa119ad88
   nanopb: d4d75c12cd1316f4a64e3c6963f879ecd4b5e0d5
-  OpenWrapSDK: 23f8258cd274e39cd166dd90f43ca4d81aca1451
   PromisesObjC: f5707f49cb48b9636751c5b2e7d227e43fba9f47
-  smaato-ios-sdk: 17facb82abda9a50b6d287127660600a3b24d713
-  smaato-ios-sdk-mediation-admob: 2d8bf19aa74446f7435570f500d76d8565cd2d48
   UnityAds: 358547edbd4c923cd03462289b8813d0ef91999e
   VungleAds: 85eb3468e8a6dfcf86f2b2e7891181df426c0433
   YandexMobileAds: b4c8789fb2cc1540fc16bc94f2c18ce2d031ccc7
   YandexMobileMetrica: f5368ee93f286c793d73b58da00929babfc897c1
 
-PODFILE CHECKSUM: 337f17985d8f13091e4a027e544d43206f7f1200
+PODFILE CHECKSUM: 35215b5ac3a0391c47717b9cbc52b6a4a2bb313b
 
 COCOAPODS: 1.15.2

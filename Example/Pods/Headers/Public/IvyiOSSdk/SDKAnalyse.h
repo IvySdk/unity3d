@@ -1,1 +1,1 @@
-../../../IvyiOSSdk/IvyiOSSDK/Classes/Core/SDKAnalyse.h
+../../../../../IvyiOSSDK/Classes/Core/SDKAnalyse.h

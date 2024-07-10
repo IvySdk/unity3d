@@ -1,1 +1,1 @@
-../../../IvyiOSSdk/IvyiOSSDK/Classes/Core/SDKPush.h
+../../../../../IvyiOSSDK/Classes/Core/SDKPush.h

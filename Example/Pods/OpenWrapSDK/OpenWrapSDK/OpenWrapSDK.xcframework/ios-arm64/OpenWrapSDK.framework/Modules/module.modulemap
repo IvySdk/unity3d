@@ -1,6 +1,0 @@
-framework module OpenWrapSDK {
-  umbrella header "OpenWrapSDK.h"
-
-  export *
-  module * { export * }
-}

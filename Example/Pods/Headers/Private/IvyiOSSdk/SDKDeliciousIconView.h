@@ -1,1 +1,1 @@
-../../../IvyiOSSdk/IvyiOSSDK/Classes/Core/Ads/SDKDeliciousIconView.h
+../../../../../IvyiOSSDK/Classes/Core/Ads/SDKDeliciousIconView.h

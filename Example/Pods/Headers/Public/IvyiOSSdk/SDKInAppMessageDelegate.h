@@ -1,1 +1,1 @@
-../../../IvyiOSSdk/IvyiOSSDK/Classes/Core/Delegates/SDKInAppMessageDelegate.h
+../../../../../IvyiOSSDK/Classes/Core/Delegates/SDKInAppMessageDelegate.h

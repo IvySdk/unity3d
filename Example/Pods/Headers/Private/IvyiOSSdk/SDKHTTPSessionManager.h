@@ -1,1 +1,1 @@
-../../../IvyiOSSdk/IvyiOSSDK/Classes/Common/Networking/SDKHTTPSessionManager.h
+../../../../../IvyiOSSDK/Classes/Common/Networking/SDKHTTPSessionManager.h

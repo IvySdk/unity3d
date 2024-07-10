@@ -1,1 +1,1 @@
-../../../IvyiOSSdk/IvyiOSSDK/Classes/Firebase/SDKFirebaseAnalyse.h
+../../../../../IvyiOSSDK/Classes/Firebase/SDKFirebaseAnalyse.h

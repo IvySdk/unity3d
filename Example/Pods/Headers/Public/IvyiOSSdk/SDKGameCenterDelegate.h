@@ -1,1 +1,1 @@
-../../../IvyiOSSdk/IvyiOSSDK/Classes/Core/Delegates/SDKGameCenterDelegate.h
+../../../../../IvyiOSSDK/Classes/Core/Delegates/SDKGameCenterDelegate.h

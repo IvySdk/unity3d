@@ -1,1 +1,1 @@
-../../../IvyiOSSdk/IvyiOSSDK/Classes/Common/Networking/SDKNetworkActivityIndicatorManager.h
+../../../../../IvyiOSSDK/Classes/Common/Networking/SDKNetworkActivityIndicatorManager.h

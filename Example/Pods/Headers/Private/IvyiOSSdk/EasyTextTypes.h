@@ -1,1 +1,1 @@
-../../../IvyiOSSdk/IvyiOSSDK/Classes/Common/EasyShowView/EasyTextTypes.h
+../../../../../IvyiOSSDK/Classes/Common/EasyShowView/EasyTextTypes.h

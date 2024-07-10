@@ -1,1 +1,1 @@
-../../../IvyiOSSdk/IvyiOSSDK/Classes/Common/Extensions/UIImage+animatedGIF.h
+../../../../../IvyiOSSDK/Classes/Common/Extensions/UIImage+animatedGIF.h

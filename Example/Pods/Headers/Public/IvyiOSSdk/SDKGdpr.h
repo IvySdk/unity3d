@@ -1,1 +1,1 @@
-../../../IvyiOSSdk/IvyiOSSDK/Classes/Core/SDKGdpr.h
+../../../../../IvyiOSSDK/Classes/Core/SDKGdpr.h

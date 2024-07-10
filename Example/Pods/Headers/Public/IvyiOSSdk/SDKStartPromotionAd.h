@@ -1,1 +1,1 @@
-../../../IvyiOSSdk/IvyiOSSDK/Classes/Core/SDKStartPromotionAd.h
+../../../../../IvyiOSSDK/Classes/Core/SDKStartPromotionAd.h

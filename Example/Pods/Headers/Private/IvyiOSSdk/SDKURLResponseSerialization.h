@@ -1,1 +1,1 @@
-../../../IvyiOSSdk/IvyiOSSDK/Classes/Common/Networking/SDKURLResponseSerialization.h
+../../../../../IvyiOSSDK/Classes/Common/Networking/SDKURLResponseSerialization.h

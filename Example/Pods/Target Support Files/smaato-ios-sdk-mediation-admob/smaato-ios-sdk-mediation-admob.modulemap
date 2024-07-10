@@ -1,6 +1,0 @@
-module smaato_ios_sdk_mediation_admob {
-  umbrella header "smaato-ios-sdk-mediation-admob-umbrella.h"
-
-  export *
-  module * { export * }
-}

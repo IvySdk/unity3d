@@ -1,1 +1,1 @@
-../../../IvyiOSSdk/IvyiOSSDK/Classes/Core/Delegates/SDKDelegate.h
+../../../../../IvyiOSSDK/Classes/Core/Delegates/SDKDelegate.h

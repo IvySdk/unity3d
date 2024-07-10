@@ -1,1 +1,1 @@
-../../../IvyiOSSdk/IvyiOSSDK/Classes/Core/SDKHelper.h
+../../../../../IvyiOSSDK/Classes/Core/SDKHelper.h

@@ -1,1 +1,1 @@
-../../../IvyiOSSdk/IvyiOSSDK/Classes/Common/Tween/SDKTweenTimingFunctions.h
+../../../../../IvyiOSSDK/Classes/Common/Tween/SDKTweenTimingFunctions.h

@@ -1,1 +1,1 @@
-../../../IvyiOSSdk/IvyiOSSDK/Classes/Core/SDKGCManager.h
+../../../../../IvyiOSSDK/Classes/Core/SDKGCManager.h

@@ -1,1 +1,1 @@
-../../../IvyiOSSdk/IvyiOSSDK/Classes/Core/SDKGCMultiplayer.h
+../../../../../IvyiOSSDK/Classes/Core/SDKGCMultiplayer.h

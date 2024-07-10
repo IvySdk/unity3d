@@ -1,1 +1,1 @@
-../../../IvyiOSSdk/IvyiOSSDK/Classes/Common/Base/SDKCustomAlertView.h
+../../../../../IvyiOSSDK/Classes/Common/Base/SDKCustomAlertView.h

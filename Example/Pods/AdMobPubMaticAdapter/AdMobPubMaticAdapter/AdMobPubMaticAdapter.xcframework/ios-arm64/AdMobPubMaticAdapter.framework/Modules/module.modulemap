@@ -1,6 +1,0 @@
-framework module AdMobPubMaticAdapter {
-  umbrella header "AdMobPubMaticAdapter.h"
-
-  export *
-  module * { export * }
-}

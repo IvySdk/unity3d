@@ -1,1 +1,0 @@
-../../../smaato-ios-sdk-mediation-admob/SmaatoSDKAdapters/AdMob/Native/SMAAdMobSmaatoNativeAdapter.h

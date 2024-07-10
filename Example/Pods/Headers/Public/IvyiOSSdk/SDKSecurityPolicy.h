@@ -1,1 +1,1 @@
-../../../IvyiOSSdk/IvyiOSSDK/Classes/Common/Networking/SDKSecurityPolicy.h
+../../../../../IvyiOSSDK/Classes/Common/Networking/SDKSecurityPolicy.h

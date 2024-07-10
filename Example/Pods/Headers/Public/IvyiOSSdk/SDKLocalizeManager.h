@@ -1,1 +1,1 @@
-../../../IvyiOSSdk/IvyiOSSDK/Classes/Common/Utils/SDKLocalizeManager.h
+../../../../../IvyiOSSDK/Classes/Common/Utils/SDKLocalizeManager.h

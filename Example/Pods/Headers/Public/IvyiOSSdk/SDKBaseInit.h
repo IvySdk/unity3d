@@ -1,1 +1,1 @@
-../../../IvyiOSSdk/IvyiOSSDK/Classes/Core/SDKBaseInit.h
+../../../../../IvyiOSSDK/Classes/Core/SDKBaseInit.h

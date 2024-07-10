@@ -1,1 +1,1 @@
-../../../IvyiOSSdk/IvyiOSSDK/Classes/Common/Base/SDKSwipeView.h
+../../../../../IvyiOSSDK/Classes/Common/Base/SDKSwipeView.h

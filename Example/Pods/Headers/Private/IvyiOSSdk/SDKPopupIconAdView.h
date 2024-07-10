@@ -1,1 +1,1 @@
-../../../IvyiOSSdk/IvyiOSSDK/Classes/Core/Ads/SDKPopupIconAdView.h
+../../../../../IvyiOSSDK/Classes/Core/Ads/SDKPopupIconAdView.h

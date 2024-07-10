@@ -1,1 +1,1 @@
-../../../IvyiOSSdk/IvyiOSSDK/Classes/Core/Delegates/SDKRemoteConfigDelegate.h
+../../../../../IvyiOSSDK/Classes/Core/Delegates/SDKRemoteConfigDelegate.h

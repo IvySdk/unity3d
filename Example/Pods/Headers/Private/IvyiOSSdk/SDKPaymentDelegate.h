@@ -1,1 +1,1 @@
-../../../IvyiOSSdk/IvyiOSSDK/Classes/Core/Delegates/SDKPaymentDelegate.h
+../../../../../IvyiOSSDK/Classes/Core/Delegates/SDKPaymentDelegate.h

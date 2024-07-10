@@ -41,7 +41,7 @@ TODO: Add long description of the pod here.
   s.libraries = 'sqlite3'
   
   
-  s.dependency 'Google-Mobile-Ads-SDK', '10.10.0' #'10.6.0'
+  s.dependency 'Google-Mobile-Ads-SDK', '~> 10.14' #'10.6.0'
   #google.dependency 'PersonalizedAdConsent', '1.0.5'
   s.dependency 'GoogleMobileAdsMediationFyber', '8.2.4.0'
   s.dependency 'GoogleMobileAdsMediationIronSource', '7.6.0.0'
@@ -50,14 +50,14 @@ TODO: Add long description of the pod here.
   s.dependency 'GoogleMobileAdsMediationFacebook', '6.14.0.0'
   s.dependency 'GoogleMobileAdsMediationUnity', '4.9.2.0'
   s.dependency 'GoogleMobileAdsMediationChartboost', '9.5.1.0'
-  s.dependency 'GoogleMobileAdsMediationAppLovin', '11.10.1.0'
+  s.dependency 'GoogleMobileAdsMediationAppLovin', '11.11.3.0'
   #google.dependency 'GoogleMobileAdsMediationPangle', '5.1.0.6.0'
   s.dependency 'GoogleMobileAdsMediationAdColony', '4.9.0.2'
   s.dependency 'GoogleMobileAdsMediationMintegral', '7.4.8.0'
   #google.dependency 'OpenWrapSDK', '3.2.0' #'2.8.0'
-  s.dependency 'AdMobPubMaticAdapter', '2.2.0'#, '2.1.1'
-  s.dependency 'smaato-ios-sdk', '22.6.0'
-  s.dependency 'smaato-ios-sdk-mediation-admob', '10.10.0.0'
+ # s.dependency 'AdMobPubMaticAdapter', '2.2.0'#, '2.1.1'
+ # s.dependency 'smaato-ios-sdk', '22.6.0'
+ # s.dependency 'smaato-ios-sdk-mediation-admob', '10.10.0.0'
   s.dependency 'GoogleUserMessagingPlatform', '2.1.0'
   
   s.dependency 'YandexMobileAds', '5.9.1'

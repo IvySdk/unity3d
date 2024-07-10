@@ -1,1 +1,1 @@
-../../../IvyiOSSdk/IvyiOSSDK/Classes/Core/Ads/SDKVideoModule.h
+../../../../../IvyiOSSDK/Classes/Core/Ads/SDKVideoModule.h

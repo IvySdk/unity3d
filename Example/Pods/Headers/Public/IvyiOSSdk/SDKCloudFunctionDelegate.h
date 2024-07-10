@@ -1,1 +1,1 @@
-../../../IvyiOSSdk/IvyiOSSDK/Classes/Core/Delegates/SDKCloudFunctionDelegate.h
+../../../../../IvyiOSSDK/Classes/Core/Delegates/SDKCloudFunctionDelegate.h

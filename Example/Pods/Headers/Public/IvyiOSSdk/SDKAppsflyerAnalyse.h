@@ -1,1 +1,1 @@
-../../../IvyiOSSdk/IvyiOSSDK/Classes/Appsflyer/SDKAppsflyerAnalyse.h
+../../../../../IvyiOSSDK/Classes/Appsflyer/SDKAppsflyerAnalyse.h
