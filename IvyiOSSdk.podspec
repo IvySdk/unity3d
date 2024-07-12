@@ -29,7 +29,7 @@ TODO: Add long description of the pod here.
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.ios.deployment_target = '12.0'
-  #  s.static_framework = true  #  如果设置 use_frameworks!，需要改为静态库
+  s.static_framework = true  #  如果设置 use_frameworks!，需要改为静态库
   s.source_files = 'IvyiOSSdk/Classes/**/*'
 #  s.frameworks = ['UIKit', 'CoreFoundation', 'QuartzCore', 'AVKit', 'AdServices', 'CoreTelephony', 'GameController', 'MediaPlayer', 'GameKit', 'iAd', 'Security', 'AdSupport']
 #  s.xcconfig = { "FRAMEWORK_SEARCH_PATHS" => '$(inherited)', "LIBRARY_SEARCH_PATHS" => '$(inherited)', "HEADER_SEARCH_PATHS" => '$(inherited)', "OTHER_CFLAGS" => '$(inherited)', "OTHER_LDFLAGS" => '$(inherited)', "GCC_PREPROCESSOR_DEFINITIONS" => '$(inherited)', "VALID_ARCHS" => '$(inherited)' }
