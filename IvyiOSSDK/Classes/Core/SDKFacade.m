@@ -77,10 +77,11 @@
 #import <IvyiOSSdk/SDKFirebaseInAppMessage.h>
 @import FBSDKLoginKit;
 #endif
-#ifdef FACEBOOK
-#import <IvyiOSSdk/SDKFacebookInit.h>
-@import FBSDKCoreKit;
-#endif
+//#ifdef FACEBOOK
+//#import <IvyiOSSdk/SDKFacebookInit.h>
+//@import FBSDKCoreKit;
+//#endif
+#import <FBSDKCoreKit/FBSDKAppEvents.h>
 #ifdef FB_AUDIENCE
 #import <FBAudienceNetwork/FBAdSettings.h>
 #endif
@@ -2507,9 +2508,9 @@ static NSString * CRASH_EMAIL_ADDR;
             }
         }];
 #endif
-#ifdef FACEBOOK
+//#ifdef FACEBOOK
         [[FBSDKAppEvents shared] activateApp];
-#endif
+//#endif
         [self reSendFailedConsumedPayments];
     }
     

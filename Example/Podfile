@@ -1,41 +1,61 @@
-# Uncomment the next line to define a global platform for your project
+## Uncomment the next line to define a global platform for your project
 platform :ios, '12.0'
 use_modular_headers!
 target 'Example' do
-  # Comment the next line if you don't want to use dynamic frameworks
-  #use_frameworks!
+#  # Comment the next line if you don't want to use dynamic frameworks
+#  #use_frameworks!
+#
+#  # Pods for Example
+#pod 'IvyiOSSdk', :path => '../'
+#
+##pod 'IvyiOSSdk', :git => 'git@github.com:IvySdk/unity3d.git', :branch => 'ad'
+#
+##pod 'IvyiOSSdk/Core', :path => '../'
+##pod 'IvyiOSSdk/Firebase', :path => '../'
+##pod 'IvyiOSSdk/Facebook', :path => '../'
+##pod 'IvyiOSSdk/Google', :path => '../'
+##pod 'IvyiOSSdk/Appsflyer', :path => '../'
 
-  # Pods for Example
-pod 'IvyiOSSdk', :path => '../'
 
-#pod 'IvyiOSSdk', :git => 'git@github.com:IvySdk/unity3d.git', :branch => 'ad'
+pod 'FBSDKCoreKit','16.3.1'
+pod 'FBSDKCoreKit_Basics','16.3.1'
+pod 'FBSDKLoginKit','16.3.1'
+pod 'Protobuf'
+pod 'FBSDKShareKit','16.3.1'
+pod 'AppsFlyerFramework'
+pod 'IvyiOSSdk', :git => 'git@github.com:IvySdk/unity3d.git', :branch => 'ad'
 
-#pod 'IvyiOSSdk/Core', :path => '../'
-#pod 'IvyiOSSdk/Firebase', :path => '../'
-#pod 'IvyiOSSdk/Facebook', :path => '../'
-#pod 'IvyiOSSdk/Google', :path => '../'
-#pod 'IvyiOSSdk/Appsflyer', :path => '../'
+  pod 'Firebase/Analytics', '10.24.0'
+  pod 'Firebase/Core', '10.24.0'
+  pod 'Firebase/Crashlytics', '10.24.0'
+  pod 'Firebase/RemoteConfig', '10.24.0'
+  pod 'GoogleMobileAdsMediationAppLovin', '11.11.3.0'
+  pod 'GoogleMobileAdsMediationFacebook', '6.14.0.0'
+  pod 'GoogleMobileAdsMediationUnity', '4.9.2.0'
+  pod 'Google-Mobile-Ads-SDK', '~> 10.14'
+
 end
+#
+#
+#post_install do |installer|
+#    # Get main project development team id
+#    dev_team = ""
+#    project = installer.aggregate_targets[0].user_project
+#    project.targets.each do |target|
+#        target.build_configurations.each do |config|
+#            if dev_team.empty? and !config.build_settings['DEVELOPMENT_TEAM'].nil?
+#                dev_team = config.build_settings['DEVELOPMENT_TEAM']
+#            end
+#        end
+#    end
+#    
+#    # Fix bundle targets' 'Signing Certificate' to 'Sign to Run Locally'
+#    installer.pods_project.targets.each do |target|
+#        if target.respond_to?(:product_type) and target.product_type == "com.apple.product-type.bundle"
+#            target.build_configurations.each do |config|
+#                config.build_settings['DEVELOPMENT_TEAM'] = dev_team
+#            end
+#        end
+#    end
+#end
 
-
-post_install do |installer|
-    # Get main project development team id
-    dev_team = ""
-    project = installer.aggregate_targets[0].user_project
-    project.targets.each do |target|
-        target.build_configurations.each do |config|
-            if dev_team.empty? and !config.build_settings['DEVELOPMENT_TEAM'].nil?
-                dev_team = config.build_settings['DEVELOPMENT_TEAM']
-            end
-        end
-    end
-    
-    # Fix bundle targets' 'Signing Certificate' to 'Sign to Run Locally'
-    installer.pods_project.targets.each do |target|
-        if target.respond_to?(:product_type) and target.product_type == "com.apple.product-type.bundle"
-            target.build_configurations.each do |config|
-                config.build_settings['DEVELOPMENT_TEAM'] = dev_team
-            end
-        end
-    end
-end

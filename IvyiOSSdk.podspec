@@ -52,7 +52,7 @@ TODO: Add long description of the pod here.
   s.dependency 'GoogleMobileAdsMediationChartboost', '9.5.1.0'
   s.dependency 'GoogleMobileAdsMediationAppLovin', '11.11.3.0'
   #google.dependency 'GoogleMobileAdsMediationPangle', '5.1.0.6.0'
-  s.dependency 'GoogleMobileAdsMediationAdColony', '4.9.0.2'
+  #s.dependency 'GoogleMobileAdsMediationAdColony', '4.9.0.2'
   s.dependency 'GoogleMobileAdsMediationMintegral', '7.4.8.0'
   #google.dependency 'OpenWrapSDK', '3.2.0' #'2.8.0'
  # s.dependency 'AdMobPubMaticAdapter', '2.2.0'#, '2.1.1'
