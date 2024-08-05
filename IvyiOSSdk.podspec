@@ -47,10 +47,10 @@ TODO: Add long description of the pod here.
   s.dependency 'GoogleMobileAdsMediationIronSource', '7.6.0.0'
   #google.dependency 'GoogleMobileAdsMediationInMobi', '10.5.4.0'
   s.dependency 'GoogleMobileAdsMediationVungle', '7.2.0.0'
-  s.dependency 'GoogleMobileAdsMediationFacebook', '6.14.0.0'
-  s.dependency 'GoogleMobileAdsMediationUnity', '4.9.2.0'
+  s.dependency 'GoogleMobileAdsMediationFacebook'，'6.15.1.0'
+  s.dependency 'GoogleMobileAdsMediationUnity'，'4.12.1.0'
   s.dependency 'GoogleMobileAdsMediationChartboost', '9.5.1.0'
-  s.dependency 'GoogleMobileAdsMediationAppLovin', '11.11.3.0'
+  s.dependency 'GoogleMobileAdsMediationAppLovin'，'12.6.0.0'
   #google.dependency 'GoogleMobileAdsMediationPangle', '5.1.0.6.0'
   #s.dependency 'GoogleMobileAdsMediationAdColony', '4.9.0.2'
   s.dependency 'GoogleMobileAdsMediationMintegral', '7.4.8.0'
@@ -59,7 +59,7 @@ TODO: Add long description of the pod here.
  # s.dependency 'smaato-ios-sdk', '22.6.0'
  # s.dependency 'smaato-ios-sdk-mediation-admob', '10.10.0.0'
   s.dependency 'GoogleUserMessagingPlatform', '2.1.0'
-  
+
   s.dependency 'YandexMobileAds', '5.9.1'
   
   s.dependency 'Firebase/Core', '10.24.0'
