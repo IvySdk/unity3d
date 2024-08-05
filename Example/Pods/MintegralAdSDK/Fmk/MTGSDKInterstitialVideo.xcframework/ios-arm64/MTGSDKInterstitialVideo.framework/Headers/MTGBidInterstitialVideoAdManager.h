@@ -97,9 +97,11 @@ __attribute__((deprecated("MTGBidInterstitialVideoAdManager is deprecated, and w
                cancelText:(NSString *_Nullable)cancelText;
 
 /**
-* get the id of this request ad,call  after onInterstitialAdLoadSuccess.
+* get the id of this requested ad, call this after onInterstitialAdLoadSuccess.
 */
 - (NSString *_Nullable)getRequestIdWithUnitId:(nonnull NSString *)unitId;
+/// get the  creativeId of this requested ad, call this after onInterstitialAdLoadSuccess.
+- (NSString *_Nullable)getCreativeIdWithUnitId:(nonnull NSString *)unitId;
 
 @end
 

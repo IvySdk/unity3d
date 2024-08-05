@@ -12,7 +12,7 @@
     #import "MTGRewardAdInfo.h"
 #endif
 
-#define MTGInterstitialVideoSDKVersion @"7.4.8"
+#define MTGInterstitialVideoSDKVersion @"7.6.2"
 
 
 /**

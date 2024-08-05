@@ -4,8 +4,3 @@ framework module IronSource {
   export *
   module * { export * }
 }
-
-module IronSource.Swift {
-  header "IronSource-Swift.h"
-  requires objc
-}

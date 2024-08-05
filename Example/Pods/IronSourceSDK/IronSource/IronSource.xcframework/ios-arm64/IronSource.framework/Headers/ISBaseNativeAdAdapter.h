@@ -14,7 +14,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ISBaseNativeAdAdapter : ISBaseAdUnitAdapter <ISNativeAdAdapterProtocol>
 
-- (ISNativeAdProperties *)getNativeAdPropertiesWithAdapterConfig:(nonnull ISAdapterConfig *)adapterConfig;
+- (ISNativeAdProperties *)getNativeAdPropertiesWithAdapterConfig:
+    (nonnull ISAdapterConfig *)adapterConfig;
 
 @end
 

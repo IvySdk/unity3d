@@ -6,12 +6,12 @@
 //  Copyright © 2021 IronSource. All rights reserved.
 //
 
-#import "ISBaseAdAdapter.h"
 #import "ISAdapterAdFullscreenProtocol.h"
+#import "ISBaseAdAdapter.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ISBaseAdInteractionAdapter : ISBaseAdAdapter<ISAdapterAdFullscreenProtocol>
+@interface ISBaseAdInteractionAdapter : ISBaseAdAdapter <ISAdapterAdFullscreenProtocol>
 
 @end
 

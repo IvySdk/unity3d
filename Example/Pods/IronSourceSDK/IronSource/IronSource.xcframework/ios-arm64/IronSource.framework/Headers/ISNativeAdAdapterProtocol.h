@@ -10,7 +10,6 @@
 #import "ISBiddingDataDelegate.h"
 #import "ISNativeAdAdapterDelegate.h"
 
-
 @protocol ISNativeAdAdapterProtocol <ISAdUnitAdapterProtocol>
 
 @optional

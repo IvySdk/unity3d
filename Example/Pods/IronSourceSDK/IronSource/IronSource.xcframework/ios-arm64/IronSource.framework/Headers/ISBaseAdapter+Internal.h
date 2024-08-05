@@ -12,26 +12,26 @@
 
 #import "ISBaseAdapter.h"
 
-#import "ISRewardedVideoAdapterDelegate.h"
-#import "ISInterstitialAdapterDelegate.h"
 #import "ISBannerAdapterDelegate.h"
-#import "ISOfferwallAdapterDelegate.h"
+#import "ISInterstitialAdapterDelegate.h"
 #import "ISNativeAdAdapterDelegate.h"
+#import "ISOfferwallAdapterDelegate.h"
+#import "ISRewardedVideoAdapterDelegate.h"
 
 #import "ISConfigurations.h"
-#import "ISMetaDataUtils.h"
 #import "ISMetaDataConstants.h"
+#import "ISMetaDataUtils.h"
 
-#import "ISError.h"
-#import "ISConcurrentMutableSet.h"
 #import "ISConcurrentMutableDictionary.h"
-#import "ISNetworkInitCallbackProtocol.h"
+#import "ISConcurrentMutableSet.h"
+#import "ISError.h"
 #import "ISLog.h"
+#import "ISNetworkInitCallbackProtocol.h"
 
-#import "ISBaseRewardedVideoAdapter.h"
-#import "ISBaseInterstitialAdapter.h"
 #import "ISBaseBannerAdapter.h"
+#import "ISBaseInterstitialAdapter.h"
 #import "ISBaseNativeAdAdapter.h"
+#import "ISBaseRewardedVideoAdapter.h"
 
 #import "ISAdapterNativeAdData.h"
 #import "ISAdapterNativeAdViewBinder.h"
@@ -43,14 +43,11 @@
 #pragma mark - Validation
 - (BOOL)isConfigValueValid:(NSString *)value;
 - (NSError *)errorForMissingCredentialFieldWithName:(NSString *)fieldName;
-    
+
 #pragma mark - Private
-- (UIViewController *) topMostController;
-- (void)setConsent:(BOOL)consent;
-- (void)setMetaDataWithKey:(NSString *)key
-                 andValues:(NSMutableArray *)values;
+- (UIViewController *)topMostController;
+- (void)setMetaDataWithKey:(NSString *)key andValues:(NSMutableArray *)values;
 
 @end
 
 #endif /* ISBaseAdapter_Internal_h */
-

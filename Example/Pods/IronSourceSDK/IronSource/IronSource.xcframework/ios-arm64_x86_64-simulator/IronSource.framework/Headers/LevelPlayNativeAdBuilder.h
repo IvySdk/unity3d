@@ -6,16 +6,16 @@
 //  Copyright © 2023 IronSource. All rights reserved.
 //
 
-#import "LevelPlayNativeAdDelegate.h"
 #import <UIKit/UIKit.h>
+#import "LevelPlayNativeAdDelegate.h"
 
 @class LevelPlayNativeAd;
 
 @interface LevelPlayNativeAdBuilder : NSObject
 
-@property (nonatomic, strong)   NSString                        *placementName;
-@property (nonatomic, weak)     id<LevelPlayNativeAdDelegate>   delegate;
-@property (nonatomic, weak)     UIViewController                *viewController;
+@property(nonatomic, strong) NSString *placementName;
+@property(nonatomic, weak) id<LevelPlayNativeAdDelegate> delegate;
+@property(nonatomic, weak) UIViewController *viewController;
 
 - (LevelPlayNativeAdBuilder *)withViewController:(UIViewController *)viewController;
 

@@ -1,7 +1,7 @@
 framework module VungleAdsSDK {
   umbrella header "VungleAdsSDK.h"
-
   export *
+
   module * { export * }
 }
 

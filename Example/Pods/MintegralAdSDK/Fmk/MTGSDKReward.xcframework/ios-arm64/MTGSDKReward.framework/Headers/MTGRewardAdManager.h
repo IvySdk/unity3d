@@ -105,6 +105,8 @@
 */
 - (NSString *_Nullable)getRequestIdWithUnitId:(nonnull NSString *)unitId;
 
+/// get the creativeId of this requested ad, call this after onAdLoadSuccess.
+- (NSString *_Nullable)getCreativeIdWithUnitId:(nonnull NSString *)unitId;
 
 /**
 *  Set  alertView text,if you want to change the alertView text.

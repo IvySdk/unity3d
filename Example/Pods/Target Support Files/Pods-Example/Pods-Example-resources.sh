@@ -97,22 +97,38 @@ EOM
   esac
 }
 if [[ "$CONFIGURATION" == "Debug" ]]; then
-  install_resource "${PODS_ROOT}/AppLovinSDK/applovin-ios-sdk-11.11.3/AppLovinSDKResources.bundle"
   install_resource "${PODS_ROOT}/ChartboostSDK/ChartboostSDKResources.bundle"
+  install_resource "${PODS_CONFIGURATION_BUILD_DIR}/FBAudienceNetwork/FBAudienceNetwork.bundle"
+  install_resource "${PODS_CONFIGURATION_BUILD_DIR}/FirebaseCore/FirebaseCore_Privacy.bundle"
   install_resource "${PODS_CONFIGURATION_BUILD_DIR}/FirebaseCoreInternal/FirebaseCoreInternal_Privacy.bundle"
   install_resource "${PODS_CONFIGURATION_BUILD_DIR}/FirebaseInstallations/FirebaseInstallations_Privacy.bundle"
+  install_resource "${PODS_CONFIGURATION_BUILD_DIR}/Fyber_Marketplace_SDK/Fyber_Marketplace_SDK.bundle"
+  install_resource "${PODS_CONFIGURATION_BUILD_DIR}/Google-Mobile-Ads-SDK/GoogleMobileAdsResources.bundle"
   install_resource "${PODS_CONFIGURATION_BUILD_DIR}/GoogleUtilities/GoogleUtilities_Privacy.bundle"
+  install_resource "${PODS_CONFIGURATION_BUILD_DIR}/IronSourceSDK/IronSourcePrivacyInfo.bundle"
+  install_resource "${PODS_CONFIGURATION_BUILD_DIR}/MintegralAdSDK/MTGSDK.bundle"
   install_resource "${PODS_CONFIGURATION_BUILD_DIR}/PromisesObjC/FBLPromises_Privacy.bundle"
+  install_resource "${PODS_CONFIGURATION_BUILD_DIR}/UnityAds/UnityAdsResources.bundle"
+  install_resource "${PODS_CONFIGURATION_BUILD_DIR}/VungleAds/VungleAds.bundle"
   install_resource "${PODS_ROOT}/YandexMobileAds/YandexMobileAds.xcframework/YandexMobileAdsBundle.bundle"
+  install_resource "${PODS_CONFIGURATION_BUILD_DIR}/nanopb/nanopb_Privacy.bundle"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
-  install_resource "${PODS_ROOT}/AppLovinSDK/applovin-ios-sdk-11.11.3/AppLovinSDKResources.bundle"
   install_resource "${PODS_ROOT}/ChartboostSDK/ChartboostSDKResources.bundle"
+  install_resource "${PODS_CONFIGURATION_BUILD_DIR}/FBAudienceNetwork/FBAudienceNetwork.bundle"
+  install_resource "${PODS_CONFIGURATION_BUILD_DIR}/FirebaseCore/FirebaseCore_Privacy.bundle"
   install_resource "${PODS_CONFIGURATION_BUILD_DIR}/FirebaseCoreInternal/FirebaseCoreInternal_Privacy.bundle"
   install_resource "${PODS_CONFIGURATION_BUILD_DIR}/FirebaseInstallations/FirebaseInstallations_Privacy.bundle"
+  install_resource "${PODS_CONFIGURATION_BUILD_DIR}/Fyber_Marketplace_SDK/Fyber_Marketplace_SDK.bundle"
+  install_resource "${PODS_CONFIGURATION_BUILD_DIR}/Google-Mobile-Ads-SDK/GoogleMobileAdsResources.bundle"
   install_resource "${PODS_CONFIGURATION_BUILD_DIR}/GoogleUtilities/GoogleUtilities_Privacy.bundle"
+  install_resource "${PODS_CONFIGURATION_BUILD_DIR}/IronSourceSDK/IronSourcePrivacyInfo.bundle"
+  install_resource "${PODS_CONFIGURATION_BUILD_DIR}/MintegralAdSDK/MTGSDK.bundle"
   install_resource "${PODS_CONFIGURATION_BUILD_DIR}/PromisesObjC/FBLPromises_Privacy.bundle"
+  install_resource "${PODS_CONFIGURATION_BUILD_DIR}/UnityAds/UnityAdsResources.bundle"
+  install_resource "${PODS_CONFIGURATION_BUILD_DIR}/VungleAds/VungleAds.bundle"
   install_resource "${PODS_ROOT}/YandexMobileAds/YandexMobileAds.xcframework/YandexMobileAdsBundle.bundle"
+  install_resource "${PODS_CONFIGURATION_BUILD_DIR}/nanopb/nanopb_Privacy.bundle"
 fi
 
 mkdir -p "${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}"

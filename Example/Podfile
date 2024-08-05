@@ -6,33 +6,29 @@ target 'Example' do
 #  #use_frameworks!
 #
 #  # Pods for Example
-#pod 'IvyiOSSdk', :path => '../'
+pod 'IvyiOSSdk', :path => '../'
 #
 ##pod 'IvyiOSSdk', :git => 'git@github.com:IvySdk/unity3d.git', :branch => 'ad'
 #
-##pod 'IvyiOSSdk/Core', :path => '../'
-##pod 'IvyiOSSdk/Firebase', :path => '../'
-##pod 'IvyiOSSdk/Facebook', :path => '../'
-##pod 'IvyiOSSdk/Google', :path => '../'
-##pod 'IvyiOSSdk/Appsflyer', :path => '../'
 
 
-pod 'FBSDKCoreKit','16.3.1'
-pod 'FBSDKCoreKit_Basics','16.3.1'
-pod 'FBSDKLoginKit','16.3.1'
-pod 'Protobuf'
-pod 'FBSDKShareKit','16.3.1'
-pod 'AppsFlyerFramework'
-pod 'IvyiOSSdk', :git => 'git@github.com:IvySdk/unity3d.git', :branch => 'ad'
 
-  pod 'Firebase/Analytics', '10.24.0'
-  pod 'Firebase/Core', '10.24.0'
-  pod 'Firebase/Crashlytics', '10.24.0'
-  pod 'Firebase/RemoteConfig', '10.24.0'
-  pod 'GoogleMobileAdsMediationAppLovin', '11.11.3.0'
-  pod 'GoogleMobileAdsMediationFacebook', '6.14.0.0'
-  pod 'GoogleMobileAdsMediationUnity', '4.9.2.0'
-  pod 'Google-Mobile-Ads-SDK', '~> 10.14'
+#pod 'FBSDKCoreKit','16.3.1'
+#pod 'FBSDKCoreKit_Basics','16.3.1'
+#pod 'FBSDKLoginKit','16.3.1'
+#pod 'Protobuf'
+#pod 'FBSDKShareKit','16.3.1'
+#pod 'AppsFlyerFramework'
+#pod 'IvyiOSSdk', :git => 'git@github.com:IvySdk/unity3d.git', :branch => 'ad'
+
+#  pod 'Firebase/Analytics', '10.24.0'
+#  pod 'Firebase/Core', '10.24.0'
+#  pod 'Firebase/Crashlytics', '10.24.0'
+#  pod 'Firebase/RemoteConfig', '10.24.0'
+#  pod 'GoogleMobileAdsMediationAppLovin', '11.11.3.0'
+#  pod 'GoogleMobileAdsMediationFacebook', '6.14.0.0'
+#  pod 'GoogleMobileAdsMediationUnity', '4.9.2.0'
+#  pod 'Google-Mobile-Ads-SDK', '~> 10.14'
 
 end
 #

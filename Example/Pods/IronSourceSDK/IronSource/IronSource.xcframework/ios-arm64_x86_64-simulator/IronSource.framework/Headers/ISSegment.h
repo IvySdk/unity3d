@@ -11,17 +11,17 @@
 
 @interface ISSegment : NSObject
 
-@property (nonatomic) int                             age;
-@property (nonatomic) int                             level;
-@property (nonatomic) double                          iapTotal;
-@property (nonatomic) BOOL                            paying;
-@property (nonatomic) ISGender                        gender;
-@property (nonatomic, strong) NSDate                  *userCreationDate;
-@property (nonatomic, strong) NSString                *segmentName;
-@property (nonatomic, strong, readonly) NSDictionary  *customKeys;
+@property(nonatomic) int age;
+@property(nonatomic) int level;
+@property(nonatomic) double iapTotal;
+@property(nonatomic) BOOL paying;
+@property(nonatomic) ISGender gender;
+@property(nonatomic, strong) NSDate *userCreationDate;
+@property(nonatomic, strong) NSString *segmentName;
+@property(nonatomic, strong, readonly) NSDictionary *customKeys;
 
 - (void)setCustomValue:(NSString *)value forKey:(NSString *)key;
 
-- (NSDictionary*)getData;
+- (NSDictionary *)getData;
 
 @end

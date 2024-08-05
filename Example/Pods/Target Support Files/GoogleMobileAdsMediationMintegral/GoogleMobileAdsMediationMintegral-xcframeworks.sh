@@ -117,5 +117,5 @@ install_xcframework() {
   echo "Copied $source to $destination"
 }
 
-install_xcframework "${PODS_ROOT}/GoogleMobileAdsMediationMintegral/MintegralAdapter-7.4.8.0/MintegralAdapter.xcframework" "GoogleMobileAdsMediationMintegral" "framework" "ios-arm64" "ios-arm64_x86_64-simulator"
+install_xcframework "${PODS_ROOT}/GoogleMobileAdsMediationMintegral/MintegralAdapter-7.6.2.0/MintegralAdapter.xcframework" "GoogleMobileAdsMediationMintegral" "framework" "ios-arm64" "ios-arm64_x86_64-simulator"
 

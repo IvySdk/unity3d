@@ -117,5 +117,5 @@ install_xcframework() {
   echo "Copied $source to $destination"
 }
 
-install_xcframework "${PODS_ROOT}/GoogleMobileAdsMediationChartboost/ChartboostAdapter-9.5.1.0/ChartboostAdapter.xcframework" "GoogleMobileAdsMediationChartboost" "framework" "ios-arm64" "ios-arm64_x86_64-simulator"
+install_xcframework "${PODS_ROOT}/GoogleMobileAdsMediationChartboost/ChartboostAdapter-9.7.0.0/ChartboostAdapter.xcframework" "GoogleMobileAdsMediationChartboost" "framework" "ios-arm64" "ios-arm64_x86_64-simulator"
 

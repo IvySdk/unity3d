@@ -6,10 +6,9 @@
 //  Copyright © 2021 ironSource. All rights reserved.
 //
 
-
 NS_ASSUME_NONNULL_BEGIN
 
-@protocol ISNetworkInitializationDelegate<NSObject>
+@protocol ISNetworkInitializationDelegate <NSObject>
 
 // mandatory callbacks
 

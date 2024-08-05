@@ -4,57 +4,9 @@
 <dict>
 	<key>files</key>
 	<dict>
-		<key>Headers/OMIDAdEvents.h</key>
-		<data>
-		IgceG5Rb/UJ7YPQUCcK7Z720Kcs=
-		</data>
-		<key>Headers/OMIDAdSession.h</key>
-		<data>
-		V1TMkvsllb68fvmeC3Y8SAQ8xH4=
-		</data>
-		<key>Headers/OMIDAdSessionConfiguration.h</key>
-		<data>
-		h+tCMM6iWRYSrLMqANEbOtwQbpI=
-		</data>
-		<key>Headers/OMIDAdSessionContext.h</key>
-		<data>
-		jBXoslhqSTT3aYOJWLrnCQdgMMs=
-		</data>
-		<key>Headers/OMIDFriendlyObstructionType.h</key>
-		<data>
-		ymPA8TI4PL8pK0zhc5ilyQj/SsA=
-		</data>
-		<key>Headers/OMIDImports.h</key>
-		<data>
-		kklBQQiiHyi6ArUe1OOfy92xxX4=
-		</data>
-		<key>Headers/OMIDMediaEvents.h</key>
-		<data>
-		uQka4oWXlXeaij4A+nrdt3hDMcU=
-		</data>
-		<key>Headers/OMIDPartner.h</key>
-		<data>
-		Dgy8msltienfhG1zpcCDAJzPzTk=
-		</data>
-		<key>Headers/OMIDSDK.h</key>
-		<data>
-		6bNxTyYKHI0WABK7Tb8X6qYzAu0=
-		</data>
-		<key>Headers/OMIDScriptInjector.h</key>
-		<data>
-		ViRwG5VillPTE1j7W0+NdkR5+a8=
-		</data>
-		<key>Headers/OMIDVASTProperties.h</key>
-		<data>
-		bcjswPVEtSSRa2PTWqMScpf0+LU=
-		</data>
-		<key>Headers/OMIDVerificationScriptResource.h</key>
-		<data>
-		0vy+qd8hfAfuMyJEwue9Xajm6/4=
-		</data>
 		<key>Headers/VungleAdsSDK-Swift.h</key>
 		<data>
-		QV9bGwfBpo/43FbsKB+6obeFcJw=
+		qocB80ld6L+Yxl1LyJN1gnCLQ04=
 		</data>
 		<key>Headers/VungleAdsSDK.h</key>
 		<data>
@@ -62,7 +14,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		0iYsht1CB+6VVFTAquZD4xEZj7E=
+		02bbCm9A8uX4bjGjudRU9kt32Ww=
 		</data>
 		<key>LICENSE</key>
 		<data>
@@ -70,172 +22,44 @@
 		</data>
 		<key>Modules/VungleAdsSDK.swiftmodule/arm64-apple-ios.abi.json</key>
 		<data>
-		5OTW75hhE/5Ok1qyLbkr1hkVTVM=
+		i3JxYfrWyKJ+feINuEpeJimdklY=
 		</data>
 		<key>Modules/VungleAdsSDK.swiftmodule/arm64-apple-ios.private.swiftinterface</key>
 		<data>
-		7WmbzyTLjocFgkdnn410xrra2Ng=
+		T0tjZwDXxiUDu/oFc9l/cYAn2qA=
 		</data>
 		<key>Modules/VungleAdsSDK.swiftmodule/arm64-apple-ios.swiftdoc</key>
 		<data>
-		KqrO/sdQ1yJhb9nFtD60Y9Fhq7Q=
+		auOWltdPf/z7bOc6g2M8sjTzPCE=
 		</data>
 		<key>Modules/VungleAdsSDK.swiftmodule/arm64-apple-ios.swiftinterface</key>
 		<data>
-		7WmbzyTLjocFgkdnn410xrra2Ng=
+		T0tjZwDXxiUDu/oFc9l/cYAn2qA=
 		</data>
 		<key>Modules/VungleAdsSDK.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<data>
-		ldkTpCS34sEos1QAb2Yz2S8pa+M=
+		UKDv1xgrLa48ABn5UqJE6O17A5c=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
-		ctlWvgSDplpc98XL3SjRXrb52Mg=
+		/rY6HLOEdML3M4Cs5jEZ9rprd9k=
+		</data>
+		<key>PrivacyInfo.xcprivacy</key>
+		<data>
+		99lHiKAMEwibufp7vGK7r8V203g=
 		</data>
 	</dict>
 	<key>files2</key>
 	<dict>
-		<key>Headers/OMIDAdEvents.h</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			IgceG5Rb/UJ7YPQUCcK7Z720Kcs=
-			</data>
-			<key>hash2</key>
-			<data>
-			QKXgYEGs/REK6H+gsWvRYE3JEc4HY/XHMfi/2D2vSDc=
-			</data>
-		</dict>
-		<key>Headers/OMIDAdSession.h</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			V1TMkvsllb68fvmeC3Y8SAQ8xH4=
-			</data>
-			<key>hash2</key>
-			<data>
-			219BH+105DSdgQQozvzIrzcfGEHuzm2V96bcxvpUVA0=
-			</data>
-		</dict>
-		<key>Headers/OMIDAdSessionConfiguration.h</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			h+tCMM6iWRYSrLMqANEbOtwQbpI=
-			</data>
-			<key>hash2</key>
-			<data>
-			aUAJh8naqtaCnD/c5B9udROYDTtDxfhF9SZ12a3eb88=
-			</data>
-		</dict>
-		<key>Headers/OMIDAdSessionContext.h</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			jBXoslhqSTT3aYOJWLrnCQdgMMs=
-			</data>
-			<key>hash2</key>
-			<data>
-			HlDs6DIZdQBqRr6SSrRjt9K2tPS5LiipKfotR1mv1mY=
-			</data>
-		</dict>
-		<key>Headers/OMIDFriendlyObstructionType.h</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			ymPA8TI4PL8pK0zhc5ilyQj/SsA=
-			</data>
-			<key>hash2</key>
-			<data>
-			/ZmBFlTK7mS0fZy4WqxCTpfhwDAEA4qlDHoed4FawBg=
-			</data>
-		</dict>
-		<key>Headers/OMIDImports.h</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			kklBQQiiHyi6ArUe1OOfy92xxX4=
-			</data>
-			<key>hash2</key>
-			<data>
-			WWfw+Z3RNrtOfWYdio9jyxKjmeVbPXzWNH7Pa7ErD0U=
-			</data>
-		</dict>
-		<key>Headers/OMIDMediaEvents.h</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			uQka4oWXlXeaij4A+nrdt3hDMcU=
-			</data>
-			<key>hash2</key>
-			<data>
-			E+JMQ9YqCpBLA/7xYd5ploB/7DQd79j2qpmPtlcgAJc=
-			</data>
-		</dict>
-		<key>Headers/OMIDPartner.h</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			Dgy8msltienfhG1zpcCDAJzPzTk=
-			</data>
-			<key>hash2</key>
-			<data>
-			JpEY7To6QjZ5bBm8qOAnjO/mAJja7mzgFlgRENHt/J8=
-			</data>
-		</dict>
-		<key>Headers/OMIDSDK.h</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			6bNxTyYKHI0WABK7Tb8X6qYzAu0=
-			</data>
-			<key>hash2</key>
-			<data>
-			F2S2/7JYZZfVbAGzG84B4TNzXXCz79aJrM5UYFC0gpE=
-			</data>
-		</dict>
-		<key>Headers/OMIDScriptInjector.h</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			ViRwG5VillPTE1j7W0+NdkR5+a8=
-			</data>
-			<key>hash2</key>
-			<data>
-			07ILZG9UrM58ANGN1E+9ZGE7jXQAkZRATMm5nfaYsgk=
-			</data>
-		</dict>
-		<key>Headers/OMIDVASTProperties.h</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			bcjswPVEtSSRa2PTWqMScpf0+LU=
-			</data>
-			<key>hash2</key>
-			<data>
-			p5lmFfapCEtvxaQ8I8APfZqIYoQPwwejnTTzmdw4+hw=
-			</data>
-		</dict>
-		<key>Headers/OMIDVerificationScriptResource.h</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			0vy+qd8hfAfuMyJEwue9Xajm6/4=
-			</data>
-			<key>hash2</key>
-			<data>
-			mfFtNC0Pjus9W7vzV90clsl+Njz/CTtdWh9dKT/2rlo=
-			</data>
-		</dict>
 		<key>Headers/VungleAdsSDK-Swift.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			QV9bGwfBpo/43FbsKB+6obeFcJw=
+			qocB80ld6L+Yxl1LyJN1gnCLQ04=
 			</data>
 			<key>hash2</key>
 			<data>
-			dYReV+R4IhTdyhEGQDcGGWsa7Rfwcl4aEgWeQjf9j6k=
+			90pqhnqnsTQOugYrV00wUhU98Xa6Ak4UfD9ty+1eIak=
 			</data>
 		</dict>
 		<key>Headers/VungleAdsSDK.h</key>
@@ -264,66 +88,77 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			5OTW75hhE/5Ok1qyLbkr1hkVTVM=
+			i3JxYfrWyKJ+feINuEpeJimdklY=
 			</data>
 			<key>hash2</key>
 			<data>
-			W3froWAe6Ga2TxW+oEMBI3loj2hEq2IikghetsFSkc8=
+			XefqAijyjnVjSnZTAJkyb8vRDb6b4lcvYV5ExGIT7Nw=
 			</data>
 		</dict>
 		<key>Modules/VungleAdsSDK.swiftmodule/arm64-apple-ios.private.swiftinterface</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			7WmbzyTLjocFgkdnn410xrra2Ng=
+			T0tjZwDXxiUDu/oFc9l/cYAn2qA=
 			</data>
 			<key>hash2</key>
 			<data>
-			2oz1W0mb+PC7LG5siq65bmWpe8ebrn44lFwYYw/KEEU=
+			EN1hpjKAr98YA6vLng+Eqry3EHUsnZmdRoq5ECUD6+8=
 			</data>
 		</dict>
 		<key>Modules/VungleAdsSDK.swiftmodule/arm64-apple-ios.swiftdoc</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			KqrO/sdQ1yJhb9nFtD60Y9Fhq7Q=
+			auOWltdPf/z7bOc6g2M8sjTzPCE=
 			</data>
 			<key>hash2</key>
 			<data>
-			xNgwJnhLrO6+uxViQ1xLKDdH7X7cNQmRoVv5lp3oxJc=
+			YG5WZc8ytEHP3uWKn62UCbjgOUxWAsIQsS2kUXrpOkg=
 			</data>
 		</dict>
 		<key>Modules/VungleAdsSDK.swiftmodule/arm64-apple-ios.swiftinterface</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			7WmbzyTLjocFgkdnn410xrra2Ng=
+			T0tjZwDXxiUDu/oFc9l/cYAn2qA=
 			</data>
 			<key>hash2</key>
 			<data>
-			2oz1W0mb+PC7LG5siq65bmWpe8ebrn44lFwYYw/KEEU=
+			EN1hpjKAr98YA6vLng+Eqry3EHUsnZmdRoq5ECUD6+8=
 			</data>
 		</dict>
 		<key>Modules/VungleAdsSDK.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			ldkTpCS34sEos1QAb2Yz2S8pa+M=
+			UKDv1xgrLa48ABn5UqJE6O17A5c=
 			</data>
 			<key>hash2</key>
 			<data>
-			mEfMWgeGm+2TsCsDNfHdwsxBtNP26sLIFT4HCMioRfU=
+			ozzSm81tKsWVzWqUg90MP6CI0Y7VZHsrAwI6BoH6pSI=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			ctlWvgSDplpc98XL3SjRXrb52Mg=
+			/rY6HLOEdML3M4Cs5jEZ9rprd9k=
 			</data>
 			<key>hash2</key>
 			<data>
-			R75Eh3aJcnU+DHq+qvFbrGBG9KbWcf4pPomg6ebdUTo=
+			0T/zo/C1X1wNCRlosKXBySteJnBk/PRjVcOzqoZ66GQ=
+			</data>
+		</dict>
+		<key>PrivacyInfo.xcprivacy</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			99lHiKAMEwibufp7vGK7r8V203g=
+			</data>
+			<key>hash2</key>
+			<data>
+			RX/aXFa+FOCjdkY1ix5eE2OBHeionXWqGUSFGTmdVUQ=
 			</data>
 		</dict>
 	</dict>

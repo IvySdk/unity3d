@@ -16,5 +16,3 @@
 - (void)failureWithError:(NSString *)error;
 
 @end
-
-

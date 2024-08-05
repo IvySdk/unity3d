@@ -8,10 +8,10 @@
 #import <Foundation/Foundation.h>
 
 typedef NS_ENUM(NSInteger, ISGender) {
-    IRONSOURCE_USER_UNKNOWN,
-    IRONSOURCE_USER_MALE,
-    IRONSOURCE_USER_FEMALE
+  IRONSOURCE_USER_UNKNOWN,
+  IRONSOURCE_USER_MALE,
+  IRONSOURCE_USER_FEMALE
 };
 
-#define kISGenderString(enum) [@[@"unknown",@"male",@"female"] objectAtIndex:enum]
+#define kISGenderString(enum) [@[ @"unknown", @"male", @"female" ] objectAtIndex:enum]
 #endif

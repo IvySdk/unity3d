@@ -8,9 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-#import "ISInterstitialAdapterDelegate.h"
-#import "ISBiddingDataDelegate.h"
 #import "ISAdUnitAdapterProtocol.h"
+#import "ISBiddingDataDelegate.h"
+#import "ISInterstitialAdapterDelegate.h"
 
 @class ISAdapterConfig;
 @protocol ISInterstitialAdapterProtocol <ISAdUnitAdapterProtocol>

@@ -9,7 +9,7 @@
 #import "MTGCampaign.h"
 
 
-#define MTGNativeAdSDKVersion @"7.4.8"
+#define MTGNativeAdSDKVersion @"7.6.2"
 
 
 

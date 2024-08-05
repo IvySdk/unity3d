@@ -3667,7 +3667,7 @@ static NSString * CRASH_EMAIL_ADDR;
 -(void)setTargetForChild
 {
 #ifdef GOOGLE
-  [GADMobileAds.sharedInstance.requestConfiguration tagForChildDirectedTreatment:YES];
+    GADMobileAds.sharedInstance.requestConfiguration.tagForChildDirectedTreatment = @YES;
 #endif
 }
 

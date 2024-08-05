@@ -33,5 +33,4 @@
 
 - (void)adapterBannerDidShow;
 
-
 @end

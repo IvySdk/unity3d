@@ -7,9 +7,10 @@
 //
 
 #import "ISAdInfo.h"
-#import "LevelPlayNativeAd.h"
 
 NS_ASSUME_NONNULL_BEGIN
+
+@class LevelPlayNativeAd;
 
 @protocol ISNativeAdInteractionDelegate <NSObject>
 
@@ -20,17 +21,14 @@ NS_ASSUME_NONNULL_BEGIN
  @param nativeAd Level Play native ad.
  @param adInfo The info of the ad.
  */
--(void)didRecordImpression:(LevelPlayNativeAd *)nativeAd
-                withAdInfo:(ISAdInfo *)adInfo;
+- (void)didRecordImpression:(LevelPlayNativeAd *)nativeAd withAdInfo:(ISAdInfo *)adInfo;
 
 /**
  Called after a native ad has been clicked.
  @param nativeAd Level Play native ad.
  @param adInfo The info of the ad.
  */
--(void)didClick:(LevelPlayNativeAd *)nativeAd
-     withAdInfo:(ISAdInfo *)adInfo;
-
+- (void)didClick:(LevelPlayNativeAd *)nativeAd withAdInfo:(ISAdInfo *)adInfo;
 
 @end
 

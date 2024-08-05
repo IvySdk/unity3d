@@ -6,13 +6,15 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+
 #if __has_include(<MTGSDK/MTGSDK.h>)
     #import <MTGSDK/MTGRewardAdInfo.h>
 #else
     #import "MTGRewardAdInfo.h"
 #endif
 
-#define MTGRewardVideoSDKVersion @"7.4.8"
+#define MTGRewardVideoSDKVersion @"7.6.2"
 
 
 /**

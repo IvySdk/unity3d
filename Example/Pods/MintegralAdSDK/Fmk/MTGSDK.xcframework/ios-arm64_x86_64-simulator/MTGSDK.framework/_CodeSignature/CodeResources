@@ -22,11 +22,11 @@
 		</data>
 		<key>Headers/MTGCampaign.h</key>
 		<data>
-		zzQY6oVgvo8mimGcuw1+p0o3BhA=
+		klkcprOXKVlmt2SmA2I/8QPJjYI=
 		</data>
 		<key>Headers/MTGErrorCodeConstant.h</key>
 		<data>
-		8MJNn5DOsXmHROwI/7kETgndBOQ=
+		UmddlVkENzSi7Ib+dQFH6gA3Z8M=
 		</data>
 		<key>Headers/MTGFrame.h</key>
 		<data>
@@ -34,11 +34,11 @@
 		</data>
 		<key>Headers/MTGMediaView.h</key>
 		<data>
-		6UY63x4kmaFx2J8TOck3ya8WiD0=
+		LD3UKcgiQqs8/9O+23/qUHn+chQ=
 		</data>
 		<key>Headers/MTGNativeAd.h</key>
 		<data>
-		3ofbEKt0RGYSmXXGzuv/dQjuUN4=
+		BfJ9g1kXFDDIe8sWwK4piWQKIpg=
 		</data>
 		<key>Headers/MTGNativeAdManager.h</key>
 		<data>
@@ -48,9 +48,17 @@
 		<data>
 		oXbbh+BtKnvJENdHA23I5/emL3A=
 		</data>
+		<key>Headers/MTGSDK-Swift.h</key>
+		<data>
+		1D9xe5V4Q665bVW3uPou/V2Icus=
+		</data>
 		<key>Headers/MTGSDK.h</key>
 		<data>
-		YqHVa0p2sYqlLO3WmKhEBgT2dCo=
+		SQcdKjxxCg6Z05VJFgK/olWGxG4=
+		</data>
+		<key>Headers/MTGSDKUmbrellaHeaders.h</key>
+		<data>
+		UuB67wqW3gE5P+uHuFL31SJ+Th8=
 		</data>
 		<key>Headers/MTGTemplate.h</key>
 		<data>
@@ -62,7 +70,7 @@
 		</data>
 		<key>Headers/MTGTrackAdRevenueModel.h</key>
 		<data>
-		FSeQ46PTSlpMnVSKU3rdA+CymHo=
+		XYACfAZ7T3Rjetmq+jzZVpJwTdk=
 		</data>
 		<key>Headers/MTGUserInfo.h</key>
 		<data>
@@ -70,11 +78,55 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		N881rJcSznpcJRGEGiO7Iob8m2s=
+		NZS6jIeTNUV4PsrvSRco8abqP70=
+		</data>
+		<key>Modules/MTGSDK.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
+		<data>
+		mhMWexpjmkrGx0RPSzRdhxPQxlM=
+		</data>
+		<key>Modules/MTGSDK.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
+		<data>
+		Q3a+NYLu/LKdtYtr7qMsVWz2Y9g=
+		</data>
+		<key>Modules/MTGSDK.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
+		<data>
+		OHczZrgJtoGbZNF9hCilQMd5dn8=
+		</data>
+		<key>Modules/MTGSDK.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
+		<data>
+		Q3a+NYLu/LKdtYtr7qMsVWz2Y9g=
+		</data>
+		<key>Modules/MTGSDK.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
+		<data>
+		3uWnE1cI9l8adlpA8Aaflrb+chg=
+		</data>
+		<key>Modules/MTGSDK.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
+		<data>
+		mhMWexpjmkrGx0RPSzRdhxPQxlM=
+		</data>
+		<key>Modules/MTGSDK.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
+		<data>
+		7UHu/wuVnhSk5e0Hfx8bDcuIxdw=
+		</data>
+		<key>Modules/MTGSDK.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
+		<data>
+		e59K2BvRbr7/o6wrNkb5iAiRq+U=
+		</data>
+		<key>Modules/MTGSDK.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
+		<data>
+		7UHu/wuVnhSk5e0Hfx8bDcuIxdw=
+		</data>
+		<key>Modules/MTGSDK.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
+		<data>
+		pGkVsCBaXburmkvVbMkwQrRmTOU=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
-		J0aczCOD7CXXGqmu1CPGTusiXH0=
+		JSbKQbjn9E0dn6GiMWJCPBrbiTg=
+		</data>
+		<key>PrivacyInfo.xcprivacy</key>
+		<data>
+		7pb/tiRb/KGE5KXo5P2+XBbJDLs=
 		</data>
 	</dict>
 	<key>files2</key>
@@ -127,22 +179,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			zzQY6oVgvo8mimGcuw1+p0o3BhA=
+			klkcprOXKVlmt2SmA2I/8QPJjYI=
 			</data>
 			<key>hash2</key>
 			<data>
-			HnjoV1pn0rj+MGjc3DcW/8DTVMiIP3wvilz2QnxT2/c=
+			8Hk3tJ0TxjdC50S3idXjV5jMoh1S382R3+HOnlGfAu4=
 			</data>
 		</dict>
 		<key>Headers/MTGErrorCodeConstant.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			8MJNn5DOsXmHROwI/7kETgndBOQ=
+			UmddlVkENzSi7Ib+dQFH6gA3Z8M=
 			</data>
 			<key>hash2</key>
 			<data>
-			pm32YnH6Qt1/gSmhukA8phuG6Sbm0gHawgn1gqM0wwE=
+			pE++K7/1Cz+1RP84RBMuBQ409oy0aGYswP3SmRSAWFA=
 			</data>
 		</dict>
 		<key>Headers/MTGFrame.h</key>
@@ -160,22 +212,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			6UY63x4kmaFx2J8TOck3ya8WiD0=
+			LD3UKcgiQqs8/9O+23/qUHn+chQ=
 			</data>
 			<key>hash2</key>
 			<data>
-			1E4y+wQQRBz2yGNF/018DVY7VTlJR5yEV0SeY5JGIIE=
+			osUkzkiEjtPs5133NDJezcYaWS5wwdL/vOFBVlpoINk=
 			</data>
 		</dict>
 		<key>Headers/MTGNativeAd.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			3ofbEKt0RGYSmXXGzuv/dQjuUN4=
+			BfJ9g1kXFDDIe8sWwK4piWQKIpg=
 			</data>
 			<key>hash2</key>
 			<data>
-			6yKHaTdAEZFfR5vNG/deRkxIfab/gWQDFeuMd9ZJYUM=
+			hzS5WuhhMR70wHYIRQ/bZfYIbVal/bd3XzyJUdF9Icw=
 			</data>
 		</dict>
 		<key>Headers/MTGNativeAdManager.h</key>
@@ -200,15 +252,37 @@
 			223/MjLANOpb+WoogRfO6gCBBUQfhAetXJGLmQFirWk=
 			</data>
 		</dict>
+		<key>Headers/MTGSDK-Swift.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			1D9xe5V4Q665bVW3uPou/V2Icus=
+			</data>
+			<key>hash2</key>
+			<data>
+			7QJMZfkePC8L+5Z7gyZxZuB4lNohNxDH/F759d/bu+g=
+			</data>
+		</dict>
 		<key>Headers/MTGSDK.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			YqHVa0p2sYqlLO3WmKhEBgT2dCo=
+			SQcdKjxxCg6Z05VJFgK/olWGxG4=
 			</data>
 			<key>hash2</key>
 			<data>
-			fgvzRbbaWtZ+eMQXX1Q4B693mYl8+/episyPrXDOSJ0=
+			kzfWXqmDiKCXe1b1FGrrqAyMRTkfK7hePIWAW4iIlcg=
+			</data>
+		</dict>
+		<key>Headers/MTGSDKUmbrellaHeaders.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			UuB67wqW3gE5P+uHuFL31SJ+Th8=
+			</data>
+			<key>hash2</key>
+			<data>
+			+JsHuOgkd0lVSHRoN1RZ9lrhT9I3TS8I3bKUMYyxLT4=
 			</data>
 		</dict>
 		<key>Headers/MTGTemplate.h</key>
@@ -237,11 +311,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			FSeQ46PTSlpMnVSKU3rdA+CymHo=
+			XYACfAZ7T3Rjetmq+jzZVpJwTdk=
 			</data>
 			<key>hash2</key>
 			<data>
-			is5fYoNre0YCfFfBWiZ18nN425EXpm8xM7SMY3xjtXE=
+			RY696zMNDBaDwNdeUl4y+CtgHrGWnHmImJUlIHK2KIg=
 			</data>
 		</dict>
 		<key>Headers/MTGUserInfo.h</key>
@@ -255,15 +329,136 @@
 			ysq71FAjE2OrQJP8MAT+XS6PDmpTrQBXmopnbCJogYk=
 			</data>
 		</dict>
+		<key>Modules/MTGSDK.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			mhMWexpjmkrGx0RPSzRdhxPQxlM=
+			</data>
+			<key>hash2</key>
+			<data>
+			HsZgPPApZ0Q7vaPicaztnv8hQmVuCQdFT7DWXJ5+WdY=
+			</data>
+		</dict>
+		<key>Modules/MTGSDK.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			Q3a+NYLu/LKdtYtr7qMsVWz2Y9g=
+			</data>
+			<key>hash2</key>
+			<data>
+			kIDtxPaA5u7Sj0PPToc13oSO/oqzgBR1cu+F7MwkMNk=
+			</data>
+		</dict>
+		<key>Modules/MTGSDK.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			OHczZrgJtoGbZNF9hCilQMd5dn8=
+			</data>
+			<key>hash2</key>
+			<data>
+			6rXYOLjx8WIRERCRgaEP42mb1okvySHFsVQV5c0Szzw=
+			</data>
+		</dict>
+		<key>Modules/MTGSDK.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			Q3a+NYLu/LKdtYtr7qMsVWz2Y9g=
+			</data>
+			<key>hash2</key>
+			<data>
+			kIDtxPaA5u7Sj0PPToc13oSO/oqzgBR1cu+F7MwkMNk=
+			</data>
+		</dict>
+		<key>Modules/MTGSDK.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			3uWnE1cI9l8adlpA8Aaflrb+chg=
+			</data>
+			<key>hash2</key>
+			<data>
+			QI8N2H1Na9GjMb8NkthzoDhWv4hcSs9U6C3pB9hAVU8=
+			</data>
+		</dict>
+		<key>Modules/MTGSDK.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			mhMWexpjmkrGx0RPSzRdhxPQxlM=
+			</data>
+			<key>hash2</key>
+			<data>
+			HsZgPPApZ0Q7vaPicaztnv8hQmVuCQdFT7DWXJ5+WdY=
+			</data>
+		</dict>
+		<key>Modules/MTGSDK.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			7UHu/wuVnhSk5e0Hfx8bDcuIxdw=
+			</data>
+			<key>hash2</key>
+			<data>
+			jndy+fZ5Y1N31Zh0MY7nQo796Xbf5UiuO2YmOWhMkvU=
+			</data>
+		</dict>
+		<key>Modules/MTGSDK.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			e59K2BvRbr7/o6wrNkb5iAiRq+U=
+			</data>
+			<key>hash2</key>
+			<data>
+			vWjx6K7VLH6QmdWfth8cm69YylWh50eV1ZuenJtSo64=
+			</data>
+		</dict>
+		<key>Modules/MTGSDK.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			7UHu/wuVnhSk5e0Hfx8bDcuIxdw=
+			</data>
+			<key>hash2</key>
+			<data>
+			jndy+fZ5Y1N31Zh0MY7nQo796Xbf5UiuO2YmOWhMkvU=
+			</data>
+		</dict>
+		<key>Modules/MTGSDK.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			pGkVsCBaXburmkvVbMkwQrRmTOU=
+			</data>
+			<key>hash2</key>
+			<data>
+			uPgrTYHG3EkgW5PJOA09CLsLa4jUYS9zSd/8I2Pura4=
+			</data>
+		</dict>
 		<key>Modules/module.modulemap</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			J0aczCOD7CXXGqmu1CPGTusiXH0=
+			JSbKQbjn9E0dn6GiMWJCPBrbiTg=
 			</data>
 			<key>hash2</key>
 			<data>
-			cmKBbNpC/bfmSsvHCyM4WpWQRok/3Syii/DPYdk1wsw=
+			zbDAEJzeeQiBn6r0vMaEkm2wHg7h3nUg8onm+W2vZYo=
+			</data>
+		</dict>
+		<key>PrivacyInfo.xcprivacy</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			7pb/tiRb/KGE5KXo5P2+XBbJDLs=
+			</data>
+			<key>hash2</key>
+			<data>
+			NBdLMoqFX7Ov/mII2GrezPd6ClAP70i6z2JRWl/xxEg=
 			</data>
 		</dict>
 	</dict>

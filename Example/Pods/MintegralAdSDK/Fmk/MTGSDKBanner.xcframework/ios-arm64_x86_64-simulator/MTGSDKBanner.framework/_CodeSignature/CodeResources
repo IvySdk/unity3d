@@ -6,7 +6,7 @@
 	<dict>
 		<key>Headers/MTGBannerAdView.h</key>
 		<data>
-		ZZKdSQ8lA5KoNeplirbFPu4L2uw=
+		+ztJBS3YorjW6mr1YSAbbbRF0fM=
 		</data>
 		<key>Headers/MTGBannerAdViewDelegate.h</key>
 		<data>
@@ -14,7 +14,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		1v3mNQ18yCkyOAbMDEPpVCRB9Gk=
+		VL7m5HVApfDoeID4a5QMXk+m+vw=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -27,11 +27,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			ZZKdSQ8lA5KoNeplirbFPu4L2uw=
+			+ztJBS3YorjW6mr1YSAbbbRF0fM=
 			</data>
 			<key>hash2</key>
 			<data>
-			ZhxVEofrjHnhwH3mQ645wuoI5ENf4VErFEtjGmOgKYc=
+			qa9z9soRb9/JTEJGecTdQoD5vnXdi2EC7bJVudjSCT4=
 			</data>
 		</dict>
 		<key>Headers/MTGBannerAdViewDelegate.h</key>

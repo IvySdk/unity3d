@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 // mandatory callbacks
 
--(void)adRewarded;
+- (void)adRewarded;
 
 @end
 

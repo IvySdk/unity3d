@@ -15,8 +15,6 @@ FOUNDATION_EXPORT double IASDKCoreVersionNumber;
 //! Project version string for IASDKCore.
 FOUNDATION_EXPORT const unsigned char IASDKCoreVersionString[];
 
-#import <IASDKCore/DTXLogger.h>
-
 #import <IASDKCore/IAInterfaceAllocBlocker.h>
 #import <IASDKCore/IAInterfaceBuilder.h>
 #import <IASDKCore/IAInterfaceSingleton.h>

@@ -8,11 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-static NSString * const kBannerWillMoveToSuperView = @"ISBANNER_WILL_MOVE_TO_SUPERVIEW";
+static NSString* const kBannerWillMoveToSuperView = @"ISBANNER_WILL_MOVE_TO_SUPERVIEW";
 
 @interface ISBannerView : UIView {
-    
 }
-
 
 @end

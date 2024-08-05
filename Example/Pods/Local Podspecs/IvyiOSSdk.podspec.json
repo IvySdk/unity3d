@@ -18,6 +18,7 @@
   "platforms": {
     "ios": "12.0"
   },
+  "static_framework": true,
   "source_files": "IvyiOSSdk/Classes/**/*",
   "frameworks": [
     "UIKit",
@@ -35,34 +36,31 @@
   "libraries": "sqlite3",
   "dependencies": {
     "Google-Mobile-Ads-SDK": [
-      "~> 10.14"
+      "~> 11.0"
     ],
     "GoogleMobileAdsMediationFyber": [
-      "8.2.4.0"
+      "8.2.8.0"
     ],
     "GoogleMobileAdsMediationIronSource": [
-      "7.6.0.0"
+      "7.9.0.0"
     ],
     "GoogleMobileAdsMediationVungle": [
-      "7.2.0.0"
+      "7.3.1.0"
     ],
     "GoogleMobileAdsMediationFacebook": [
-      "6.14.0.0"
+      "6.15.1.0"
     ],
     "GoogleMobileAdsMediationUnity": [
-      "4.9.2.0"
+      "4.12.1.0"
     ],
     "GoogleMobileAdsMediationChartboost": [
-      "9.5.1.0"
+      "9.7.0.0"
     ],
     "GoogleMobileAdsMediationAppLovin": [
-      "11.11.3.0"
-    ],
-    "GoogleMobileAdsMediationAdColony": [
-      "4.9.0.2"
+      "12.6.0.0"
     ],
     "GoogleMobileAdsMediationMintegral": [
-      "7.4.8.0"
+      "7.6.2.0"
     ],
     "GoogleUserMessagingPlatform": [
       "2.1.0"
@@ -71,10 +69,10 @@
       "5.9.1"
     ],
     "Firebase/Core": [
-      "10.19.0"
+      "10.24.0"
     ],
     "Firebase/Analytics": [
-      "10.19.0"
+      "10.24.0"
     ],
     "FBSDKCoreKit": [
       "16.3.1"
