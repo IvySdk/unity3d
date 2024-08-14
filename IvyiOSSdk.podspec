@@ -58,7 +58,7 @@ TODO: Add long description of the pod here.
  # s.dependency 'AdMobPubMaticAdapter', '2.2.0'#, '2.1.1'
  # s.dependency 'smaato-ios-sdk', '22.6.0'
  # s.dependency 'smaato-ios-sdk-mediation-admob', '10.10.0.0'
-  s.dependency 'GoogleUserMessagingPlatform', '2.1.0'
+  s.dependency 'GoogleUserMessagingPlatform', '2.5.0'
 
   s.dependency 'YandexMobileAds', '5.9.1'
   
