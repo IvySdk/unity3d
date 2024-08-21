@@ -8,8 +8,8 @@
 #ifndef LevelPlayBannerDelegate_h
 #define LevelPlayBannerDelegate_h
 
-#import "ISAdInfo.h"
 #import "ISBannerView.h"
+#import "ISAdInfo.h"
 
 @protocol LevelPlayBannerDelegate <NSObject>
 

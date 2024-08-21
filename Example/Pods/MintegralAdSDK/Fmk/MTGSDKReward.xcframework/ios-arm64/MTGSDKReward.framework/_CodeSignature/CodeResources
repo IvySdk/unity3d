@@ -6,19 +6,19 @@
 	<dict>
 		<key>Headers/MTGBidRewardAdManager.h</key>
 		<data>
-		73K+TUkvIHV5gUn7rwTS5TLso9Y=
+		rcNA06fHK1eSYOAvewI9FoebiYk=
 		</data>
 		<key>Headers/MTGRewardAd.h</key>
 		<data>
-		JedKFG6vmbUxNhz8kfwlptJrcO8=
+		6/gwHZd7mlrB4bqcN6Qmguc7NHA=
 		</data>
 		<key>Headers/MTGRewardAdManager.h</key>
 		<data>
-		lJ1v9OtSJIWZWWYCdLeWghAI1H4=
+		En54+am0xfgStOhIt6wk3sR9PHU=
 		</data>
 		<key>Info.plist</key>
 		<data>
-		K86fgUbTZwMGMdubRH/1/AzMPJs=
+		FLz4HOt4D4Gk0FloDXMdoP3HnCE=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -31,33 +31,33 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			73K+TUkvIHV5gUn7rwTS5TLso9Y=
+			rcNA06fHK1eSYOAvewI9FoebiYk=
 			</data>
 			<key>hash2</key>
 			<data>
-			cfjNqUQbxp1LRsNlZdGnqTTUmDckAjt4S/D0o+8ljGw=
+			Kn+cUA0UBtF2AXjKog4sZ/DPse4f8soaDdnTfa55dg0=
 			</data>
 		</dict>
 		<key>Headers/MTGRewardAd.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			JedKFG6vmbUxNhz8kfwlptJrcO8=
+			6/gwHZd7mlrB4bqcN6Qmguc7NHA=
 			</data>
 			<key>hash2</key>
 			<data>
-			WN2X6t7iKLAiaeQruv39s18KhWn8Z7p0+8LEhh33Uac=
+			gtnewBAoqDIr6T8//EkWzJlFeWaoMbWBEfQS2+k9eUQ=
 			</data>
 		</dict>
 		<key>Headers/MTGRewardAdManager.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			lJ1v9OtSJIWZWWYCdLeWghAI1H4=
+			En54+am0xfgStOhIt6wk3sR9PHU=
 			</data>
 			<key>hash2</key>
 			<data>
-			gkDmsLwZSxk0NsgBI72ByO9eUMLVVi6NxQCW8Xrqv8Q=
+			jAKOOQ3CjATHZ42BE96JlnTRKFIhxoOUFQWDnCM14/c=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

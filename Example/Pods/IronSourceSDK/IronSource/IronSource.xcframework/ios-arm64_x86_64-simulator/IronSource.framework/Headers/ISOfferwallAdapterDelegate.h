@@ -23,3 +23,4 @@
 - (void)adapterOfferwallDidFailToReceiveCreditsWithError:(NSError *)error;
 
 @end
+

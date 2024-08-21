@@ -69,11 +69,6 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>FBAudienceNetwork-FBAudienceNetwork.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>FBAudienceNetwork.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -129,17 +124,7 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Fyber_Marketplace_SDK-Fyber_Marketplace_SDK.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>Fyber_Marketplace_SDK.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>Google-Mobile-Ads-SDK-GoogleMobileAdsResources.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -209,22 +194,12 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>IronSourceSDK-IronSourcePrivacyInfo.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>IronSourceSDK.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
 		<key>IvyiOSSdk.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>MintegralAdSDK-MTGSDK.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -249,17 +224,7 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>UnityAds-UnityAdsResources.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>UnityAds.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>VungleAds-VungleAds.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>

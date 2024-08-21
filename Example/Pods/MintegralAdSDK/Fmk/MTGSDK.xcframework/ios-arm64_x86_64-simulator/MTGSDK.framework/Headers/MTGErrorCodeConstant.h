@@ -39,17 +39,12 @@ typedef NS_ENUM (NSInteger, MTGErrorCode) {
     kMTGErrorCodeMaterialLoadFailed                             = 12930011,
     kMTGErrorCodeOfferExpired                                   = 12930012,
     kMTGErrorCodeImageURLisEmpty                                = 12930013,
-    kMTGErrorCodeAdsCountInvalid                                = 12930014,
-
 
     
     kMTGErrorCodeNoSupportPopupWindow                           = 12940001,
     
     kMTGErrorCodeFailedDiskIO                                   = 12950001,
-    kMTGErrorCodeSocketIO                                       = 12960001, 
-    kMTGErrorCodeSocketInvalidStatus                            = 12960002,
-    kMTGErrorCodeSocketInvalidContent                           = 12960003
-
+    kMTGErrorCodeSocketIO                                   = 12960001, // tcp 相关
 
 };
 

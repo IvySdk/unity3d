@@ -6,18 +6,13 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <MTGSDK/MTGCampaign.h>
-#import <MTGSDK/MTGBool.h>
-
+#import "MTGCampaign.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @protocol MTGMediaViewDelegate;
 @class MTGNativeAdManager;
 
 @interface MTGMediaView : UIView
-
-// Auto replay, default is MTGBoolUnknown, set this property will override all instance's autoLoopPlay property.
-@property (class, nonatomic, assign) MTGBool autoLoopPlay;
 
 /* For best user experience, keep the aspect ratio of the mediaView at 16:9 */
 - (instancetype)initWithFrame:(CGRect)frame;
@@ -40,7 +35,7 @@ the media source, can be set again to reuse this view.
 /* show video process view or not. Default to be YES. */
 @property (nonatomic, assign) BOOL  showVideoProcessView;
 /* show sound indicator view or not. Default to be YES. */
-@property (nonatomic, assign) BOOL  showSoundIndicatorView; DEPRECATED_MSG_ATTRIBUTE("no longer supported.");
+@property (nonatomic, assign) BOOL  showSoundIndicatorView;
 /* mute audio output of the video player or not. Default to be YES, means video player is muted. */
 @property (nonatomic, assign) BOOL mute;
 

@@ -99,6 +99,4 @@ __attribute__((deprecated("MTGInterstitialVideoAdManager is deprecated, and will
 */
 - (NSString *_Nullable)getRequestIdWithUnitId:(nonnull NSString *)unitId;
 
-/// get the creativeId of this requested ad, call this after onInterstitialAdLoadSuccess.
-- (NSString *_Nullable)getCreativeIdWithUnitId:(nonnull NSString *)unitId;
 @end

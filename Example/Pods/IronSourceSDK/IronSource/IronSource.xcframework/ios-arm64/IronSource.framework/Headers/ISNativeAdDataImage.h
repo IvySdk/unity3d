@@ -6,17 +6,18 @@
 //  Copyright © 2023 IronSource. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ISNativeAdDataImage : NSObject
 
-@property(nonatomic, strong, readonly, nullable) UIImage *image;
-@property(nonatomic, strong, readonly, nullable) NSURL *url;
+@property (nonatomic, strong, readonly, nullable) UIImage *image;
+@property (nonatomic, strong, readonly, nullable) NSURL *url;
 
-- (instancetype)initWithImage:(nullable UIImage *)image url:(nullable NSURL *)url;
+- (instancetype)initWithImage:(nullable UIImage *)image
+                          url:(nullable NSURL *)url;
 - (instancetype)init NS_UNAVAILABLE;
 - (instancetype)new NS_UNAVAILABLE;
 

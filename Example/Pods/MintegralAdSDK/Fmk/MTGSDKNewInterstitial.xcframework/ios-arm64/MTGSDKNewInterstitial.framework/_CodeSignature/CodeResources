@@ -6,19 +6,19 @@
 	<dict>
 		<key>Headers/MTGNewInterstitialAdManager.h</key>
 		<data>
-		vag74PJqdYBiAmrqYKR7bce33FA=
+		uXHk+jIoX3BMeuIl2ziY/HyCiE8=
 		</data>
 		<key>Headers/MTGNewInterstitialBidAdManager.h</key>
 		<data>
-		9CJN5jtbVFjn9mNa2toG7rhCYQ4=
+		Ueq3eb0GQNkBtbZYZm3ARq5nc3Y=
 		</data>
 		<key>Headers/MTGSDKNewInterstitial.h</key>
 		<data>
-		JbgBUYy/3Fl6Fmfp1YcPM5SpGKc=
+		eh2Y6pXzmN2r2A1ZJS/jrNGpYtQ=
 		</data>
 		<key>Info.plist</key>
 		<data>
-		Qdph4tQHqwqEA/a3tBa8jsKT2HA=
+		4wIDCS8Q3hFsEhDuDroIpoWBbmU=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -31,33 +31,33 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			vag74PJqdYBiAmrqYKR7bce33FA=
+			uXHk+jIoX3BMeuIl2ziY/HyCiE8=
 			</data>
 			<key>hash2</key>
 			<data>
-			nSpF7Zg+Fk858kmAykdcdArDNnx9wOUDN08QiKSQuX0=
+			bQWFxSJ/OkcT7h6EyVwOnq1yF+T83gNTh8Tfto/7M3w=
 			</data>
 		</dict>
 		<key>Headers/MTGNewInterstitialBidAdManager.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			9CJN5jtbVFjn9mNa2toG7rhCYQ4=
+			Ueq3eb0GQNkBtbZYZm3ARq5nc3Y=
 			</data>
 			<key>hash2</key>
 			<data>
-			dojbDDtl1M0S1/tnwAX1hzUqV2UnD2vL/n6iMylWQkA=
+			zpnGpLqUzzfwmYDDISiYPp5ATwahHaLLjN8O5AlQS3I=
 			</data>
 		</dict>
 		<key>Headers/MTGSDKNewInterstitial.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			JbgBUYy/3Fl6Fmfp1YcPM5SpGKc=
+			eh2Y6pXzmN2r2A1ZJS/jrNGpYtQ=
 			</data>
 			<key>hash2</key>
 			<data>
-			Rkv8HDJPEBHJ4imbgziaA8jKkT9c9x9K73xHkxZDJEE=
+			2i0dDZoX/6e+dAVLNoqHi93Wje8JRO14elMdlqo0SV8=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

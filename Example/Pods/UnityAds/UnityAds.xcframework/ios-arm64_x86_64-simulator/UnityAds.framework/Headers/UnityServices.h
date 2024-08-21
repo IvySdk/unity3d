@@ -52,6 +52,8 @@ NS_ASSUME_NONNULL_BEGIN
  */
 + (BOOL)      isInitialized;
 
++ (NSString *)createExpectedParametersString: (NSString *)fieldName current: (NSString *)current received: (NSString *)received;
+
 @end
 
 NS_ASSUME_NONNULL_END

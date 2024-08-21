@@ -17,7 +17,7 @@
 #import "MTGBannerAdViewDelegate.h"
 
 
-#define MTGBannerSDKVersion @"7.6.2"
+#define MTGBannerSDKVersion @"7.4.8"
 
 
 NS_ASSUME_NONNULL_BEGIN
@@ -51,9 +51,6 @@ placementId
 * get the id of this request ad,call  after adViewLoadSuccess
 */
 @property(nonatomic,copy,readonly) NSString * _Nullable requestId;
-
-/// get the creativeId of this requested ad, call this after adViewLoadSuccess
-@property(nonatomic,copy,readonly) NSString * _Nullable creativeId;
 
 /**
  the delegate

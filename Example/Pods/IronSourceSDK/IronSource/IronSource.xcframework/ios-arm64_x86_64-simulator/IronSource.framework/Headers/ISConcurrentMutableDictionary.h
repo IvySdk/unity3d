@@ -39,3 +39,4 @@
 - (BOOL)hasObjectForKey:(id)key;
 
 @end
+

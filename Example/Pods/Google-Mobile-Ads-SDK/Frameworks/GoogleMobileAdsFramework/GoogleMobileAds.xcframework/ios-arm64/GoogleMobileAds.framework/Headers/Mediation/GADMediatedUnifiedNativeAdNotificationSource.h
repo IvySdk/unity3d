@@ -46,4 +46,11 @@
 + (void)mediatedNativeAdDidEndVideoPlayback:
     (nonnull id<GADMediatedUnifiedNativeAd>)mediatedNativeAd;
 
+#pragma mark - Deprecated
+
+/// Deprecated. No replacement.
++ (void)mediatedNativeAdWillLeaveApplication:
+    (nonnull id<GADMediatedUnifiedNativeAd>)mediatedNativeAd
+    GAD_DEPRECATED_MSG_ATTRIBUTE("Deprecated. No replacement.");
+
 @end

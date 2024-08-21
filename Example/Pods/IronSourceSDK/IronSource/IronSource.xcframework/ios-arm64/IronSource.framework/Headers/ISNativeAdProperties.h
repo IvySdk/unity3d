@@ -7,15 +7,16 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "ISAdOptionsPosition.h"
 #import "ISAdapterConfig.h"
+#import "ISAdOptionsPosition.h"
 
 @interface ISNativeAdProperties : NSObject
 
-@property(nonatomic, assign, readonly) ISAdOptionsPosition adOptionsPosition;
+@property (nonatomic, assign, readonly) ISAdOptionsPosition adOptionsPosition;
 
 - (instancetype)initWithAdapterConfig:(ISAdapterConfig *)adapterConfig;
 - (instancetype)init NS_UNAVAILABLE;
 - (instancetype)new NS_UNAVAILABLE;
 
 @end
+

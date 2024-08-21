@@ -6,30 +6,18 @@
 
 
 #import <UIKit/UIKit.h>
-//#import "MTGNativeAdManager.h"
-//#import "MTGBidNativeAdManager.h"
-//#import "MTGCampaign.h"
-//#import "MTGTemplate.h"
-//#import "MTGFrame.h"
-//#import "MTGMediaView.h"
-//#import "MTGUserInfo.h"
-//#import "MTGBool.h"
-#import <MTGSDK/MTGNativeAdManager.h>
-#import <MTGSDK/MTGBidNativeAdManager.h>
-#import <MTGSDK/MTGCampaign.h>
-#import <MTGSDK/MTGTemplate.h>
-#import <MTGSDK/MTGFrame.h>
-#import <MTGSDK/MTGMediaView.h>
-#import <MTGSDK/MTGUserInfo.h>
-#import <MTGSDK/MTGBool.h>
+#import "MTGNativeAdManager.h"
+#import "MTGBidNativeAdManager.h"
+#import "MTGCampaign.h"
+#import "MTGTemplate.h"
+#import "MTGFrame.h"
+#import "MTGMediaView.h"
+#import "MTGUserInfo.h"
+#import "MTGBool.h"
 
-#define MTGSDKVersion @"7.6.2"
+#define MTGSDKVersion @"7.4.8"
 
 
-typedef NS_ENUM(NSInteger,MTGAdType) {
-    MTGRewardAd,
-    MTGInterstitialAd
-};
 
 @interface MTGSDK : NSObject
 
@@ -88,10 +76,6 @@ typedef NS_ENUM(NSInteger,MTGAdType) {
 /// @param idfv collected from your side by calling `[UIDevice currentDevice].identifierForVendor.UUIDString`.
 - (void)setDeviceIdfv:(nonnull NSString *)idfv;
 
-/// Some system apis on Xcode 15 are not compatible, and the SDK needs additional processing
-/// @param version you current Xcode version, for example: @"14.3"
-- (void)setXcodeBuildVersion:(nonnull NSString *)version;
-
 /**
  If set to YES, the server will not display personalized ads based on the user's personal information
  When receiving the user's request, and will not synchronize the user's information to other third-party partners.
@@ -100,11 +84,6 @@ typedef NS_ENUM(NSInteger,MTGAdType) {
 @property (nonatomic, assign) BOOL doNotTrackStatus;
 
 - (void)setUserInfo:(nonnull MTGUserInfo *)userInfo;
-
-/// Set play video muted for ad type.
-/// @param playVideoMute YES/NO
-/// @param adType adType MTGAdType
-- (void)setPlayVideoMute:(BOOL)playVideoMute forAdType:(MTGAdType)adType;
 
 /**
  *

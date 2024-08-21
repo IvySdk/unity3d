@@ -29,6 +29,12 @@ variant_for_slice()
   "MTGSDKBidding.xcframework/ios-arm64_x86_64-simulator")
     echo "simulator"
     ;;
+  "MTGSDKInterstitial.xcframework/ios-arm64")
+    echo ""
+    ;;
+  "MTGSDKInterstitial.xcframework/ios-arm64_x86_64-simulator")
+    echo "simulator"
+    ;;
   "MTGSDKInterstitialVideo.xcframework/ios-arm64")
     echo ""
     ;;
@@ -81,6 +87,12 @@ archs_for_slice()
     echo "arm64"
     ;;
   "MTGSDKBidding.xcframework/ios-arm64_x86_64-simulator")
+    echo "arm64 x86_64"
+    ;;
+  "MTGSDKInterstitial.xcframework/ios-arm64")
+    echo "arm64"
+    ;;
+  "MTGSDKInterstitial.xcframework/ios-arm64_x86_64-simulator")
     echo "arm64 x86_64"
     ;;
   "MTGSDKInterstitialVideo.xcframework/ios-arm64")
@@ -203,6 +215,7 @@ install_xcframework() {
 
 install_xcframework "${PODS_ROOT}/MintegralAdSDK/Fmk/MTGSDKBanner.xcframework" "MintegralAdSDK/BannerAd" "framework" "ios-arm64" "ios-arm64_x86_64-simulator"
 install_xcframework "${PODS_ROOT}/MintegralAdSDK/Fmk/MTGSDKBidding.xcframework" "MintegralAdSDK/BidNativeAd" "framework" "ios-arm64" "ios-arm64_x86_64-simulator"
+install_xcframework "${PODS_ROOT}/MintegralAdSDK/Fmk/MTGSDKInterstitial.xcframework" "MintegralAdSDK/InterstitialAd" "framework" "ios-arm64" "ios-arm64_x86_64-simulator"
 install_xcframework "${PODS_ROOT}/MintegralAdSDK/Fmk/MTGSDKInterstitialVideo.xcframework" "MintegralAdSDK/InterstitialVideoAd" "framework" "ios-arm64" "ios-arm64_x86_64-simulator"
 install_xcframework "${PODS_ROOT}/MintegralAdSDK/Fmk/MTGSDK.xcframework" "MintegralAdSDK/NativeAd" "framework" "ios-arm64" "ios-arm64_x86_64-simulator"
 install_xcframework "${PODS_ROOT}/MintegralAdSDK/Fmk/MTGSDKNativeAdvanced.xcframework" "MintegralAdSDK/NativeAdvancedAd" "framework" "ios-arm64" "ios-arm64_x86_64-simulator"

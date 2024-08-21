@@ -10,8 +10,8 @@
 
 @required
 
-- (void)loadAd;
+-(void) loadAd;
 
-- (void)destroyAd;
+-(void) destroyAd;
 
 @end

@@ -2,19 +2,17 @@
 //  Copyright © 2017 IronSource. All rights reserved.
 //
 
+
+
 #ifndef IRONSOURCE_H
 #define IRONSOURCE_H
 
 // import core classes
-#import <AVFoundation/AVFoundation.h>
-#import <AdSupport/AdSupport.h>
-#import <AudioToolbox/AudioToolbox.h>
-#import <CFNetwork/CFNetwork.h>
-#import <CoreGraphics/CoreGraphics.h>
-#import <CoreMedia/CoreMedia.h>
-#import <CoreTelephony/CTCarrier.h>
-#import <CoreVideo/CoreVideo.h>
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+#import <AdSupport/AdSupport.h>
+#import <CoreGraphics/CoreGraphics.h>
+#import <CoreTelephony/CTCarrier.h>
 #import <MediaPlayer/MediaPlayer.h>
 #import <MessageUI/MessageUI.h>
 #import <MobileCoreServices/MobileCoreServices.h>
@@ -22,61 +20,61 @@
 #import <Security/Security.h>
 #import <StoreKit/StoreKit.h>
 #import <SystemConfiguration/SystemConfiguration.h>
-#import <UIKit/UIKit.h>
+#import <AVFoundation/AVFoundation.h>
+#import <CoreMedia/CoreMedia.h>
+#import <CFNetwork/CFNetwork.h>
+#import <CoreVideo/CoreVideo.h>
 #import <WebKit/WebKit.h>
+#import <AudioToolbox/AudioToolbox.h>
 #import <libxml2/libxml/parser.h>
 #import <libxml2/libxml/tree.h>
 #import <zlib.h>
 
 #import "ISBannerDelegate.h"
-#import "ISBannerSize.h"
-#import "ISConfigurations.h"
-#import "ISConsentViewDelegate.h"
-#import "ISDemandOnlyBannerDelegate.h"
-#import "ISDemandOnlyInterstitialDelegate.h"
-#import "ISDemandOnlyRewardedVideoDelegate.h"
-#import "ISEventsReporting.h"
-#import "ISGender.h"
-#import "ISImpressionData.h"
-#import "ISImpressionDataDelegate.h"
-#import "ISInitializationDelegate.h"
-#import "ISIntegrationHelper.h"
-#import "ISInterstitialDelegate.h"
-#import "ISLogDelegate.h"
-#import "ISOfferwallDelegate.h"
-#import "ISPlacementInfo.h"
 #import "ISRewardedVideoDelegate.h"
+#import "ISOfferwallDelegate.h"
+#import "ISInterstitialDelegate.h"
 #import "ISRewardedVideoManualDelegate.h"
+#import "ISLogDelegate.h"
+#import "ISConfigurations.h"
+#import "ISPlacementInfo.h"
+#import "ISIntegrationHelper.h"
+#import "ISEventsReporting.h"
+#import "ISSupersonicAdsConfiguration.h"
 #import "ISSegment.h"
 #import "ISSegmentDelegate.h"
-#import "ISSupersonicAdsConfiguration.h"
+#import "ISDemandOnlyRewardedVideoDelegate.h"
+#import "ISDemandOnlyInterstitialDelegate.h"
+#import "ISDemandOnlyBannerDelegate.h"
+#import "ISBannerSize.h"
+#import "ISImpressionDataDelegate.h"
+#import "ISConsentViewDelegate.h"
+#import "ISInitializationDelegate.h"
 #import "ISWaterfallConfiguration.h"
+#import "ISGender.h"
+#import "ISImpressionData.h"
 
 // imports used for custom adapters infra
-#import "ISAdapterErrors.h"
-#import "ISBaseBanner.h"
 #import "ISBaseInterstitial.h"
-#import "ISBaseNetworkAdapter.h"
 #import "ISBaseRewardedVideo.h"
+#import "ISBaseBanner.h"
+#import "ISBaseNetworkAdapter.h"
+#import "ISAdapterErrors.h"
 #import "ISDataKeys.h"
-#import "ISSetAPSDataProtocol.h"
 
 // imports used for the new delegates with ad info
 #import "ISAdInfo.h"
-#import "LevelPlayBannerDelegate.h"
-#import "LevelPlayInterstitialDelegate.h"
 #import "LevelPlayRewardedVideoBaseDelegate.h"
-#import "LevelPlayRewardedVideoDelegate.h"
 #import "LevelPlayRewardedVideoManualDelegate.h"
+#import "LevelPlayRewardedVideoDelegate.h"
+#import "LevelPlayInterstitialDelegate.h"
+#import "LevelPlayBannerDelegate.h"
 
 // Native Ads
-#import "ISNativeAdProtocol.h"
-#import "ISNativeAdView.h"
-#import "LevelPlayMediaView.h"
 #import "LevelPlayNativeAd.h"
 #import "LevelPlayNativeAdDelegate.h"
-
-#import "IronSourceNetworkSwiftBridge.h"
+#import "LevelPlayMediaView.h"
+#import "ISNativeAdView.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -86,13 +84,13 @@ NS_ASSUME_NONNULL_BEGIN
 #define IS_BANNER @"banner"
 #define IS_NATIVE_AD @"nativead"
 
-static NSString *const MEDIATION_SDK_VERSION = @"7.9.0";
-static NSString *GitHash = @"fcda9f6";
+static NSString * const MEDIATION_SDK_VERSION = @"7.6.0";
+static NSString * GitHash = @"fc3ae92";
 
 /*
     This constant is for sending an external impression data from mopub
 */
-static NSString *const DataSource_MOPUB = @"MoPub";
+static NSString * const DataSource_MOPUB     = @"MoPub";
 
 @interface IronSource : NSObject
 
@@ -106,9 +104,8 @@ static NSString *const DataSource_MOPUB = @"MoPub";
 
 /**
  @abstract Sets if IronSource SDK should track network changes.
- @discussion Enables the SDK to change the availability according to network modifications, i.e. in
- the case of no network connection, the availability will turn to FALSE.
-
+ @discussion Enables the SDK to change the availability according to network modifications, i.e. in the case of no network connection, the availability will turn to FALSE.
+ 
  Default is NO.
 
  @param flag YES if allowed to track network changes, NO otherwise.
@@ -127,9 +124,8 @@ static NSString *const DataSource_MOPUB = @"MoPub";
 
 /**
  @abstract Sets a dynamic identifier for the current user.
- @discussion This parameter can be changed throughout the session and will be received in the
- server-to-server ad rewarded callbacks.
-
+ @discussion This parameter can be changed throughout the session and will be received in the server-to-server ad rewarded callbacks.
+ 
  It helps verify AdRewarded transactions and must be set before calling showRewardedVideo.
 
  @param dynamicUserId Dynamic user identifier. Should be between 1-128 chars in length.
@@ -140,7 +136,7 @@ static NSString *const DataSource_MOPUB = @"MoPub";
 /**
  @abstract Retrieves the device's current advertising identifier.
  @discussion Will first try to retrieve IDFA, if impossible, will try to retrieve IDFV.
-
+ 
  @return The device's current advertising identifier.
  */
 + (NSString *)advertiserId;
@@ -148,26 +144,26 @@ static NSString *const DataSource_MOPUB = @"MoPub";
 /**
  @abstract Sets a mediation type.
  @discussion This method is used only for IronSource's SDK, and will be passed as a custom param.
-
- @param mediationType a mediation type name. Should be alphanumeric and between 1-64 chars in
- length.
+ 
+ @param mediationType a mediation type name. Should be alphanumeric and between 1-64 chars in length.
  */
 + (void)setMediationType:(NSString *)mediationType;
 
 /**
  @abstract Sets a segment.
  @discussion This method is used to start a session with a spesific segment.
-
+ 
  @param segment A segment object.
  */
 + (void)setSegment:(ISSegment *)segment;
 
 /**
  @abstract Sets the delegate for segment callback.
-
+ 
  @param delegate The 'ISSegmentDelegate' for IronSource to send callbacks to.
  */
 + (void)setSegmentDelegate:(id<ISSegmentDelegate>)delegate;
+
 
 /**
 @abstact Sets the meta data with a key and value.
@@ -182,12 +178,13 @@ static NSString *const DataSource_MOPUB = @"MoPub";
 /**
  @abstact Sets the meta data with a key and values.
  @discussion This value will be passed to the supporting ad networks.
-
+ 
  @param key The meta data key.
  @param values The meta data values
-
+ 
  */
-+ (void)setMetaDataWithKey:(NSString *)key values:(NSMutableArray *)values;
++ (void)setMetaDataWithKey:(NSString *)key values:(NSMutableArray *) values;
+
 
 /**
 @abstract Sets the network data according to the network key.
@@ -196,14 +193,14 @@ static NSString *const DataSource_MOPUB = @"MoPub";
 @param networkData a dictionary containing the information required by the network.
 
  */
-+ (void)setNetworkDataWithNetworkKey:(NSString *)networkKey
-                      andNetworkData:(NSDictionary *)networkData;
++ (void)setNetworkDataWithNetworkKey:(NSString *)networkKey andNetworkData:(NSDictionary *)networkData;
 
 /**
 @abstact used for demand only API, return the bidding data token.
 */
-+ (NSString *)getISDemandOnlyBiddingData;
+ + (NSString *) getISDemandOnlyBiddingData;
 
+    
 #pragma mark - SDK Initialization
 
 /**
@@ -222,7 +219,7 @@ static NSString *const DataSource_MOPUB = @"MoPub";
 
 /**
  @abstract Initializes IronSource's SDK with all the ad units that are defined in the platform.
-
+ 
  @param appKey Application key.
  @param delegate Init delegate.
  */
@@ -230,17 +227,15 @@ static NSString *const DataSource_MOPUB = @"MoPub";
 
 /**
  @abstract Initializes IronSource's SDK with the requested ad units.
- @discussion This method checks if the requested ad units are defined in the platform, and
- initializes them.
-
+ @discussion This method checks if the requested ad units are defined in the platform, and initializes them.
+ 
  The adUnits array should contain string values that represent the ad units.
-
+ 
  It is recommended to use predefined constansts:
-
+ 
  IS_REWARDED_VIDEO, IS_INTERSTITIAL, IS_OFFERWALL, IS_BANNER, IS_NATIVE_AD
-
- e.g: [IronSource initWithAppKey:appKey adUnits:@[IS_REWARDED_VIDEO, IS_INTERSTITIAL, IS_OFFERWALL,
- IS_BANNER, IS_NATIVE_AD]];
+ 
+ e.g: [IronSource initWithAppKey:appKey adUnits:@[IS_REWARDED_VIDEO, IS_INTERSTITIAL, IS_OFFERWALL, IS_BANNER, IS_NATIVE_AD]];
 
  @param appKey Application key.
  @param adUnits An array of ad units to initialize.
@@ -249,25 +244,21 @@ static NSString *const DataSource_MOPUB = @"MoPub";
 
 /**
  @abstract Initializes IronSource's SDK with the requested ad units.
- @discussion This method checks if the requested ad units are defined in the platform, and
- initializes them.
-
+ @discussion This method checks if the requested ad units are defined in the platform, and initializes them.
+ 
  The adUnits array should contain string values that represent the ad units.
-
+ 
  It is recommended to use predefined constansts:
-
+ 
  IS_REWARDED_VIDEO, IS_INTERSTITIAL, IS_OFFERWALL, IS_BANNER, IS_NATIVE_AD
-
- e.g: [IronSource initWithAppKey:appKey adUnits:@[IS_REWARDED_VIDEO, IS_INTERSTITIAL, IS_OFFERWALL,
- IS_BANNER, IS_NATIVE_AD]];
-
+ 
+ e.g: [IronSource initWithAppKey:appKey adUnits:@[IS_REWARDED_VIDEO, IS_INTERSTITIAL, IS_OFFERWALL, IS_BANNER, IS_NATIVE_AD]];
+ 
  @param appKey Application key.
  @param adUnits An array of ad units to initialize.
  @param delegate Init delegate.
  */
-+ (void)initWithAppKey:(NSString *)appKey
-               adUnits:(NSArray<NSString *> *)adUnits
-              delegate:(nullable id<ISInitializationDelegate>)delegate;
++ (void)initWithAppKey:(NSString *)appKey adUnits:(NSArray<NSString *> *)adUnits delegate:(nullable id<ISInitializationDelegate>)delegate;
 
 /**
  @abstract Initializes ironSource SDK in demand only mode.
@@ -284,9 +275,7 @@ static NSString *const DataSource_MOPUB = @"MoPub";
 
  @param delegate The 'ISRewardedVideoDelegate' for IronSource to send callbacks to.
  */
-+ (void)setRewardedVideoDelegate:(id<ISRewardedVideoDelegate>)delegate
-    __attribute__((deprecated(
-        "This API has been deprecated. Please use setLevelPlayRewardedVideoDelegate instead.")));
++ (void)setRewardedVideoDelegate:(id<ISRewardedVideoDelegate>)delegate __attribute__((deprecated("This API has been deprecated. Please use setLevelPlayRewardedVideoDelegate instead.")));
 /**
  @abstract Sets the delegate for LevelPlay rewarded video callbacks.
 
@@ -305,16 +294,13 @@ static NSString *const DataSource_MOPUB = @"MoPub";
  @abstract Shows a rewarded video using the provided placement name.
 
  @param viewController The UIViewController to display the rewarded video within.
- @param placementName The placement name as was defined in the platform. If nil is passed, a default
- placement will be used.
+ @param placementName The placement name as was defined in the platform. If nil is passed, a default placement will be used.
  */
-+ (void)showRewardedVideoWithViewController:(UIViewController *)viewController
-                                  placement:(nullable NSString *)placementName;
++ (void)showRewardedVideoWithViewController:(UIViewController *)viewController placement:(nullable NSString *)placementName;
 
 /**
  @abstract Determine if a locally cached rewarded video exists on the mediation level.
- @discussion A return value of YES here indicates that there is a cached rewarded video for one of
- the ad networks.
+ @discussion A return value of YES here indicates that there is a cached rewarded video for one of the ad networks.
 
  @return YES if rewarded video is ready to be played, NO otherwise.
  */
@@ -322,8 +308,7 @@ static NSString *const DataSource_MOPUB = @"MoPub";
 
 /**
  @abstract Verify if a certain placement has reached its ad limit.
- @discussion This is to ensure you don’t portray the Rewarded Video button when the placement has
- been capped or paced and thus will not serve the video ad.
+ @discussion This is to ensure you don’t portray the Rewarded Video button when the placement has been capped or paced and thus will not serve the video ad.
 
  @param placementName The placement name as was defined in the platform.
  @return YES if capped or paced, NO otherwise.
@@ -340,7 +325,7 @@ static NSString *const DataSource_MOPUB = @"MoPub";
 
 /**
  @abstract Enables sending server side parameters on successful rewarded video
-
+ 
  @param parameters A dictionary containing the parameters.
  */
 + (void)setRewardedVideoServerParameters:(NSDictionary *)parameters;
@@ -376,49 +361,43 @@ static NSString *const DataSource_MOPUB = @"MoPub";
  @param viewController The UIViewController to display the rewarded video within.
  @param instanceId The demand only instance id to be used to display the rewarded video.
  */
-+ (void)showISDemandOnlyRewardedVideo:(UIViewController *)viewController
-                           instanceId:(NSString *)instanceId;
++ (void)showISDemandOnlyRewardedVideo:(UIViewController *)viewController instanceId:(NSString *)instanceId;
 
 /**
  @abstract Determine if a locally cached demand only rewarded video exists for an instance id.
- @discussion A return value of YES here indicates that there is a cached rewarded video for the
- instance id.
+ @discussion A return value of YES here indicates that there is a cached rewarded video for the instance id.
  @param instanceId The demand only instance id to be used to display the rewarded video.
  @return YES if rewarded video is ready to be played, NO otherwise.
  */
 + (BOOL)hasISDemandOnlyRewardedVideo:(NSString *)instanceId;
 
+
 /**
  @abstract Sets Rewarded Video flow for manual load.
  @discussion The ironSource SDK fires several events to inform you of ad availability.
- @discussion By implementing the ISRewardedVideoManualDelegate you will receive the Rewarded Video
- events.
+ @discussion By implementing the ISRewardedVideoManualDelegate you will receive the Rewarded Video events.
  @discussion Pass this object within the ISRewardedVideoManualDelegate(…) method.
  @discussion The SDK will notify your delegate of all possible events.
  @param delegate The 'ISRewardedVideoManualDelegate' for IronSource to send callbacks to.
  */
-+ (void)setRewardedVideoManualDelegate:(nullable id<ISRewardedVideoManualDelegate>)delegate
-    __attribute__((deprecated("This API has been deprecated. Please use "
-                              "setLevelPlayRewardedVideoManualDelegate instead.")));
++ (void)setRewardedVideoManualDelegate:(nullable id<ISRewardedVideoManualDelegate>)delegate __attribute__((deprecated("This API has been deprecated. Please use setLevelPlayRewardedVideoManualDelegate instead.")));
 
 /**
  @abstract Sets Rewarded Video flow for LevelPlay manual load.
  @discussion The ironSource SDK fires several events to inform you of ad availability.
- @discussion By implementing the LevelPlayRewardedVideoManualDelegate you will receive the LevelPlay
- Rewarded Video events.
+ @discussion By implementing the LevelPlayRewardedVideoManualDelegate you will receive the LevelPlay Rewarded Video events.
  @discussion Pass this object within the ISRewardedVideoManualDelegate(…) method.
  @discussion The SDK will notify your delegate of all possible events.
  @param delegate The 'LevelPlayRewardedVideoManualDelegate' for IronSource to send callbacks to.
  */
-+ (void)setLevelPlayRewardedVideoManualDelegate:
-    (nullable id<LevelPlayRewardedVideoManualDelegate>)delegate;
++ (void)setLevelPlayRewardedVideoManualDelegate:(nullable id<LevelPlayRewardedVideoManualDelegate>)delegate;
 
 /**
  @abstract Loads a Rewarded Video.
- @discussion This method will load Rewarded Video ads from the underlying ad networks according to
- their priority when in manual Rewarded Video mode.
+ @discussion This method will load Rewarded Video ads from the underlying ad networks according to their priority when in manual Rewarded Video mode.
  */
 + (void)loadRewardedVideo;
+
 
 #pragma mark - Interstitial
 
@@ -427,9 +406,7 @@ static NSString *const DataSource_MOPUB = @"MoPub";
 
  @param delegate The 'ISInterstitialDelegate' for IronSource to send callbacks to.
  */
-+ (void)setInterstitialDelegate:(id<ISInterstitialDelegate>)delegate
-    __attribute__((deprecated(
-        "This API has been deprecated. Please use setLevelPlayInterstitialDelegate instead.")));
++ (void)setInterstitialDelegate:(id<ISInterstitialDelegate>)delegate __attribute__((deprecated("This API has been deprecated. Please use setLevelPlayInterstitialDelegate instead.")));
 /**
  @abstract Sets the delegate for LevelPlay interstitial callbacks.
 
@@ -439,8 +416,7 @@ static NSString *const DataSource_MOPUB = @"MoPub";
 
 /**
  @abstract Loads an interstitial.
- @discussion This method will load interstitial ads from the underlying ad networks according to
- their priority.
+ @discussion This method will load interstitial ads from the underlying ad networks according to their priority.
  */
 + (void)loadInterstitial;
 
@@ -455,16 +431,13 @@ static NSString *const DataSource_MOPUB = @"MoPub";
  @abstract Show a rewarded video using the provided placement name.
 
  @param viewController The UIViewController to display the interstitial within.
- @param placementName The placement name as was defined in the platform. If nil is passed, a default
- placement will be used.
+ @param placementName The placement name as was defined in the platform. If nil is passed, a default placement will be used.
  */
-+ (void)showInterstitialWithViewController:(UIViewController *)viewController
-                                 placement:(nullable NSString *)placementName;
++ (void)showInterstitialWithViewController:(UIViewController *)viewController placement:(nullable NSString *)placementName;
 
 /**
  @abstract Determine if a locally cached interstitial exists on the mediation level.
- @discussion A return value of YES here indicates that there is a cached interstitial for one of the
- ad networks.
+ @discussion A return value of YES here indicates that there is a cached interstitial for one of the ad networks.
 
  @return YES if there is a locally cached interstitial, NO otherwise.
  */
@@ -472,8 +445,7 @@ static NSString *const DataSource_MOPUB = @"MoPub";
 
 /**
  @abstract Verify if a certain placement has reached its ad limit.
- @discussion This is to ensure you don’t try to show interstitial when the placement has been capped
- or paced and thus will not serve the interstitial ad.
+ @discussion This is to ensure you don’t try to show interstitial when the placement has been capped or paced and thus will not serve the interstitial ad.
 
  @param placementName The placement name as was defined in the platform.
  @return YES if capped or paced, NO otherwise.
@@ -502,18 +474,17 @@ static NSString *const DataSource_MOPUB = @"MoPub";
  */
 + (void)loadISDemandOnlyInterstitialWithAdm:(NSString *)instanceId adm:(NSString *)adm;
 
+
 /**
  @abstract Show a demand only interstitial using the default placement.
  @param viewController The UIViewController to display the interstitial within.
  @param instanceId The demand only instance id to be used to display the interstitial.
  */
-+ (void)showISDemandOnlyInterstitial:(UIViewController *)viewController
-                          instanceId:(NSString *)instanceId;
++ (void)showISDemandOnlyInterstitial:(UIViewController *)viewController instanceId:(NSString *)instanceId;
 
 /**
  @abstract Determine if a locally cached interstitial exists for a demand only instance id.
- @discussion A return value of YES here indicates that there is a cached interstitial for the
- instance id.
+ @discussion A return value of YES here indicates that there is a cached interstitial for the instance id.
  @param instanceId The demand only instance id to be used to display the interstitial.
  @return YES if there is a locally cached interstitial, NO otherwise.
  */
@@ -526,80 +497,62 @@ static NSString *const DataSource_MOPUB = @"MoPub";
 
  @param delegate The 'ISOfferwallDelegate' for IronSource to send callbacks to.
  */
-+ (void)setOfferwallDelegate:(id<ISOfferwallDelegate>)delegate
-    __attribute__((deprecated(
-        "This API call is for the ironSource Offerwall, which will soon be deprecated. Please "
-        "migrate to the Tapjoy Offerwall using the 'Offerwall migration checklist'.")));
++ (void)setOfferwallDelegate:(id<ISOfferwallDelegate>)delegate __attribute__((deprecated("This API call is for the ironSource Offerwall, which will soon be deprecated. Please migrate to the Tapjoy Offerwall using the 'Offerwall migration checklist'.")));
 
 /**
  @abstract Show an offerwall using the default placement.
 
  @param viewController The UIViewController to display the offerwall within.
  */
-+ (void)showOfferwallWithViewController:(UIViewController *)viewController
-    __attribute__((deprecated(
-        "This API call is for the ironSource Offerwall, which will soon be deprecated. Please "
-        "migrate to the Tapjoy Offerwall using the 'Offerwall migration checklist'.")));
++ (void)showOfferwallWithViewController:(UIViewController *)viewController __attribute__((deprecated("This API call is for the ironSource Offerwall, which will soon be deprecated. Please migrate to the Tapjoy Offerwall using the 'Offerwall migration checklist'.")));
 
 /**
  @abstract Show an offerwall using the provided placement name.
 
  @param viewController The UIViewController to display the offerwall within.
- @param placementName The placement name as was defined in the platform. If nil is passed, a default
- placement will be used.
+ @param placementName The placement name as was defined in the platform. If nil is passed, a default placement will be used.
  */
-+ (void)showOfferwallWithViewController:(UIViewController *)viewController
-                              placement:(nullable NSString *)placementName
-    __attribute__((deprecated(
-        "This API call is for the ironSource Offerwall, which will soon be deprecated. Please "
-        "migrate to the Tapjoy Offerwall using the 'Offerwall migration checklist'.")));
++ (void)showOfferwallWithViewController:(UIViewController *)viewController placement:(nullable NSString *)placementName __attribute__((deprecated("This API call is for the ironSource Offerwall, which will soon be deprecated. Please migrate to the Tapjoy Offerwall using the 'Offerwall migration checklist'.")));
 
 /**
  @abstract Retrieve information on the user’s total credits and any new credits the user has earned.
  @discussion The function can be called at any point during the user’s engagement with the app.
  */
-+ (void)offerwallCredits __attribute__((deprecated(
-    "This API call is for the ironSource Offerwall, which will soon be deprecated. Please migrate "
-    "to the Tapjoy Offerwall using the 'Offerwall migration checklist'.")));
++ (void)offerwallCredits __attribute__((deprecated("This API call is for the ironSource Offerwall, which will soon be deprecated. Please migrate to the Tapjoy Offerwall using the 'Offerwall migration checklist'.")));
 
 /**
  @abstract Determine if the offerwall is prepared.
 
  @return YES if there is an available offerwall, NO otherwise.
  */
-+ (BOOL)hasOfferwall __attribute__((deprecated(
-    "This API call is for the ironSource Offerwall, which will soon be deprecated. Please migrate "
-    "to the Tapjoy Offerwall using the 'Offerwall migration checklist'.")));
++ (BOOL)hasOfferwall __attribute__((deprecated("This API call is for the ironSource Offerwall, which will soon be deprecated. Please migrate to the Tapjoy Offerwall using the 'Offerwall migration checklist'.")));
 
 #pragma mark - Banner
 
 /**
  @abstract Sets the delegate for banner callbacks.
-
+ 
  @param delegate The 'ISBannerDelegate' for IronSource to send callbacks to.
  */
-+ (void)setBannerDelegate:(id<ISBannerDelegate>)delegate
-    __attribute__((deprecated("This API has been deprecated as of SDK 7.3.0. Please use "
-                              "setLevelPlayBannerDelegate instead.")));
++ (void)setBannerDelegate:(id<ISBannerDelegate>)delegate __attribute__((deprecated("This API has been deprecated as of SDK 7.3.0. Please use setLevelPlayBannerDelegate instead.")));
 /**
  @abstract Sets the delegate for LevelPlay banner callbacks.
-
+ 
  @param delegate The 'LevelPlayBannerDelegate' for IronSource to send callbacks to.
  */
 + (void)setLevelPlayBannerDelegate:(nullable id<LevelPlayBannerDelegate>)delegate;
 
 /**
  @abstract Loads a banner using the default placement.
- @discussion This method will load banner ads of the requested size from the underlying ad networks
- according to their priority.
-
+ @discussion This method will load banner ads of the requested size from the underlying ad networks according to their priority.
+ 
  The size should contain ISBannerSize value that represent the required banner ad size.
  e.g. [IronSource loadBannerWithViewController:self size:ISBannerSize_BANNER];
-
+ 
  Custom banner size:
  ISBannerSize* bannerSize = [[ISBannerSize alloc] initWithWidth:320 andHeight:50];
  [IronSource loadBannerWithViewController:self size:bannerSize];
-
+ 
  @param viewController The UIViewController to display the banner within.
  @param size The required banner ad size
  */
@@ -607,25 +560,20 @@ static NSString *const DataSource_MOPUB = @"MoPub";
 
 /**
  @abstract Loads a banner using the provided placement name.
- @discussion This method will load banner ads of the requested size from the underlying ad networks
- according to their priority.
-
+ @discussion This method will load banner ads of the requested size from the underlying ad networks according to their priority.
+ 
  The size should contain ISBannerSize value that represent the required banner ad size.
- e.g. [IronSource loadBannerWithViewController:self size:ISBannerSize_BANNER
- placement:@"your_placement_name"];
-
+ e.g. [IronSource loadBannerWithViewController:self size:ISBannerSize_BANNER placement:@"your_placement_name"];
+ 
  Custom banner size:
  ISBannerSize* bannerSize = [[ISBannerSize alloc] initWithWidth:320 andHeight:50];
  [IronSource loadBannerWithViewController:self size:bannerSize placement:@"your_placement_name"];
-
+ 
  @param viewController The UIViewController to display the banner within.
  @param size The required banner ad size
- @param placementName The placement name as was defined in the platform. If nil is passed, the
- default placement will be used.
+ @param placementName The placement name as was defined in the platform. If nil is passed, the default placement will be used.
  */
-+ (void)loadBannerWithViewController:(UIViewController *)viewController
-                                size:(ISBannerSize *)size
-                           placement:(nullable NSString *)placementName;
++ (void)loadBannerWithViewController:(UIViewController *)viewController size:(ISBannerSize *)size placement:(nullable NSString *)placementName;
 
 /**
  @abstract Removes the banner from memory.
@@ -635,9 +583,8 @@ static NSString *const DataSource_MOPUB = @"MoPub";
 
 /**
  @abstract Verify if a certain placement has reached its ad limit.
- @discussion This is to ensure you don’t try to load a banner when the placement has been capped or
- paced and thus will not serve the banner ad.
-
+ @discussion This is to ensure you don’t try to load a banner when the placement has been capped or paced and thus will not serve the banner ad.
+ 
  @param placementName The placement name as was defined in the platform.
  @return YES if capped or paced, NO otherwise.
  */
@@ -648,9 +595,7 @@ static NSString *const DataSource_MOPUB = @"MoPub";
  @abstract Sets the delegate for demand only Banner callbacks.
  @param delegate The 'ISDemandOnlyBannerDelegate' for IronSource to send callbacks to.
  */
-+ (void)setISDemandOnlyBannerDelegate:(id<ISDemandOnlyBannerDelegate>)delegate
-    __attribute__((deprecated("This method has been deprecated. Please use "
-                              "setISDemandOnlyBannerDelegateForInstanceId instead.")));
++ (void)setISDemandOnlyBannerDelegate:(id<ISDemandOnlyBannerDelegate>)delegate __attribute__((deprecated("This method has been deprecated. Please use setISDemandOnlyBannerDelegateForInstanceId instead.")));
 
 /**
  @abstract Sets the delegate for demand only Banner callbacks.
@@ -701,6 +646,7 @@ static NSString *const DataSource_MOPUB = @"MoPub";
 
 + (void)setConsent:(BOOL)consent;
 
+
 #pragma mark - Impression Data
 
 /**
@@ -709,17 +655,20 @@ static NSString *const DataSource_MOPUB = @"MoPub";
  @param delegate The 'ISImpressionDataDelegate' for IronSource to send callbacks to.
  */
 
+
 + (void)addImpressionDataDelegate:(id<ISImpressionDataDelegate>)delegate;
 
 /**
  @abstract Ad revenue data
-
+ 
  @param dataSource the external source id from which the impression data is sent.
  @param impressionData the impression data
 
  */
 + (void)setAdRevenueDataWithDataSource:(NSString *)dataSource
                         impressionData:(NSData *)impressionData;
+
+
 
 /**
  @abstract Removes  the delegate from impression data callbacks.
@@ -729,29 +678,30 @@ static NSString *const DataSource_MOPUB = @"MoPub";
 
 + (void)removeImpressionDataDelegate:(id<ISImpressionDataDelegate>)delegate;
 
+
 #pragma mark - Consent View
 
 /**
  @abstract Sets the delegate for consent view callbacks.
-
+ 
  @param delegate The 'ISConsentViewDelegate' for IronSource to send callbacks to.
  */
 + (void)setConsentViewWithDelegate:(id<ISConsentViewDelegate>)delegate;
 
 /**
  @abstract Load consent view.
-
+ 
  @param consentViewType The type of the view (pre/post).
  */
 + (void)loadConsentViewWithType:(NSString *)consentViewType;
 
 /**
  @abstract Show consent view after load.
-
+ 
  @param consentViewType The type of the view (pre/post).
  */
-+ (void)showConsentViewWithViewController:(UIViewController *)viewController
-                                  andType:(NSString *)consentViewType;
++ (void)showConsentViewWithViewController:(UIViewController *)viewController andType:(NSString *)consentViewType;
+
 
 #pragma mark - Conversion Value (CV)
 
@@ -777,8 +727,7 @@ static NSString *const DataSource_MOPUB = @"MoPub";
  *   [builder setCeiling:@10.05];
  *   [builder setFloor:@1.10];
  *   ISWaterfallConfiguration *configuration = [builder build];
- *   [IronSource setWaterfallConfiguration:configuration forAdUnit:[ISAdUnit
- * IS_AD_UNIT_REWARDED_VIDEO]];
+ *   [IronSource setWaterfallConfiguration:configuration forAdUnit:[ISAdUnit IS_AD_UNIT_REWARDED_VIDEO]];
  * </pre>
  *
  * Swift Example
@@ -792,15 +741,15 @@ static NSString *const DataSource_MOPUB = @"MoPub";
  * </pre>
  *
  * @abstract Allow the publisher to set custom configuration per ad unit.
- * @param waterfallConfiguration ISWaterfallConfiguration object with custom fields configured by
- * the publisher.
+ * @param waterfallConfiguration ISWaterfallConfiguration object with custom fields configured by the publisher.
  * @param adUnit ISAdUnit that the ISWaterfallConfiguration should apply to.
  */
-+ (void)setWaterfallConfiguration:(ISWaterfallConfiguration *)waterfallConfiguration
-                        forAdUnit:(ISAdUnit *)adUnit;
++ (void) setWaterfallConfiguration:(ISWaterfallConfiguration *)waterfallConfiguration
+                         forAdUnit:(ISAdUnit *)adUnit;
 
 @end
 
 NS_ASSUME_NONNULL_END
+
 
 #endif

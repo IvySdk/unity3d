@@ -6,12 +6,12 @@
 //  Copyright © 2021 IronSource. All rights reserved.
 //
 
-#import "ISAdapterConfig.h"
 #import "ISLoadWhileShowSupportState.h"
+#import "ISAdapterConfig.h"
 
 @protocol ISAdapterSettingsProtocol <NSObject>
 
-- (ISLoadWhileShowSupportState)getLoadWhileShowSupportedStateWithAdapterConfig:
-    (ISAdapterConfig*)adapterConfig;
+- (ISLoadWhileShowSupportState)getLoadWhileShowSupportedStateWithAdapterConfig:(ISAdapterConfig*)adapterConfig;
 
 @end
+

@@ -11,3 +11,5 @@
 @interface ISBaseRewardedVideoAdapter : ISBaseAdUnitAdapter <ISRewardedVideoAdapterProtocol>
 
 @end
+
+

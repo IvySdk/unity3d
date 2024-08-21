@@ -11,11 +11,12 @@
 
 @interface ISNativeAdViewHolder : NSObject
 
-@property(weak, nonatomic, nullable) UIImageView *iconView;
-@property(weak, nonatomic, nullable) UILabel *titleView;
-@property(weak, nonatomic, nullable) UILabel *advertiserView;
-@property(weak, nonatomic, nullable) UILabel *bodyView;
-@property(weak, nonatomic, nullable) LevelPlayMediaView *mediaView;
-@property(weak, nonatomic, nullable) UIButton *callToActionView;
+@property (weak, nonatomic, nullable) UIImageView *iconView;
+@property (weak, nonatomic, nullable) UILabel *titleView;
+@property (weak, nonatomic, nullable) UILabel *advertiserView;
+@property (weak, nonatomic, nullable) UILabel *bodyView;
+@property (weak, nonatomic, nullable) LevelPlayMediaView *mediaView;
+@property (weak, nonatomic, nullable) UIButton *callToActionView;
 
 @end
+

@@ -13,6 +13,7 @@
 
 typedef enum : NSInteger {
     IAVideoTypeUndefined = 0,
+    IAVideoTypeMRect __attribute__((deprecated)),
     IAVideoTypeInterstitial,
     IAVideoTypeRewarded,
 } IAVideoType;

@@ -92,12 +92,6 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 
 
-@interface MTGTrackAdRevenueTradPlusModel : MTGTrackAdRevenueModel
-
-///The TradPlus AdImpression adInfo
-@property (nonatomic,strong,nonnull) NSDictionary *adInfo;
-
-@end
 
 
 ///If you use other mediation, you can create a MTGTrackAdRevenueCustomModel and assign values to the properties.

@@ -10,18 +10,10 @@
 
 #import "ISLogDelegate.h"
 
-#define logInternal(tag2, format, ...)                                                      \
-  [[ISLoggerManager sharedInstance] log:[NSString stringWithFormat:(format), ##__VA_ARGS__] \
-                                  level:IS_LOG_INTERNAL                                     \
-                                    tag:tag2]
-#define logInfo(tag2, format, ...)                                                          \
-  [[ISLoggerManager sharedInstance] log:[NSString stringWithFormat:(format), ##__VA_ARGS__] \
-                                  level:IS_LOG_INFO                                         \
-                                    tag:tag2]
-#define logError(tag2, format, ...)                                                         \
-  [[ISLoggerManager sharedInstance] log:[NSString stringWithFormat:(format), ##__VA_ARGS__] \
-                                  level:IS_LOG_ERROR                                        \
-                                    tag:tag2]
+#define logInternal(tag2, format, ...) [[ISLoggerManager sharedInstance] log:[NSString stringWithFormat:(format), ##__VA_ARGS__] level:IS_LOG_INTERNAL tag:tag2]
+#define logInfo(tag2, format, ...) [[ISLoggerManager sharedInstance] log:[NSString stringWithFormat:(format), ##__VA_ARGS__] level:IS_LOG_INFO tag:tag2]
+#define logError(tag2, format, ...) [[ISLoggerManager sharedInstance] log:[NSString stringWithFormat:(format), ##__VA_ARGS__] level:IS_LOG_ERROR tag:tag2]
+
 
 @class ISLogger;
 
@@ -29,21 +21,13 @@
 
 + (ISLoggerManager *)sharedInstance;
 
-- (void)setLoggingLevels:(NSInteger)server
-               publisher:(NSInteger)publisher
-                 console:(NSInteger)console;
+- (void)setLoggingLevels:(NSInteger)server publisher:(NSInteger)publisher console:(NSInteger)console;
 - (void)log:(NSString *)message level:(ISLogLevel)logLevel tag:(LogTag)logTag;
 - (void)logFromError:(NSError *)error level:(ISLogLevel)logLevel tag:(LogTag)logTag;
 - (void)logFromException:(NSException *)exception level:(ISLogLevel)logLevel tag:(LogTag)logTag;
-- (void)logFromException:(NSException *)exception
-                 message:(NSString *)message
-                   level:(ISLogLevel)logLevel
-                     tag:(LogTag)logTag;
+- (void)logFromException:(NSException *)exception message:(NSString *)message level:(ISLogLevel)logLevel tag:(LogTag)logTag;
 - (void)addPublisherLogger:(id<ISLogDelegate>)delegate;
-- (void)dynamicLog:(char *)calledFrom
-           message:(NSString *)message
-             level:(ISLogLevel)logLevel
-           withTag:(LogTag)logTag;
+- (void)dynamicLog:(char *)calledFrom message:(NSString *)message level:(ISLogLevel)logLevel withTag:(LogTag)logTag;
 - (void)automationLog:(NSString *)message level:(ISLogLevel)logLevel withTag:(LogTag)logTag;
 
 @end

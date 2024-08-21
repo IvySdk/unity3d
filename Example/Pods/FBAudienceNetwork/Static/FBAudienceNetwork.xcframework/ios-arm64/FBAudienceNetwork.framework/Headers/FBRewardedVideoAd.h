@@ -217,8 +217,7 @@ FB_CLASS_EXPORT FB_SUBCLASSING_RESTRICTED @interface FBRewardedVideoAd : NSObjec
 
  @param rewardedVideoAd A FBRewardedVideoAd object sending the message.
  */
-- (void)rewardedVideoAdServerRewardDidSucceed:(FBRewardedVideoAd *)rewardedVideoAd
-    FB_DEPRECATED_WITH_MESSAGE("Functionality has been deprecated. This delegate method will not be called.");
+- (void)rewardedVideoAdServerRewardDidSucceed:(FBRewardedVideoAd *)rewardedVideoAd;
 
 /**
  Sent if server call to publisher's reward endpoint did not return HTTP status code 200
@@ -227,14 +226,13 @@ FB_CLASS_EXPORT FB_SUBCLASSING_RESTRICTED @interface FBRewardedVideoAd : NSObjec
 
  @param rewardedVideoAd A FBRewardedVideoAd object sending the message.
  */
-- (void)rewardedVideoAdServerRewardDidFail:(FBRewardedVideoAd *)rewardedVideoAd
-    FB_DEPRECATED_WITH_MESSAGE("Functionality has been deprecated. This delegate method will not be called.");
+- (void)rewardedVideoAdServerRewardDidFail:(FBRewardedVideoAd *)rewardedVideoAd;
 
 /**
  Experimental Feature, DO NOT USE IN PRODUCTION!
 
 
- @param completion a block that returns a companion View for the Interstitial Ad.
+ @param FBAdCompanionView should return a Companion View for the Interstitial Ad.
  */
 - (void)rewardedVideoAdCompanionViewProvider:(void (^)(FBAdCompanionView *_Nullable))completion;
 

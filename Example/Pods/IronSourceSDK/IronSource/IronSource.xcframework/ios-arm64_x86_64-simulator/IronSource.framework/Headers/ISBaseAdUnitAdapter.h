@@ -6,8 +6,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "ISAdapterConfig.h"
 #import "ISNetworkInitCallbackProtocol.h"
+#import "ISAdapterConfig.h"
 
 @interface ISBaseAdUnitAdapter : NSObject <ISNetworkInitCallbackProtocol>
 

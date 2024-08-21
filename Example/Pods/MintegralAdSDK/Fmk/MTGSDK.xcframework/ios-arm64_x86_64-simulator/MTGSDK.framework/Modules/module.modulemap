@@ -1,5 +1,10 @@
 framework module MTGSDK {
-    umbrella header "MTGSDKUmbrellaHeaders.h"
+    umbrella header "MTGSDK.h"
+    header "MTGBool.h"
+    header "MTGAdSize.h"
+    header "MTGRewardAdInfo.h"
+    header "MTGErrorCodeConstant.h"
+    header "MTGAdChoicesView.h"
     export *
  
     module * {
@@ -33,7 +38,3 @@ framework module MTGSDK {
 
 
 
-module MTGSDK.Swift {
-  header "MTGSDK-Swift.h"
-  requires objc
-}

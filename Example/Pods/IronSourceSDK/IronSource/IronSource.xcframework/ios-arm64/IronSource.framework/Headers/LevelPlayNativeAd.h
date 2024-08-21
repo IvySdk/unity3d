@@ -6,17 +6,17 @@
 //  Copyright © 2023 IronSource. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "LevelPlayNativeAdDelegate.h"
+#import "LevelPlayNativeAdBuilder.h"
+#import "Foundation/Foundation.h"
 #import "ISAdapterNativeAdViewBinder.h"
 #import "ISNativeAdDataProtocol.h"
-#import "LevelPlayNativeAdBuilder.h"
-#import "LevelPlayNativeAdDelegate.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface LevelPlayNativeAd : NSObject <ISNativeAdDataProtocol>
 
-@property(nonatomic, strong, nullable) ISAdapterNativeAdViewBinder *nativeAdViewBinder;
+@property (nonatomic, strong, nullable) ISAdapterNativeAdViewBinder *nativeAdViewBinder;
 
 - (instancetype)initWithBuilder:(LevelPlayNativeAdBuilder *)builder;
 
@@ -28,3 +28,4 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 
 NS_ASSUME_NONNULL_END
+

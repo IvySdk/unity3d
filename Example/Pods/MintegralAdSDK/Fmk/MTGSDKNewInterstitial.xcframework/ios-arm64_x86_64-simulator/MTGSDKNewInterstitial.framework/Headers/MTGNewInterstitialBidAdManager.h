@@ -89,13 +89,9 @@ NS_ASSUME_NONNULL_BEGIN
                cancelText:(NSString *_Nullable)cancelText;
 
 /**
-* get the id of this request ad, call this  after newInterstitialBidAdLoadSuccess.
+* get the id of this request ad,call  after onInterstitialAdLoadSuccess.
 */
 - (NSString *_Nullable)getRequestIdWithUnitId:(nonnull NSString *)unitId;
-
-/// get the creativeId of this requested ad, call this after newInterstitialBidAdLoadSuccess.
-- (NSString *_Nullable)getCreativeIdWithUnitId:(nonnull NSString *)unitId;
-
 
 /// Pass extra info into sdk.
 /// @param extraInfo info you want to pass

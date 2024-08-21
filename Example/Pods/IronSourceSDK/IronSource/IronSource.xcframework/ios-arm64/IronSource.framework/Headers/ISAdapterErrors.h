@@ -9,11 +9,13 @@
 #ifndef AdapterErrors_h
 #define AdapterErrors_h
 
+
 typedef NS_ENUM(NSInteger, ISAdapterErrors) {
-  ISAdapterErrorInternal = 1000,      // internal error
-  ISAdapterErrorAdExpired = 1001,     // expired ad error
-  ISAdapterErrorMissingParams = 1002  // missing parameters error
+    ISAdapterErrorInternal         = 1000, // internal error
+    ISAdapterErrorAdExpired        = 1001, // expired ad error
+    ISAdapterErrorMissingParams    = 1002 // missing parameters error
 
 };
+
 
 #endif /* AdapterErrors_h */

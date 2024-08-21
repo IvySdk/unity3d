@@ -6,19 +6,19 @@
 	<dict>
 		<key>Headers/MTGBidInterstitialVideoAdManager.h</key>
 		<data>
-		6CxucYsaBDZqCwR2lWCEfdKh1gA=
+		b6De0Y/yzR1sfidhOqbjWEVcYjI=
 		</data>
 		<key>Headers/MTGInterstitialVideoAd.h</key>
 		<data>
-		W668URihjkXfgSidz/HHpSKTaDE=
+		L2bzAeHoZrp0ZcYd1HlCvTR60Uc=
 		</data>
 		<key>Headers/MTGInterstitialVideoAdManager.h</key>
 		<data>
-		7cHJnKiMUJUOo+4bU/BpNp0eOyM=
+		0MNfeYq8fEHnMImmLaYZtfdxPJI=
 		</data>
 		<key>Info.plist</key>
 		<data>
-		dx5PyDecezcwI0gyfM0hL3znp44=
+		pGS00lnQ9nOW5lNtastnAgrovl4=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -31,33 +31,33 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			6CxucYsaBDZqCwR2lWCEfdKh1gA=
+			b6De0Y/yzR1sfidhOqbjWEVcYjI=
 			</data>
 			<key>hash2</key>
 			<data>
-			+EZGJCQ3+56AZJTiqPjXBIlMA607PNO9E/leh1K5Gik=
+			dXydgnrxKg50+5jzIXv8AFhDpcvoLVipO62LDGWue14=
 			</data>
 		</dict>
 		<key>Headers/MTGInterstitialVideoAd.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			W668URihjkXfgSidz/HHpSKTaDE=
+			L2bzAeHoZrp0ZcYd1HlCvTR60Uc=
 			</data>
 			<key>hash2</key>
 			<data>
-			KWACiJ2FkusFB+3vH4rErFDijuI6GlPI6uJo3E776zA=
+			mLmTHoxKypk6QtRYYvcS3nKRs3fM5AU58iFpCnqYJow=
 			</data>
 		</dict>
 		<key>Headers/MTGInterstitialVideoAdManager.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			7cHJnKiMUJUOo+4bU/BpNp0eOyM=
+			0MNfeYq8fEHnMImmLaYZtfdxPJI=
 			</data>
 			<key>hash2</key>
 			<data>
-			CBN2o6HGyvHM3zBjnVa2b/+JAl0sxn3eciWzZ4xj3Xs=
+			0F5irJD7wsUEUzmoZKc+JBY2MICSyx9yJHvBTb7pn6Y=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

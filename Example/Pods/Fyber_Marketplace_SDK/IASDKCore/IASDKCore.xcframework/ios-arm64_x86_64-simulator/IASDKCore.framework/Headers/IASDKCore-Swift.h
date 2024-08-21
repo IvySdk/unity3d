@@ -230,7 +230,6 @@ using UInt = size_t;
 #if __has_warning("-Watimport-in-framework-header")
 #pragma clang diagnostic ignored "-Watimport-in-framework-header"
 #endif
-@import ObjectiveC;
 #endif
 
 #endif
@@ -251,26 +250,6 @@ using UInt = size_t;
 #endif
 
 #if defined(__OBJC__)
-
-typedef SWIFT_ENUM(NSInteger, DTXLogLevel, open) {
-  DTXLogLevelOff = 0,
-  DTXLogLevelFault = 1,
-  DTXLogLevelError = 2,
-  DTXLogLevelInfo = 3,
-  DTXLogLevelDebug = 4,
-};
-
-
-SWIFT_CLASS_NAMED("DTXLogger")
-@interface DTXLogger : NSObject
-+ (void)setLogLevel:(enum DTXLogLevel)logLevel;
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
-@end
-
-
-
-
 
 
 
@@ -517,7 +496,6 @@ using UInt = size_t;
 #if __has_warning("-Watimport-in-framework-header")
 #pragma clang diagnostic ignored "-Watimport-in-framework-header"
 #endif
-@import ObjectiveC;
 #endif
 
 #endif
@@ -538,26 +516,6 @@ using UInt = size_t;
 #endif
 
 #if defined(__OBJC__)
-
-typedef SWIFT_ENUM(NSInteger, DTXLogLevel, open) {
-  DTXLogLevelOff = 0,
-  DTXLogLevelFault = 1,
-  DTXLogLevelError = 2,
-  DTXLogLevelInfo = 3,
-  DTXLogLevelDebug = 4,
-};
-
-
-SWIFT_CLASS_NAMED("DTXLogger")
-@interface DTXLogger : NSObject
-+ (void)setLogLevel:(enum DTXLogLevel)logLevel;
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
-@end
-
-
-
-
 
 
 

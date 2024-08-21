@@ -110,10 +110,7 @@ typedef NS_ENUM(NSInteger, MTGAdTemplateType) {
 */
 @property (nonatomic,assign) NSInteger     videoLength;
 
-/// creativeId of main resource.
-@property (nonatomic, copy, nullable) NSString *creativeId;
-
-/*!†
+/*!
  @method
  
  @abstract

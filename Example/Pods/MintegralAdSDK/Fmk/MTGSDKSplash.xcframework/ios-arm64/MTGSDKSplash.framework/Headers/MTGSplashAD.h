@@ -6,15 +6,13 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <UIKit/UIKit.h>
-
 #if __has_include(<MTGSDK/MTGSDK.h>)
     #import <MTGSDK/MTGBool.h>
 #else
     #import "MTGBool.h"
 #endif
 
-#define MTGSplashSDKVersion @"7.6.2"
+#define MTGSplashSDKVersion @"7.4.8"
 
 
 NS_ASSUME_NONNULL_BEGIN
@@ -93,10 +91,6 @@ typedef NS_ENUM(NSInteger, MTGSplashZoomOutViewCustomLayoutType) {
 
 /* get the id of this request ad,call after splashADPreloadSuccess || splashADLoadSuccess*/
 @property (nonatomic, readonly, copy,nullable) NSString *requestID;
-
-/* get the creativeId of this requested ad, call this after splashADPreloadSuccess || splashADLoadSuccess*/
-@property (nonatomic, readonly, copy,nullable) NSString *creativeID;
-
 
 /********************** Normal Request ***************************/
 

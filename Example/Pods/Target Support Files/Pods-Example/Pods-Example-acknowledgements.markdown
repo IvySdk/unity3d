@@ -4,7 +4,7 @@ This application makes use of the following third party libraries:
 ## AppLovinSDK
 
 
-Copyright 2024 AppLovin Corp. All rights reserved.
+Copyright 2023 AppLovin Corp. All rights reserved.
 
 The AppLovin SDK is available under a commercial license (https://www.applovin.com/eula).
 
@@ -16,7 +16,7 @@ Copyright 2018 AppsFlyer Ltd. All rights reserved.
 
 ## ChartboostSDK
 
-LICENSE © 2011-2024 Chartboost. All rights reserved. LICENSE
+LICENSE © 2011-2020 Chartboost. All rights reserved. LICENSE
 
 ## DivKit
 
@@ -4706,7 +4706,7 @@ Last Updated September 2018
 
 ## Google-Mobile-Ads-SDK
 
-Copyright 2024 Google LLC
+Copyright 2023 Google
 
 ## GoogleAppMeasurement
 
@@ -4982,7 +4982,13 @@ https://platform.ironsrc.com/partners/terms-and-conditions-new-user
 
 ## MintegralAdSDK
 
-https://raw.githubusercontent.com/Mintegral-official/MintegralAdSDK-iOS-new/master/LICENSE.txt
+You are hereby granted a non-exclusive, non-transferable, non-sublicensable, worldwide license to use this Software Development Kit (SDK) and any related technology with it in source code or binary form provided by Mintegral solely for use in connection with the service provided by Mintegral. 
+
+Mintegral retains the exclusive ownership and intellectual property rights in and to the SDK and any related technology with it provided to You.
+
+You use of this SDK and any technology with it is subject to the MINTEGRAL STANDARD TERMS AND CONDITIONS in [https://dev.mintegral.com/document/term]. This copyright notice shall be included in all copies or substantial portions of this SDK.
+
+EXCEPT AS OTHERWISE PROVIDED IN THE MINTEGRAL STANDARD TERMS AND CONDITIONS, THIS SDK IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR              IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS           FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR             COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER          IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH USE OF THE SDK OR ANY TECHNOLOGY WITH IT. 
 
 
 ## PromisesObjC
@@ -5193,7 +5199,7 @@ https://raw.githubusercontent.com/Mintegral-official/MintegralAdSDK-iOS-new/mast
 
 ## UnityAds
 
-Unity Advertisements copyright © 2024 Unity Technologies.
+Unity Advertisements copyright © 2023 Unity Technologies.
 This software is subject to, and made available under, the terms of service for Operate Solutions (see https://unity3d.com/legal/one-operate-services-terms-of-service), and is an "Operate Service" as defined therein.
 
 Your use of the Services constitutes your acceptance of such terms. Unless expressly provided otherwise, the software under this license is made available strictly on an "AS IS" BASIS WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED. Please review the terms of service for details on these and other terms and conditions.
