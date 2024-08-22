@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'IvyiOSSdk'
-  s.version          = '0.1.0'
+  s.version          = '1.0.4'
   s.summary          = 'A short description of IvyiOSSdk.'
 
 # This description is used to generate tags and improve search results.

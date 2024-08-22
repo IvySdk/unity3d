@@ -88,9 +88,9 @@
 #ifdef APPSFLYER
 #import <IvyiOSSdk/SDKAppsflyerInit.h>
 #endif
-#if APPLOVIN
+//#if APPLOVIN
 #import <AppLovinSDK/AppLovinSDK.h>
-#endif
+//#endif
 #if APPLOVIN_MAX
 #import <OpenWrapSDK/OpenWrapSDK.h>
 #import <DTBiOSSDK/DTBiOSSDK.h>
@@ -1207,7 +1207,7 @@ static NSString * CRASH_EMAIL_ADDR;
     [self saveAdsEnabled:enable];
 }
 
--(void)_initAds
+-(void) _initAds
 {
     if(_config) {
 #ifdef GoogleTest
@@ -1226,10 +1226,10 @@ static NSString * CRASH_EMAIL_ADDR;
 #endif
         [GADMobileAds.sharedInstance startWithCompletionHandler:^(GADInitializationStatus * _Nonnull status) {
             DLog(@"[adlog] GADMobileAds start");
+            ALSdk *sdk = [ALSdk sharedWithKey:@"E8pVhU9mykQd3y0TD0Ksoq4vpf_Muat6ifcP9m96UakTWk5klQaWEeQ2IPOA-GHgxu54eEA8pvgKcn2MBdtQGH"];
+            [sdk.settings setExtraParameterForKey: @"pisw" value: @"true"];
 #if DEBUG
-            [GADMobileAds.sharedInstance presentAdInspectorFromViewController:self->_rootVC
-              completionHandler:^(NSError *error) {
-                // Error will be non-nil if there was an issue and the inspector was not displayed.
+            [GADMobileAds.sharedInstance presentAdInspectorFromViewController:self->_rootVC completionHandler:^(NSError * _Nullable error) {
                 if(error != nil){
                     DLog(@"[ad]");
                 }
