@@ -166,9 +166,6 @@
 #import "AdsCustomEventRewardAd.h"
 #import "AdsCustomEventUtils.h"
 #import "SDKGoogleGdpr.h"
-#import "SDKYandexBanner.h"
-#import "SDKYandexInterstitial.h"
-#import "SDKYandexVideo.h"
 
 FOUNDATION_EXPORT double IvyiOSSdkVersionNumber;
 FOUNDATION_EXPORT const unsigned char IvyiOSSdkVersionString[];

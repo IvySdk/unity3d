@@ -1,6 +1,0 @@
-module Serialization {
-  umbrella header "DivKit_Serialization-umbrella.h"
-
-  export *
-  module * { export * }
-}

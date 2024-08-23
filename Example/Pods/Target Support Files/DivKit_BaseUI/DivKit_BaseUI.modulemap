@@ -1,6 +1,0 @@
-module BaseUIPublic {
-  umbrella header "DivKit_BaseUI-umbrella.h"
-
-  export *
-  module * { export * }
-}

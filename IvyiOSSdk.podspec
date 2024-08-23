@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'IvyiOSSdk'
-  s.version          = '1.0.4'
+  s.version          = '1.0.5'
   s.summary          = 'A short description of IvyiOSSdk.'
 
 # This description is used to generate tags and improve search results.
@@ -60,7 +60,7 @@ TODO: Add long description of the pod here.
  # s.dependency 'smaato-ios-sdk-mediation-admob', '10.10.0.0'
   s.dependency 'GoogleUserMessagingPlatform', '2.5.0'
 
-  s.dependency 'YandexMobileAds', '5.9.1'
+  #s.dependency 'YandexMobileAds', '5.9.1'
   
   s.dependency 'Firebase/Core', '10.24.0'
   s.dependency 'Firebase/Analytics', '10.24.0'

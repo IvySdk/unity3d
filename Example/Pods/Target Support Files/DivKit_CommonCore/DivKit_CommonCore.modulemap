@@ -1,6 +1,0 @@
-module CommonCorePublic {
-  umbrella header "DivKit_CommonCore-umbrella.h"
-
-  export *
-  module * { export * }
-}

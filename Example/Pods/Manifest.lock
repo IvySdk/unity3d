@@ -4,37 +4,6 @@ PODS:
     - AppsFlyerFramework/Main (= 6.13.2)
   - AppsFlyerFramework/Main (6.13.2)
   - ChartboostSDK (9.7.0)
-  - DivKit (24.2.0):
-    - DivKit_Base (= 24.2.0)
-    - DivKit_BaseTiny (= 24.2.0)
-    - DivKit_BaseUI (= 24.2.0)
-    - DivKit_CommonCore (= 24.2.0)
-    - DivKit_LayoutKit (= 24.2.0)
-    - DivKit_LayoutKitInterface (= 24.2.0)
-    - DivKit_Networking (= 24.2.0)
-    - DivKit_Serialization (= 24.2.0)
-  - DivKit_Base (24.2.0):
-    - DivKit_BaseTiny (= 24.2.0)
-    - DivKit_BaseUI (= 24.2.0)
-  - DivKit_BaseTiny (24.2.0)
-  - DivKit_BaseUI (24.2.0):
-    - DivKit_BaseTiny (= 24.2.0)
-  - DivKit_CommonCore (24.2.0):
-    - DivKit_Base (= 24.2.0)
-    - DivKit_BaseTiny (= 24.2.0)
-  - DivKit_LayoutKit (24.2.0):
-    - DivKit_BaseTiny (= 24.2.0)
-    - DivKit_BaseUI (= 24.2.0)
-    - DivKit_CommonCore (= 24.2.0)
-    - DivKit_LayoutKitInterface (= 24.2.0)
-  - DivKit_LayoutKitInterface (24.2.0):
-    - DivKit_Base (= 24.2.0)
-    - DivKit_BaseTiny (= 24.2.0)
-    - DivKit_BaseUI (= 24.2.0)
-  - DivKit_Networking (24.2.0):
-    - DivKit_Base (= 24.2.0)
-  - DivKit_Serialization (24.2.0):
-    - DivKit_CommonCore (= 24.2.0)
   - FBAEMKit (16.3.1):
     - FBSDKCoreKit_Basics (= 16.3.1)
   - FBAudienceNetwork (6.15.1)
@@ -125,7 +94,7 @@ PODS:
   - GoogleMobileAdsMediationVungle (7.3.1.0):
     - Google-Mobile-Ads-SDK (~> 11.0)
     - VungleAds (= 7.3.1)
-  - GoogleUserMessagingPlatform (2.1.0)
+  - GoogleUserMessagingPlatform (2.5.0)
   - GoogleUtilities/AppDelegateSwizzler (7.13.3):
     - GoogleUtilities/Environment
     - GoogleUtilities/Logger
@@ -155,7 +124,7 @@ PODS:
     - GoogleUtilities/Logger
     - GoogleUtilities/Privacy
   - IronSourceSDK (7.9.0.0)
-  - IvyiOSSdk (0.1.0):
+  - IvyiOSSdk (1.0.4):
     - AppsFlyerFramework (= 6.13.2)
     - FBSDKCoreKit (= 16.3.1)
     - Firebase/Analytics (= 10.24.0)
@@ -169,8 +138,7 @@ PODS:
     - GoogleMobileAdsMediationMintegral (= 7.6.2.0)
     - GoogleMobileAdsMediationUnity (= 4.12.1.0)
     - GoogleMobileAdsMediationVungle (= 7.3.1.0)
-    - GoogleUserMessagingPlatform (= 2.1.0)
-    - YandexMobileAds (= 5.9.1)
+    - GoogleUserMessagingPlatform (= 2.5.0)
   - MintegralAdSDK/All (7.6.2):
     - MintegralAdSDK/BannerAd
     - MintegralAdSDK/BidNativeAd
@@ -204,20 +172,6 @@ PODS:
   - PromisesObjC (2.4.0)
   - UnityAds (4.12.1)
   - VungleAds (7.3.1)
-  - YandexMobileAds (5.9.1):
-    - DivKit (~> 24.2)
-    - YandexMobileAds/Static (= 5.9.1)
-  - YandexMobileAds/Static (5.9.1):
-    - DivKit (~> 24.2)
-    - YandexMobileMetrica (< 5.0.0, >= 4.0.0)
-  - YandexMobileMetrica (4.5.2):
-    - YandexMobileMetrica/Static (= 4.5.2)
-  - YandexMobileMetrica/Static (4.5.2):
-    - YandexMobileMetrica/Static/Core (= 4.5.2)
-    - YandexMobileMetrica/Static/Crashes (= 4.5.2)
-  - YandexMobileMetrica/Static/Core (4.5.2)
-  - YandexMobileMetrica/Static/Crashes (4.5.2):
-    - YandexMobileMetrica/Static/Core
 
 DEPENDENCIES:
   - IvyiOSSdk (from `../`)
@@ -227,15 +181,6 @@ SPEC REPOS:
     - AppLovinSDK
     - AppsFlyerFramework
     - ChartboostSDK
-    - DivKit
-    - DivKit_Base
-    - DivKit_BaseTiny
-    - DivKit_BaseUI
-    - DivKit_CommonCore
-    - DivKit_LayoutKit
-    - DivKit_LayoutKitInterface
-    - DivKit_Networking
-    - DivKit_Serialization
     - FBAEMKit
     - FBAudienceNetwork
     - FBSDKCoreKit
@@ -264,8 +209,6 @@ SPEC REPOS:
     - PromisesObjC
     - UnityAds
     - VungleAds
-    - YandexMobileAds
-    - YandexMobileMetrica
 
 EXTERNAL SOURCES:
   IvyiOSSdk:
@@ -275,15 +218,6 @@ SPEC CHECKSUMS:
   AppLovinSDK: 76c1f378b8492110a197c288ea4907930d703829
   AppsFlyerFramework: 39efd4d2523ca9e3234805aea0c6b3c3a4a387d1
   ChartboostSDK: 0cd093c90a5a21c89783fe5be486e511fb2dbfc8
-  DivKit: f2151bd0bfc67e0b4ad949e8cd1caa7379253bef
-  DivKit_Base: 263499ebc77c217314d4bee1b374781c3643c8a9
-  DivKit_BaseTiny: 42535fa725058957129f231b4b52d394ed4d7ea9
-  DivKit_BaseUI: cb86da6096de4a3bb670b4196ddeed0334acd671
-  DivKit_CommonCore: dd26a3f7dcc9010ec3a4ed3c5c3718e7a882536a
-  DivKit_LayoutKit: cdcfa56dd6a88495703350bb63f410dde426435c
-  DivKit_LayoutKitInterface: f0dae7b2e7a024d0340914490b1c06c0e6a926ae
-  DivKit_Networking: cd028559a160baa76c43fda52174f2f83c87b747
-  DivKit_Serialization: b4d8a4672de9134889c5f92f5f7e04e04112e660
   FBAEMKit: 6c7b5eb77c96861bb59e040842c6e55bf39512ce
   FBAudienceNetwork: 80871c3b3057e89ab36d9eb79344be20377e3994
   FBSDKCoreKit: 5e4dd478947ab1bcc887e8cfadeae0727af1a942
@@ -304,17 +238,15 @@ SPEC CHECKSUMS:
   GoogleMobileAdsMediationMintegral: d51722fd36776517ba54ab08dfc010d61346f087
   GoogleMobileAdsMediationUnity: 981b2a938d042cbc3d8f55c481ea663a783f1be3
   GoogleMobileAdsMediationVungle: bd2d25d360107ef2cf3832c8bb55d2372411992e
-  GoogleUserMessagingPlatform: dce302b8f1b84d6e945812ee7a15c3f65a102cbf
+  GoogleUserMessagingPlatform: 6b4f48a370e77ce121d034c908cc6ee4fdafaf13
   GoogleUtilities: ea963c370a38a8069cc5f7ba4ca849a60b6d7d15
   IronSourceSDK: a5b59c1bf7178b101fa1362aab86d82d1d0b377c
-  IvyiOSSdk: 6aa0d89fcacbb2044073d125a78b99907c47e235
+  IvyiOSSdk: 2d6d211833450fa558ebafc4a4b0804efe6ace38
   MintegralAdSDK: 0f9b41d7d49d0e90cbe27cdcb62fc1208e25e85d
   nanopb: 438bc412db1928dac798aa6fd75726007be04262
   PromisesObjC: f5707f49cb48b9636751c5b2e7d227e43fba9f47
   UnityAds: f89ac1e717f5d566a58479a5b7cb9ed3a744cae3
   VungleAds: 04a17ab51fb61f41cd6d666fd0024509005740fe
-  YandexMobileAds: b4c8789fb2cc1540fc16bc94f2c18ce2d031ccc7
-  YandexMobileMetrica: f5368ee93f286c793d73b58da00929babfc897c1
 
 PODFILE CHECKSUM: b1ae4c02f09f9da92f3d515168b89ae0a07a3d1b
 

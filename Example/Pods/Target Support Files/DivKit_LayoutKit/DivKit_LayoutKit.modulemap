@@ -1,6 +1,0 @@
-module LayoutKit {
-  umbrella header "DivKit_LayoutKit-umbrella.h"
-
-  export *
-  module * { export * }
-}
