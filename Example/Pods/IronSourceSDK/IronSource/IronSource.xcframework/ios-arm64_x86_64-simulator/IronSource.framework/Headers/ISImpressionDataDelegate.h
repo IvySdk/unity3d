@@ -6,6 +6,7 @@
 //  Copyright © 2020 ironSource. All rights reserved.
 //
 
+
 #ifndef ISImpressionDataDelegate_h
 #define ISImpressionDataDelegate_h
 

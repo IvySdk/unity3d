@@ -15,7 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @required
 
-@property(nonatomic, strong, nullable) UIView *networkNativeAdView;
+@property (nonatomic, strong, nullable) UIView *networkNativeAdView;
 
 - (void)setNativeAdView:(UIView *_Nullable)nativeAdView;
 

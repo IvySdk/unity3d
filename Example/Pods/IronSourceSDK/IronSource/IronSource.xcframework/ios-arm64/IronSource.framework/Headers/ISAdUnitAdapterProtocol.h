@@ -5,9 +5,10 @@
 //  Copyright © 2023 IronSource. All rights reserved.
 //
 
-#import "ISNetworkInitCallbackProtocol.h"
 #import "ISReleaseMemoryAdapterProtocol.h"
+#import "ISNetworkInitCallbackProtocol.h"
 
 @protocol ISAdUnitAdapterProtocol <ISReleaseMemoryAdapterProtocol, ISNetworkInitCallbackProtocol>
 
 @end
+

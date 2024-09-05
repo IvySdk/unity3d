@@ -22,14 +22,16 @@ NS_ASSUME_NONNULL_BEGIN
  @param nativeAd Level Play native ad.
  @param adInfo The info of the ad.
  */
-- (void)didLoad:(LevelPlayNativeAd *)nativeAd withAdInfo:(ISAdInfo *)adInfo;
+-(void)didLoad:(LevelPlayNativeAd *)nativeAd
+    withAdInfo:(ISAdInfo *)adInfo;
 
 /**
  Called after a native has attempted to load an ad but failed.
  @param nativeAd Level Play native ad.
  @param error The reason for the error
  */
-- (void)didFailToLoad:(LevelPlayNativeAd *)nativeAd withError:(NSError *)error;
+-(void)didFailToLoad:(LevelPlayNativeAd *)nativeAd
+           withError:(NSError *)error;
 
 @end
 

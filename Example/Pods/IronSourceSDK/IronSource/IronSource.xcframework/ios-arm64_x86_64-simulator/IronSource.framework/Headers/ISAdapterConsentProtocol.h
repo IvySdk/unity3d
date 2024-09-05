@@ -10,7 +10,7 @@
 
 @protocol ISAdapterConsentProtocol <NSObject>
 
-- (void)setConsent:(BOOL)consent;
+-(void)setConsent:(BOOL)consent;
 
 @end
 

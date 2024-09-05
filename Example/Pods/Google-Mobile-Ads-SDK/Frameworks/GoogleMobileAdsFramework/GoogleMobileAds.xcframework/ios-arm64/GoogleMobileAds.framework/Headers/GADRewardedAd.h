@@ -57,26 +57,17 @@ typedef void (^GADRewardedAdLoadCompletionHandler)(GADRewardedAd *_Nullable rewa
                  request:(nullable GADRequest *)request
        completionHandler:(nonnull GADRewardedAdLoadCompletionHandler)completionHandler;
 
-/// Loads a rewarded ad.
-///
-/// @param adResponseString A server-to-server ad response string.
-/// @param completionHandler A handler to execute when the load operation finishes or times out.
-+ (void)loadWithAdResponseString:(nonnull NSString *)adResponseString
-               completionHandler:(nonnull GADRewardedAdLoadCompletionHandler)completionHandler;
-
 /// Returns whether the rewarded ad can be presented from the provided root view
 /// controller. Sets the error out parameter if the ad can't be presented. Must be called on the
-/// main thread. If rootViewController is nil, uses the top view controller of the application's
-/// main window.
-- (BOOL)canPresentFromRootViewController:(nullable UIViewController *)rootViewController
+/// main thread.
+- (BOOL)canPresentFromRootViewController:(nonnull UIViewController *)rootViewController
                                    error:(NSError *_Nullable __autoreleasing *_Nullable)error;
 
 /// Presents the rewarded ad. Must be called on the main thread.
 ///
-/// @param rootViewController A view controller to present the ad. If nil, attempts to present from
-/// the top view controller of the application's main window.
+/// @param rootViewController A view controller to present the ad.
 /// @param userDidEarnRewardHandler A handler to execute when the user earns a reward.
-- (void)presentFromRootViewController:(nullable UIViewController *)rootViewController
+- (void)presentFromRootViewController:(nonnull UIViewController *)rootViewController
              userDidEarnRewardHandler:(nonnull GADUserDidEarnRewardHandler)userDidEarnRewardHandler;
 
 @end

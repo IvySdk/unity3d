@@ -20,6 +20,7 @@ typedef NS_ENUM(NSInteger, FBAdFormatType) {
 
 NS_ASSUME_NONNULL_BEGIN
 
+@class FBAdIconView;
 @class FBAdImage;
 @class FBAdPlacementDefinition;
 @class FBAdProvider;

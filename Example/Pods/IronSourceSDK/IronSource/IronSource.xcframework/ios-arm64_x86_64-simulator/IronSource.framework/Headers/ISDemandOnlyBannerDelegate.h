@@ -28,6 +28,8 @@
  */
 - (void)bannerDidFailToLoadWithError:(NSError *)error instanceId:(NSString *)instanceId;
 
+
+
 /**
  Called when a banner was shown
  @param instanceId The demand only instance id which did show.
@@ -41,6 +43,7 @@
 
  */
 - (void)didClickBanner:(NSString *)instanceId;
+
 
 /**
  Called when a user would be taken out of the application context.

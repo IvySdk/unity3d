@@ -14,4 +14,5 @@
 @interface ISDemandOnlyBannerView : UIView
 @end
 
+
 #endif /* ISDemandOnlyBannerView_h */

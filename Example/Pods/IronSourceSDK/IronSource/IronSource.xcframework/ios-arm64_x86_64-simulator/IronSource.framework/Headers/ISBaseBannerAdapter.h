@@ -5,9 +5,10 @@
 //  Copyright © 2023 IronSource. All rights reserved.
 //
 
-#import "ISBannerAdapterProtocol.h"
 #import "ISBaseAdUnitAdapter.h"
+#import "ISBannerAdapterProtocol.h"
 
 @interface ISBaseBannerAdapter : ISBaseAdUnitAdapter <ISBannerAdapterProtocol>
 
 @end
+

@@ -1,6 +1,6 @@
 {
   "name": "IvyiOSSdk",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "summary": "A short description of IvyiOSSdk.",
   "description": "TODO: Add long description of the pod here.",
   "homepage": "https://github.com/siweiqi/IvyiOSSdk",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": "https://github.com/siweiqi/IvyiOSSdk.git",
-    "tag": "1.0.4"
+    "tag": "1.0.5"
   },
   "platforms": {
     "ios": "12.0"
@@ -36,31 +36,19 @@
   "libraries": "sqlite3",
   "dependencies": {
     "Google-Mobile-Ads-SDK": [
-      "~> 11.0"
-    ],
-    "GoogleMobileAdsMediationFyber": [
-      "8.2.8.0"
+      "10.10.0"
     ],
     "GoogleMobileAdsMediationIronSource": [
-      "7.9.0.0"
-    ],
-    "GoogleMobileAdsMediationVungle": [
-      "7.3.1.0"
+      "7.6.0.0"
     ],
     "GoogleMobileAdsMediationFacebook": [
-      "6.15.1.0"
+      "6.14.0.0"
     ],
     "GoogleMobileAdsMediationUnity": [
-      "4.12.1.0"
-    ],
-    "GoogleMobileAdsMediationChartboost": [
-      "9.7.0.0"
+      "4.9.2.0"
     ],
     "GoogleMobileAdsMediationAppLovin": [
-      "12.6.0.0"
-    ],
-    "GoogleMobileAdsMediationMintegral": [
-      "7.6.2.0"
+      "11.10.1.0"
     ],
     "GoogleUserMessagingPlatform": [
       "2.5.0"

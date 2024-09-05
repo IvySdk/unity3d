@@ -7,10 +7,6 @@
 #import <UnityAds/UADSLoadOptions.h>
 #import <UnityAds/UADSShowOptions.h>
 
-#ifdef UNITYADS_INTERNAL
-#import <OMIDImports.h>
-#endif
-
 NS_ASSUME_NONNULL_BEGIN
 
 /**

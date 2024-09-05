@@ -10,7 +10,7 @@
 
 @protocol ISAdapterDebugProtocol <NSObject>
 
-- (void)setAdapterDebug:(BOOL)adapterDebug;
+-(void)setAdapterDebug:(BOOL)adapterDebug;
 
 @end
 

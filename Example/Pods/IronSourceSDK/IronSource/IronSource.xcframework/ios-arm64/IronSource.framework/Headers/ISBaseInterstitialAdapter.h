@@ -11,3 +11,4 @@
 @interface ISBaseInterstitialAdapter : ISBaseAdUnitAdapter <ISInterstitialAdapterProtocol>
 
 @end
+

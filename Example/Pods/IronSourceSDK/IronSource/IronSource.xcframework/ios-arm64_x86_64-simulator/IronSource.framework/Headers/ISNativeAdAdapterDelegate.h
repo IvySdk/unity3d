@@ -14,17 +14,17 @@
 
 @required
 
-- (void)adapterNativeAdInitSuccess;
+-(void)adapterNativeAdInitSuccess;
 
-- (void)adapterNativeAdInitFailedWithError:(NSError *)error;
+-(void)adapterNativeAdInitFailedWithError:(NSError *)error;
 
-- (void)adapterNativeAdDidLoadWithAdData:(ISAdapterNativeAdData *)adapterNativeAdData
-                            adViewBinder:(ISAdapterNativeAdViewBinder *)nativeAdViewBinder;
+-(void)adapterNativeAdDidLoadWithAdData:(ISAdapterNativeAdData *)adapterNativeAdData
+                           adViewBinder:(ISAdapterNativeAdViewBinder *)nativeAdViewBinder;
 
-- (void)adapterNativeAdDidFailToLoadWithError:(NSError *)error;
+-(void)adapterNativeAdDidFailToLoadWithError:(NSError *)error;
 
-- (void)adapterNativeAdDidShow;
+-(void)adapterNativeAdDidShow;
 
-- (void)adapterNativeAdDidClick;
+-(void)adapterNativeAdDidClick;
 
 @end
