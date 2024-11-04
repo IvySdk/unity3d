@@ -53,7 +53,7 @@ TODO: Add long description of the pod here.
   s.dependency 'GoogleMobileAdsMediationAppLovin', '13.0.0.0'
   #google.dependency 'GoogleMobileAdsMediationPangle', '5.1.0.6.0'
   #s.dependency 'GoogleMobileAdsMediationAdColony', '4.9.0.2'
-  #s.dependency 'GoogleMobileAdsMediationMintegral', '7.6.2.0'
+  s.dependency 'GoogleMobileAdsMediationMintegral', '7.7.3.0'
   #google.dependency 'OpenWrapSDK', '3.2.0' #'2.8.0'
  # s.dependency 'AdMobPubMaticAdapter', '2.2.0'#, '2.1.1'
  # s.dependency 'smaato-ios-sdk', '22.6.0'
