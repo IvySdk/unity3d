@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1500"
+   LastUpgradeVersion = "1600"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "FEA3B3A570634836C0457F3D7CEF1699"
-               BuildableName = "Google-Mobile-Ads-SDK"
+               BuildableName = "libGoogle-Mobile-Ads-SDK.a"
                BlueprintName = "Google-Mobile-Ads-SDK"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>

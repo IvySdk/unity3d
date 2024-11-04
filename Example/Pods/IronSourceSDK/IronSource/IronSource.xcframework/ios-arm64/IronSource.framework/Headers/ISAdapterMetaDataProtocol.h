@@ -9,11 +9,9 @@
 #ifndef ISAdapterMetaDataProtocol_h
 #define ISAdapterMetaDataProtocol_h
 
-
 @protocol ISAdapterMetaDataProtocol <NSObject>
 
--(void)setMetaDataWithKey:(NSString *)key
-                andValues:(NSMutableArray *) values;
+- (void)setMetaDataWithKey:(NSString *)key andValues:(NSMutableArray *)values;
 
 @end
 

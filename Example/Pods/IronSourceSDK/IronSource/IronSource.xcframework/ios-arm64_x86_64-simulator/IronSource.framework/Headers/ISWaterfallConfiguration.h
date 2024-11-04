@@ -7,29 +7,31 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  * Builder for creating an ISWaterfallConfiguration object.
  */
-@interface ISWaterfallConfigurationBuilder: NSObject
+@interface ISWaterfallConfigurationBuilder : NSObject
 
 /**
  * Set a ceiling value to be applied to the AdUnit's waterfall.
  *
  * @param ceiling NSNumber ceiling value in USD.
- * @return ISWaterfallConfigurationBuilder Returns the builder that had the setter called. This is to better chain calls together in swift.
+ * @return ISWaterfallConfigurationBuilder Returns the builder that had the setter called. This is
+ * to better chain calls together in swift.
  */
-- (ISWaterfallConfigurationBuilder *) setCeiling:(NSNumber *)ceiling;
+- (ISWaterfallConfigurationBuilder *)setCeiling:(NSNumber *)ceiling;
 
 /**
  * Set a floor value to be applied to the AdUnit's waterfall.
  *
  * @param floor NSNumber floor value in USD.
- * @return ISWaterfallConfigurationBuilder Returns the builder that had the setter called. This is to better chain calls together in swift.
+ * @return ISWaterfallConfigurationBuilder Returns the builder that had the setter called. This is
+ * to better chain calls together in swift.
  */
-- (ISWaterfallConfigurationBuilder *) setFloor:(NSNumber *)floor;
+- (ISWaterfallConfigurationBuilder *)setFloor:(NSNumber *)floor;
 
 /**
- * After calling all desired setters use this build method generate an immutable ISWaterfallConfiguration object to passed to the
- * IronSource.SetWaterfallConfiguration api.
+ * After calling all desired setters use this build method generate an immutable
+ * ISWaterfallConfiguration object to passed to the IronSource.SetWaterfallConfiguration api.
  */
-- (ISWaterfallConfiguration *) build;
+- (ISWaterfallConfiguration *)build;
 
 @end
 
@@ -44,29 +46,32 @@ NS_ASSUME_NONNULL_BEGIN
  *   ISWaterfallConfiguration *configuration = [builder build];
  * </pre>
  */
-@interface ISWaterfallConfiguration: NSObject
+@interface ISWaterfallConfiguration : NSObject
 
 /**
  * A NSNumber ceiling to be applied to an AdUnit's waterfall.
  */
-@property (nonatomic, strong, readonly) NSNumber * _Nullable ceiling;
+@property(nonatomic, strong, readonly) NSNumber *_Nullable ceiling;
 
 /**
  * A NSNumber floor to be applied to an AdUnit's waterfall.
  */
-@property (nonatomic, strong, readonly) NSNumber * _Nullable floor;
+@property(nonatomic, strong, readonly) NSNumber *_Nullable floor;
 
 /**
  * A helper method to get a builder for the ISWaterfallConfiguration class.
  *
- * @return ISWaterfallConfigurationBuilder A builder that can be mutated and used to generate an instance of ISWaterfallConfiguration.
+ * @return ISWaterfallConfigurationBuilder A builder that can be mutated and used to generate an
+ * instance of ISWaterfallConfiguration.
  */
 + (ISWaterfallConfigurationBuilder *)builder;
 
 /**
- * A helper method to get a clear instance of the ISWaterfallConfiguration class. This should be used to clear previously set settings if you no longer want the settings applied.
+ * A helper method to get a clear instance of the ISWaterfallConfiguration class. This should be
+ * used to clear previously set settings if you no longer want the settings applied.
  *
- * @return ISWaterfallConfiguration An empty instance of ISWaterfallConfiguration class that can be used to clear previously set settings.
+ * @return ISWaterfallConfiguration An empty instance of ISWaterfallConfiguration class that can be
+ * used to clear previously set settings.
  */
 + (ISWaterfallConfiguration *)clear;
 

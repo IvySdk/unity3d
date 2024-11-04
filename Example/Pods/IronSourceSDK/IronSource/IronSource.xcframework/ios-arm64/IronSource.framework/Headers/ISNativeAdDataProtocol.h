@@ -12,10 +12,10 @@
 
 @required
 
-@property (nonatomic, strong, nullable) NSString *title;
-@property (nonatomic, strong, nullable) NSString *advertiser;
-@property (nonatomic, strong, nullable) NSString *body;
-@property (nonatomic, strong, nullable) NSString *callToAction;
-@property (nonatomic, strong, nullable) ISNativeAdDataImage *icon;
+@property(nonatomic, strong, nullable) NSString *title;
+@property(nonatomic, strong, nullable) NSString *advertiser;
+@property(nonatomic, strong, nullable) NSString *body;
+@property(nonatomic, strong, nullable) NSString *callToAction;
+@property(nonatomic, strong, nullable) ISNativeAdDataImage *icon;
 
 @end

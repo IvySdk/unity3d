@@ -13,7 +13,7 @@
 
 @required
 /**
- Called after a segment recived successfully 
+ Called after a segment recived successfully
  */
 - (void)didReceiveSegement:(NSString *)segment;
 

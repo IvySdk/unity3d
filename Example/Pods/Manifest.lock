@@ -1,24 +1,24 @@
 PODS:
-  - AppLovinSDK (11.10.1)
+  - AppLovinSDK (13.0.0)
   - AppsFlyerFramework (6.13.2):
     - AppsFlyerFramework/Main (= 6.13.2)
   - AppsFlyerFramework/Main (6.13.2)
-  - FBAEMKit (16.3.1):
-    - FBSDKCoreKit_Basics (= 16.3.1)
-  - FBAudienceNetwork (6.14.0)
-  - FBSDKCoreKit (16.3.1):
-    - FBAEMKit (= 16.3.1)
-    - FBSDKCoreKit_Basics (= 16.3.1)
-  - FBSDKCoreKit_Basics (16.3.1)
-  - Firebase/Analytics (10.24.0):
+  - FBAEMKit (17.3.0):
+    - FBSDKCoreKit_Basics (= 17.3.0)
+  - FBAudienceNetwork (6.15.2)
+  - FBSDKCoreKit (17.3.0):
+    - FBAEMKit (= 17.3.0)
+    - FBSDKCoreKit_Basics (= 17.3.0)
+  - FBSDKCoreKit_Basics (17.3.0)
+  - Firebase/Analytics (10.29.0):
     - Firebase/Core
-  - Firebase/Core (10.24.0):
+  - Firebase/Core (10.29.0):
     - Firebase/CoreOnly
-    - FirebaseAnalytics (~> 10.24.0)
-  - Firebase/CoreOnly (10.24.0):
-    - FirebaseCore (= 10.24.0)
-  - FirebaseAnalytics (10.24.0):
-    - FirebaseAnalytics/AdIdSupport (= 10.24.0)
+    - FirebaseAnalytics (~> 10.29.0)
+  - Firebase/CoreOnly (10.29.0):
+    - FirebaseCore (= 10.29.0)
+  - FirebaseAnalytics (10.29.0):
+    - FirebaseAnalytics/AdIdSupport (= 10.29.0)
     - FirebaseCore (~> 10.0)
     - FirebaseInstallations (~> 10.0)
     - GoogleUtilities/AppDelegateSwizzler (~> 7.11)
@@ -26,16 +26,16 @@ PODS:
     - GoogleUtilities/Network (~> 7.11)
     - "GoogleUtilities/NSData+zlib (~> 7.11)"
     - nanopb (< 2.30911.0, >= 2.30908.0)
-  - FirebaseAnalytics/AdIdSupport (10.24.0):
+  - FirebaseAnalytics/AdIdSupport (10.29.0):
     - FirebaseCore (~> 10.0)
     - FirebaseInstallations (~> 10.0)
-    - GoogleAppMeasurement (= 10.24.0)
+    - GoogleAppMeasurement (= 10.29.0)
     - GoogleUtilities/AppDelegateSwizzler (~> 7.11)
     - GoogleUtilities/MethodSwizzler (~> 7.11)
     - GoogleUtilities/Network (~> 7.11)
     - "GoogleUtilities/NSData+zlib (~> 7.11)"
     - nanopb (< 2.30911.0, >= 2.30908.0)
-  - FirebaseCore (10.24.0):
+  - FirebaseCore (10.29.0):
     - FirebaseCoreInternal (~> 10.0)
     - GoogleUtilities/Environment (~> 7.12)
     - GoogleUtilities/Logger (~> 7.12)
@@ -46,42 +46,41 @@ PODS:
     - GoogleUtilities/Environment (~> 7.8)
     - GoogleUtilities/UserDefaults (~> 7.8)
     - PromisesObjC (~> 2.1)
-  - Google-Mobile-Ads-SDK (10.10.0):
-    - GoogleAppMeasurement (< 11.0, >= 7.0)
+  - Google-Mobile-Ads-SDK (11.10.0):
     - GoogleUserMessagingPlatform (>= 1.1)
-  - GoogleAppMeasurement (10.24.0):
-    - GoogleAppMeasurement/AdIdSupport (= 10.24.0)
+  - GoogleAppMeasurement (10.29.0):
+    - GoogleAppMeasurement/AdIdSupport (= 10.29.0)
     - GoogleUtilities/AppDelegateSwizzler (~> 7.11)
     - GoogleUtilities/MethodSwizzler (~> 7.11)
     - GoogleUtilities/Network (~> 7.11)
     - "GoogleUtilities/NSData+zlib (~> 7.11)"
     - nanopb (< 2.30911.0, >= 2.30908.0)
-  - GoogleAppMeasurement/AdIdSupport (10.24.0):
-    - GoogleAppMeasurement/WithoutAdIdSupport (= 10.24.0)
+  - GoogleAppMeasurement/AdIdSupport (10.29.0):
+    - GoogleAppMeasurement/WithoutAdIdSupport (= 10.29.0)
     - GoogleUtilities/AppDelegateSwizzler (~> 7.11)
     - GoogleUtilities/MethodSwizzler (~> 7.11)
     - GoogleUtilities/Network (~> 7.11)
     - "GoogleUtilities/NSData+zlib (~> 7.11)"
     - nanopb (< 2.30911.0, >= 2.30908.0)
-  - GoogleAppMeasurement/WithoutAdIdSupport (10.24.0):
+  - GoogleAppMeasurement/WithoutAdIdSupport (10.29.0):
     - GoogleUtilities/AppDelegateSwizzler (~> 7.11)
     - GoogleUtilities/MethodSwizzler (~> 7.11)
     - GoogleUtilities/Network (~> 7.11)
     - "GoogleUtilities/NSData+zlib (~> 7.11)"
     - nanopb (< 2.30911.0, >= 2.30908.0)
-  - GoogleMobileAdsMediationAppLovin (11.10.1.0):
-    - AppLovinSDK (= 11.10.1)
-    - Google-Mobile-Ads-SDK (~> 10.4)
-  - GoogleMobileAdsMediationFacebook (6.14.0.0):
-    - FBAudienceNetwork (= 6.14.0)
-    - Google-Mobile-Ads-SDK (~> 10.4)
-  - GoogleMobileAdsMediationIronSource (7.6.0.0):
-    - Google-Mobile-Ads-SDK (~> 10.4)
-    - IronSourceSDK (= 7.6.0)
-  - GoogleMobileAdsMediationUnity (4.9.2.0):
-    - Google-Mobile-Ads-SDK (~> 10.4)
-    - UnityAds (= 4.9.2)
-  - GoogleUserMessagingPlatform (2.5.0)
+  - GoogleMobileAdsMediationAppLovin (13.0.0.0):
+    - AppLovinSDK (= 13.0.0)
+    - Google-Mobile-Ads-SDK (~> 11.0)
+  - GoogleMobileAdsMediationFacebook (6.15.2.1):
+    - FBAudienceNetwork (= 6.15.2)
+    - Google-Mobile-Ads-SDK (~> 11.0)
+  - GoogleMobileAdsMediationIronSource (8.4.0.0.0):
+    - Google-Mobile-Ads-SDK (~> 11.0)
+    - IronSourceSDK (= 8.4.0.0)
+  - GoogleMobileAdsMediationUnity (4.12.3.1):
+    - Google-Mobile-Ads-SDK (~> 11.0)
+    - UnityAds (= 4.12.3)
+  - GoogleUserMessagingPlatform (2.6.0)
   - GoogleUtilities/AppDelegateSwizzler (7.13.3):
     - GoogleUtilities/Environment
     - GoogleUtilities/Logger
@@ -110,31 +109,31 @@ PODS:
   - GoogleUtilities/UserDefaults (7.13.3):
     - GoogleUtilities/Logger
     - GoogleUtilities/Privacy
-  - IronSourceSDK (7.6.0.0)
-  - IvyiOSSdk (1.0.5):
+  - IronSourceSDK (8.4.0.0)
+  - IvyiOSSdk (1.0.7):
     - AppsFlyerFramework (= 6.13.2)
-    - FBSDKCoreKit (= 16.3.1)
-    - Firebase/Analytics (= 10.24.0)
-    - Firebase/Core (= 10.24.0)
-    - Google-Mobile-Ads-SDK (= 10.10.0)
-    - GoogleMobileAdsMediationAppLovin (= 11.10.1.0)
-    - GoogleMobileAdsMediationFacebook (= 6.14.0.0)
-    - GoogleMobileAdsMediationIronSource (= 7.6.0.0)
-    - GoogleMobileAdsMediationUnity (= 4.9.2.0)
-    - GoogleUserMessagingPlatform (= 2.5.0)
+    - FBSDKCoreKit (= 17.3.0)
+    - Firebase/Analytics (= 10.29.0)
+    - Firebase/Core (= 10.29.0)
+    - Google-Mobile-Ads-SDK (= 11.10.0)
+    - GoogleMobileAdsMediationAppLovin (= 13.0.0.0)
+    - GoogleMobileAdsMediationFacebook (= 6.15.2.1)
+    - GoogleMobileAdsMediationIronSource (= 8.4.0.0.0)
+    - GoogleMobileAdsMediationUnity (= 4.12.3.1)
+    - GoogleUserMessagingPlatform (= 2.6.0)
   - nanopb (2.30910.0):
     - nanopb/decode (= 2.30910.0)
     - nanopb/encode (= 2.30910.0)
   - nanopb/decode (2.30910.0)
   - nanopb/encode (2.30910.0)
   - PromisesObjC (2.4.0)
-  - UnityAds (4.9.2)
+  - UnityAds (4.12.3)
 
 DEPENDENCIES:
   - IvyiOSSdk (from `../`)
 
 SPEC REPOS:
-  trunk:
+  https://github.com/CocoaPods/Specs.git:
     - AppLovinSDK
     - AppsFlyerFramework
     - FBAEMKit
@@ -164,31 +163,31 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  AppLovinSDK: a76e8ec3d34fb172c7a32c15efe6805e070c918a
+  AppLovinSDK: c0ecb434df24008b6ecdd7f1e5b8587bc45ff381
   AppsFlyerFramework: 39efd4d2523ca9e3234805aea0c6b3c3a4a387d1
-  FBAEMKit: 6c7b5eb77c96861bb59e040842c6e55bf39512ce
-  FBAudienceNetwork: 4d6223a9a88a22e9dca8c9e6c1829a8745b86228
-  FBSDKCoreKit: 5e4dd478947ab1bcc887e8cfadeae0727af1a942
-  FBSDKCoreKit_Basics: cd7b5f5d1e8868c26706917919d058999ca672c3
-  Firebase: 91fefd38712feb9186ea8996af6cbdef41473442
-  FirebaseAnalytics: b5efc493eb0f40ec560b04a472e3e1a15d39ca13
-  FirebaseCore: 11dc8a16dfb7c5e3c3f45ba0e191a33ac4f50894
+  FBAEMKit: 92f488a9c97208e2f6f01655750944d213fbc0b0
+  FBAudienceNetwork: 2457a89b45e2596241fd81b0c2fd8cb6f6053869
+  FBSDKCoreKit: 1be47a742ccdddf8dd85272c3953534214dc0f30
+  FBSDKCoreKit_Basics: fcafe75f7deeed1146d04ea51b45a69731e63c16
+  Firebase: cec914dab6fd7b1bd8ab56ea07ce4e03dd251c2d
+  FirebaseAnalytics: 23717de130b779aa506e757edb9713d24b6ffeda
+  FirebaseCore: 30e9c1cbe3d38f5f5e75f48bfcea87d7c358ec16
   FirebaseCoreInternal: df84dd300b561c27d5571684f389bf60b0a5c934
   FirebaseInstallations: 913cf60d0400ebd5d6b63a28b290372ab44590dd
-  Google-Mobile-Ads-SDK: 509e53bd31c6accb2d9c33b0eb66df1d54dda622
-  GoogleAppMeasurement: f3abf08495ef2cba7829f15318c373b8d9226491
-  GoogleMobileAdsMediationAppLovin: ab7983054bc0c4156644ccffabf33673a9069664
-  GoogleMobileAdsMediationFacebook: 13b1e1b86cca4f186fdfa0ba50467479b842c342
-  GoogleMobileAdsMediationIronSource: c0354692f8d49bec421648baa89e46c8302c96f1
-  GoogleMobileAdsMediationUnity: b27046b3d4e7a703121c00975ed906afc5c1cdbb
-  GoogleUserMessagingPlatform: 6b4f48a370e77ce121d034c908cc6ee4fdafaf13
+  Google-Mobile-Ads-SDK: 13e6e98edfd78ad8d8a791edb927658cc260a56f
+  GoogleAppMeasurement: f9de05ee17401e3355f68e8fc8b5064d429f5918
+  GoogleMobileAdsMediationAppLovin: cacf8a6f6412dae3ba543ebcaa20cdcfdfe364ad
+  GoogleMobileAdsMediationFacebook: 03634215ee58e77f39e8c29dc8121840486aebce
+  GoogleMobileAdsMediationIronSource: 108654d20042f4b632655c61dfec75abe9b8df3a
+  GoogleMobileAdsMediationUnity: 05574d8329a5092d1a1cb0344727e68d30103412
+  GoogleUserMessagingPlatform: 0c3a08353e53ce8c2feab7addd0b652cde522450
   GoogleUtilities: ea963c370a38a8069cc5f7ba4ca849a60b6d7d15
-  IronSourceSDK: 276835c7199033724d947c511a372383ac2846de
-  IvyiOSSdk: 8526a657ef8221c274f84f603efc02dbf1566287
+  IronSourceSDK: 557a0edad39c2a48a225af07b491c672ca5acd36
+  IvyiOSSdk: 7db19935100d97c2c5fd87ce1e2e447ccb8be9d2
   nanopb: 438bc412db1928dac798aa6fd75726007be04262
   PromisesObjC: f5707f49cb48b9636751c5b2e7d227e43fba9f47
-  UnityAds: 358547edbd4c923cd03462289b8813d0ef91999e
+  UnityAds: 32596c2f76856d643b50d3da51c47a552b80d5a4
 
-PODFILE CHECKSUM: b1ae4c02f09f9da92f3d515168b89ae0a07a3d1b
+PODFILE CHECKSUM: 7ba13b2f838243e3269a4c465a53243a4cefbfd3
 
-COCOAPODS: 1.15.2
+COCOAPODS: 1.16.2

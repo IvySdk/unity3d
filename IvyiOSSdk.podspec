@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'IvyiOSSdk'
-  s.version          = '1.0.6'
+  s.version          = '1.0.8'
   s.summary          = 'A short description of IvyiOSSdk.'
 
 # This description is used to generate tags and improve search results.
@@ -41,16 +41,16 @@ TODO: Add long description of the pod here.
   s.libraries = 'sqlite3'
   
   
-  s.dependency 'Google-Mobile-Ads-SDK', '10.10.0' #'10.6.0'
+  s.dependency 'Google-Mobile-Ads-SDK', '11.10.0' #'10.6.0'
   #google.dependency 'PersonalizedAdConsent', '1.0.5'
   #s.dependency 'GoogleMobileAdsMediationFyber', '8.2.8.0'
-  s.dependency 'GoogleMobileAdsMediationIronSource', '7.6.0.0'
+  s.dependency 'GoogleMobileAdsMediationIronSource', '8.4.0.0.0'
   #google.dependency 'GoogleMobileAdsMediationInMobi', '10.7.2.0'
   #s.dependency 'GoogleMobileAdsMediationVungle', '7.3.1.0'
-  s.dependency 'GoogleMobileAdsMediationFacebook', '6.14.0.0'
-  s.dependency 'GoogleMobileAdsMediationUnity', '4.9.2.0'
+  s.dependency 'GoogleMobileAdsMediationFacebook', '6.15.2.1'
+  s.dependency 'GoogleMobileAdsMediationUnity', '4.12.3.1'
   #s.dependency 'GoogleMobileAdsMediationChartboost', '9.7.0.0'
-  s.dependency 'GoogleMobileAdsMediationAppLovin', '11.10.1.0'
+  s.dependency 'GoogleMobileAdsMediationAppLovin', '13.0.0.0'
   #google.dependency 'GoogleMobileAdsMediationPangle', '5.1.0.6.0'
   #s.dependency 'GoogleMobileAdsMediationAdColony', '4.9.0.2'
   #s.dependency 'GoogleMobileAdsMediationMintegral', '7.6.2.0'
@@ -58,14 +58,14 @@ TODO: Add long description of the pod here.
  # s.dependency 'AdMobPubMaticAdapter', '2.2.0'#, '2.1.1'
  # s.dependency 'smaato-ios-sdk', '22.6.0'
  # s.dependency 'smaato-ios-sdk-mediation-admob', '10.10.0.0'
-  s.dependency 'GoogleUserMessagingPlatform', '2.5.0'
+  s.dependency 'GoogleUserMessagingPlatform', '2.6.0'
 
   #s.dependency 'YandexMobileAds', '5.9.1'
   
-  s.dependency 'Firebase/Core', '10.24.0'
-  s.dependency 'Firebase/Analytics', '10.24.0'
+  s.dependency 'Firebase/Core', '10.29.0'
+  s.dependency 'Firebase/Analytics', '10.29.0'
   
-  s.dependency 'FBSDKCoreKit', '16.3.1'
+  s.dependency 'FBSDKCoreKit', '17.3.0'
   
   s.dependency 'AppsFlyerFramework', '6.13.2'
   

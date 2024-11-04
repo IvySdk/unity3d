@@ -10,8 +10,6 @@
 #ifndef LevelPlayRewardedVideoDelegate_h
 #define LevelPlayRewardedVideoDelegate_h
 
-
-
 @protocol LevelPlayRewardedVideoDelegate <LevelPlayRewardedVideoBaseDelegate>
 
 @required
@@ -30,4 +28,3 @@
 @end
 
 #endif /* LevelPlayRewardedVideoDelegate_h */
-

@@ -51,5 +51,4 @@
 
 @end
 
-
 #endif /* LevelPlayRewardedVideoBaseDelegate_h */

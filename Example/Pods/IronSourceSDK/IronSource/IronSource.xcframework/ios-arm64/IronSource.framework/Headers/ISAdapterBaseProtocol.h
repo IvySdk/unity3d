@@ -14,10 +14,10 @@
 @protocol ISAdapterBaseProtocol <NSObject>
 
 /// initializes the network
-/// @param adData data containing the configuration passed from the server and other related parameters passed from the publisher like userId
+/// @param adData data containing the configuration passed from the server and other related
+/// parameters passed from the publisher like userId
 /// @param delegate the delegate to return whether the initialization was a success or failure
-- (void)init:(ISAdData*)adData
-    delegate:(id<ISNetworkInitializationDelegate>)delegate;
+- (void)init:(ISAdData*)adData delegate:(id<ISNetworkInitializationDelegate>)delegate;
 
 /// returns the network SDK version
 - (NSString*)networkSDKVersion;

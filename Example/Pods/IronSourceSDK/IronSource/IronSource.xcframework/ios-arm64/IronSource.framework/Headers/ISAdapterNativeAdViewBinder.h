@@ -11,7 +11,6 @@
 
 @interface ISAdapterNativeAdViewBinder : NSObject <ISAdapterNativeAdViewBinderProtocol>
 
-@property (nonatomic, strong, nullable) ISNativeAdViewHolder *adViewHolder;
+@property(nonatomic, strong, nullable) ISNativeAdViewHolder *adViewHolder;
 
 @end
-

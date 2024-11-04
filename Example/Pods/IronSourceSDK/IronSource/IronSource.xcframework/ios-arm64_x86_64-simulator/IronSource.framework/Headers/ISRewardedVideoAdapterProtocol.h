@@ -8,9 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-#import "ISRewardedVideoAdapterDelegate.h"
-#import "ISBiddingDataDelegate.h"
 #import "ISAdUnitAdapterProtocol.h"
+#import "ISBiddingDataDelegate.h"
+#import "ISRewardedVideoAdapterDelegate.h"
 
 @class ISAdapterConfig;
 @protocol ISRewardedVideoAdapterProtocol <ISAdUnitAdapterProtocol>
@@ -63,10 +63,13 @@
                                         delegate:(id<ISRewardedVideoAdapterDelegate>)delegate;
 
 - (void)loadRewardedVideoForDemandOnlyWithAdapterConfig:(ISAdapterConfig *)adapterConfig
-                                               delegate:(id<ISRewardedVideoAdapterDelegate>)delegate;
+                                               delegate:
+                                                   (id<ISRewardedVideoAdapterDelegate>)delegate;
 
 - (void)loadRewardedVideoForDemandOnlyForBiddingWithAdapterConfig:(ISAdapterConfig *)adapterConfig
                                                        serverData:(NSString *)serverData
-                                                         delegate:(id<ISRewardedVideoAdapterDelegate>)delegate;
+                                                         delegate:
+                                                             (id<ISRewardedVideoAdapterDelegate>)
+                                                                 delegate;
 
 @end

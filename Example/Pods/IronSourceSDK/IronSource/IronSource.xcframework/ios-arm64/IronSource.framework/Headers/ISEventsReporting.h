@@ -9,10 +9,8 @@
 
 @interface ISEventsReporting : NSObject
 
-+(void) reportAppStarted DEPRECATED_MSG_ATTRIBUTE("");
++ (void)reportAppStarted DEPRECATED_MSG_ATTRIBUTE("");
 
 @end
 
 #endif
-
-

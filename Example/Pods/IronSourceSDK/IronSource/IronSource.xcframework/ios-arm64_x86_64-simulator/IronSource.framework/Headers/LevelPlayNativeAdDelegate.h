@@ -6,12 +6,9 @@
 //  Copyright © 2023 IronSource. All rights reserved.
 //
 
-#import "ISNativeAdLoadDelegate.h"
 #import "ISNativeAdInteractionDelegate.h"
+#import "ISNativeAdLoadDelegate.h"
 
 @protocol LevelPlayNativeAdDelegate <ISNativeAdLoadDelegate, ISNativeAdInteractionDelegate>
 
 @end
-
-
-

@@ -117,5 +117,5 @@ install_xcframework() {
   echo "Copied $source to $destination"
 }
 
-install_xcframework "${PODS_ROOT}/GoogleMobileAdsMediationIronSource/IronSourceAdapter-7.6.0.0/IronSourceAdapter.xcframework" "GoogleMobileAdsMediationIronSource" "framework" "ios-arm64" "ios-arm64_x86_64-simulator"
+install_xcframework "${PODS_ROOT}/GoogleMobileAdsMediationIronSource/IronSourceAdapter-8.4.0.0.0/IronSourceAdapter.xcframework" "GoogleMobileAdsMediationIronSource" "framework" "ios-arm64" "ios-arm64_x86_64-simulator"
 
