@@ -2,18 +2,23 @@ package com.ivy.ads.adapters;
 
 import android.app.Activity;
 import android.content.Context;
+import android.os.Bundle;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.ivy.ads.interfaces.IvyAdType;
 import com.ivy.util.Logger;
-import com.yandex.mobile.ads.common.AdRequest;
+import com.yandex.mobile.ads.common.AdError;
+import com.yandex.mobile.ads.common.AdRequestConfiguration;
 import com.yandex.mobile.ads.common.AdRequestError;
 import com.yandex.mobile.ads.common.ImpressionData;
 import com.yandex.mobile.ads.rewarded.Reward;
 import com.yandex.mobile.ads.rewarded.RewardedAd;
 import com.yandex.mobile.ads.rewarded.RewardedAdEventListener;
+import com.yandex.mobile.ads.rewarded.RewardedAdLoadListener;
+import com.yandex.mobile.ads.rewarded.RewardedAdLoader;
 
 import org.json.JSONObject;
 
@@ -32,6 +37,67 @@ public class YandexRewardedAdapter extends FullpageAdapter<BaseAdapter.GridParam
         super(context, gridName, adType);
     }
 
+    private RewardedAdEventListener adEventListener = new RewardedAdEventListener() {
+        @Override
+        public void onAdShown() {
+            Logger.debug(TAG, "onAdShown()");
+            YandexRewardedAdapter.this.onAdShowSuccess();
+        }
+
+        @Override
+        public void onAdFailedToShow(@NonNull AdError adError) {
+            YandexRewardedAdapter.this.onAdShowFail();
+        }
+
+        @Override
+        public void onAdDismissed() {
+            Logger.debug(TAG, "onAdDismissed()");
+            YandexRewardedAdapter.this.onAdClosed(gotReward);
+        }
+
+        @Override
+        public void onAdClicked() {
+            Logger.debug(TAG, "onAdClicked()");
+            YandexRewardedAdapter.this.onAdClicked();
+        }
+
+        @Override
+        public void onAdImpression(@Nullable ImpressionData impressionData) {
+            try{
+                assert impressionData != null;
+                JSONObject data = new JSONObject(impressionData.getRawData());
+                JSONObject network = data.getJSONObject("network");
+
+                if (adBundle == null) {
+                    adBundle = new Bundle();
+                } else {
+                    adBundle.clear();
+                }
+                String ad_network = network.getString("adapter");
+                String adUnitId = network.getString("ad_unit_id");
+                double revenue = data.getDouble("revenueUSD");
+                adBundle.putString("ad_network", ad_network);
+                adBundle.putString("ad_source_instance", ad_network);
+                adBundle.putString("mediation_group", network.getString("name"));
+
+                onGMSPaidTrackEvent(ad_network, "rewarded", "rewarded", adUnitId,"USD", 1, (float) revenue);
+            } catch (Exception e){
+
+            }
+        }
+
+        @Override
+        public void onRewarded(@NonNull Reward reward) {
+            Logger.debug(TAG, "onRewarded()");
+            gotReward = true;
+        }
+    };
+
+    @Override
+    public String getMediation() {
+        return "yandex";
+    }
+
     public void fetch(Activity activity) {
         Logger.debug(TAG, "fetch()");
         if (!YandexManager.getInstance().isSdkInitialized()) {
@@ -45,14 +111,12 @@ public class YandexRewardedAdapter extends FullpageAdapter<BaseAdapter.GridParam
                 super.onAdLoadFailed("INVALID");
                 return;
             }
-            AdRequest.Builder adRequestBuilder = new AdRequest.Builder();
-            AdRequest adRequest = adRequestBuilder.build();
-            mRewardedAd = new RewardedAd(activity);
-            mRewardedAd.setAdUnitId(placement);
-            mRewardedAd.setRewardedAdEventListener(new RewardedAdEventListener() {
+            RewardedAdLoader adLoader = new RewardedAdLoader(activity.getApplicationContext());
+            adLoader.setAdLoadListener(new RewardedAdLoadListener() {
                 @Override
-                public void onAdLoaded() {
-                    Logger.debug(TAG, "onAdLoaded()");
+                public void onAdLoaded(@NonNull RewardedAd rewardedAd) {
+                    YandexRewardedAdapter.this.mRewardedAd = rewardedAd;
+                    YandexRewardedAdapter.this.mRewardedAd.setAdEventListener(YandexRewardedAdapter.this.adEventListener);
                     YandexRewardedAdapter.this.onAdLoadSuccess();
                 }
 
@@ -63,44 +127,9 @@ public class YandexRewardedAdapter extends FullpageAdapter<BaseAdapter.GridParam
                     Logger.debug(TAG, "onAdFailedToLoad, error: " + errorCode + ", description: " + description);
                     YandexRewardedAdapter.this.onAdLoadFailed(String.valueOf(errorCode));
                 }
-
-                @Override
-                public void onAdShown() {
-                    Logger.debug(TAG, "onAdShown()");
-                    YandexRewardedAdapter.this.onAdShowSuccess();
-                }
-
-                @Override
-                public void onAdDismissed() {
-                    Logger.debug(TAG, "onAdDismissed()");
-                    YandexRewardedAdapter.this.onAdClosed(gotReward);
-                }
-
-                @Override
-                public void onRewarded(@NonNull Reward reward) {
-                    Logger.debug(TAG, "onRewarded()");
-                    gotReward = true;
-                }
-
-                @Override
-                public void onAdClicked() {
-                    Logger.debug(TAG, "onAdClicked()");
-                    YandexRewardedAdapter.this.onAdClicked();
-                }
-
-                @Override
-                public void onLeftApplication() {
-                }
-
-                @Override
-                public void onReturnedToApplication() {
-                }
-
-                @Override
-                public void onImpression(@Nullable ImpressionData impressionData) {
-                }
             });
-            mRewardedAd.loadAd(adRequest);
+            AdRequestConfiguration configuration = new AdRequestConfiguration.Builder(placement).build();
+            adLoader.loadAd(configuration);
         } catch (Throwable t) {
             t.printStackTrace();
         }
@@ -110,7 +139,7 @@ public class YandexRewardedAdapter extends FullpageAdapter<BaseAdapter.GridParam
         Logger.debug(TAG, "show()");
         this.gotReward = false;
         if (this.mRewardedAd != null) {
-            this.mRewardedAd.show();
+            this.mRewardedAd.show(activity);
         }
     }
 

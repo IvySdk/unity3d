@@ -2,10 +2,12 @@ package com.ivy.networks.tracker.impl;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 
 import com.appsflyer.AFInAppEventParameterName;
 import com.appsflyer.AFInAppEventType;
 import com.appsflyer.AppsFlyerLib;
+import com.ivy.IvySdk;
 import com.ivy.networks.tracker.EventTracker;
 import com.ivy.networks.tracker.EventTrackerProvider;
 
@@ -39,6 +41,7 @@ public class AppflyersTracker implements EventTrackerProvider {
 
   @Override
   public void logPurchase(String contentType, String contentId, String currency, float revenue) {
+    if (IvySdk.isDebugMode()) return;
     Map<String, Object> eventValue = new HashMap<>();
     eventValue.put(AFInAppEventParameterName.REVENUE,revenue);
     if (contentType != null) {
@@ -54,7 +57,7 @@ public class AppflyersTracker implements EventTrackerProvider {
     }
 
     AppsFlyerLib.getInstance().logEvent(context , AFInAppEventType.PURCHASE , eventValue);
-  }
+}
 
   @Override
   public void logEvent(String eventName, Bundle bundle) {

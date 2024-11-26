@@ -20,6 +20,7 @@ public interface CommonEvents {
 
   int XSOLLA_BILLING_VALID = -601;
   int XSOLLA_BILLING_RESULT = -602;
+
   int XSOLLA_LOGIN_RESULT = -603;
 
 }

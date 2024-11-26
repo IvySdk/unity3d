@@ -43,6 +43,13 @@ public class FacebookTracker implements EventTrackerProvider {
   public void setUserProperty(String key, String value) {
   }
 
+  public void logAdRevenue(double revenue, String currency){
+    if (logger != null){
+      Bundle params = new Bundle();
+      params.putString(AppEventsConstants.EVENT_PARAM_CURRENCY, currency);
+      logger.logEvent(AppEventsConstants.EVENT_NAME_AD_IMPRESSION, revenue, params);
+    }
+  }
 
   @Override
   public void logPurchase(String contentType, String contentId, String currency, float revenue) {

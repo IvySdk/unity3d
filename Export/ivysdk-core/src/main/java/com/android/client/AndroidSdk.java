@@ -11,65 +11,97 @@ import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
 import android.media.AudioManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
+import android.os.StatFs;
+import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
 
 import androidx.annotation.NonNull;
 
+import com.appsflyer.share.LinkGenerator;
+import com.appsflyer.share.ShareInviteHelper;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.RequestConfiguration;
 import com.google.android.gms.common.GoogleApiAvailability;
 import com.google.firebase.analytics.FirebaseAnalytics;
-import com.google.firebase.crashlytics.FirebaseCrashlytics;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.ivy.AIHelp.AIHelp;
 import com.ivy.IvySdk;
 import com.ivy.IvyUtils;
 import com.ivy.ads.interfaces.IvyAdCallbacks;
 import com.ivy.ads.interfaces.IvyAdInfo;
 import com.ivy.ads.interfaces.IvyAdType;
+import com.ivy.ads.managers.PromoteAdManager;
+import com.ivy.billing.PurchaseManager;
+import com.ivy.billing.PurchaseStateChangeData;
+import com.ivy.billing.impl.IPurchaseQueryCallback;
 import com.ivy.event.CommonEvents;
 import com.ivy.event.EventBus;
 import com.ivy.event.EventListener;
+import com.ivy.facebook.FacebookLoginListener;
+import com.ivy.facebook.FacebookUserManager;
+import com.ivy.help.TiledeskActivity;
+import com.ivy.internal.WebViewActivity;
 import com.ivy.networks.grid.GridManager;
-import com.ivy.util.CustomThrowable;
+import com.ivy.notification.NotificationMan;
+import com.ivy.notification.NotificationPermissionUtil;
+import com.ivy.util.CommonUtil;
+import com.ivy.util.DLog;
 import com.ivy.util.Logger;
 import com.smarx.notchlib.NotchScreenManager;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Random;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.HttpUrl;
+import okhttp3.Request;
+import okhttp3.Response;
 
 public class AndroidSdk {
     public static final String TAG = "AndroidSdk";
     private static Builder builder;
-//    private static FacebookUserManager facebookUserManager = null;
+    private static FacebookUserManager facebookUserManager = null;
 
-//    public static final int POS_LEFT_TOP = 1;
-//    public static final int POS_LEFT_BOTTOM = 2;
-//    public static final int POS_CENTER_TOP = 3;
-//    public static final int POS_CENTER_BOTTOM = 4;
-//    public static final int POS_CENTER = 5;
-//    public static final int POS_RIGHT_TOP = 6;
-//    public static final int POS_RIGHT_BOTTOM = 7;
+    public static final int POS_LEFT_TOP = 1;
+    public static final int POS_LEFT_BOTTOM = 2;
+    public static final int POS_CENTER_TOP = 3;
+    public static final int POS_CENTER_BOTTOM = 4;
+    public static final int POS_CENTER = 5;
+    public static final int POS_RIGHT_TOP = 6;
+    public static final int POS_RIGHT_BOTTOM = 7;
 
     private static BuilderListener sdkListener;
     // public static SDKUserCenterListener sdkUserCenterListener;
 
-//    private static boolean paymentSystemValid = false;
+    private static boolean paymentSystemValid = false;
 
     private static boolean sdkInitialized = false;
 
-//    interface HomeAdListener {
-//        void showLoading();
-//
-//        void closeLoading();
-//    }
+    interface HomeAdListener {
+        void showLoading();
+
+        void closeLoading();
+    }
 
     public static class Builder {
         PaymentSystemListener paymentResultListener;
@@ -89,11 +121,6 @@ public class AndroidSdk {
         InAppMessageClickListener inAppMessageClickListener;
         OnHelpEngagementListener onHelpEngagementListener;
         GoogleListener googleListener;
-
-        IGMSPaidEventListener gmsPaidEventListener;
-
-        IAppsflyerConversionListener appsflyerConversionListener;
-//        IXsollaLoginListener xsollaLoginListener;
 
         public Builder setPaymentListener(PaymentSystemListener listener) {
             this.paymentResultListener = listener;
@@ -169,20 +196,6 @@ public class AndroidSdk {
             return this;
         }
 
-        public Builder setGMSPaidEventListener(IGMSPaidEventListener gmsPaidEventListener) {
-            this.gmsPaidEventListener = gmsPaidEventListener;
-            return this;
-        }
-
-        public Builder setAppsflyerConversionListener(IAppsflyerConversionListener appsflyerConversionListener) {
-            this.appsflyerConversionListener = appsflyerConversionListener;
-            return this;
-        }
-
-//        public Builder setXSollaLoginListener(IXsollaLoginListener iXsollaLoginListener) {
-//            this.xsollaLoginListener = iXsollaLoginListener;
-//            return this;
-//        }
     }
 
     @Deprecated
@@ -203,11 +216,11 @@ public class AndroidSdk {
         AndroidSdk.builder = builder;
         sdkListener.setBuilder(builder);
 
-//        if (builder != null && builder.adEventListener != null) {
-//            registerAdEventListener(builder.adEventListener);
-//        } else {
-//            registerAdEventListener(new AdEventListener());
-//        }
+        if (builder != null && builder.adEventListener != null) {
+            registerAdEventListener(builder.adEventListener);
+        } else {
+            registerAdEventListener(new AdEventListener());
+        }
 
         IvySdk.updateCurrentActivity(activity);
 
@@ -217,84 +230,6 @@ public class AndroidSdk {
         }
 
         sdkInitialized = true;
-
-
-//        EventBus.getInstance().addListener(CommonEvents.XSOLLA_LOGIN_RESULT, new EventListener() {
-//            @Override
-//            public void onEvent(int i, Object obj) {
-//                if (i != CommonEvents.XSOLLA_LOGIN_RESULT) {
-//                    return;
-//                }
-//                try {
-//                    if (builder != null && builder.xsollaLoginListener != null) {
-//                        if (obj instanceof Boolean) {
-//                            boolean result = (boolean) obj;
-//                            if (result) {
-//                                builder.xsollaLoginListener.onSuccess();
-//                            } else {
-//                                builder.xsollaLoginListener.onFail();
-//                            }
-//                        }
-//                    }
-//                } catch (Throwable t) {
-//                    // ignore
-//                    paymentSystemValid = false;
-//                }
-//            }
-//        });
-//
-//        EventBus.getInstance().addListener(CommonEvents.XSOLLA_BILLING_VALID, new EventListener() {
-//            @Override
-//            public void onEvent(int i, Object obj) {
-//                if (i != CommonEvents.XSOLLA_BILLING_VALID) {
-//                    return;
-//                }
-//                try {
-//                    if (builder != null && builder.paymentResultListener != null) {
-//                        DLog.d("xsolla is ready to pay");
-//                        paymentSystemValid = true;
-//                        builder.paymentResultListener.onPaymentSystemValid();
-//                    }
-//                } catch (Throwable t) {
-//                    // ignore
-//                    paymentSystemValid = false;
-//                }
-//            }
-//        });
-//
-//        EventBus.getInstance().addListener(CommonEvents.XSOLLA_BILLING_RESULT, new EventListener() {
-//            @Override
-//            public void onEvent(int i, Object obj) {
-//                if (i != CommonEvents.XSOLLA_BILLING_RESULT) {
-//                    return;
-//                }
-//                try {
-//                    if (obj instanceof PayResult) {
-//                        PayResult payResult = (PayResult) obj;
-//                        DLog.d("xsolla pay result:" + payResult.toString());
-//                        int billId = Integer.parseInt(payResult.billId);
-//                        if (payResult.result) {
-//                            if (payResult.payload == null) {
-//                                if (builder != null && builder.paymentResultListener != null) {
-//                                    builder.paymentResultListener.onPaymentSuccess(billId);
-//                                }
-//                            } else {
-//                                if (builder != null && builder.paymentResultListener != null) {
-//                                    builder.paymentResultListener.onPaymentSuccess(billId, payResult.payload);
-//                                }
-//                            }
-//                        } else {
-//                            if (builder != null && builder.paymentResultListener != null) {
-//                                builder.paymentResultListener.onPaymentFail(billId);
-//                            }
-//                        }
-//                    }
-//                } catch (Exception e) {
-//                    DLog.d("xsolla pay result parse error:" + e.getMessage());
-//                }
-//            }
-//        });
-//
 
         IvySdk.initialize(activity, null, new IvySdk.InitializeCallback() {
             @Override
@@ -324,21 +259,21 @@ public class AndroidSdk {
             }
         });
 
-//        EventBus.getInstance().addListener(CommonEvents.DELICIOUS_ICON_CLICKED, new EventListener() {
-//            @Override
-//            public void onEvent(int i, Object obj) {
-//                if (i == CommonEvents.DELICIOUS_ICON_CLICKED) {
-//                    if (obj != null && obj instanceof JSONObject) {
-//                        JSONObject data = (JSONObject) obj;
-//                        String pkg = data.optString("package");
-//                        String filePath = data.optString("filePath");
-//                        if (builder != null && builder.deliciousIconClickedListener != null) {
-//                            builder.deliciousIconClickedListener.clicked(filePath, pkg);
-//                        }
-//                    }
-//                }
-//            }
-//        });
+        EventBus.getInstance().addListener(CommonEvents.DELICIOUS_ICON_CLICKED, new EventListener() {
+            @Override
+            public void onEvent(int i, Object obj) {
+                if (i == CommonEvents.DELICIOUS_ICON_CLICKED) {
+                    if (obj != null && obj instanceof JSONObject) {
+                        JSONObject data = (JSONObject) obj;
+                        String pkg = data.optString("package");
+                        String filePath = data.optString("filePath");
+                        if (builder != null && builder.deliciousIconClickedListener != null) {
+                            builder.deliciousIconClickedListener.clicked(filePath, pkg);
+                        }
+                    }
+                }
+            }
+        });
 
         EventBus.getInstance().addListener(CommonEvents.NETWORK_STATUS_CHANGED, new EventListener() {
             @Override
@@ -376,52 +311,52 @@ public class AndroidSdk {
             }
         });
 
-//        EventBus.getInstance().addListener(CommonEvents.BILLING_STORE_LOADED, new EventListener() {
-//            @Override
-//            public void onEvent(int i, Object obj) {
-//                if (i != CommonEvents.BILLING_STORE_LOADED) {
-//                    return;
-//                }
-//                Logger.debug(TAG, "Billing StoreLoaded " + obj);
-//                try {
-//                    if (obj instanceof String) {
-//                        String skuType = (String) obj;
-//                        if (builder != null && builder.paymentResultListener != null) {
-//                            builder.paymentResultListener.onStoreLoaded(skuType);
-//                        }
-//                    }
-//                } catch (Throwable t) {
-//                    // ignore
-//                }
-//            }
-//        });
+        EventBus.getInstance().addListener(CommonEvents.BILLING_STORE_LOADED, new EventListener() {
+            @Override
+            public void onEvent(int i, Object obj) {
+                if (i != CommonEvents.BILLING_STORE_LOADED) {
+                    return;
+                }
+                Logger.debug(TAG, "Billing StoreLoaded " + obj);
+                try {
+                    if (obj instanceof String) {
+                        String skuType = (String) obj;
+                        if (builder != null && builder.paymentResultListener != null) {
+                            builder.paymentResultListener.onStoreLoaded(skuType);
+                        }
+                    }
+                } catch (Throwable t) {
+                    // ignore
+                }
+            }
+        });
 
-//        EventBus.getInstance().addListener(CommonEvents.BILLING_PURCHASE_STATE_CHANGE, new EventListener() {
-//            @Override
-//            public void onEvent(int i, Object obj) {
-//                if (i != CommonEvents.BILLING_PURCHASE_STATE_CHANGE) {
-//                    return;
-//                }
-//                Logger.debug(TAG, "purchase event called");
-//                try {
-//                    if (obj instanceof PurchaseStateChangeData) {
-//                        PurchaseStateChangeData changeData = (PurchaseStateChangeData) obj;
-//                        Logger.debug(TAG, "Purchased: " + changeData.toString());
-//
-//                        String itemId = changeData.getItemId();
-//                        JSONObject storeItem = IvySdk.getStoreItem(itemId);
-//                        if (storeItem == null) {
-//                            Logger.error(TAG, "Not found billId for product: " + itemId);
-//                            return;
-//                        }
-//                        int billId = storeItem.optInt("billId");
-//                        if (changeData.getPurchaseState() == PurchaseManager.PurchaseState.PURCHASED) {
-//                            if (builder != null && builder.paymentResultListener != null) {
-//                                String orderId = changeData.getOrderId();
-//                                Logger.debug(TAG, "send paymentResult for bill: " + billId);
-//                                Logger.debug(TAG, "orderID: " + orderId);
-//                                String developerPayload = changeData.getDeveloperPayload();
-//
+        EventBus.getInstance().addListener(CommonEvents.BILLING_PURCHASE_STATE_CHANGE, new EventListener() {
+            @Override
+            public void onEvent(int i, Object obj) {
+                if (i != CommonEvents.BILLING_PURCHASE_STATE_CHANGE) {
+                    return;
+                }
+                Logger.debug(TAG, "purchase event called");
+                try {
+                    if (obj instanceof PurchaseStateChangeData) {
+                        PurchaseStateChangeData changeData = (PurchaseStateChangeData) obj;
+                        Logger.debug(TAG, "Purchased: " + changeData.toString());
+
+                        String itemId = changeData.getItemId();
+                        JSONObject storeItem = IvySdk.getStoreItem(itemId);
+                        if (storeItem == null) {
+                            Logger.error(TAG, "Not found billId for product: " + itemId);
+                            return;
+                        }
+                        int billId = storeItem.optInt("billId");
+                        if (changeData.getPurchaseState() == PurchaseManager.PurchaseState.PURCHASED) {
+                            if (builder != null && builder.paymentResultListener != null) {
+                                String orderId = changeData.getOrderId();
+                                Logger.debug(TAG, "send paymentResult for bill: " + billId);
+                                Logger.debug(TAG, "orderID: " + orderId);
+                                String developerPayload = changeData.getDeveloperPayload();
+
 //                                if (IvySdk.isPaymentClientCheck()) {
 //                                    JSONObject orderInfo = new JSONObject();
 ////                  receipt ：需要发送给apple后台的base64校验数据
@@ -455,97 +390,103 @@ public class AndroidSdk {
 //                                    } catch (Exception ex) {
 //                                        ex.printStackTrace();
 //                                    }
-//
+//                                    Log.e("SendMessage", "AndroidSDK#pay success: " + billId);
 //                                    builder.paymentResultListener.onPaymentSuccess(billId, developerPayload != null ? developerPayload : "", orderInfo.toString());
 //                                } else {
-//                                    if (developerPayload == null) {
-//                                        Logger.debug(TAG, "developerPayload is null");
-//                                        builder.paymentResultListener.onPaymentSuccess(billId);
-//                                    } else {
-//                                        Logger.debug(TAG, "developerPayload >>> " + developerPayload);
-//                                        builder.paymentResultListener.onPaymentSuccess(billId, developerPayload);
-//                                    }
-//                                }
-//
-//                                // if contains ad tag, will disable ad
-//                                if (storeItem.has("action") && "removeads".equals(storeItem.optString("action"))) {
-//                                    Logger.debug(TAG, "Ad removed");
-//                                    IvySdk.updateAdStatus(false);
-//                                }
-//                            } else {
-//                                Logger.error(TAG, "onPaymentSuccess failed, no payment callback");
-//                            }
-//                        } else if (changeData.getPurchaseState() == PurchaseManager.PurchaseState.CANCELED) {
-//                            if (builder != null && builder.paymentResultListener != null) {
-//                                Logger.debug(TAG, "send payment cancelled result for bill: " + billId);
-//                                builder.paymentResultListener.onPaymentCanceled(billId);
-//                            } else {
-//                                Logger.error(TAG, "onPaymentCanceled failed, no payment callback");
-//                            }
-//                        } else if (changeData.getPurchaseState() == PurchaseManager.PurchaseState.ERROR) {
-//                            if (builder != null && builder.paymentResultListener != null) {
-//                                Logger.debug(TAG, "send payment error result for bill: " + billId);
-//                                builder.paymentResultListener.onPaymentFail(billId);
-//                            } else {
-//                                Logger.error(TAG, "onPaymentFail failed, no payment callback");
-//                            }
-//                        }
-//                    }
-//                } catch (Throwable t) {
-//                    Logger.error(TAG, "failed to fullfill payment", t);
-//                }
-//            }
-//        });
-//
-//        EventBus.getInstance().addListener(CommonEvents.BILLING_PAYMENT_SYSTEM_ERROR, new EventListener() {
-//            @Override
-//            public void onEvent(int i, Object obj) {
-//                if (i != CommonEvents.BILLING_PAYMENT_SYSTEM_ERROR) {
-//                    return;
-//                }
-//                Logger.debug(TAG, "Payment System Error: " + obj);
-//
-//                try {
-//                    if (obj != null && obj instanceof Integer) {
-//                        if (builder != null && builder.paymentResultListener != null) {
-//                            builder.paymentResultListener.onPaymentSystemError((Integer) obj, "error");
-//                        }
-//                    }
-//                } catch (Throwable t) {
-//                    // ignore
-//                }
-//            }
-//        });
-//
-//        EventBus.getInstance().addListener(CommonEvents.BILLING_BECOMES_AVAILABLE, new EventListener() {
-//            @Override
-//            public void onEvent(int i, Object obj) {
-//                if (i != CommonEvents.BILLING_BECOMES_AVAILABLE) {
-//                    return;
-//                }
-//                Logger.debug(TAG, "BILLING_BECOMES_AVAILABLE");
-//                try {
-//                    if (builder != null && builder.paymentResultListener != null) {
-//                        paymentSystemValid = true;
-//                        builder.paymentResultListener.onPaymentSystemValid();
-//                    }
-//                } catch (Throwable t) {
-//                    // ignore
-//                    paymentSystemValid = false;
-//                }
-//            }
-//        });
 
+                                if (developerPayload == null) {
+                                    Logger.debug(TAG, "developerPayload is null");
+                                    Log.e("SendMessage", "AndroidSDK#pay result success without payload: " + billId);
 
-//        boolean slientLoginGoogle = IvySdk.getGridConfigBoolean("slientLoginGoogle");
-//        if (slientLoginGoogle) {
-//            Logger.debug(TAG, "Set to slient Login");
-//            IvySdk.slientLoginGoogle(builder.googleListener);
-//        }
+                                    builder.paymentResultListener.onPaymentSuccess(billId);
+                                    builder.paymentResultListener.onPaymentSuccessWithOrderId(billId, orderId);
+                                } else {
+                                    Log.e("SendMessage", "AndroidSDK#pay result success with payload: " + billId + " " + developerPayload);
+                                    Logger.debug(TAG, "developerPayload >>> " + developerPayload);
+                                    builder.paymentResultListener.onPaymentSuccess(billId, developerPayload);
+                                    builder.paymentResultListener.onPaymentSuccessWithOrderId(billId, developerPayload, orderId);
+                                }
+                                //}
+
+                                // if contains ad tag, will disable ad
+                                if (storeItem.has("action") && "removeads".equals(storeItem.optString("action"))) {
+                                    Logger.debug(TAG, "Ad removed");
+                                    IvySdk.updateAdStatus(false);
+                                }
+                            } else {
+                                Logger.error(TAG, "onPaymentSuccess failed, no payment callback");
+                            }
+                        } else if (changeData.getPurchaseState() == PurchaseManager.PurchaseState.CANCELED) {
+                            if (builder != null && builder.paymentResultListener != null) {
+                                Logger.debug(TAG, "send payment cancelled result for bill: " + billId);
+                                builder.paymentResultListener.onPaymentCanceled(billId);
+                            } else {
+                                Logger.error(TAG, "onPaymentCanceled failed, no payment callback");
+                            }
+                        } else if (changeData.getPurchaseState() == PurchaseManager.PurchaseState.ERROR) {
+                            if (builder != null && builder.paymentResultListener != null) {
+                                Logger.debug(TAG, "send payment error result for bill: " + billId);
+                                builder.paymentResultListener.onPaymentFail(billId);
+                            } else {
+                                Logger.error(TAG, "onPaymentFail failed, no payment callback");
+                            }
+                        }
+                    }
+                } catch (Throwable t) {
+                    Logger.error(TAG, "failed to fullfill payment", t);
+                    Log.e("SendMessage", "AndroidSDK#pay result error: " + t);
+                }
+            }
+        });
+
+        EventBus.getInstance().addListener(CommonEvents.BILLING_PAYMENT_SYSTEM_ERROR, new EventListener() {
+            @Override
+            public void onEvent(int i, Object obj) {
+                if (i != CommonEvents.BILLING_PAYMENT_SYSTEM_ERROR) {
+                    return;
+                }
+                Logger.debug(TAG, "Payment System Error: " + obj);
+
+                try {
+                    if (obj != null && obj instanceof Integer) {
+                        if (builder != null && builder.paymentResultListener != null) {
+                            builder.paymentResultListener.onPaymentSystemError((Integer) obj, "error");
+                        }
+                    }
+                } catch (Throwable t) {
+                    // ignore
+                }
+            }
+        });
+
+        EventBus.getInstance().addListener(CommonEvents.BILLING_BECOMES_AVAILABLE, new EventListener() {
+            @Override
+            public void onEvent(int i, Object obj) {
+                if (i != CommonEvents.BILLING_BECOMES_AVAILABLE) {
+                    return;
+                }
+                Logger.debug(TAG, "BILLING_BECOMES_AVAILABLE");
+                try {
+                    if (builder != null && builder.paymentResultListener != null) {
+                        paymentSystemValid = true;
+                        builder.paymentResultListener.onPaymentSystemValid();
+                    }
+                } catch (Throwable t) {
+                    // ignore
+                    paymentSystemValid = false;
+                }
+            }
+        });
+
+        boolean slientLoginGoogle = IvySdk.getGridConfigBoolean("slientLoginGoogle");
+        if (slientLoginGoogle) {
+            Logger.debug(TAG, "Set to slient Login");
+            IvySdk.slientLoginGoogle(builder.googleListener);
+        }
 
         try {
             sdkListener.onInitialized();
-//            facebookUserManager = new FacebookUserManager();
+            facebookUserManager = new FacebookUserManager();
         } catch (Throwable t) {
             Logger.error(TAG, "sdk onInit exception", t);
         }
@@ -555,75 +496,75 @@ public class AndroidSdk {
         }
 
         // will display cross promotion if exists settings
-//        if (IvySdk.hasGridConfig("splash_promotion")) {
-//            try {
-//                JSONObject splashPromotionConfig = IvySdk.getGridConfigJson("splash_promotion");
-//                JSONArray apps = splashPromotionConfig.optJSONArray("apps");
-//                if (apps == null || apps.length() == 0) {
-//                    Logger.warning(TAG, "splash_promotion config exception, apps is empty");
-//                    return;
-//                }
-//
-//                int promotionTime = splashPromotionConfig.optInt("promotionTime", 5);
-//                int promotionKeep = splashPromotionConfig.optInt("promotionKeep", 3);
-//                int promotionDayTimes = splashPromotionConfig.optInt("promotionDayTimes", 2);
-//                int promotionInterval = splashPromotionConfig.optInt("promotionInterval", 7200);
-//
-//                int size = apps.length();
-//                JSONObject pickedPackage = null;
-//                if (size > 1) {
-//                    int pickIndex = new Random().nextInt(size);
-//                    pickedPackage = apps.optJSONObject(pickIndex);
-//                } else {
-//                    pickedPackage = apps.optJSONObject(0);
-//                }
-//
-//                if (pickedPackage != null) {
-//                    final String imageUrl = pickedPackage.optString("image");
-//                    final String pkg = pickedPackage.optString("package");
-//
-//                    if (!TextUtils.isEmpty(imageUrl) && !TextUtils.isEmpty(pkg)) {
-//                        if (!IvyUtils.hasApp(activity, pkg)) {
-//                            Logger.debug(TAG, "Start promotion >>> " + imageUrl);
-//                            CrossPromotionAd.getInstance().loadAd(activity, pkg, imageUrl, promotionTime, promotionKeep, promotionDayTimes, promotionInterval);
-//                        } else {
-//                            Logger.debug(TAG, "cross already installed");
-//                        }
-//                    }
-//                }
-//            } catch (Throwable t) {
-//                // ignore
-//            }
-//        }
+        if (IvySdk.hasGridConfig("splash_promotion")) {
+            try {
+                JSONObject splashPromotionConfig = IvySdk.getGridConfigJson("splash_promotion");
+                JSONArray apps = splashPromotionConfig.optJSONArray("apps");
+                if (apps == null || apps.length() == 0) {
+                    Logger.warning(TAG, "splash_promotion config exception, apps is empty");
+                    return;
+                }
 
-//        if (IvySdk.getGridConfigBoolean("enableInAppMessage", false)) {
-//            IvySdk.registerInAppMessageService(builder.inAppMessageClickListener);
-//        }
+                int promotionTime = splashPromotionConfig.optInt("promotionTime", 5);
+                int promotionKeep = splashPromotionConfig.optInt("promotionKeep", 3);
+                int promotionDayTimes = splashPromotionConfig.optInt("promotionDayTimes", 2);
+                int promotionInterval = splashPromotionConfig.optInt("promotionInterval", 7200);
 
-//        if (IvySdk.hasGridConfig("AIHelp")) {
-//            JSONObject object = IvySdk.getGridConfigJson("AIHelp");
-//            try {
-//                String appKey = object.optString("appKey", null);
-//                if (TextUtils.isEmpty(appKey))
-//                    throw new NullPointerException("AIHelp config: app key is null");
-//                String appId = object.optString("appId", null);
-//                if (TextUtils.isEmpty(appId))
-//                    throw new NullPointerException("AIHelp config: app id is null");
-//                String domain = object.optString("domain", null);
-//                if (TextUtils.isEmpty(domain))
-//                    throw new NullPointerException("AIHelp config: domain is null");
-//                AIHelp.getInstance().init(activity.getApplicationContext(), appKey, domain, appId);
-//            } catch (Exception e) {
-//                Log.e(AIHelp.TAG, e.getMessage());
-//            }
-//        }
+                int size = apps.length();
+                JSONObject pickedPackage = null;
+                if (size > 1) {
+                    int pickIndex = new Random().nextInt(size);
+                    pickedPackage = apps.optJSONObject(pickIndex);
+                } else {
+                    pickedPackage = apps.optJSONObject(0);
+                }
+
+                if (pickedPackage != null) {
+                    final String imageUrl = pickedPackage.optString("image");
+                    final String pkg = pickedPackage.optString("package");
+
+                    if (!TextUtils.isEmpty(imageUrl) && !TextUtils.isEmpty(pkg)) {
+                        if (!IvyUtils.hasApp(activity, pkg)) {
+                            Logger.debug(TAG, "Start promotion >>> " + imageUrl);
+                            CrossPromotionAd.getInstance().loadAd(activity, pkg, imageUrl, promotionTime, promotionKeep, promotionDayTimes, promotionInterval);
+                        } else {
+                            Logger.debug(TAG, "cross already installed");
+                        }
+                    }
+                }
+            } catch (Throwable t) {
+                // ignore
+            }
+        }
+
+        if (IvySdk.getGridConfigBoolean("enableInAppMessage", false)) {
+            IvySdk.registerInAppMessageService(builder.inAppMessageClickListener);
+        }
+
+        if (IvySdk.hasGridConfig("AIHelp")) {
+            JSONObject object = IvySdk.getGridConfigJson("AIHelp");
+            try {
+                String appKey = object.optString("appKey", null);
+                if (TextUtils.isEmpty(appKey))
+                    throw new NullPointerException("AIHelp config: app key is null");
+                String appId = object.optString("appId", null);
+                if (TextUtils.isEmpty(appId))
+                    throw new NullPointerException("AIHelp config: app id is null");
+                String domain = object.optString("domain", null);
+                if (TextUtils.isEmpty(domain))
+                    throw new NullPointerException("AIHelp config: domain is null");
+                AIHelp.getInstance().init(activity.getApplicationContext(), appKey, domain, appId);
+            } catch (Exception e) {
+                Log.e(AIHelp.TAG, e.getMessage());
+            }
+        }
 
         setDisplayInNotch(activity);
 
     }
-//
-//    public static void setHomeAdListener(HomeAdListener listener) {
-//    }
+
+    public static void setHomeAdListener(HomeAdListener listener) {
+    }
 
     private static String lastProcessDeepLinkData = null;
 
@@ -654,39 +595,70 @@ public class AndroidSdk {
         handleIntent(intent);
     }
 
-//    public static void onCreate(Context context) {
-//    }
-//
-//    public static String encodeParams(String params) {
-//        return CommonUtil.encodeParams(IvySdk.CONTEXT, params);
-//    }
-//
-//    public static String decodeParams(String params) {
-//        return CommonUtil.decodeParams(IvySdk.CONTEXT, params);
-//    }
+    public static void onCreate(Context context) {
+    }
+
+    public static String encodeParams(String params) {
+        return CommonUtil.encodeParams(IvySdk.CONTEXT, params);
+    }
+
+    public static String decodeParams(String params) {
+        return CommonUtil.decodeParams(IvySdk.CONTEXT, params);
+    }
 
 
-//    public static void registerAdEventListener(final AdEventListener listener) {
-//    }
-//
-//
-//    public static void pushLocalMessage(String key, String title, String content, long pushTime, int interval, boolean useSound, String soundName, String userInfo) {
-//        if (pushTime > 0 && pushTime < System.currentTimeMillis() / 1000) {
-//            pushTime = System.currentTimeMillis() + pushTime * 1000;
-//        } else {
-//            pushTime *= 1000;
-//        }
-//        IvySdk.push(key, title, content, pushTime, false, null, IvySdk.getUUID(), null, 0, useSound, soundName, userInfo);
-//    }
-//
-//    public static void cancelLocalMessage(String key) {
-//        IvySdk.cancelPush(key);
-//    }
+    public static void registerAdEventListener(final AdEventListener listener) {
+    }
 
-//    @Deprecated
-//    public static void cancelMessage(String key) {
-//        Log.e(TAG, "cancelMessage deprecated");
-//    }
+
+    public static void pushLocalMessage(String key, String title, String content, long pushTime, int interval, boolean useSound, String soundName, String userInfo) {
+        if (pushTime > 0 && pushTime < System.currentTimeMillis() / 1000) {
+            pushTime = System.currentTimeMillis() + pushTime * 1000;
+        } else {
+            pushTime *= 1000;
+        }
+        IvySdk.push(key, title, content, pushTime, false, null, IvySdk.getUUID(), null, 0, useSound, soundName, userInfo);
+    }
+
+    public static boolean pushLocalNotification(String tag,
+                                                String title,
+                                                String subtitle,
+                                                long delay,
+                                                boolean autoCancel,
+                                                String action,
+                                                boolean repeat,
+                                                boolean onNetWorkOn,
+                                                boolean requireCharging) {
+        return IvySdk.pushLocalNotification(tag, title, subtitle, null, null, null, action, autoCancel, delay, repeat, onNetWorkOn, requireCharging);
+    }
+
+    public static boolean pushLocalNotification(String tag,
+                                                String title,
+                                                String subtitle,
+                                                String bigText,
+                                                String largeIcon,
+                                                String bigPicture,
+                                                String action,
+                                                boolean autoCancel,
+                                                long delay,
+                                                boolean repeat,
+                                                boolean onNetWorkOn,
+                                                boolean requireCharging) {
+        return IvySdk.pushLocalNotification(tag, title, subtitle, bigText, largeIcon, bigPicture, action, autoCancel, delay, repeat, onNetWorkOn, requireCharging);
+    }
+
+    public static void cancelLocalNotification(String key){
+        IvySdk.cancelLocalNotification(key);
+    }
+
+    public static void cancelLocalMessage(String key) {
+        IvySdk.cancelPush(key);
+    }
+
+    @Deprecated
+    public static void cancelMessage(String key) {
+        Log.e(TAG, "cancelMessage deprecated");
+    }
 
     public static void onStart() {
         IvySdk.onStart();
@@ -723,9 +695,9 @@ public class AndroidSdk {
     public static void onActivityResult(int requestCode, int resultCode, Intent data) {
         Logger.debug(TAG, "onActivityResult(), requestCode: " + requestCode);
         IvySdk.onActivityResult(requestCode, resultCode, data);
-//        if (facebookUserManager != null) {
-//            facebookUserManager.onActivityResult(requestCode, resultCode, data);
-//        }
+        if (facebookUserManager != null) {
+            facebookUserManager.onActivityResult(requestCode, resultCode, data);
+        }
     }
 
     public static void setUserTag(String userTag) {
@@ -768,6 +740,8 @@ public class AndroidSdk {
 
     public static boolean hasFull(String tag) {
         try {
+
+
             boolean got = IvySdk.haveInterstitial();
             if (!got) {
                 Logger.debug(TAG, "No full, try to fetch one");
@@ -798,14 +772,30 @@ public class AndroidSdk {
         }
     }
 
-//    public static boolean hasGDPR() {
-////        return AdMaster.master().hasGDPR();
-//        return false;
-//    }
-//
-//    public static void resetGDPR() {
-////        AdMaster.master().resetGDPR();
-//    }
+    public static boolean hasGDPR() {
+//        return AdMaster.master().hasGDPR();
+        return false;
+    }
+
+    public static void resetGDPR() {
+//        AdMaster.master().resetGDPR();
+    }
+
+    public static void showSplashBanner(int pos) {
+        try {
+            IvySdk.showSplashBannerAd(pos);
+        } catch (Exception ex) {
+            //
+        }
+    }
+
+    public static void closeSplashBanner() {
+        try {
+            IvySdk.closeSplashBanner();
+        } catch (Exception ex) {
+            //
+        }
+    }
 
     public static void showBanner(String tag, int pos) {
         try {
@@ -868,9 +858,9 @@ public class AndroidSdk {
     public static final String FULL_TAG_EXIT = "exit";
     public static final String FULL_TAG_CUSTOM = "custom";
 
-//    public static void moreGame() {
-//        IvySdk.moreGame();
-//    }
+    public static void moreGame() {
+        IvySdk.moreGame();
+    }
 
     public static void showFullAd(String tag) {
         try {
@@ -1320,8 +1310,9 @@ public class AndroidSdk {
     }
 
     public static void track(String event, String data, int to) {
-        Log.d(TAG, "trackEvent called");
+        Log.d(TAG, "trackEvent called::" + event);
         Bundle bundle = buildBundle(event, data);
+        Log.e("firebase-event", "track::" + event + "::" + bundle.toString() + "::" + to);
         if (to == 1) {
             IvySdk.logToFirebase(event, bundle);
         } else if (to == 2) {
@@ -1338,7 +1329,7 @@ public class AndroidSdk {
     }
 
     public static void track(String event, String data) {
-        Log.d(TAG, "trackEvent called");
+        Log.d(TAG, "trackEvent called::" + event);
         Bundle bundle = buildBundle(event, data);
         // supress all game event o
         IvySdk.logEvent(event, bundle);
@@ -1428,316 +1419,289 @@ public class AndroidSdk {
         IvySdk.logEvent(event, new Bundle());
     }
 
-//    public static boolean isPaymentValid() {
-//        return paymentSystemValid;
-//    }
-//
-//    public static void querySKUDetail(int billId, OnSkuDetailsListener onSkuDetailsListener) {
-//        JSONObject gridData = GridManager.getGridData();
-//        if (gridData == null) {
-//            Log.d(TAG, "No grid data found");
-//            return;
-//        }
-//        if (!gridData.has("payment")) {
-//            Log.d(TAG, "Grid data not configured for payment");
-//            return;
-//        }
-//        JSONObject checkout = gridData.optJSONObject("payment").optJSONObject("checkout");
-//        JSONObject product = checkout != null && checkout.has(String.valueOf(billId)) ? checkout.optJSONObject(String.valueOf(billId)) : null;
-//        if (product == null) {
-//            return;
-//        }
-//        String productId = product.optString("feename");
-//        List<String> iapIds = new ArrayList<>();
-//        iapIds.add(productId);
-//        IvySdk.querySKUDetail(iapIds, onSkuDetailsListener);
-//    }
-//
-//    public static String getSKUDetail(int billId) {
-//        if (isXsollaSupport()) {
-//            DLog.d("Android xsolla pay called, id: " + billId);
-//            if (IvySdk.xsollaPurchaseImpl != null) {
-//                Product product = IvySdk.xsollaPurchaseImpl.getProductDetail(billId + "");
-//                if (product != null) return product.toJson().toString();
-//            } else {
-//                DLog.e("xsolla impl is null, has called onCreate??");
-//            }
-//            return null;
-//        }
-//        JSONObject gridData = GridManager.getGridData();
-//        if (gridData == null) {
-//            Log.d(TAG, "No grid data found");
-//            return null;
-//        }
-//        if (!gridData.has("payment")) {
-//            Log.d(TAG, "Grid data not configured for payment");
-//            return null;
-//        }
-//        JSONObject checkout = gridData.optJSONObject("payment").optJSONObject("checkout");
-//        JSONObject product = checkout != null && checkout.has(String.valueOf(billId)) ? checkout.optJSONObject(String.valueOf(billId)) : null;
-//        if (product == null) {
-//            return null;
-//        }
-//        String productId = product.optString("feename");
-//        SKUDetail skuDetail = IvySdk.getSKUDetail(productId);
-//        if (skuDetail != null) return skuDetail.toString();
-//        return null;
-//    }
-//
-//    public static void setPayVerifyUrl(String verifyUrl) {
-//        IvySdk.setPayVerifyUrl(verifyUrl);
-//    }
-//
-//    public static void pay(final int bill) {
-//        pay(bill, null, null);
-//    }
-//
-//    public static void pay(final int bill, final String itemName, final String payload) {
-//        try {
-//            if (builder != null && builder.paymentResultListener != null) {
-//                Log.d(TAG, "Android pay called, id: " + bill);
-//                if (isXsollaSupport()) {
-//                    DLog.d("Android xsolla pay called, id: " + bill);
-//                    if (IvySdk.xsollaPurchaseImpl != null) {
-//                        IvySdk.xsollaPurchaseImpl.buy(bill + "", payload);
-//                    } else {
-//                        DLog.e("xsolla impl is null, has called onCreate??");
-//                    }
-//                    return;
-//                }
-//                JSONObject gridData = GridManager.getGridData();
-//                if (gridData == null) {
-//                    Log.d(TAG, "No grid data found");
-//                    return;
-//                }
-//                if (!gridData.has("payment")) {
-//                    Log.d(TAG, "Grid data not configured for payment");
-//                    return;
-//                }
-//                JSONObject checkout = gridData.optJSONObject("payment").optJSONObject("checkout");
-//                JSONObject product = checkout != null && checkout.has(String.valueOf(bill)) ? checkout.optJSONObject(String.valueOf(bill)) : null;
-//                if (product != null) {
-//                    try {
-//                        product.put("billId", String.valueOf(bill));
-//                    } catch (Exception ex) {
-//                        ex.printStackTrace();
-//                    }
-//                    String productId = product.optString("feename");
-//                    if (itemName == null) {
-//
-//                    }
-//                    IvySdk.pay(productId, itemName, payload);
-//                } else {
-//                    Log.e(TAG, bill + " no defined.");
-//                }
-//            } else {
-//                Log.e(TAG, "builder.paymentResultListener is not defined, ignore");
-//            }
-//        } catch (Throwable t) {
-//            // ignore
-//        }
-//    }
-//
-//    public static void changeSku(int oldBillId, int newBillId, String payload) {
-//        JSONObject gridData = GridManager.getGridData();
-//        if (gridData == null || !gridData.has("payment")) {
-//            return;
-//        }
-//        JSONObject checkout = GridManager.getGridData().optJSONObject("payment").optJSONObject("checkout");
-//        JSONObject newProduct = checkout.has(String.valueOf(newBillId)) ? checkout.optJSONObject(String.valueOf(newBillId)) : null;
-//        JSONObject oldProduct = checkout.has(String.valueOf(oldBillId)) ? checkout.optJSONObject(String.valueOf(oldBillId)) : null;
-//        if (newProduct == null || oldProduct == null) {
-//            Logger.error(TAG, "invalid product");
-//            return;
-//        }
-//        IvySdk.changeSku(newProduct.optString("feename"), oldProduct.optString("feename"), payload);
-//    }
-//
-//    public static void query(int bill) {
-//        if (builder != null && builder.paymentResultListener != null) {
-//            query(bill, builder.paymentResultListener);
-//        }
-//    }
-//
-//    public static void getPurchaseHistory(String skuType, IPurchaseQueryCallback<String> callback) {
-//        IvySdk.getPurchaseHistory(skuType, new IPurchaseQueryCallback<List<JSONObject>>() {
-//            @Override
-//            public void onResult(List<JSONObject> data) {
-//                if (data == null) {
-//                    if (callback != null) callback.onResult("[]");
-//                } else {
-//                    if (callback != null) {
-//                        callback.onResult(new JSONArray(data).toString());
-//                    }
-//                }
-//            }
-//        });
-//
-////        List<JSONObject> history = IvySdk.getPurchaseHistory(skuType);
-////        if (history == null) {
-////            return "[]";
-////        }
-////        JSONArray array = new JSONArray(history);
-////        return array.toString();
-//    }
-//
-//    public static void isSubscriptionActive(int billId, IPurchaseQueryCallback<Boolean> callback) {
-//        IvySdk.getPurchaseHistory("subs", new IPurchaseQueryCallback<List<JSONObject>>() {
-//            @Override
-//            public void onResult(List<JSONObject> data) {
-//                if (data == null) {
-//                    if (callback != null) callback.onResult(false);
-//                } else {
-//                    for (JSONObject item : data) {
-//                        if (item.optInt("billId") == billId) {
-//                            if (callback != null) callback.onResult(true);
-//                            return;
-//                        }
-//                    }
-//                    if (callback != null) callback.onResult(false);
-//                }
-//            }
-//        });
-//
-//
-////        List<JSONObject> history = IvySdk.getPurchaseHistory("subs");
-////        if (history == null) {
-////            Logger.error(TAG, "getPurchaseHistory result null, billing client initialize failed?");
-////            return false;
-////        }
-////        for (int i = 0; i < history.size(); i++) {
-////            JSONObject purchasedItem = history.get(i);
-////            if (purchasedItem.optInt("billId") == billId) {
-////                return true;
-////            }
-////        }
-////        return false;
-//    }
-//
-//    public static void query(int bill, final PaymentSystemListener listener) {
-//        Logger.debug(TAG, "query id: " + bill);
-//        try {
-//            JSONObject gridData = GridManager.getGridData();
-//            if (gridData == null || !gridData.has("payment")) {
-//                return;
-//            }
-//            if (isXsollaSupport()) {
-//                DLog.d("xsolla start query:" + bill);
-//                if (IvySdk.xsollaPurchaseImpl != null) {
-//                    IvySdk.xsollaPurchaseImpl.queryPaymentState(bill + "");
-//                } else {
-//                    DLog.e("xsolla impl is null, has called onCreate??");
-//                }
-//                return;
-//            }
-//
-//            if (bill == -1) {
-//                IvySdk.queryUnconsumedPurchases();
-//                return;
-//            }
-//            JSONObject checkout = GridManager.getGridData().optJSONObject("payment").optJSONObject("checkout");
-//            JSONObject product = checkout.has(String.valueOf(bill)) ? checkout.optJSONObject(String.valueOf(bill)) : null;
-//            if (product != null) {
-//                IvySdk.queryPurchases(product.optString("feename"));
-//            } else {
-//                Logger.warning(TAG, bill + " no defined.");
-//            }
-//        } catch (Throwable t) {
-//            // ignore
-//        }
-//    }
-//
-//    public static String getPrices() {
-//        return IvySdk.getInventory().toString();
-//    }
+    public static boolean isPaymentValid() {
+        return paymentSystemValid;
+    }
 
-//    private static void doShare(String shareUrl, String quote, String hashtag, ShareResultListener shareResultListener) {
-//        Activity a = IvySdk.getActivity();
-//        if (a == null || a.isFinishing()) {
-//            return;
-//        }
-//
-//        if (shareUrl == null) {
-//            StringBuilder sb = new StringBuilder(IvyUtils.GOOGLE_PLAY_URL + a.getPackageName());
-//            sb.append("&referrer=utm_source%3D").append("ivy")
-//                    .append("%26utm_campaign%3D").append(a.getPackageName())
-//                    .append("%26utm_medium%3D").append("share")
-//                    .append("%26utm_term%3D").append("share")
-//                    .append("%26utm_content%3D").append("share");
-//
-//            shareUrl = sb.toString();
-//        }
-//
-//        final String resultShareUrl = shareUrl;
-//        a.runOnUiThread(new Runnable() {
-//            @Override
-//            public void run() {
-//                try {
-//                    Intent shareIntent = new Intent(android.content.Intent.ACTION_SEND);
-//                    shareIntent.setType("text/plain");
-//                    shareIntent.putExtra(android.content.Intent.EXTRA_TEXT, resultShareUrl);
-//                    shareIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
-//
-//                    boolean useFacebookShare = IvySdk.getGridConfigBoolean("useFacebookShare", true);
-//                    if (!useFacebookShare || facebookUserManager == null) {
-//                        try {
-//                            shareIntent.setPackage(null);
-//                            a.startActivity(Intent.createChooser(shareIntent, "Nice play share"));
-//                        } catch (Exception e) {
-//                            e.printStackTrace();
-//                        }
-//                        return;
-//                    }
-//
-//                    String fb = "com.facebook.katana";
-//                    if (IvyUtils.validApp(a, fb, shareIntent)) {
-//                        facebookUserManager.share(a, resultShareUrl, quote, hashtag, shareResultListener);
-//                    } else {
-//                        try {
-//                            shareIntent.setPackage(null);
-//                            a.startActivity(Intent.createChooser(shareIntent, "Nice play share"));
-//                        } catch (Throwable e) {
-//                            e.printStackTrace();
-//                        }
-//                    }
-//                } catch (Throwable t) {
-//                    Logger.error(TAG, "share exception", t);
-//                }
-//            }
-//        });
-//    }
-//
-//    public static void share() {
-//        try {
-//            doShare(null, null, null, null);
-//        } catch (Throwable t) {
-//            //
-//        }
-//    }
-//
-//    public static void share(String url, String quote) {
-//        doShare(url, quote, null, null);
-//    }
-//
-//    public static void share(String url, String quote, String hashtag, ShareResultListener shareResultListener) {
-//        doShare(url, quote, hashtag, shareResultListener);
-//    }
-//
-//    public static void shareVideo(String url) {
-//        doShare(url, null, null, null);
-//    }
+    public static void querySKUDetail(int billId, OnSkuDetailsListener onSkuDetailsListener) {
+        JSONObject gridData = GridManager.getGridData();
+        if (gridData == null) {
+            Log.d(TAG, "No grid data found");
+            return;
+        }
+        if (!gridData.has("payment")) {
+            Log.d(TAG, "Grid data not configured for payment");
+            return;
+        }
+        JSONObject checkout = gridData.optJSONObject("payment").optJSONObject("checkout");
+        JSONObject product = checkout != null && checkout.has(String.valueOf(billId)) ? checkout.optJSONObject(String.valueOf(billId)) : null;
+        if (product == null) {
+            return;
+        }
+        String productId = product.optString("feename");
+        List<String> iapIds = new ArrayList<>();
+        iapIds.add(productId);
+        IvySdk.querySKUDetail(iapIds, onSkuDetailsListener);
+    }
 
-//    public static boolean shareVideo_(String url) {
+    public static String getSKUDetail(int billId) {
+        JSONObject gridData = GridManager.getGridData();
+        if (gridData == null) {
+            Log.d(TAG, "No grid data found");
+            return null;
+        }
+        if (!gridData.has("payment")) {
+            Log.d(TAG, "Grid data not configured for payment");
+            return null;
+        }
+        JSONObject checkout = gridData.optJSONObject("payment").optJSONObject("checkout");
+        JSONObject product = checkout != null && checkout.has(String.valueOf(billId)) ? checkout.optJSONObject(String.valueOf(billId)) : null;
+        if (product == null) {
+            return null;
+        }
+        String productId = product.optString("feename");
+        SKUDetail skuDetail = IvySdk.getSKUDetail(productId);
+        if (skuDetail != null) return skuDetail.toString();
+        return null;
+    }
+
+    public static void setPayVerifyUrl(String verifyUrl) {
+        IvySdk.setPayVerifyUrl(verifyUrl);
+    }
+
+    public static void pay(final int bill) {
+        pay(bill, null, null);
+    }
+
+    public static void pay(final int bill, final String itemName, final String payload) {
+        try {
+            DLog.d("Android pay called, id: " + bill);
+            if (builder != null && builder.paymentResultListener != null) {
+                DLog.d("Android google pay called, id: " + bill);
+                JSONObject gridData = GridManager.getGridData();
+                if (gridData == null) {
+                    DLog.d("No grid data found");
+                    return;
+                }
+                if (!gridData.has("payment")) {
+                    DLog.d("Grid data not configured for payment");
+                    return;
+                }
+                JSONObject checkout = gridData.optJSONObject("payment").optJSONObject("checkout");
+                JSONObject product = checkout != null && checkout.has(String.valueOf(bill)) ? checkout.optJSONObject(String.valueOf(bill)) : null;
+                if (product != null) {
+                    try {
+                        product.put("billId", String.valueOf(bill));
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
+                    }
+                    String productId = product.optString("feename");
+                    if (itemName == null) {
+
+                    }
+                    IvySdk.pay(productId, itemName, payload);
+                } else {
+                    DLog.e(bill + " no defined.");
+                }
+            } else {
+                DLog.e("builder.paymentResultListener is not defined, ignore");
+            }
+        } catch (Throwable t) {
+            // ignore
+            DLog.d(" pay called, catch exception: " + t.getMessage());
+        }
+    }
+
+    public static void changeSku(int oldBillId, int newBillId, String payload) {
+        JSONObject gridData = GridManager.getGridData();
+        if (gridData == null || !gridData.has("payment")) {
+            return;
+        }
+        JSONObject checkout = GridManager.getGridData().optJSONObject("payment").optJSONObject("checkout");
+        JSONObject newProduct = checkout.has(String.valueOf(newBillId)) ? checkout.optJSONObject(String.valueOf(newBillId)) : null;
+        JSONObject oldProduct = checkout.has(String.valueOf(oldBillId)) ? checkout.optJSONObject(String.valueOf(oldBillId)) : null;
+        if (newProduct == null || oldProduct == null) {
+            Logger.error(TAG, "invalid product");
+            return;
+        }
+        IvySdk.changeSku(newProduct.optString("feename"), oldProduct.optString("feename"), payload);
+    }
+
+    public static void query(int bill) {
+        if (builder != null && builder.paymentResultListener != null) {
+            query(bill, builder.paymentResultListener);
+        }
+    }
+
+    public static void getPurchaseHistory(String skuType, IPurchaseQueryCallback<String> callback) {
+        IvySdk.getPurchaseHistory(skuType, new IPurchaseQueryCallback<List<JSONObject>>() {
+            @Override
+            public void onResult(List<JSONObject> data) {
+                if (data == null) {
+                    if (callback != null) callback.onResult("[]");
+                } else {
+                    if (callback != null) {
+                        callback.onResult(new JSONArray(data).toString());
+                    }
+                }
+            }
+        });
+
+//        List<JSONObject> history = IvySdk.getPurchaseHistory(skuType);
+//        if (history == null) {
+//            return "[]";
+//        }
+//        JSONArray array = new JSONArray(history);
+//        return array.toString();
+    }
+
+    public static void isSubscriptionActive(int billId, IPurchaseQueryCallback<Boolean> callback) {
+        IvySdk.getPurchaseHistory("subs", new IPurchaseQueryCallback<List<JSONObject>>() {
+            @Override
+            public void onResult(List<JSONObject> data) {
+                if (data == null) {
+                    if (callback != null) callback.onResult(false);
+                } else {
+                    for (JSONObject item : data) {
+                        if (item.optInt("billId") == billId) {
+                            if (callback != null) callback.onResult(true);
+                            return;
+                        }
+                    }
+                    if (callback != null) callback.onResult(false);
+                }
+            }
+        });
+
+
+//        List<JSONObject> history = IvySdk.getPurchaseHistory("subs");
+//        if (history == null) {
+//            Logger.error(TAG, "getPurchaseHistory result null, billing client initialize failed?");
+//            return false;
+//        }
+//        for (int i = 0; i < history.size(); i++) {
+//            JSONObject purchasedItem = history.get(i);
+//            if (purchasedItem.optInt("billId") == billId) {
+//                return true;
+//            }
+//        }
 //        return false;
-//    }
-//
-//    public static boolean shareBitmap(Bitmap bmp) {
-//        return false;
-//    }
-//
-//    public static boolean shareBitmap(final String url) {
-//        return false;
-//    }
+    }
+
+    public static void query(int bill, final PaymentSystemListener listener) {
+        Logger.debug(TAG, "query id: " + bill);
+        try {
+            JSONObject gridData = GridManager.getGridData();
+            if (gridData == null || !gridData.has("payment")) {
+                return;
+            }
+            if (bill == -1) {
+                IvySdk.queryUnconsumedPurchases();
+                return;
+            }
+            JSONObject checkout = GridManager.getGridData().optJSONObject("payment").optJSONObject("checkout");
+            JSONObject product = checkout.has(String.valueOf(bill)) ? checkout.optJSONObject(String.valueOf(bill)) : null;
+            if (product != null) {
+                IvySdk.queryPurchases(product.optString("feename"));
+            } else {
+                Logger.warning(TAG, bill + " no defined.");
+            }
+        } catch (Throwable t) {
+            // ignore
+        }
+    }
+
+    public static String getPrices() {
+        return IvySdk.getInventory().toString();
+    }
+
+    private static void doShare(String shareUrl, String quote, String hashtag, ShareResultListener shareResultListener) {
+        Activity a = IvySdk.getActivity();
+        if (a == null || a.isFinishing()) {
+            return;
+        }
+
+        if (shareUrl == null) {
+            StringBuilder sb = new StringBuilder(IvyUtils.GOOGLE_PLAY_URL + a.getPackageName());
+            sb.append("&referrer=utm_source%3D").append("ivy")
+                    .append("%26utm_campaign%3D").append(a.getPackageName())
+                    .append("%26utm_medium%3D").append("share")
+                    .append("%26utm_term%3D").append("share")
+                    .append("%26utm_content%3D").append("share");
+
+            shareUrl = sb.toString();
+        }
+
+        final String resultShareUrl = shareUrl;
+        a.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Intent shareIntent = new Intent(android.content.Intent.ACTION_SEND);
+                    shareIntent.setType("text/plain");
+                    shareIntent.putExtra(android.content.Intent.EXTRA_TEXT, resultShareUrl);
+                    shareIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
+
+                    boolean useFacebookShare = IvySdk.getGridConfigBoolean("useFacebookShare", true);
+                    if (!useFacebookShare || facebookUserManager == null) {
+                        try {
+                            shareIntent.setPackage(null);
+                            a.startActivity(Intent.createChooser(shareIntent, "Nice play share"));
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                        return;
+                    }
+
+                    String fb = "com.facebook.katana";
+                    if (IvyUtils.validApp(a, fb, shareIntent)) {
+                        facebookUserManager.share(a, resultShareUrl, quote, hashtag, shareResultListener);
+                    } else {
+                        try {
+                            shareIntent.setPackage(null);
+                            a.startActivity(Intent.createChooser(shareIntent, "Nice play share"));
+                        } catch (Throwable e) {
+                            e.printStackTrace();
+                        }
+                    }
+                } catch (Throwable t) {
+                    Logger.error(TAG, "share exception", t);
+                }
+            }
+        });
+    }
+
+    public static void share() {
+        try {
+            doShare(null, null, null, null);
+        } catch (Throwable t) {
+            //
+        }
+    }
+
+    public static void share(String url, String quote) {
+        doShare(url, quote, null, null);
+    }
+
+    public static void share(String url, String quote, String hashtag, ShareResultListener shareResultListener) {
+        doShare(url, quote, hashtag, shareResultListener);
+    }
+
+    public static void shareVideo(String url) {
+        doShare(url, null, null, null);
+    }
+
+    public static boolean shareVideo_(String url) {
+        return false;
+    }
+
+    public static boolean shareBitmap(Bitmap bmp) {
+        return false;
+    }
+
+    public static boolean shareBitmap(final String url) {
+        return false;
+    }
 
     public static void support(String email, String extra) {
         Activity context = IvySdk.getActivity();
@@ -1786,9 +1750,71 @@ public class AndroidSdk {
         });
     }
 
-//    public static void refreshExtraData(final UrlListener listener) {
-//        Logger.error(TAG, "refreshExtraData not supported!");
-//    }
+    public static String getAfInviteId(){
+        return IvySdk.mmGetStringValue("af_invite_id", null);
+    }
+
+    public static void inviteUserByAf(String currentUserId) {
+        try {
+            IvySdk.mmSetStringValue("invite_current_user_id", currentUserId);
+            LinkGenerator linkGenerator = ShareInviteHelper.generateInviteUrl(IvySdk.getActivity().getApplicationContext());
+            linkGenerator.addParameter("deep_link_sub1", currentUserId);
+            String appId = getConfig(AndroidSdk.CONFIG_KEY_APP_ID);
+            linkGenerator.addParameter("deep_link_sub2", appId);
+            linkGenerator.setChannel("android_user_invite");
+            linkGenerator.setCampaign("user_invite");
+
+            // Optional; makes the referrer ID available in the installs raw-data report
+            linkGenerator.addParameter("af_sub1", currentUserId);
+            LinkGenerator.ResponseListener listener = new LinkGenerator.ResponseListener() {
+                @Override
+                public void onResponse(String s) {
+                    Log.e("ADSFALL", "generate invite link :" + s);
+                    // ...
+                    callSystemShare(s);
+                    try{
+                        //记录邀请链接创建事件
+                        HashMap<String,String> logInviteMap = new HashMap<String,String>();
+                        logInviteMap.put("referrerId", currentUserId);
+                        logInviteMap.put("campaign", "user_invite");
+                        logInviteMap.put("channel", "android_user_invite");
+                        ShareInviteHelper.logInvite(IvySdk.getActivity().getApplicationContext(), "android_user_invite", logInviteMap);
+                    }catch (Exception e){
+
+                    }
+                }
+
+                @Override
+                public void onResponseError(String s) {
+                    Log.e("ADSFALL", "generate invite link err:" + s);
+                }
+            };
+            linkGenerator.generateLink(IvySdk.getActivity().getApplicationContext(), listener);
+        } catch (Exception e){
+            Log.e("ADSFALL", "invite af user err:" + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    public static void callSystemShare(String text){
+        try {
+            Intent sendIntent = new Intent();
+            sendIntent.setAction(Intent.ACTION_SEND);
+            sendIntent.putExtra(Intent.EXTRA_TEXT, text);
+            sendIntent.setType("text/plain");
+
+            // 使用选择器显示分享对话框
+            Intent.createChooser(sendIntent, "Share us");
+            IvySdk.getActivity().startActivity(sendIntent);
+        } catch (Exception e){
+            Logger.error("share invite link err:" + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    public static void refreshExtraData(final UrlListener listener) {
+        Logger.error(TAG, "refreshExtraData not supported!");
+    }
 
     public static void rateUs() {
         rateUs(5);
@@ -1826,151 +1852,152 @@ public class AndroidSdk {
         android.os.Process.killProcess(android.os.Process.myPid());
     }
 
-//    public static void logoutFacebook() {
-//        try {
-//            facebookUserManager.logout();
-//        } catch (Throwable t) {
-//            Logger.error(TAG, "logoutFacebook exception", t);
-//        }
-//    }
-//
-//    public static void loginFacebook(FacebookLoginListener facebookLoginListener) {
-//        try {
-//            facebookUserManager.login(IvySdk.getActivity(), facebookLoginListener);
-//        } catch (Throwable t) {
-//            //
-//        }
-//    }
-//
-//
-//    public static void login() {
-//        try {
-//            facebookUserManager.login(IvySdk.getActivity(), new FacebookLoginListener() {
-//                @Override
-//                public void onReceiveLoginResult(boolean success) {
-//                    Logger.debug(TAG, "Facebook login success");
-//                    if (builder != null && builder.userCenterListener != null) {
-//                        builder.userCenterListener.onReceiveLoginResult(success);
-//                    }
-//                }
-//
-//                @Override
-//                public void onReceiveFriends(String friends) {
-//                    Logger.debug(TAG, "Get Facebook friends" + friends);
-//                    if (builder != null && builder.userCenterListener != null) {
-//                        builder.userCenterListener.onReceiveFriends(friends);
-//                    }
-//                }
-//            });
-//        } catch (Throwable t) {
-//            //
-//        }
-//    }
-//
-//    public static void logout() {
-//        Logger.debug(TAG, "logout()");
-//        if (facebookUserManager != null) {
-//            facebookUserManager.logout();
-//        }
-//    }
-//
-//    public static boolean isLogin() {
-//        if (facebookUserManager != null) {
-//            return facebookUserManager.isLogin();
-//        }
-//        return false;
-//    }
+    public static void logoutFacebook() {
+        try {
+            facebookUserManager.logout();
+        } catch (Throwable t) {
+            Logger.error(TAG, "logoutFacebook exception", t);
+        }
+    }
 
-//    public static void invite() {
-////        UserMaster.master().invite();
-//    }
-//
-//    public static void challenge(String title, String message) {
-////        UserMaster.master().challenge(title, message);
-//    }
-//
-//
-//    public static String me() {
-//        if (facebookUserManager == null) {
-//            Logger.error(TAG, "Facebook SDK not initialized?");
-//            return "{}";
-//        }
-//        String me = facebookUserManager.me();
-//        Logger.debug(TAG, "I am " + me);
-//        return me;
-//    }
-//
-//    public static String getFacebookUserId() {
-//        if (facebookUserManager != null) {
-//            return facebookUserManager.getUserId();
-//        }
-//        return "";
-//    }
-//
-//    public static String friends() {
-//        try {
-//            if (facebookUserManager == null) {
-//                Logger.error(TAG, "Facebook SDK not initialized?");
-//                return null;
-//            }
-//            return facebookUserManager.friends(new FacebookLoginListener() {
-//                @Override
-//                public void onReceiveLoginResult(boolean success) {
-//                    Logger.debug(TAG, "Facebook login success");
-//                    if (builder != null && builder.userCenterListener != null) {
-//                        builder.userCenterListener.onReceiveLoginResult(success);
-//                    }
-//                }
-//
-//                @Override
-//                public void onReceiveFriends(String friends) {
-//                    Logger.debug(TAG, "Facebook login success");
-//                    if (builder != null && builder.userCenterListener != null) {
-//                        builder.userCenterListener.onReceiveFriends(friends);
-//                    }
-//                }
-//            });
-//        } catch (Throwable t) {
-//            //
-//            return null;
-//        }
-//    }
+    public static void loginFacebook(FacebookLoginListener facebookLoginListener) {
+        try {
+            facebookUserManager.login(IvySdk.getActivity(), facebookLoginListener);
+        } catch (Throwable t) {
+            //
+        }
+    }
+
+
+    public static void login() {
+        try {
+            facebookUserManager.login(IvySdk.getActivity(), new FacebookLoginListener() {
+                @Override
+                public void onReceiveLoginResult(boolean success) {
+                    Logger.debug(TAG, "Facebook login success");
+                    if (builder != null && builder.userCenterListener != null) {
+                        builder.userCenterListener.onReceiveLoginResult(success);
+                    }
+                }
+
+                @Override
+                public void onReceiveFriends(String friends) {
+                    Logger.debug(TAG, "Get Facebook friends" + friends);
+                    if (builder != null && builder.userCenterListener != null) {
+                        builder.userCenterListener.onReceiveFriends(friends);
+                    }
+                }
+            });
+        } catch (Throwable t) {
+            //
+        }
+    }
+
+    public static void logout() {
+        Logger.debug(TAG, "logout()");
+        if (facebookUserManager != null) {
+            facebookUserManager.logout();
+        }
+    }
+
+    public static boolean isLogin() {
+        if (facebookUserManager != null) {
+            return facebookUserManager.isLogin();
+        }
+        return false;
+    }
+
+    public static void invite() {
+//        UserMaster.master().invite();
+    }
+
+    public static void challenge(String title, String message) {
+//        UserMaster.master().challenge(title, message);
+    }
+
+
+    public static String me() {
+        if (facebookUserManager == null) {
+            Logger.error(TAG, "Facebook SDK not initialized?");
+            return "{}";
+        }
+        String me = facebookUserManager.me();
+        Logger.debug(TAG, "I am " + me);
+        return me;
+    }
+
+    public static String getFacebookUserId() {
+        if (facebookUserManager != null) {
+            return facebookUserManager.getUserId();
+        }
+        return "";
+    }
+
+    public static String friends() {
+        try {
+            if (facebookUserManager == null) {
+                Logger.error(TAG, "Facebook SDK not initialized?");
+                return null;
+            }
+            return facebookUserManager.friends(new FacebookLoginListener() {
+                @Override
+                public void onReceiveLoginResult(boolean success) {
+                    Logger.debug(TAG, "Facebook login success");
+                    if (builder != null && builder.userCenterListener != null) {
+                        builder.userCenterListener.onReceiveLoginResult(success);
+                    }
+                }
+
+                @Override
+                public void onReceiveFriends(String friends) {
+                    Logger.debug(TAG, "Facebook login success");
+                    if (builder != null && builder.userCenterListener != null) {
+                        builder.userCenterListener.onReceiveFriends(friends);
+                    }
+                }
+            });
+        } catch (Throwable t) {
+            //
+            return null;
+        }
+    }
 
     public static boolean isNetworkConnected() {
 
         return IvyUtils.isOnline(IvySdk.getActivity());
     }
 
-//    /**
-//     * get
-//     * download this url and cache the result into internal storage
-//     *
-//     * @param url
-//     * @return file path
-//     */
-//    public static String cacheUrl(String url) {
-//        try {
-//            return PromoteAdManager.checkCreativeReloaded(url);
-//        } catch (Throwable t) {
-//            //
-//        }
-//        return "";
-//    }
-//
-//    public static String cacheUrl(String url, boolean external) {
-//        try {
-//            return PromoteAdManager.checkCreativeReloaded(url);
-//        } catch (Throwable t) {
-//            //
-//        }
-//        return "";
-//    }
+    /**
+     * get
+     * download this url and cache the result into internal storage
+     *
+     * @param url
+     * @return file path
+     */
+    public static String cacheUrl(String url) {
+        try {
+            return PromoteAdManager.checkCreativeReloaded(url);
+        } catch (Throwable t) {
+            //
+        }
+        return "";
+    }
+
+    public static String cacheUrl(String url, boolean external) {
+        try {
+            return PromoteAdManager.checkCreativeReloaded(url);
+        } catch (Throwable t) {
+            //
+        }
+        return "";
+    }
 
     public static void openFacebook(String userId, String userName) {
         Intent intent = new Intent(Intent.ACTION_VIEW);
         try {
             //打开Facebook应用，xxxxxx为账户id，是一串数字，例如：101480009140700
-            Uri uri = Uri.parse("fb://page/" + userId);
+//            Uri uri = Uri.parse("fb://page/" + userId);
+            Uri uri = Uri.parse("fb://profile/" + userId);
             intent.setData(uri);
             IvySdk.getActivity().startActivity(intent);
         } catch (Exception e) {
@@ -2004,6 +2031,7 @@ public class AndroidSdk {
 
     public static String getConfig(int configKey) {
         Logger.debug(TAG, "Get Config: " + configKey);
+
         try {
             switch (configKey) {
                 case CONFIG_KEY_APP_ID:
@@ -2135,163 +2163,163 @@ public class AndroidSdk {
         }
     }
 
-//    public static void showDeliciousIconAd(final int x, final int y, final int w, final int h, final String config) {
-//        try {
-//            IvySdk.showDeliciousIcon(x, y, w, h, config);
-//        } catch (Throwable t) {
-//            //
-//        }
-//    }
-//
-//    public static boolean hasDeliciousIconAd() {
-//        return true; //AdMaster.master().hasDeliciousIconAd();
-//    }
-//
-//    public static void closeDeliciousIconAd() {
-//        try {
-//            IvySdk.closeDeliciousIconAd();
-//        } catch (Throwable t) {
-//            //
-//        }
-//    }
-//
-//    public static void showDeliciousBannerAd(final int x, final int y, final int w, final int h, final String config) {
-//        try {
-//            IvySdk.showDeliciousBanner(x, y, w, h, "");
-//        } catch (Throwable t) {
-//            //
-//        }
-//    }
-//
-//    public static boolean hasDeliciousBannerAd() {
-////        return AdMaster.master().hasDeliciousBannerAd();
-//        return true;
-//    }
-//
-//    public static void closeDeliciousBannerAd() {
-////        AdMaster.master().closeDeliciousBannerAd();
-//        try {
-//            IvySdk.closeDeliciousBanner();
-//        } catch (Throwable t) {
-//
-//        }
-//    }
-//
-//    public static boolean hasDeliciousVideoAd() {
-//        return false;//AdMaster.master().hasDeliciousVideoAd();
-//    }
-//
-//    public static void showDeliciousVideoAd(final String config) {
-////        AdMaster.master().showDeliciousVideoAd(config);
-//    }
-//
-//    public static boolean hasDeliciousAd() {
-//        return true; //AdMaster.master().hasDeliciousAd();
-//    }
+    public static void showDeliciousIconAd(final int x, final int y, final int w, final int h, final String config) {
+        try {
+            IvySdk.showDeliciousIcon(x, y, w, h, config);
+        } catch (Throwable t) {
+            //
+        }
+    }
+
+    public static boolean hasDeliciousIconAd() {
+        return true; //AdMaster.master().hasDeliciousIconAd();
+    }
+
+    public static void closeDeliciousIconAd() {
+        try {
+            IvySdk.closeDeliciousIconAd();
+        } catch (Throwable t) {
+            //
+        }
+    }
+
+    public static void showDeliciousBannerAd(final int x, final int y, final int w, final int h, final String config) {
+        try {
+            IvySdk.showDeliciousBanner(x, y, w, h, "");
+        } catch (Throwable t) {
+            //
+        }
+    }
+
+    public static boolean hasDeliciousBannerAd() {
+//        return AdMaster.master().hasDeliciousBannerAd();
+        return true;
+    }
+
+    public static void closeDeliciousBannerAd() {
+//        AdMaster.master().closeDeliciousBannerAd();
+        try {
+            IvySdk.closeDeliciousBanner();
+        } catch (Throwable t) {
+
+        }
+    }
+
+    public static boolean hasDeliciousVideoAd() {
+        return false;//AdMaster.master().hasDeliciousVideoAd();
+    }
+
+    public static void showDeliciousVideoAd(final String config) {
+//        AdMaster.master().showDeliciousVideoAd(config);
+    }
+
+    public static boolean hasDeliciousAd() {
+        return true; //AdMaster.master().hasDeliciousAd();
+    }
 
 
     public static void setUserProperty(String key, String value) {
         IvySdk.setUserProperty(key, value);
     }
-//
-//    public static void setUserID(String userID) {
-//
-//    }
-//
-//    public static void silentLoginGoogle(final GoogleListener listener) {
-//        try {
-//            Log.e("login", "start silent login google");
-//            IvySdk.slientLoginGoogle(listener);
-//        } catch (Throwable t) {
-//            if (listener != null) {
-//                listener.onFails();
-//            }
-//        }
-//    }
-//
-//    public static void loginGoogle(final GoogleListener listener) {
-//        try {
-//            IvySdk.slientLoginGoogle(listener);
-//        } catch (Throwable t) {
-//            t.printStackTrace();
-//            if (listener != null) {
-//                listener.onFails();
-//            }
-//        }
-//    }
-//
-//    public static void logoutGoogle(final GoogleListener listener) {
-//        IvySdk.logoutGoogle(new GoogleListener() {
-//            @Override
-//            public void onSuccess(String googleId, String googleEmail) {
-//                if (listener != null) {
-//                    listener.onSuccess(googleId, googleEmail);
-//                }
-//            }
-//
-//            @Override
-//            public void onFails() {
-//                if (listener != null) {
-//                    listener.onFails();
-//                }
-//            }
-//        });
-//    }
-//
-//    public static boolean isGoogleLogin() {
-//        try {
-//            return IvySdk.isGoogleLogin();
-//        } catch (Throwable t) {
-//            //
-//        }
-//        return false;
-//    }
-//
-//    public static void updateGoogleAchievement(String id, int step, final GoogleListener listener) {
-//        try {
-//            IvySdk.updateGoogleAchievement(id, step, listener);
-//        } catch (Throwable t) {
-//
-//        }
-//    }
-//
-//    public static void updateGoogleLeaderBoard(String id, long value, final GoogleListener listener) {
-//        try {
-//            IvySdk.updateGoogleLeaderBoard(id, value, new GoogleListener() {
-//                @Override
-//                public void onSuccess(String googleId, String googleEmail) {
-//                    if (listener != null) {
-//                        listener.onSuccess(googleId, googleEmail);
-//                    }
-//                }
-//
-//                @Override
-//                public void onFails() {
-//                    if (listener != null) {
-//                        listener.onFails();
-//                    }
-//                }
-//            });
-//        } catch (Throwable t) {
-//
-//        }
-//    }
-//
-//    public static void showGoogleAchievements() {
-//        try {
-//            IvySdk.showGoogleAchievement();
-//        } catch (Throwable t) {
-//            //
-//        }
-//    }
-//
-//    public static void showGoogleLeaderBoards(String... ids) {
-//        try {
-//            IvySdk.displayGameLeaderboards();
-//        } catch (Throwable t) {
-//            //
-//        }
-//    }
+
+    public static void setUserID(String userID) {
+
+    }
+
+    public static void silentLoginGoogle(final GoogleListener listener) {
+        try {
+            Log.e("login", "start silent login google");
+            IvySdk.slientLoginGoogle(listener);
+        } catch (Throwable t) {
+            if (listener != null) {
+                listener.onFails();
+            }
+        }
+    }
+
+    public static void loginGoogle(final GoogleListener listener) {
+        try {
+            IvySdk.slientLoginGoogle(listener);
+        } catch (Throwable t) {
+            t.printStackTrace();
+            if (listener != null) {
+                listener.onFails();
+            }
+        }
+    }
+
+    public static void logoutGoogle(final GoogleListener listener) {
+        IvySdk.logoutGoogle(new GoogleListener() {
+            @Override
+            public void onSuccess(String googleId, String googleEmail) {
+                if (listener != null) {
+                    listener.onSuccess(googleId, googleEmail);
+                }
+            }
+
+            @Override
+            public void onFails() {
+                if (listener != null) {
+                    listener.onFails();
+                }
+            }
+        });
+    }
+
+    public static boolean isGoogleLogin() {
+        try {
+            return IvySdk.isGoogleLogin();
+        } catch (Throwable t) {
+            //
+        }
+        return false;
+    }
+
+    public static void updateGoogleAchievement(String id, int step, final GoogleListener listener) {
+        try {
+            IvySdk.updateGoogleAchievement(id, step, listener);
+        } catch (Throwable t) {
+
+        }
+    }
+
+    public static void updateGoogleLeaderBoard(String id, long value, final GoogleListener listener) {
+        try {
+            IvySdk.updateGoogleLeaderBoard(id, value, new GoogleListener() {
+                @Override
+                public void onSuccess(String googleId, String googleEmail) {
+                    if (listener != null) {
+                        listener.onSuccess(googleId, googleEmail);
+                    }
+                }
+
+                @Override
+                public void onFails() {
+                    if (listener != null) {
+                        listener.onFails();
+                    }
+                }
+            });
+        } catch (Throwable t) {
+
+        }
+    }
+
+    public static void showGoogleAchievements() {
+        try {
+            IvySdk.showGoogleAchievement();
+        } catch (Throwable t) {
+            //
+        }
+    }
+
+    public static void showGoogleLeaderBoards(String... ids) {
+        try {
+            IvySdk.displayGameLeaderboards();
+        } catch (Throwable t) {
+            //
+        }
+    }
 
     public static boolean isGoogleSupport() {
         try {
@@ -2302,48 +2330,48 @@ public class AndroidSdk {
         return false;
     }
 
-//    public static boolean scheduleTask(int time, String activityName, String extra) {
-//        try {
-//            return IvySdk.scheduleTask(time, activityName, extra);
-//        } catch (Throwable t) {
-//            return false;
-//        }
-//    }
-//
-//    public static boolean cancelTask(String activityName, String extra) {
-//        try {
-//            return IvySdk.cancelTask(activityName, extra);
-//        } catch (Throwable t) {
-//            //
-//            return false;
-//        }
-//    }
-//
-//    public static void updateGoogleLeaderBoard(int tag, String id, long value) {
-//        Log.d(TAG, "updateGoogleLeaderBoard called");
-//        try {
-//            IvySdk.updateGoogleLeaderBoard(id, value, new GoogleListener() {
-//                @Override
-//                public void onSuccess(String googleId, String googleEmail) {
-//                }
-//
-//                @Override
-//                public void onFails() {
-//                }
-//            });
-//        } catch (Throwable t) {
-//            //
-//        }
-//    }
-//
-//    public static void showGoogleLeaderBoards() {
-//        Log.d(TAG, "showGoogleLeaderBoards: ");
-//        try {
-//            IvySdk.displayGameLeaderboards();
-//        } catch (Throwable t) {
-//            //
-//        }
-//    }
+    public static boolean scheduleTask(int time, String activityName, String extra) {
+        try {
+            return IvySdk.scheduleTask(time, activityName, extra);
+        } catch (Throwable t) {
+            return false;
+        }
+    }
+
+    public static boolean cancelTask(String activityName, String extra) {
+        try {
+            return IvySdk.cancelTask(activityName, extra);
+        } catch (Throwable t) {
+            //
+            return false;
+        }
+    }
+
+    public static void updateGoogleLeaderBoard(int tag, String id, long value) {
+        Log.d(TAG, "updateGoogleLeaderBoard called");
+        try {
+            IvySdk.updateGoogleLeaderBoard(id, value, new GoogleListener() {
+                @Override
+                public void onSuccess(String googleId, String googleEmail) {
+                }
+
+                @Override
+                public void onFails() {
+                }
+            });
+        } catch (Throwable t) {
+            //
+        }
+    }
+
+    public static void showGoogleLeaderBoards() {
+        Log.d(TAG, "showGoogleLeaderBoards: ");
+        try {
+            IvySdk.displayGameLeaderboards();
+        } catch (Throwable t) {
+            //
+        }
+    }
 
     public static boolean hasNotch() {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.N) {
@@ -2413,98 +2441,103 @@ public class AndroidSdk {
         return 0;
     }
 
-//    @Deprecated
-//    public static void clickNativeAd(String tag) {
-//    }
-//
-//    @Deprecated
-//    public static boolean isActiveUser(int day) {
-//        Log.e(TAG, "isActiveUser deprecated");
-//        return false;
-//    }
-//
-//
-//    @Deprecated
-//    public static boolean hasHomeAd() {
-//        Log.e(TAG, "hasHomeAd deprecated, will always return false");
-//        return false;
-//    }
-//
-//    @Deprecated
-//    public static void showHomeAd(AdListener listener) {
-//        Log.e(TAG, "showHomeAd deprecated, will always return false");
-//    }
-//
-//    @Deprecated
-//    public static void pushMessage(String key, String title, String content, long pushTime, boolean localTimeZone, String fbIds, String uuids, String topics, int iosBadge, boolean useSound, String soundName, String extraData) {
-//        Log.e(TAG, "pushMessage deprecated, please use pushLocalMessage");
-//    }
-//
-//    @Deprecated
-//    public static boolean showNativeBanner(String tag, int xPercent, int yPercent, String configFile) {
-//        Log.e(TAG, "showNativeBanner deprecated, please use showNativeAd");
-//        return false;
-//    }
-//
-//    @Deprecated
-//    public static void showNativeAdScrollView(String tag, int hideBehavior, int yPercent) {
-//        Log.e(TAG, "showNativeAdScrollView deprecated");
-//    }
-//
-//    @Deprecated
-//    public static void hideNativeAdScrollView(String tag) {
-//        Log.e(TAG, "hideNativeAdScrollView deprecated");
-//    }
-//
-//    @Deprecated
-//    public static String showNativeAd(String tag) {
-//        Log.e(TAG, "showNativeAd(String tag) Deprecated");
-//        try {
-//            IvySdk.showNativeAd(0, 0, -1, -2, 0, 0);
-//        } catch (Throwable t) {
-//            //
-//        }
-//        return "";
-//    }
+    public static void setPlayer(String data){
+        IvySdk.setPlayer(data);
+    }
+
+    @Deprecated
+    public static void clickNativeAd(String tag) {
+    }
+
+    @Deprecated
+    public static boolean isActiveUser(int day) {
+        Log.e(TAG, "isActiveUser deprecated");
+        return false;
+    }
+
+
+    @Deprecated
+    public static boolean hasHomeAd() {
+        Log.e(TAG, "hasHomeAd deprecated, will always return false");
+        return false;
+    }
+
+    @Deprecated
+    public static void showHomeAd(AdListener listener) {
+        Log.e(TAG, "showHomeAd deprecated, will always return false");
+    }
+
+    @Deprecated
+    public static void pushMessage(String key, String title, String content, long pushTime, boolean localTimeZone, String fbIds, String uuids, String topics, int iosBadge, boolean useSound, String soundName, String extraData) {
+        Log.e(TAG, "pushMessage deprecated, please use pushLocalMessage");
+    }
+
+    @Deprecated
+    public static boolean showNativeBanner(String tag, int xPercent, int yPercent, String configFile) {
+        Log.e(TAG, "showNativeBanner deprecated, please use showNativeAd");
+        return false;
+    }
+
+    @Deprecated
+    public static void showNativeAdScrollView(String tag, int hideBehavior, int yPercent) {
+        Log.e(TAG, "showNativeAdScrollView deprecated");
+    }
+
+    @Deprecated
+    public static void hideNativeAdScrollView(String tag) {
+        Log.e(TAG, "hideNativeAdScrollView deprecated");
+    }
+
+    @Deprecated
+    public static String showNativeAd(String tag) {
+        Log.e(TAG, "showNativeAd(String tag) Deprecated");
+        try {
+            IvySdk.showNativeAd(0, 0, -1, -2, 0, 0);
+        } catch (Throwable t) {
+            //
+        }
+        return "";
+    }
 
     public static void onKill() {
         android.os.Process.killProcess(android.os.Process.myPid());
     }
 
 
-//    @Deprecated
-//    public static void like() {
-//        Log.e(TAG, "Like deprecated");
-//    }
-//
-//    @Deprecated
-//    public static boolean isCachingUrl(String url) {
-//        Log.e(TAG, "isCachingUrl deprecated");
-//        return false;
-//    }
-//
-//    @Deprecated
-//    public static void cacheUrl(int tag, String url) {
-//        Log.e(TAG, "cacheUrl deprecated");
-//    }
-//
-//    @Deprecated
-//    public static void cacheUrl(String url, boolean external, final UrlListener listener) {
-//        Log.e(TAG, "cacheUrl deprecated");
-//    }
-//
-//
-//    public static void verifyIdCard() {
-//    }
-//
-//    public static void resetIdCheck() {
-//    }
-//
-//    public static int getIdCardVerifyedAge() {
-//        return 0;
-//    }
-//
+    @Deprecated
+    public static void like() {
+        Log.e(TAG, "Like deprecated");
+    }
+
+    @Deprecated
+    public static boolean isCachingUrl(String url) {
+        Log.e(TAG, "isCachingUrl deprecated");
+        return false;
+    }
+
+    @Deprecated
+    public static void cacheUrl(int tag, String url) {
+        Log.e(TAG, "cacheUrl deprecated");
+    }
+
+    @Deprecated
+    public static void cacheUrl(String url, boolean external, final UrlListener listener) {
+        Log.e(TAG, "cacheUrl deprecated");
+    }
+
+
+    public static void verifyIdCard() {
+    }
+
+    public static void resetIdCheck() {
+    }
+
+    public static int getIdCardVerifyedAge() {
+        return 0;
+    }
+
     public static void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        NotificationPermissionUtil.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
 
     public static void setDisplayInNotch(Activity activity) {
@@ -2528,7 +2561,7 @@ public class AndroidSdk {
             }
             NotchScreenManager.getInstance().setDisplayInNotch(activity);
         } catch (Throwable ex) {
-            //  ex.printStackTrace();
+            ex.printStackTrace();
         }
     }
 
@@ -2560,6 +2593,26 @@ public class AndroidSdk {
         }
     }
 
+    public static long getTotalMem() {
+        try {
+            Activity activity = IvySdk.getActivity();
+            if (activity == null) {
+                Logger.warning(TAG, "activity is null, getFreeMem is impossible");
+                return -1;
+            }
+
+            ActivityManager manager = (ActivityManager) activity.getSystemService(Context.ACTIVITY_SERVICE);
+            ActivityManager.MemoryInfo info = new ActivityManager.MemoryInfo();
+            manager.getMemoryInfo(info);
+
+            Logger.debug(TAG, "Memory Info >>> avail: " + info.availMem + ", total: " + info.totalMem + ", isLowMemory: " + info.lowMemory);
+            return info.totalMem;
+        } catch (Throwable t) {
+            Logger.error(TAG, "getFreeMem exception", t);
+        }
+        return -1L;
+    }
+
     public static long getFreeMem() {
         try {
             Activity activity = IvySdk.getActivity();
@@ -2580,18 +2633,61 @@ public class AndroidSdk {
         return -1L;
     }
 
-//    public static String getKeyHash() {
-//        Activity activity = IvySdk.getActivity();
-//        if (activity == null) {
-//            Logger.error(TAG, "Activity is not initialized, forgot onCreate?");
-//            return "";
-//        }
-//        return CommonUtil.getKeyStoreHash(activity);
-//    }
+    public static long getTotalDiskSize(){
+        try{
+            File internalStorageDir = Environment.getDataDirectory();
+            StatFs statFs = new StatFs(internalStorageDir.getPath());
+            long availableBytes;
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.JELLY_BEAN_MR2) {
+                availableBytes = statFs.getTotalBytes();
+            } else {
+                // 为了向后兼容，使用旧的API方法
+                long blockSize = statFs.getBlockSize();
+                long availableBlocks = statFs.getBlockCount();
+                availableBytes = availableBlocks * blockSize;
+            }
+            //long availableMB = availableBytes / (1024 * 1024);
+            return availableBytes;
+        } catch (Exception e){
 
-//    public static void setIdCardVerified(int age) {
-//
-//    }
+        }
+        return -1L;
+    }
+
+    public static long getAvailableDiskSize(){
+        try{
+            File internalStorageDir = Environment.getDataDirectory();
+            StatFs statFs = new StatFs(internalStorageDir.getPath());
+            long availableBytes;
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.JELLY_BEAN_MR2) {
+                availableBytes = statFs.getAvailableBytes();
+            } else {
+                // 为了向后兼容，使用旧的API方法
+                long blockSize = statFs.getBlockSize();
+                long availableBlocks = statFs.getAvailableBlocks();
+                availableBytes = availableBlocks * blockSize;
+            }
+            //long availableMB = availableBytes / (1024 * 1024);
+            return availableBytes;
+        } catch (Exception e){
+
+        }
+        return -1L;
+    }
+
+    public static String getKeyHash() {
+        Activity activity = IvySdk.getActivity();
+        if (activity == null) {
+            Logger.error(TAG, "Activity is not initialized, forgot onCreate?");
+            return "";
+        }
+        return CommonUtil.getKeyStoreHash(activity);
+    }
+
+
+    public static void setIdCardVerified(int age) {
+
+    }
 
     public static String getSdkType() {
         return "adsfall";
@@ -2651,259 +2747,259 @@ public class AndroidSdk {
         }
     }
 
-//    public static void playerFinder() {
-//        Activity activity = IvySdk.getActivity();
-//        if (activity == null || facebookUserManager == null) {
-//            return;
-//        }
-//        activity.runOnUiThread(new Runnable() {
-//            @Override
-//            public void run() {
-//                facebookUserManager.playerFinder(activity);
-//            }
-//        });
-//    }
-//
-//    public static String getFirebaseUserId() {
-//        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-//        if (user != null) {
-//            return user.getUid();
-//        }
-//        return "";
-//    }
+    public static void playerFinder() {
+        Activity activity = IvySdk.getActivity();
+        if (activity == null || facebookUserManager == null) {
+            return;
+        }
+        activity.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                facebookUserManager.playerFinder(activity);
+            }
+        });
+    }
 
-//    public static void setHelpEngagementMessageRead(final String customerName) {
-//        String projectId = IvySdk.getGridConfigString("helpengage.appId", "62e72ac738480f797ef40eb7");
-//        if (TextUtils.isEmpty(projectId)) {
-//            Logger.error(TAG, "help engagement error, projectId empty");
-//            return;
-//        }
-//        String servicePollUrl = IvySdk.getGridConfigString("helpengage.setread", "https://eii2wnwjeukuf2oj6vxjustpve0paafz.lambda-url.ap-southeast-1.on.aws/");
-//        Request.Builder requestBuilder = new Request.Builder();
-//        HttpUrl.Builder httpBuilder = HttpUrl.parse(servicePollUrl).newBuilder();
-//
-//        httpBuilder.addQueryParameter("projectId", projectId);
-//        httpBuilder.addQueryParameter("customerId", customerName);
-//
-//        Request request = requestBuilder.url(httpBuilder.build()).build();
-//        IvySdk.getOkHttpClient().newCall(request).enqueue(new Callback() {
-//            @Override
-//            public void onFailure(Call call, IOException e) {
-//                Logger.error(TAG, "checkHelpEngagement exception", e);
-//            }
-//
-//            @Override
-//            public void onResponse(Call call, Response response) throws IOException {
-//            }
-//        });
-//
-//    }
-//
-//    /**
-//     * 从poll地址获得当前玩家是否有新的聊天信息，如果获取到新的聊天信息，应该回调给客户端，客户端负责展示并处理。
-//     * 此检查的调用由客户端负责发起，建议在游戏逻辑理不定期的调用，以获得最新消息的回调。
-//     *
-//     * @param customerName
-//     */
-//    public static void checkHelpEngagement(final String customerName) {
-//        String projectId = IvySdk.getGridConfigString("helpengage.appId", "62e72ac738480f797ef40eb7");
-//        if (TextUtils.isEmpty(projectId)) {
-//            Logger.error(TAG, "help engagement error, projectId empty");
-//            return;
-//        }
-//        String servicePollUrl = IvySdk.getGridConfigString("helpengage.poll", "https://fw26xfzuzw2jaqchpbm3vvcq2a0tpclt.lambda-url.ap-southeast-1.on.aws/");
-//        Request.Builder requestBuilder = new Request.Builder();
-//        HttpUrl.Builder httpBuilder = HttpUrl.parse(servicePollUrl).newBuilder();
-//
-//        httpBuilder.addQueryParameter("projectId", projectId);
-//        httpBuilder.addQueryParameter("customerId", customerName);
-//
-//        Request request = requestBuilder.url(httpBuilder.build()).build();
-//        IvySdk.getOkHttpClient().newCall(request).enqueue(new Callback() {
-//            @Override
-//            public void onFailure(Call call, IOException e) {
-//                Logger.error(TAG, "checkHelpEngagement exception", e);
-//            }
-//
-//            @Override
-//            public void onResponse(Call call, Response response) throws IOException {
-//                try {
-//                    String result = response.body().string();
-//                    if (result != null && !"".equals(result)) {
-//                        JSONObject json = new JSONObject(result);
-//                        if (json.has("result") && "ok".equals(json.optString("result")) && json.has("response")) {
-//                            JSONObject realResponse = json.optJSONObject("response");
-//                            if (realResponse != null) {
-//                                if (builder != null && builder.onHelpEngagementListener != null) {
-//                                    builder.onHelpEngagementListener.onReceiveHelpEngagementMessage(realResponse.toString());
-//                                }
-//                            }
-//                        }
-//                    }
-//                    Logger.debug(TAG, result);
-//                } catch (Throwable t) {
-//
-//                }
-//            }
-//        });
-//
-//    }
+    public static String getFirebaseUserId() {
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+            return user.getUid();
+        }
+        return "";
+    }
 
-//    public static void helpshift(final String customerName, String info) {
-//        String projectId = IvySdk.getGridConfigString("helpengage.appId", "62e72ac738480f797ef40eb7");
-//        Activity activity = IvySdk.getActivity();
-//        if (activity == null) {
-//            return;
-//        }
-//
-//        if (TextUtils.isEmpty(projectId)) {
-//            Logger.error(TAG, "help engagement error, projectId empty");
-//            return;
-//        }
-//
-//        JSONObject jsonObject = null;
-//        try {
-//            jsonObject = new JSONObject(info);
-//            jsonObject.put("app_version", getConfig(CONFIG_KEY_VERSION_NAME));
-//            jsonObject.put("device", Build.MODEL != null ? Build.MODEL.toLowerCase(Locale.ENGLISH) : "unknown");
-//            jsonObject.put("os", Build.VERSION.SDK_INT + " (" + Build.VERSION.RELEASE + ")");
-//            // append system info
-//            FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
-//            if (currentUser != null) {
-//                jsonObject.put("f_uid", currentUser.getUid());
-//            }
-//        } catch (Throwable ex) {
-//            ex.printStackTrace();
-//        }
-//
-//        final String resultInfo = jsonObject != null ? jsonObject.toString() : "";
-//        activity.runOnUiThread(new Runnable() {
-//            @Override
-//            public void run() {
-//                Intent intent = new Intent(activity, TiledeskActivity.class);
-//                intent.putExtra("projectId", projectId);
-//                intent.putExtra("customerName", customerName);
-//                intent.putExtra("customInfo", resultInfo);
-//                activity.startActivity(intent);
-//            }
-//        });
-//    }
+    public static void setHelpEngagementMessageRead(final String customerName) {
+        String projectId = IvySdk.getGridConfigString("helpengage.appId", "62e72ac738480f797ef40eb7");
+        if (TextUtils.isEmpty(projectId)) {
+            Logger.error(TAG, "help engagement error, projectId empty");
+            return;
+        }
+        String servicePollUrl = IvySdk.getGridConfigString("helpengage.setread", "https://eii2wnwjeukuf2oj6vxjustpve0paafz.lambda-url.ap-southeast-1.on.aws/");
+        Request.Builder requestBuilder = new Request.Builder();
+        HttpUrl.Builder httpBuilder = HttpUrl.parse(servicePollUrl).newBuilder();
+
+        httpBuilder.addQueryParameter("projectId", projectId);
+        httpBuilder.addQueryParameter("customerId", customerName);
+
+        Request request = requestBuilder.url(httpBuilder.build()).build();
+        IvySdk.getOkHttpClient().newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                Logger.error(TAG, "checkHelpEngagement exception", e);
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+            }
+        });
+
+    }
+
+    /**
+     * 从poll地址获得当前玩家是否有新的聊天信息，如果获取到新的聊天信息，应该回调给客户端，客户端负责展示并处理。
+     * 此检查的调用由客户端负责发起，建议在游戏逻辑理不定期的调用，以获得最新消息的回调。
+     *
+     * @param customerName
+     */
+    public static void checkHelpEngagement(final String customerName) {
+        String projectId = IvySdk.getGridConfigString("helpengage.appId", "62e72ac738480f797ef40eb7");
+        if (TextUtils.isEmpty(projectId)) {
+            Logger.error(TAG, "help engagement error, projectId empty");
+            return;
+        }
+        String servicePollUrl = IvySdk.getGridConfigString("helpengage.poll", "https://fw26xfzuzw2jaqchpbm3vvcq2a0tpclt.lambda-url.ap-southeast-1.on.aws/");
+        Request.Builder requestBuilder = new Request.Builder();
+        HttpUrl.Builder httpBuilder = HttpUrl.parse(servicePollUrl).newBuilder();
+
+        httpBuilder.addQueryParameter("projectId", projectId);
+        httpBuilder.addQueryParameter("customerId", customerName);
+
+        Request request = requestBuilder.url(httpBuilder.build()).build();
+        IvySdk.getOkHttpClient().newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                Logger.error(TAG, "checkHelpEngagement exception", e);
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                try {
+                    String result = response.body().string();
+                    if (result != null && !"".equals(result)) {
+                        JSONObject json = new JSONObject(result);
+                        if (json.has("result") && "ok".equals(json.optString("result")) && json.has("response")) {
+                            JSONObject realResponse = json.optJSONObject("response");
+                            if (realResponse != null) {
+                                if (builder != null && builder.onHelpEngagementListener != null) {
+                                    builder.onHelpEngagementListener.onReceiveHelpEngagementMessage(realResponse.toString());
+                                }
+                            }
+                        }
+                    }
+                    Logger.debug(TAG, result);
+                } catch (Throwable t) {
+
+                }
+            }
+        });
+
+    }
+
+    public static void helpshift(final String customerName, String info) {
+        String projectId = IvySdk.getGridConfigString("helpengage.appId", "62e72ac738480f797ef40eb7");
+        Activity activity = IvySdk.getActivity();
+        if (activity == null) {
+            return;
+        }
+
+        if (TextUtils.isEmpty(projectId)) {
+            Logger.error(TAG, "help engagement error, projectId empty");
+            return;
+        }
+
+        JSONObject jsonObject = null;
+        try {
+            jsonObject = new JSONObject(info);
+            jsonObject.put("app_version", getConfig(CONFIG_KEY_VERSION_NAME));
+            jsonObject.put("device", Build.MODEL != null ? Build.MODEL.toLowerCase(Locale.ENGLISH) : "unknown");
+            jsonObject.put("os", Build.VERSION.SDK_INT + " (" + Build.VERSION.RELEASE + ")");
+            // append system info
+            FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+            if (currentUser != null) {
+                jsonObject.put("f_uid", currentUser.getUid());
+            }
+        } catch (Throwable ex) {
+            ex.printStackTrace();
+        }
+
+        final String resultInfo = jsonObject != null ? jsonObject.toString() : "";
+        activity.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                Intent intent = new Intent(activity, TiledeskActivity.class);
+                intent.putExtra("projectId", projectId);
+                intent.putExtra("customerName", customerName);
+                intent.putExtra("customInfo", resultInfo);
+                activity.startActivity(intent);
+            }
+        });
+    }
 
 
-//    public static void showWebView(final String title, final String url) {
-//        final Activity activity = IvySdk.getActivity();
-//        if (activity == null || activity.isFinishing()) {
-//            return;
-//        }
-//        activity.runOnUiThread(() -> {
-//            Intent intent = new Intent(activity, WebViewActivity.class);
-//            intent.putExtra("title", title);
-//            intent.putExtra("url", url);
-//            activity.startActivityForResult(intent, IvySdk.RC_WEBVIEW);
-//        });
-//    }
+    public static void showWebView(final String title, final String url) {
+        final Activity activity = IvySdk.getActivity();
+        if (activity == null || activity.isFinishing()) {
+            return;
+        }
+        activity.runOnUiThread(() -> {
+            Intent intent = new Intent(activity, WebViewActivity.class);
+            intent.putExtra("title", title);
+            intent.putExtra("url", url);
+            activity.startActivityForResult(intent, IvySdk.RC_WEBVIEW);
+        });
+    }
 
-//    public static void updateAIHelpUserInfo(String meta, String tags) {
-//        try {
-//            if (!AIHelp.getInstance().isHasInitialized()) {
-//                Log.e(AIHelp.TAG, "AIHelp was not initialized");
-//                return;
-//            }
-//            JSONObject jsonObject = null;
-//            try {
-//                jsonObject = new JSONObject(meta);
-//                jsonObject.put("app_version", getConfig(CONFIG_KEY_VERSION_NAME));
-//                jsonObject.put("device", Build.MODEL != null ? Build.MODEL.toLowerCase(Locale.ENGLISH) : "unknown");
-//                jsonObject.put("os", Build.VERSION.SDK_INT + " (" + Build.VERSION.RELEASE + ")");
-//                // append system info
-//                FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
-//                if (currentUser != null) {
-//                    jsonObject.put("f_uid", currentUser.getUid());
-//                }
-//            } catch (Exception e) {
-//            }
-//            AIHelp.getInstance().resetUserInfo();
-//            AIHelp.getInstance().updateUserInfo(jsonObject, tags);
-//        } catch (Exception e) {
-//
-//        }
-//    }
-//
-//    public static boolean isAIHelpInitialized() {
-//        return AIHelp.getInstance().isHasInitialized();
-//    }
-//
-//    public static void showAIHelp(String entranceId, String welcomeMessage, String meta, String tags) {
-//        if (!AIHelp.getInstance().isHasInitialized()) {
-//            Log.e(AIHelp.TAG, "AIHelp was not initialized");
-//            return;
-//        }
-//        updateAIHelpUserInfo(meta, tags);
-//        AIHelp.getInstance().show(entranceId, welcomeMessage);
-//    }
-//
-//    public static void showSingleFAQ(String faqId, int moment) {
-//        if (!AIHelp.getInstance().isHasInitialized()) {
-//            Log.e(AIHelp.TAG, "AIHelp was not initialized");
-//            return;
-//        }
-//        AIHelp.getInstance().showSingleFAQ(faqId, moment);
-//    }
-//
-//    public static void saveUserAttribute(JSONObject dataJson) {
-//        try {
-//            IvySdk.saveUserAttribute(dataJson, builder.inAppMessageClickListener);
-//        } catch (Throwable t) {
-//            // ignore
-//        }
-//    }
+    public static void updateAIHelpUserInfo(String meta, String tags) {
+        try {
+            if (!AIHelp.getInstance().isHasInitialized()) {
+                Log.e(AIHelp.TAG, "AIHelp was not initialized");
+                return;
+            }
+            JSONObject jsonObject = null;
+            try {
+                jsonObject = new JSONObject(meta);
+                jsonObject.put("app_version", getConfig(CONFIG_KEY_VERSION_NAME));
+                jsonObject.put("device", Build.MODEL != null ? Build.MODEL.toLowerCase(Locale.ENGLISH) : "unknown");
+                jsonObject.put("os", Build.VERSION.SDK_INT + " (" + Build.VERSION.RELEASE + ")");
+                // append system info
+                FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+                if (currentUser != null) {
+                    jsonObject.put("f_uid", currentUser.getUid());
+                }
+            } catch (Exception e) {
+            }
+            AIHelp.getInstance().resetUserInfo();
+            AIHelp.getInstance().updateUserInfo(jsonObject, tags);
+        } catch (Exception e) {
 
-//    public static void recordEventConversion(String conversionUrl, String eventName, Bundle bundle) {
-//        try {
-//            IvySdk.recordEventConversion(conversionUrl, eventName, bundle, builder.inAppMessageClickListener);
-//        } catch (Throwable t) {
-//            // ignore
-//        }
-//    }
+        }
+    }
 
-//    static volatile AdmobRectBanner admobRectBanner = null;
-//
-//    public static void closeRectBanner() {
-//        if (admobRectBanner != null) {
-//            final Activity activity = IvySdk.getActivity();
-//            if (activity == null) {
-//                return;
-//            }
-//            activity.runOnUiThread(new Runnable() {
-//                @Override
-//                public void run() {
-//                    admobRectBanner.close(activity);
-//                    admobRectBanner = null;
-//                }
-//            });
-//        }
-//    }
-//
-//    public static void showRectBanner(int x, int y, int w, int h) {
-//        final Activity activity = IvySdk.getActivity();
-//        if (activity == null) {
-//            return;
-//        }
-//        activity.runOnUiThread(new Runnable() {
-//            @Override
-//            public void run() {
-//                String exitBanner = IvySdk.getGridConfigString("exit_admob_banner");
-//                if (exitBanner != null && !"".equals(exitBanner)) {
-//                    try {
-//                        admobRectBanner = new AdmobRectBanner();
-//                        admobRectBanner.show(activity, exitBanner, x, y);
-//                    } catch (Throwable t) {
-//                        t.printStackTrace();
-//                    }
-//                }
-//            }
-//        });
-//    }
+    public static boolean isAIHelpInitialized() {
+        return AIHelp.getInstance().isHasInitialized();
+    }
+
+    public static void showAIHelp(String entranceId, String welcomeMessage, String meta, String tags) {
+        if (!AIHelp.getInstance().isHasInitialized()) {
+            Log.e(AIHelp.TAG, "AIHelp was not initialized");
+            return;
+        }
+        updateAIHelpUserInfo(meta, tags);
+        AIHelp.getInstance().show(entranceId, welcomeMessage);
+    }
+
+    public static void showSingleFAQ(String faqId, int moment) {
+        if (!AIHelp.getInstance().isHasInitialized()) {
+            Log.e(AIHelp.TAG, "AIHelp was not initialized");
+            return;
+        }
+        AIHelp.getInstance().showSingleFAQ(faqId, moment);
+    }
+
+    public static void saveUserAttribute(JSONObject dataJson) {
+        try {
+            IvySdk.saveUserAttribute(dataJson, builder.inAppMessageClickListener);
+        } catch (Throwable t) {
+            // ignore
+        }
+    }
+
+    public static void recordEventConversion(String conversionUrl, String eventName, Bundle bundle) {
+        try {
+            IvySdk.recordEventConversion(conversionUrl, eventName, bundle, builder.inAppMessageClickListener);
+        } catch (Throwable t) {
+            // ignore
+        }
+    }
+
+    static volatile AdmobRectBanner admobRectBanner = null;
+
+    public static void closeRectBanner() {
+        if (admobRectBanner != null) {
+            final Activity activity = IvySdk.getActivity();
+            if (activity == null) {
+                return;
+            }
+            activity.runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    admobRectBanner.close(activity);
+                    admobRectBanner = null;
+                }
+            });
+        }
+    }
+
+    public static void showRectBanner(int x, int y, int w, int h) {
+        final Activity activity = IvySdk.getActivity();
+        if (activity == null) {
+            return;
+        }
+        activity.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                String exitBanner = IvySdk.getGridConfigString("exit_admob_banner");
+                if (exitBanner != null && !"".equals(exitBanner)) {
+                    try {
+                        admobRectBanner = new AdmobRectBanner();
+                        admobRectBanner.show(activity, exitBanner, x, y);
+                    } catch (Throwable t) {
+                        t.printStackTrace();
+                    }
+                }
+            }
+        });
+    }
 
     public static void setTargetForChild() {
         try {
@@ -2928,279 +3024,205 @@ public class AndroidSdk {
         }
     }
 
-//    /**
-//     * 更新玩家的主线数据
-//     *
-//     * @param name  属性名
-//     * @param value 新值
-//     */
-//    public static void trackMainLine(String name, int value) {
-//        Bundle bundle = new Bundle();
-//
-//        bundle.putString("label", name);
-//        bundle.putInt(FirebaseAnalytics.Param.VALUE, value);
-//        IvySdk.logIvyEvent("track_main_line", bundle);
-//
-//        // save this main line
-//        try {
-//            String savedMainLine = IvySdk.mmGetStringValue(IvySdk.KEY_GAME_MAIN_LINE, "{}");
-//            JSONObject o = new JSONObject(savedMainLine);
-//            o.put(name, value);
-//            IvySdk.mmSetStringValue(IvySdk.KEY_GAME_MAIN_LINE, o.toString());
-//        } catch (Throwable ignored) {
-//        }
-//    }
-//
-//    public static void trackRetentionStep(int stepId, String stepName) {
-//        Bundle bundle = new Bundle();
-//        bundle.putString("label", stepName);
-//        bundle.putInt("value", stepId);
-//        IvySdk.logEvent("track_retention_step_" + stepId, bundle);
-//    }
-//
-//    /**
-//     * 记录玩家的游戏核心玩家动作
-//     *
-//     * @param name
-//     * @param inc
-//     */
-//    public static void recordCoreAction(String name, int inc) {
-//        if (name == null || "".equals(name)) {
-//            return;
-//        }
-//        int actionNums = IvySdk.mmGetIntValue(name, 0);
-//        IvySdk.mmSetIntValue(name, actionNums + inc);
-//    }
-//
-//    public static void commitCoreAction(String name) {
-//        if (name == null || "".equals(name)) {
-//            return;
-//        }
-//        int actionNums = IvySdk.mmGetIntValue(name, 0);
-//
-//        Bundle bundle = new Bundle();
-//
-//        bundle.putString("label", name);
-//        bundle.putInt("times", IvySdk.appStartTimes);
-//        bundle.putInt("value", actionNums);
-//
-//        IvySdk.logIvyEvent("track_core_action", bundle);
-//
-//        IvySdk.mmSetIntValue(name, 0);
-//    }
-//
-//    /**
-//     * 记录活动开启
-//     *
-//     * @param name
-//     */
-//    public static void trackActivityStart(String name, String catalog) {
-//        Bundle bundle = new Bundle();
-//
-//        bundle.putString("label", name);
-//        if (catalog != null) {
-//            bundle.putString("catalog", catalog);
-//        }
-//        IvySdk.logIvyEvent("track_activity_start", bundle);
-//    }
-//
-//    /**
-//     * 记录玩家的活动的进程
-//     *
-//     * @param name
-//     * @param step
-//     */
-//    public static void trackActivityStep(String name, int step) {
-//        Bundle bundle = new Bundle();
-//
-//        bundle.putString("label", name);
-//        bundle.putInt("value", step);
-//
-//        IvySdk.logIvyEvent("track_activity_step", bundle);
-//    }
-//
-//    /**
-//     * 记录玩家的特定活动结束
-//     *
-//     * @param name
-//     */
-//    public static void trackActivityEnd(String name) {
-//        Bundle bundle = new Bundle();
-//
-//        bundle.putString("label", name);
-//        IvySdk.logIvyEvent("track_activity_end", bundle);
-//    }
-//
-//    /**
-//     * 记录通用的活动内动作
-//     *
-//     * @param name
-//     * @param catalog
-//     * @param value
-//     */
-//    public static void trackActivityEvent(String name, String catalog, float value, boolean iap) {
-//        Bundle bundle = new Bundle();
-//
-//        bundle.putString("label", name);
-//        bundle.putString("catalog", catalog);
-//        bundle.putFloat("value", value);
-//        if (iap) {
-//            bundle.putFloat("revenue", value);
-//        }
-//
-//        IvySdk.logIvyEvent("track_activity_event", bundle);
-//    }
-//
-//    public static void spendVirtualCurrency(String virtualCurrencyName, String itemid, int value, int currentValue) {
-//        Bundle bundle = new Bundle();
-//
-//        bundle.putString("label", virtualCurrencyName);
-//        bundle.putString("itemid", itemid);
-//        bundle.putInt("value", value);
-//
-//        IvySdk.logIvyEvent("spend_virtual_currency", bundle);
-//
-//        if (currentValue >= 0) {
-//            recordVirtualCurrency(virtualCurrencyName, currentValue);
-//        }
-//    }
-//
-//    public static void earnVirtualCurrency(String virtualCurrencyName, String itemid, int value, int currentValue) {
-//        Bundle bundle = new Bundle();
-//
-//        bundle.putString("label", virtualCurrencyName);
-//        bundle.putString("itemid", itemid);
-//        bundle.putInt("value", value);
-//
-//        IvySdk.logIvyEvent("earn_virtual_currency", bundle);
-//
-//        if (currentValue >= 0) {
-//            recordVirtualCurrency(virtualCurrencyName, currentValue);
-//        }
-//    }
-//
-//    public static void trackScreenStart(String screenName) {
-//        Bundle bundle = new Bundle();
-//
-//        bundle.putString("label", screenName);
-//        IvySdk.logIvyEvent("track_screen_start", bundle);
-//    }
-//
-//    public static void trackScreenEnd(String screenName) {
-//        Bundle bundle = new Bundle();
-//
-//        bundle.putString("label", screenName);
-//        IvySdk.logIvyEvent("track_screen_end", bundle);
-//    }
+    /**
+     * 更新玩家的主线数据
+     *
+     * @param name  属性名
+     * @param value 新值
+     */
+    public static void trackMainLine(String name, int value) {
+        Bundle bundle = new Bundle();
 
-    public static void recordException(String message, String error) {
+        bundle.putString("label", name);
+        bundle.putInt(FirebaseAnalytics.Param.VALUE, value);
+        IvySdk.logIvyEvent("track_main_line", bundle);
+
+        // save this main line
         try {
-            FirebaseCrashlytics.getInstance().recordException(CustomThrowable.convertUnityStackTraceToAndroid(message, error));
-        } catch (Exception e) {
-            e.printStackTrace();
+            String savedMainLine = IvySdk.mmGetStringValue(IvySdk.KEY_GAME_MAIN_LINE, "{}");
+            JSONObject o = new JSONObject(savedMainLine);
+            o.put(name, value);
+            IvySdk.mmSetStringValue(IvySdk.KEY_GAME_MAIN_LINE, o.toString());
+        } catch (Throwable ignored) {
         }
     }
 
-    public static void logException(String err) {
+    public static void trackRetentionStep(int stepId, String stepName) {
+        Bundle bundle = new Bundle();
+        bundle.putString("label", stepName);
+        bundle.putInt("value", stepId);
+        IvySdk.logEvent("track_retention_step_" + stepId, bundle);
+    }
+
+    /**
+     * 记录玩家的游戏核心玩家动作
+     *
+     * @param name
+     * @param inc
+     */
+    public static void recordCoreAction(String name, int inc) {
+        if (name == null || "".equals(name)) {
+            return;
+        }
+        int actionNums = IvySdk.mmGetIntValue(name, 0);
+        IvySdk.mmSetIntValue(name, actionNums + inc);
+    }
+
+    public static void commitCoreAction(String name) {
+        if (name == null || "".equals(name)) {
+            return;
+        }
+        int actionNums = IvySdk.mmGetIntValue(name, 0);
+
+        Bundle bundle = new Bundle();
+
+        bundle.putString("label", name);
+        bundle.putInt("times", IvySdk.appStartTimes);
+        bundle.putInt("value", actionNums);
+
+        IvySdk.logIvyEvent("track_core_action", bundle);
+
+        IvySdk.mmSetIntValue(name, 0);
+    }
+
+    /**
+     * 记录活动开启
+     *
+     * @param name
+     */
+    public static void trackActivityStart(String name, String catalog) {
+        Bundle bundle = new Bundle();
+
+        bundle.putString("label", name);
+        if (catalog != null) {
+            bundle.putString("catalog", catalog);
+        }
+        IvySdk.logIvyEvent("track_activity_start", bundle);
+    }
+
+    /**
+     * 记录玩家的活动的进程
+     *
+     * @param name
+     * @param step
+     */
+    public static void trackActivityStep(String name, int step) {
+        Bundle bundle = new Bundle();
+
+        bundle.putString("label", name);
+        bundle.putInt("value", step);
+
+        IvySdk.logIvyEvent("track_activity_step", bundle);
+    }
+
+    /**
+     * 记录玩家的特定活动结束
+     *
+     * @param name
+     */
+    public static void trackActivityEnd(String name) {
+        Bundle bundle = new Bundle();
+
+        bundle.putString("label", name);
+        IvySdk.logIvyEvent("track_activity_end", bundle);
+    }
+
+    /**
+     * 记录通用的活动内动作
+     *
+     * @param name
+     * @param catalog
+     * @param value
+     */
+    public static void trackActivityEvent(String name, String catalog, float value, boolean iap) {
+        Bundle bundle = new Bundle();
+
+        bundle.putString("label", name);
+        bundle.putString("catalog", catalog);
+        bundle.putFloat("value", value);
+        if (iap) {
+            bundle.putFloat("revenue", value);
+        }
+
+        IvySdk.logIvyEvent("track_activity_event", bundle);
+    }
+
+    public static void spendVirtualCurrency(String virtualCurrencyName, String itemid, int value, int currentValue) {
+        Bundle bundle = new Bundle();
+
+        bundle.putString("label", virtualCurrencyName);
+        bundle.putString("itemid", itemid);
+        bundle.putInt("value", value);
+
+        IvySdk.logIvyEvent("spend_virtual_currency", bundle);
+
+        if (currentValue >= 0) {
+            recordVirtualCurrency(virtualCurrencyName, currentValue);
+        }
+    }
+
+    public static void earnVirtualCurrency(String virtualCurrencyName, String itemid, int value, int currentValue) {
+        Bundle bundle = new Bundle();
+
+        bundle.putString("label", virtualCurrencyName);
+        bundle.putString("itemid", itemid);
+        bundle.putInt("value", value);
+
+        IvySdk.logIvyEvent("earn_virtual_currency", bundle);
+
+        if (currentValue >= 0) {
+            recordVirtualCurrency(virtualCurrencyName, currentValue);
+        }
+    }
+
+    public static void trackScreenStart(String screenName) {
+        Bundle bundle = new Bundle();
+
+        bundle.putString("label", screenName);
+        IvySdk.logIvyEvent("track_screen_start", bundle);
+    }
+
+    public static void trackScreenEnd(String screenName) {
+        Bundle bundle = new Bundle();
+        bundle.putString("label", screenName);
+        IvySdk.logIvyEvent("track_screen_end", bundle);
+    }
+    
+    public static boolean isXsollaSupport() {
+        return false;
+    }
+
+    public static boolean isXsollaLoggedIn() {
+
+        return false;
+    }
+
+    public static void loginXsolla() {
+
+    }
+
+    public static void logoutXsolla() {
+
+    }
+
+    public static boolean isRussia() {
         try {
-            FirebaseCrashlytics.getInstance().log(err);
+            return "ru".equals(IvySdk.getActivity().getResources().getConfiguration().locale.getCountry().toLowerCase());
         } catch (Exception e) {
-            e.printStackTrace();
+
         }
+        return false;
     }
 
-    public static void onGMSPaid(Map<String, Object> map) {
-        if (builder != null && builder.gmsPaidEventListener != null) {
-            builder.gmsPaidEventListener.onGMSPaid(map);
+    public static long getAppInstallTimestamp() {
+        try {
+            Context context = IvySdk.getActivity();
+            PackageManager packageManager = context.getPackageManager();
+            PackageInfo packageInfo = packageManager.getPackageInfo(context.getPackageName(), 4096);
+            return packageInfo.firstInstallTime;
+        } catch (Exception var4) {
+            return 0L;
         }
     }
-
-    public static void onAfInitSuccess() {
-        if (builder != null && builder.appsflyerConversionListener != null) {
-            builder.appsflyerConversionListener.onAfInitSuccess();
-        }
-    }
-
-    public static void onAfInitFailed(int i, String s) {
-        if (builder != null && builder.appsflyerConversionListener != null) {
-            builder.appsflyerConversionListener.onAfInitFailed(i, s);
-        }
-    }
-
-    public static void onAppOpenAttribution(Map<String, String> conversionData) {
-        if (builder != null && builder.appsflyerConversionListener != null) {
-            builder.appsflyerConversionListener.onAppOpenAttribution(conversionData);
-        }
-    }
-
-    public static void onConversionDataFail(String s) {
-        if (builder != null && builder.appsflyerConversionListener != null) {
-            builder.appsflyerConversionListener.onConversionDataFail(s);
-        }
-    }
-
-    public static void onConversionDataSuccess(Map<String, Object> conversionData) {
-        if (builder != null && builder.appsflyerConversionListener != null) {
-            builder.appsflyerConversionListener.onConversionDataSuccess(conversionData);
-        }
-    }
-
-    public static void onAttributionFailure(String s) {
-        if (builder != null && builder.appsflyerConversionListener != null) {
-            builder.appsflyerConversionListener.onAttributionFailure(s);
-        }
-    }
-
-//    public static boolean isXsollaSupport() {
-//        JSONObject gridData = GridManager.getGridData();
-//        if (gridData == null) {
-//            return false;
-//        }
-//        JSONObject obj = gridData.optJSONObject("xsolla");
-//        if (obj != null &&
-//                !TextUtils.isEmpty(obj.optString("projectId")) &&
-//                !TextUtils.isEmpty(obj.optString("oauthId"))) {
-//            if (DLog.isEnable()) {
-//                return true;
-//            } else {
-//                return isRussia();
-//            }
-//        }
-//        return false;
-//    }
-//
-//    public static boolean isXsollaLoggedIn() {
-//        if (IvySdk.xsollaPurchaseImpl != null) {
-//            return IvySdk.xsollaPurchaseImpl.isLogIn();
-//        } else {
-//            DLog.e("xsolla impl is null, has called onCreate??");
-//        }
-//        return false;
-//    }
-//
-//    public static void loginXsolla() {
-//        if (IvySdk.xsollaPurchaseImpl != null) {
-//            IvySdk.xsollaPurchaseImpl.login();
-//        } else {
-//            DLog.e("xsolla impl is null, has called onCreate??");
-//        }
-//    }
-//
-//    public static void logoutXsolla() {
-//        if (IvySdk.xsollaPurchaseImpl != null) {
-//            IvySdk.xsollaPurchaseImpl.logout();
-//        } else {
-//            DLog.e("xsolla impl is null, has called onCreate??");
-//        }
-//    }
-//
-//    public static boolean isRussia() {
-//        try {
-//            return "ru".equals(IvySdk.getActivity().getResources().getConfiguration().locale.getCountry().toLowerCase());
-//        } catch (Exception e) {
-//
-//        }
-//        return false;
-//    }
 
 }

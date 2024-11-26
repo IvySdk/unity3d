@@ -1,6 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    package="com.adsfall">
+    xmlns:tools="http://schemas.android.com/tools">
+
     <uses-permission android:name="android.permission.INTERNET" />
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -18,8 +18,10 @@
     <!-- 如果有视频相关的广告且使用textureView播放，请务必添加，否则黑屏 -->
     <uses-permission android:name="android.permission.WAKE_LOCK" />
 
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 
     <application
+        android:name="com.android.client.Application"
         tools:replace="android:fullBackupContent"
         android:fullBackupContent="@xml/sdk_full_backup_contents"
         android:usesCleartextTraffic="true"
@@ -27,9 +29,10 @@
         android:networkSecurityConfig="@xml/network_security_config">
 
         <uses-library android:name="org.apache.http.legacy" android:required="false" />
-
-
-
+        <property
+            android:name="android.adservices.AD_SERVICES_CONFIG"
+            android:resource="@xml/gma_ad_services_config"
+            tools:replace="android:resource" />
         <provider
             android:name="com.ivy.internal.IvyInitProvider"
             android:authorities="${applicationId}.IvyInitProvider"
@@ -49,14 +52,29 @@
             android:name="com.facebook.sdk.ClientToken"
             android:value="${facebook_clientToken}" />
 
-<!--        <provider android:authorities="com.facebook.app.FacebookContentProvider${facebook_appId}"-->
-<!--            android:name="com.facebook.FacebookContentProvider"-->
-<!--            android:exported="true" />-->
+        <provider
+            android:name="com.facebook.FacebookContentProvider"
+            android:authorities="com.facebook.app.FacebookContentProvider${facebook_appId}"
+            android:exported="true" />
 
         <meta-data android:name="din" android:value="${din}"/>
         <meta-data android:name="ivy.debug" android:value="${ivy_debug}"/>
-<!--        <activity android:name="com.ivy.internal.WebViewActivity" android:theme="@style/Theme.AppCompat.Light"/>-->
+        <meta-data
+            android:name="parfka.appToken"
+            android:value="${parfka_appToken}" />
+        <meta-data
+            android:name="applovin.sdk.key"
+            android:value="${applovin_sdk_key}" />
+        <meta-data
+            android:name="parfka.baseUrl"
+            android:value="${parfkaUrl}" />
+
+        <activity
+            android:name="com.ivy.internal.WebViewActivity"
+            android:theme="@style/Theme.AppCompat.Light" />
         <meta-data android:name="com.google.android.gms.ads.AD_MANAGER_APP" android:value="true" />
+        <!--        <meta-data android:name="aps.id" android:value="${aps_id}\"/>-->
+        <!--        <meta-data android:name="smaato.appId" android:value="${smaato_appId}\" />-->
 
 
         <meta-data
@@ -66,30 +84,52 @@
             android:name="com.google.android.gms.ads.flag.OPTIMIZE_AD_LOADING"
             android:value="true"/>
 
-<!--        <activity-->
-<!--            android:name="com.ivy.ads.promote.our.GameActivity"-->
-<!--            android:excludeFromRecents="true"-->
-<!--            android:screenOrientation="user"-->
-<!--            android:exported="false"-->
-<!--            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"/>-->
+        <activity
+            android:name="com.ivy.ads.promote.our.GameActivity"
+            android:excludeFromRecents="true"
+            android:exported="false"
+            android:screenOrientation="sensorLandscape"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
 
-<!--        <activity-->
-<!--            android:launchMode="standard"-->
-<!--            android:name="com.ivy.ads.promote.our.FullAdActivity"-->
-<!--            android:excludeFromRecents="true"-->
-<!--            android:screenOrientation="user"-->
-<!--            android:exported="false"-->
-<!--            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"/>-->
+        <activity
+            android:name="com.ivy.ads.promote.our.FullAdActivity"
+            android:excludeFromRecents="true"
+            android:exported="false"
+            android:launchMode="standard"
+            android:screenOrientation="user"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
 
-<!--        <service-->
-<!--            android:name="com.ivy.fcm.AOEFirebaseMessagingService"-->
-<!--            android:exported="false">-->
-<!--            <intent-filter>-->
-<!--                <action android:name="com.google.firebase.MESSAGING_EVENT" />-->
-<!--            </intent-filter>-->
-<!--        </service>-->
+        <service
+            android:name="com.ivy.fcm.AOEFirebaseMessagingService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
 
-<!--        <activity android:name="com.ivy.help.TiledeskActivity"  android:exported="false" android:theme="@style/Theme.HelpDeskTheme"/>-->
+        <activity
+            android:name="com.ivy.help.TiledeskActivity"
+            android:exported="false"
+            android:theme="@style/Theme.HelpDeskTheme" />
+
+        <!--        设置默认同意gdpr意见征求-->
+        <meta-data
+            android:name="google_analytics_default_allow_analytics_storage"
+            android:value="true" />
+        <meta-data
+            android:name="google_analytics_default_allow_ad_storage"
+            android:value="true" />
+        <meta-data
+            android:name="google_analytics_default_allow_ad_user_data"
+            android:value="true" />
+        <meta-data
+            android:name="google_analytics_default_allow_ad_personalization_signals"
+            android:value="true" />
+        <!--        设置默认同意gdpr意见征求-->
+        <!-- Delay app measurement until MobileAds.initialize() is called. -->
+        <meta-data
+            android:name="com.google.android.gms.ads.DELAY_APP_MEASUREMENT_INIT"
+            android:value="true" />
 
     </application>
 </manifest>

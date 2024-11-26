@@ -12,6 +12,8 @@ public class RewardedEventHandler extends BaseEventHandler {
   }
 
   private Map<String, Long> startFetchTimes = new HashMap<>();
+
+
   private long getDuration(String placementId){
     if (placementId != null && startFetchTimes.containsKey(placementId)){
       return startFetchTimes.remove(placementId);
@@ -61,6 +63,7 @@ public class RewardedEventHandler extends BaseEventHandler {
 
   public void onAdLoadSuccessCalled(BaseAdapter adapter) {
     if (adapter == null) return;
+
     long duration = System.currentTimeMillis() - getDuration(adapter.getPlacementId());
     EventParams eventParams = new EventParams();
     eventParams.putAll(adapter.getEventParams());
@@ -119,7 +122,6 @@ public class RewardedEventHandler extends BaseEventHandler {
   }
 
   public void onAdClosedCalled(BaseAdapter adapter, boolean isReward) {
-    if (isReward) {
       EventParams eventParams = new EventParams();
       eventParams.putAll(adapter.getEventParams());
       eventParams.addParam(EventParams.PARAM_PROVIDER, adapter.getName());
@@ -133,6 +135,5 @@ public class RewardedEventHandler extends BaseEventHandler {
         eventParams.addParam(EventParams.PARAM_LABEL, displayedTag);
       }
       logEvent(EventID.VIDEO_COMPLETED, eventParams, this.eventLogger);
-    }
   }
 }

@@ -6,7 +6,7 @@ import android.util.Log;
 
 import androidx.annotation.Nullable;
 
-//import com.ivy.ads.adapters.AdsfallBannerAdapter;
+import com.ivy.ads.adapters.AdsfallBannerAdapter;
 import com.ivy.ads.adapters.BannerAdapter;
 import com.ivy.ads.adapters.BaseAdapter;
 import com.ivy.ads.configuration.BannerConfig;
@@ -210,40 +210,40 @@ public class BannerAdRoller {
         });
     }
 
-//    private void showOfflineBanner(final Activity activity) {
-//        Logger.debug(TAG, "showOfflineBanner called");
-//        boolean prefillbanner = GridManager.getGridData().optBoolean("preFillBanner", true);
-//        if (!prefillbanner) {
-//            return;
-//        }
-//        final AdsfallBannerAdapter offlineBannerAdapter = (AdsfallBannerAdapter) this.mAdManager.getAdProvidersMap().get("adsfall");
-//        if (offlineBannerAdapter != null) {
-//            if (!offlineBannerAdapter.initialized) {
-//                offlineBannerAdapter.setPromoteConfig(this.mAdManager.getPromiteConfig());
-//                offlineBannerAdapter.resetOperationCount();
-//                offlineBannerAdapter.setEventHandler(this.mAdManager.getEventHandler());
-//                offlineBannerAdapter.markReady();
-//                offlineBannerAdapter.initialized = true;
-//            }
-//            this.mUiHandler.post(new Runnable() {
-//                public void run() {
-//                    if (offlineBannerAdapter != null) {
-//                        offlineBannerAdapter.fetch(activity, new AdSelectorCallback() {
-//                            public void adLoadSuccess(BaseAdapter adapter) {
-//                                Logger.debug(BannerAdRoller.TAG, "Offline banner fetched. Now showing it");
-//                                BannerAdRoller.this.setPreviousAdapter(offlineBannerAdapter);
-//                                BannerAdRoller.this.notifyBannerIsFetched(offlineBannerAdapter, activity, false, false);
-//                            }
-//
-//                            public void adLoadFailed(BaseAdapter adapter) {
-//                                Logger.debug(BannerAdRoller.TAG, "Offline banner fetch failed. Probably missing creative");
-//                            }
-//                        });
-//                    }
-//                }
-//            });
-//        }
-//    }
+    private void showOfflineBanner(final Activity activity) {
+        Logger.debug(TAG, "showOfflineBanner called");
+        boolean prefillbanner = GridManager.getGridData().optBoolean("preFillBanner", true);
+        if (!prefillbanner) {
+            return;
+        }
+        final AdsfallBannerAdapter offlineBannerAdapter = (AdsfallBannerAdapter) this.mAdManager.getAdProvidersMap().get("adsfall");
+        if (offlineBannerAdapter != null) {
+            if (!offlineBannerAdapter.initialized) {
+                offlineBannerAdapter.setPromoteConfig(this.mAdManager.getPromiteConfig());
+                offlineBannerAdapter.resetOperationCount();
+                offlineBannerAdapter.setEventHandler(this.mAdManager.getEventHandler());
+                offlineBannerAdapter.markReady();
+                offlineBannerAdapter.initialized = true;
+            }
+            this.mUiHandler.post(new Runnable() {
+                public void run() {
+                    if (offlineBannerAdapter != null) {
+                        offlineBannerAdapter.fetch(activity, new AdSelectorCallback() {
+                            public void adLoadSuccess(BaseAdapter adapter) {
+                                Logger.debug(BannerAdRoller.TAG, "Offline banner fetched. Now showing it");
+                                BannerAdRoller.this.setPreviousAdapter(offlineBannerAdapter);
+                                BannerAdRoller.this.notifyBannerIsFetched(offlineBannerAdapter, activity, false, false);
+                            }
+
+                            public void adLoadFailed(BaseAdapter adapter) {
+                                Logger.debug(BannerAdRoller.TAG, "Offline banner fetch failed. Probably missing creative");
+                            }
+                        });
+                    }
+                }
+            });
+        }
+    }
 
 
     private int getAdRefreshIntervalMillis() {

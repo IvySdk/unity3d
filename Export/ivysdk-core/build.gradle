@@ -1,35 +1,77 @@
 apply plugin: 'com.android.library'
 
 
-android {
-    compileSdkVersion 32
 
-    buildToolsVersion = '30.0.3'
+//apply plugin: 'maven-publish'
+//publishing {
+//    publications {
+//        release(MavenPublication){
+//            groupId='com.adsfall'
+//            artifactId = 'adsfallsdk'
+//                version = '0.9.70987-td1' // 0.9.70986 测试af logAdRevenue
+//                afterEvaluate {
+//                    from components.release
+//                }
+//        }
+//    }
+//    repositories {
+//        maven {
+//            allowInsecureProtocol true
+//            url 'http://10.80.1.9:8081/repository/maven-android-release/'
+//            credentials {
+//                it.username = "android"
+//                it.password = "abc,123"
+//            }
+//        }
+//    }
+//}
+
+
+
+android {
+    compileSdkVersion 34
+
+    buildToolsVersion = '34.0.0'
 
     defaultConfig {
-        minSdkVersion 16
-        targetSdkVersion 32
+        minSdkVersion 21
+        targetSdkVersion 34
         versionCode 1
         versionName "1.0"
+        consumerProguardFiles 'proguard-rules.pro'
     }
 
     buildTypes {
         release {
-            minifyEnabled true
+            minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
 
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
+//    compileOptions {
+//        sourceCompatibility JavaVersion.VERSION_1_8
+//        targetCompatibility JavaVersion.VERSION_1_8
+//    }
 
 
     lintOptions {
         abortOnError true
     }
+    buildFeatures {
+        buildConfig = true
+        aidl = true
+    }
+    namespace "com.adsfall"
 
+    publishing {
+        singleVariant('release') {
+            withSourcesJar()
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
 }
 
 dependencies {
@@ -38,72 +80,75 @@ dependencies {
 
 //    implementation project(':parfka')
 
-  //  implementation 'com.parfka:parfka:3.4.0'
+    implementation 'com.parfka:parfka:6.0.2'
 
-    implementation 'com.squareup.okhttp3:okhttp:3.12.12'
-    implementation 'com.squareup.okio:okio:1.17.5'
+//    implementation 'com.squareup.okhttp3:okhttp:3.12.12'
+//    implementation 'com.squareup.okio:okio:1.17.5'
+
+    implementation(platform("com.squareup.okhttp3:okhttp-bom:4.12.0"))
+    // define any required OkHttp artifacts without version
+    implementation("com.squareup.okhttp3:okhttp")
+    implementation("com.squareup.okhttp3:logging-interceptor")
+
     implementation 'com.tencent:mmkv:1.2.14'
 
-//    implementation 'com.android.billingclient:billing:6.0.1'
+    implementation 'com.android.billingclient:billing:6.0.1'
 
     implementation 'androidx.multidex:multidex:2.0.1'
-    implementation "androidx.work:work-runtime:2.7.1"
+    //implementation "androidx.work:work-runtime-ktx:2.8.1"
 
-    implementation platform('com.google.firebase:firebase-bom:31.5.0')
+    implementation platform('com.google.firebase:firebase-bom:32.7.2')
     implementation 'com.google.firebase:firebase-analytics'
     implementation 'com.google.firebase:firebase-config'
-//    implementation 'com.google.firebase:firebase-messaging'
-//    implementation 'com.google.firebase:firebase-firestore'
-//    implementation 'com.google.firebase:firebase-auth'
-//    implementation 'com.google.firebase:firebase-functions'
-//    implementation 'com.google.firebase:firebase-inappmessaging'
-//    implementation 'com.google.firebase:firebase-database'
-    implementation 'com.google.firebase:firebase-crashlytics'
+    implementation 'com.google.firebase:firebase-messaging'
+    implementation 'com.google.firebase:firebase-firestore'
+    implementation 'com.google.firebase:firebase-auth'
+    implementation 'com.google.firebase:firebase-functions'
+    implementation 'com.google.firebase:firebase-inappmessaging'
+    implementation 'com.google.firebase:firebase-database'
+
+//    implementation 'com.google.firebase:firebase-crashlytics:18.6.3'
 
     implementation 'com.alibaba:fastjson:1.1.72.android'
 
     // Google Admob
-    implementation "com.google.android.gms:play-services-ads:22.0.0"
+    implementation "com.google.android.gms:play-services-ads:23.2.0"
 
     // Ad sdk
-    implementation 'com.unity3d.ads:unity-ads:4.6.1'
+    implementation 'com.unity3d.ads:unity-ads:4.12.1'
 
-    implementation 'com.google.ads.mediation:facebook:6.14.0.0'
-    implementation 'com.google.ads.mediation:unity:4.6.1.1'
-    implementation 'com.google.ads.mediation:applovin:11.9.0.0'
-    implementation 'com.yandex.android:mobileads:5.8.0'
+    implementation 'com.google.ads.mediation:facebook:6.17.0.0'
+    implementation 'com.google.ads.mediation:unity:4.12.1.0'
+    implementation 'com.google.ads.mediation:applovin:12.6.0.0'
+    //noinspection MobileAdsSdkOutdatedVersion
+    implementation 'com.yandex.android:mobileads:6.3.0'
 
-    implementation 'com.appsflyer:af-android-sdk:6.12.1'
+    implementation 'com.appsflyer:af-android-sdk:6.15.0'
     implementation "com.android.installreferrer:installreferrer:2.2"
     implementation "com.miui.referrer:homereferrer:1.0.0.6"
+//    implementation 'com.appsflyer:adrevenue:6.9.0'
+//    implementation 'com.appsflyer:oaid:6.9.0'
+//    implementation 'com.appsflyer:purchase-connector:2.0.0'
 
     // google sign in
-//    implementation 'com.google.android.gms:play-services-auth:20.3.0'
-//    // google games service
-//    implementation 'com.google.android.gms:play-services-games:23.0.0'
+    implementation 'com.google.android.gms:play-services-auth:20.3.0'
+    // google games service
+    implementation 'com.google.android.gms:play-services-games:23.0.0'
 
     implementation 'com.facebook.android:facebook-login:14.1.1'
-//    implementation 'com.facebook.android:facebook-share:14.1.1'
+    implementation 'com.facebook.android:facebook-share:14.1.1'
 
-//    implementation 'com.smaato.android.sdk:admob-banner-adapter:22.1.1'
-//    implementation 'com.pubmatic.sdk:openwrap:2.7.1'
     implementation 'com.google.android.gms:play-services-ads-identifier:18.0.1'
-//    implementation 'com.google.ads.mediation:gadopenwrapadapter:1.2.0'
 
-//    implementation 'com.my.target:mytarget-sdk:5.16.3'
+    implementation 'net.aihelp:android-aihelp-aar:4.3.+'
 
-//    implementation 'com.amazon.android:aps-sdk:9.5.7'
- //   implementation ('com.ivy.adsdk.mediation:admob-aps:8.1.12-test4')
+    implementation 'com.google.android.ump:user-messaging-platform:2.2.0'
 
-//    implementation 'net.aihelp:android-aihelp-aar:4.3.+'
+//    implementation 'com.google.android.play:core:1.8.0'
+    implementation 'com.google.android.play:review:2.0.1'
 
-    implementation 'com.google.android.ump:user-messaging-platform:2.1.0'
+//    implementation 'com.google.android.play:grouping:1.0.0'
 
-//    implementation 'com.xsolla.android:login:6.0.4'
-//    implementation 'com.xsolla.android:store:2.5.3'
-//    implementation 'com.xsolla.android:payments:1.1.0'
-//    implementation 'com.xsolla.android:inventory:2.0.3'
-//    implementation 'com.xsolla.android:subscriptions:0.0.2'
 
 }
 

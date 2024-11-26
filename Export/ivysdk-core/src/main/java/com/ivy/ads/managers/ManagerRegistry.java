@@ -50,7 +50,7 @@ public class ManagerRegistry implements GridManager.AdProvidersCallback {
     CommonAdManager rewardedAds = new RewardedAdManager(activity, configurationParser, rewardedWaterfallAdSelector, adProvidersMap, uiHandler, HandlerFactory.createHandler(RewardedAdManager.class), rewardedEventHandler, adSummaryEventHandler);
     CommonAdManager bannerAds = new BannerAdManager(activity, configurationParser, bannerWaterfallAdSelector, adProvidersMap, uiHandler, HandlerFactory.createHandler(BannerAdManager.class), bannerEventHandler, adSummaryEventHandler);
     CommonAdManager nativeAds = new NativeAdManager(activity, configurationParser, nativeAdWaterfallAdSelector, adProvidersMap, uiHandler, HandlerFactory.createHandler(NativeAdManager.class), nativeEventHandler, adSummaryEventHandler);
-//    CommonAdManager promoteAdManager = new PromoteAdManager(activity, configurationParser, null, adProvidersMap, uiHandler, HandlerFactory.createHandler(PromoteAdManager.class), null, adSummaryEventHandler);
+    CommonAdManager promoteAdManager = new PromoteAdManager(activity, configurationParser, null, adProvidersMap, uiHandler, HandlerFactory.createHandler(PromoteAdManager.class), null, adSummaryEventHandler);
 
     CommonAdManager rewardedInterstitialAds = new RewardedInterstitialAdManager(activity, configurationParser, rewardInterstitialAdSelector, adProvidersMap, uiHandler, HandlerFactory.createHandler(RewardedInterstitialAdManager.class), rewardInterstitialEventHandler, adSummaryEventHandler);
 
@@ -59,7 +59,7 @@ public class ManagerRegistry implements GridManager.AdProvidersCallback {
     this.mManagerRegistry.put(IvyAdType.INTERSTITIAL, nonRewardedAds);
     this.mManagerRegistry.put(IvyAdType.REWARDED, rewardedAds);
     this.mManagerRegistry.put(IvyAdType.NATIVE_AD, nativeAds);
-//    this.mManagerRegistry.put(IvyAdType.PROMOTE, promoteAdManager);
+    this.mManagerRegistry.put(IvyAdType.PROMOTE, promoteAdManager);
     this.mManagerRegistry.put(IvyAdType.REWARDED_INTERSTITIAL, rewardedInterstitialAds);
   }
 

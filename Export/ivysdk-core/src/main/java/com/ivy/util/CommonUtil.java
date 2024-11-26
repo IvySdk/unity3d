@@ -4,11 +4,6 @@ import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
-import android.net.ConnectivityManager;
-import android.net.Network;
-import android.net.NetworkCapabilities;
-import android.net.NetworkInfo;
-import android.os.Build;
 import android.util.Base64;
 
 import java.security.MessageDigest;
@@ -102,72 +97,4 @@ public final class CommonUtil {
       return null;
     }
   }
-
-
-  public static int getConnectivityType(Context context) {
-    try {
-      ConnectivityManager cm = (ConnectivityManager)context.getSystemService("connectivity");
-      if (cm == null) {
-        return -1;
-      }
-
-      if (Build.VERSION.SDK_INT < 23) {
-        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
-        return activeNetwork.getType();
-      }
-
-      Network activeNetwork = cm.getActiveNetwork();
-      if (activeNetwork == null) {
-        return -1;
-      }
-
-      NetworkCapabilities activeNetworkCapabilities = cm.getNetworkCapabilities(activeNetwork);
-      if (activeNetworkCapabilities == null) {
-        return -1;
-      }
-
-      if (activeNetworkCapabilities.hasTransport(1)) {
-        return 1;
-      }
-
-      if (activeNetworkCapabilities.hasTransport(0)) {
-        return 0;
-      }
-
-      if (activeNetworkCapabilities.hasTransport(3)) {
-        return 3;
-      }
-
-      if (activeNetworkCapabilities.hasTransport(4)) {
-        return 4;
-      }
-
-      if (activeNetworkCapabilities.hasTransport(2)) {
-        return 2;
-      }
-
-      if (Build.VERSION.SDK_INT < 26) {
-        return -1;
-      }
-
-      if (activeNetworkCapabilities.hasTransport(5)) {
-        return 5;
-      }
-
-      if (Build.VERSION.SDK_INT < 27) {
-        return -1;
-      }
-
-      if (activeNetworkCapabilities.hasTransport(6)) {
-        return 6;
-      }
-    } catch (Exception var4) {
-     // getLogger().warn("Couldn't read connectivity type (%s)", new Object[]{var4.getMessage()});
-    }
-
-    return -1;
-  }
-
-
-
 }

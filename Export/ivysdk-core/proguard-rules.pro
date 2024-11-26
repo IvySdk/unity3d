@@ -20,6 +20,7 @@
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
 
+
 -keepattributes Signature
 -keepattributes *Annotation*
 -keepattributes EnclosingMethod
@@ -131,18 +132,6 @@
 -dontwarn com.androidquery.**
 -dontwarn com.ss.android.**
 
--assumenosideeffects class android.util.Log {
-    public static *** d(...);
-    public static *** v(...);
-    public static *** i(...);
-}
-
--assumenosideeffects class com.ivy.util.Logger {
-    public static *** debug(...);
-    public static *** info(...);
-    public static *** verbose(...);
-}
-
 -dontwarn com.smaato.soma.SomaUnityPlugin*
 -dontwarn com.millennialmedia**
 -dontwarn com.facebook.**
@@ -171,6 +160,7 @@ public static final ** CREATOR;
 -keep class com.inmobi.** { *; }
 -dontwarn com.inmobi.**
 -keep public class com.google.android.gms.**
+-keep public class com.google.android.gms.** { public protected *; }
 -dontwarn com.google.android.gms.**
 -dontwarn com.squareup.picasso.**
 -keep class com.google.android.gms.ads.identifier.AdvertisingIdClient{public *;}
@@ -243,6 +233,11 @@ public static final ** CREATOR;
 }
 
 -keep class com.appsflyer.** { *; }
+-keep class kotlin.jvm.internal.** { *; }
+-keep public class com.android.installreferrer.** { *; }
+-keep public class com.miui.referrer.** {*;}
+-keep class kotlin.jvm.internal.Intrinsics{ *; }
+-keep class kotlin.collections.**{ *; }
 
 -keep class com.google.android.gms.** {*; }
 -keep class com.android.billingclient.** {*; }
@@ -307,8 +302,43 @@ public static final ** CREATOR;
 -keep class com.mbridge.msdk.foundation.tools.FastKV$Builder{*;}
 
 -keep class net.aihelp.** {*;}
--keep public class com.android.installreferrer.** { *; }
--keep public class com.miui.referrer.** {*;}
 
--keepattributes SourceFile,LineNumberTable
--keep public class * extends java.lang.Exception
+
+-keep class com.yandex.div.** { *; }
+-keep class com.yandex.div2.** { *; }
+-keep class com.yandex.** { *; }
+
+#-keep class com.ivy.xsolla.** { *; }
+-keep class com.xsolla.** { *; }
+
+#-keep class com.google.android.play.** { *; }
+#-keep class com.google.android.play.core.** { *; }
+#-keep class com.google.android.play.core.assetpacks.AssetPackManager { *; }
+
+#-keep class com.google.android.play.assetpacks.** { *; }
+#-keep class com.google.android.play.core.** { *; }
+#-keep interface com.google.android.play.assetpacks.** { *; }
+#-keep interface com.google.android.play.core.** { *; }
+#
+## Google Play Core
+#-keep class com.google.android.play.core.** { *; }
+#
+## Tencent SDK
+#-keep class com.tencent.mm.opensdk.** { *; }
+#-keep class com.tencent.tauth.** { *; }
+#
+## Kotlinx Serialization
+#-keep class kotlinx.parcelize.** { *; }
+#
+## BouncyCastle
+#-keep class org.bouncycastle.jsse.** { *; }
+#
+## Conscrypt
+#-keep class org.conscrypt.** { *; }
+#
+## OpenJSSE
+#-keep class org.openjsse.** { *; }
+
+#-keep class com.ivy.firestore.**{*;}
+#-keep class com.ivy.device.** {*;}
+

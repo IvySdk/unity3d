@@ -6,8 +6,10 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
 
-import com.android.client.AndroidSdk;
+import com.appsflyer.MediationNetwork;
+import com.google.android.gms.ads.ResponseInfo;
 import com.google.firebase.analytics.FirebaseAnalytics;
+import com.ivy.IvySdk;
 import com.ivy.ads.events.BaseEventHandler;
 import com.ivy.ads.events.EventID;
 import com.ivy.ads.interfaces.Adapter;
@@ -19,6 +21,10 @@ import com.ivy.ads.selectors.AdSelectorCallback;
 import com.ivy.ads.selectors.AdapterSkipReason;
 import com.ivy.ads.summary.AdSummaryEventHandler;
 import com.ivy.ads.utils.HandlerFactory;
+import com.ivy.device.DeviceUtil;
+import com.ivy.networks.grid.GridManager;
+import com.ivy.networks.grid.PAM;
+import com.ivy.player.Player;
 import com.ivy.util.Logger;
 
 import org.json.JSONArray;
@@ -39,7 +45,7 @@ public abstract class BaseAdapter<T extends BaseAdapter.GridParams> implements A
     protected long mShowStartTime;
     private int adProviderAgeLimit = -1;
     private String mCoppaDynamic = null;
-    private BaseEventHandler mEventHandler;
+    protected BaseEventHandler mEventHandler;
     private AdSelectorCallback mFetchCallback;
     private int mGridIndex;
     private GridParams mGridParams;
@@ -129,6 +135,12 @@ public abstract class BaseAdapter<T extends BaseAdapter.GridParams> implements A
 
     private String displayedTag = null;
 
+    protected Bundle adBundle = null;
+
+    protected PAM lastPAM = null;
+
+    protected long adStartTime = -1;
+
     public int getCaculatedWeight() {
         return this.mSelectedWeight;
     }
@@ -145,7 +157,7 @@ public abstract class BaseAdapter<T extends BaseAdapter.GridParams> implements A
 
         this.globalAdapterIndex = ADAPTER_GLOBAL_INDEX++;
         // restore the performance data from preference
-
+        initPAM();
         resetPerformance();
     }
 
@@ -499,6 +511,93 @@ public abstract class BaseAdapter<T extends BaseAdapter.GridParams> implements A
         }
     }
 
+    public void onGMSPaidTrackEvent(String ad_network, String ad_format, String placement, String adunit, String currencyCode, int precisionType, float revenue) throws Exception {
+        if (mAdSummaryEventHandler != null) {
+            mAdSummaryEventHandler.onAdPaid(mAdType, mGridName, revenue);
+        }
+
+        // log this single impresssion
+        Bundle bundle = new Bundle();
+      bundle.putString("ad_network", ad_network);
+      bundle.putString("ad_placement", ad_network);
+      bundle.putString("ad_network", ad_network);
+        bundle.putString("ad_format", ad_format);
+        bundle.putString("placement", placement);
+        bundle.putString("ad_unit", adunit);
+        bundle.putString("adunit", adunit);
+        bundle.putDouble(FirebaseAnalytics.Param.VALUE, revenue);
+        bundle.putString(FirebaseAnalytics.Param.CURRENCY, currencyCode);
+        bundle.putInt("precision", precisionType);
+//      if (getMediation() != null) {
+//        bundle.putString("mediation", getMediation());
+//      }
+        if (adBundle != null) {
+            bundle.putAll(adBundle);
+        }
+
+        mEventHandler.getEventLogger().logToFirebase(EventID.GMS_AD_IMPRESSION_PING, bundle);
+        mEventHandler.getEventLogger().parfkaLog(EventID.GMS_AD_IMPRESSION_PING, bundle);
+//        mEventHandler.getEventLogger().logToAppsflyer();
+//        mEventHandler.getEventLogger().afAdImpressionPing(bundle, revenue);
+
+        Map<String, Object> afParams = new HashMap<>();
+        afParams.put("country", Locale.getDefault().getCountry());
+        afParams.put("ad_unit", adunit);
+        afParams.put("ad_type", ad_format);
+        afParams.put("placement", ad_format);
+        afParams.put("ad_format", ad_format);
+        String mediation = getMediation();
+        if (mediation == null) {
+            mediation = ad_network;
+        }
+        afParams.put("mediation", mediation);
+        afParams.put("ad_network", "admob");
+        mEventHandler.getEventLogger().afAdImpressionPing(mediation.toLowerCase(), MediationNetwork.GOOGLE_ADMOB, currencyCode, revenue, afParams);
+
+        Bundle devices = DeviceUtil.getInstance().getData();
+        if (devices != null) {
+            devices.putString("ad_format", ad_format);
+            devices.putString("placement", placement);
+            devices.putString("ad_unit", adunit);
+            devices.putDouble(FirebaseAnalytics.Param.VALUE, revenue);
+            devices.putString(FirebaseAnalytics.Param.CURRENCY, currencyCode);
+            devices.putInt("precision", precisionType);
+            if (adBundle != null && adBundle.containsKey("ad_network")) {
+                String network = adBundle.getString("ad_network", ad_network);
+                devices.putString("ad_network", network);
+            } else {
+                devices.putString("ad_network", ad_network);
+            }
+            mEventHandler.getEventLogger().logToFirebase("Memory_Info", devices);
+        }
+
+
+        if ("banner".equals(ad_format)) {
+            Bundle pam = new Bundle();
+            pam.putDouble("Banner_Ad_Impression_Value", revenue * 1000);
+            mEventHandler.getEventLogger().logToFirebase(EventID.GMS_PAM_BANNER, pam);
+        } else if ("interstitial".equals(ad_format)) {
+            Bundle pam = new Bundle();
+            pam.putDouble("Interstitial_Ad_Impression_Value", revenue * 1000);
+            mEventHandler.getEventLogger().logToFirebase(EventID.GMS_PAM_INTERSTITIAL, pam);
+        } else if ("rewarded".equals(ad_format)) {
+            Bundle pam = new Bundle();
+            pam.putDouble("Rewarded_Ad_Impression_Value", revenue * 1000);
+            mEventHandler.getEventLogger().logToFirebase(EventID.GMS_PAM_REWARDED, pam);
+        }
+    }
+
+    protected void onPAMEvent(long valueMacros) {
+        double lastLTV = valueMacros / 1000000.0f;
+        lastPAM = GridManager.getPAM(mAdType, lastLTV);
+        IvySdk.mmSetDoubleValue("_pam_" + mAdType.name(), lastLTV);
+    }
+
+    protected void initPAM() {
+        double lastLTV = IvySdk.mmGetDoubleValue("_pam_" + mAdType.name(), 0d);
+        lastPAM = GridManager.getPAM(mAdType, lastLTV);
+    }
+
     public void onGmsPaidEvent(String ad_network, String ad_format, String placement, String adunit, String currencyCode, int precisionType, long valueMacros) {
         if (this.mEventHandler == null) {
             return;
@@ -509,46 +608,7 @@ public abstract class BaseAdapter<T extends BaseAdapter.GridParams> implements A
                 return;
             }
 
-            if (mAdSummaryEventHandler != null) {
-                mAdSummaryEventHandler.onAdPaid(mAdType, mGridName, (float) revenue);
-            }
-
-            // log this single impresssion
-            Bundle bundle = new Bundle();
-            bundle.putString("ad_network", ad_network);
-            bundle.putString("ad_format", ad_format);
-            bundle.putString("placement", placement);
-            bundle.putString("adunit", adunit);
-            bundle.putDouble(FirebaseAnalytics.Param.VALUE, revenue);
-            bundle.putString(FirebaseAnalytics.Param.CURRENCY, currencyCode);
-            bundle.putInt("precision", precisionType);
-            if (getMediation() != null) {
-                bundle.putString("mediation", getNetworkName());
-            }
-            mEventHandler.getEventLogger().logToFirebase(EventID.GMS_AD_IMPRESSION_PING, bundle);
-            mEventHandler.getEventLogger().parfkaLog(EventID.GMS_AD_IMPRESSION_PING, bundle);
-            mEventHandler.getEventLogger().afAdImpressionPing(bundle, revenue);
-
-            Map<String, Object> map = new HashMap<>();
-            for (String s : bundle.keySet()) {
-                map.put(s, bundle.get(s));
-            }
-            AndroidSdk.onGMSPaid(map);
-
-            if ("banner".equals(ad_format)) {
-                Bundle pam = new Bundle();
-                pam.putDouble("Banner_Ad_Impression_Value", revenue * 1000);
-                mEventHandler.getEventLogger().logToFirebase(EventID.GMS_PAM_BANNER, pam);
-            } else if ("interstitial".equals(ad_format)) {
-                Bundle pam = new Bundle();
-                pam.putDouble("Interstitial_Ad_Impression_Value", revenue * 1000);
-                mEventHandler.getEventLogger().logToFirebase(EventID.GMS_PAM_INTERSTITIAL, pam);
-            } else if ("rewarded".equals(ad_format)) {
-                Bundle pam = new Bundle();
-                pam.putDouble("Rewarded_Ad_Impression_Value", revenue * 1000);
-                mEventHandler.getEventLogger().logToFirebase(EventID.GMS_PAM_REWARDED, pam);
-            }
-
+            onGMSPaidTrackEvent(ad_network, ad_format, placement, adunit, currencyCode, precisionType, (float) revenue);
         } catch (Throwable t) {
             // ignore
         }
@@ -580,6 +640,143 @@ public abstract class BaseAdapter<T extends BaseAdapter.GridParams> implements A
                 BaseAdapter.this.mEventHandler.onAdLoadSuccessCalled(BaseAdapter.this);
             }
         });
+    }
+
+    protected void onPAMRequest(String adFormat){
+        try {
+            Bundle bundle = new Bundle();
+            bundle.putString("flow_seq", "03");
+            bundle.putString("ad_format", adFormat);
+            Player player = IvySdk.getPlayer();
+            if (player != null) {
+                bundle.putString("user_level", player.user_level);
+                bundle.putString("current_level", player.current_level);
+            }
+            mEventHandler.getEventLogger().logToFirebase("admob_ad_request", bundle);
+        } catch (Exception e) {
+        }
+    }
+
+    private String adSource;
+    private String adResponseId;
+    protected void onPAMAdLoad(ResponseInfo responseInfo, String adFormat, String adUnit, String errorCode){
+
+        try {
+            Bundle bundle = new Bundle();
+            bundle.putString("flow_seq", "04");
+            if (responseInfo != null) {
+                if (responseInfo.getLoadedAdapterResponseInfo() != null) {
+                    adSource = responseInfo.getLoadedAdapterResponseInfo().getAdSourceName();
+                    bundle.putString("ad_source", adSource);
+                }
+                adResponseId = responseInfo.getResponseId();
+                bundle.putString("ad_response_id", adResponseId);
+            }
+            bundle.putString("ad_placement", "default");
+            bundle.putString("ad_format", adFormat);
+            bundle.putString("ad_unit", adUnit);
+            bundle.putString("error_code", errorCode);
+            if (responseInfo != null && responseInfo.getLoadedAdapterResponseInfo() != null) {
+                bundle.putDouble("ad_response_latency", responseInfo.getLoadedAdapterResponseInfo().getLatencyMillis());
+            }
+            Player player = IvySdk.getPlayer();
+            if (player != null) {
+                bundle.putString("user_level", player.user_level);
+                bundle.putString("current_level", player.current_level);
+            }
+            mEventHandler.getEventLogger().logToFirebase("admob_ad_load", bundle);
+        } catch (Exception e) {
+        }
+    }
+
+    protected void onPAMAdShow(String adFormat, String adUnit, String errorCode){
+        adStartTime = System.currentTimeMillis();
+        try {
+            Bundle bundle = new Bundle();
+            bundle.putString("flow_seq", "10");
+            if (adSource != null) {
+                bundle.putString("ad_source", adSource);
+            }
+            bundle.putString("ad_placement", "default");
+            bundle.putString("ad_format", adFormat);
+            bundle.putString("ad_unit", adUnit);
+            bundle.putString("error_code", errorCode);
+            mEventHandler.getEventLogger().logToFirebase("admob_ad_show", bundle);
+        } catch (Exception e) {
+        }
+    }
+
+    protected void onPAMAdClick(String adFormat, String adUnit){
+        try {
+            Bundle bundle = new Bundle();
+            bundle.putString("flow_seq", "11");
+            if (adSource != null) {
+                bundle.putString("ad_source", adSource);
+            }
+            if (adResponseId != null) {
+                bundle.putString("ad_response_id", adResponseId);
+            }
+            bundle.putString("ad_placement", "default");
+            bundle.putString("ad_format", adFormat);
+            bundle.putString("ad_unit", adUnit);
+            Player player = IvySdk.getPlayer();
+            if (player != null) {
+                bundle.putString("user_level", player.user_level);
+                bundle.putString("current_level", player.current_level);
+            }
+            mEventHandler.getEventLogger().logToFirebase("admob_ad_click", bundle);
+        } catch (Exception e) {
+        }
+    }
+
+    protected void onPAMAdClose(String adFormat, String adUnit){
+        long duration = System.currentTimeMillis() - adStartTime;
+        try {
+            Bundle bundle = new Bundle();
+            bundle.putString("flow_seq", "12");
+            if (adSource != null) {
+                bundle.putString("ad_source", adSource);
+            }
+            if (adResponseId != null) {
+                bundle.putString("ad_response_id", adResponseId);
+            }
+            bundle.putString("ad_placement", "default");
+            bundle.putString("ad_format", adFormat);
+            bundle.putString("ad_unit", adUnit);
+            bundle.putDouble("ad_duration", duration);
+            Player player = IvySdk.getPlayer();
+            if (player != null) {
+                bundle.putString("user_level", player.user_level);
+                bundle.putString("current_level", player.current_level);
+            }
+            mEventHandler.getEventLogger().logToFirebase("admob_ad_close", bundle);
+        } catch (Exception e) {
+        }
+    }
+
+    protected void onPAMAdRewarded(String adFormat, String adUnit, double value, String currency){
+        try {
+            Bundle bundle = new Bundle();
+            bundle.putString("flow_seq", "13");
+            if (adSource != null) {
+                bundle.putString("ad_source", adSource);
+            }
+            if (adResponseId != null) {
+                bundle.putString("ad_response_id", adResponseId);
+            }
+            bundle.putString("ad_placement", "default");
+            bundle.putString("ad_format", adFormat);
+            bundle.putString("ad_unit", adUnit);
+            bundle.putDouble("value", value);
+            bundle.putString("currency", currency);
+            Player player = IvySdk.getPlayer();
+            if (player != null) {
+                bundle.putString("user_level", player.user_level);
+                bundle.putString("current_level", player.current_level);
+            }
+            mEventHandler.getEventLogger().logToFirebase("admob_reward_earn", bundle);
+        } catch (Exception e) {
+        }
     }
 
     private String lastAdLoadFailedReason = null;

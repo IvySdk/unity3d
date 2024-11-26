@@ -41,6 +41,7 @@ public class FirebaseTracker implements EventTrackerProvider {
     @Override
     public void logEvent(String eventName, Bundle bundle) {
         if (suppress) {
+            Log.e("firebase-event", "suppress::" + eventName);
             return;
         }
         eventName = eventName.replaceAll("-", "_");
@@ -49,16 +50,26 @@ public class FirebaseTracker implements EventTrackerProvider {
         try {
             netWorkStatus = IvyUtils.isOnline(IvySdk.getActivity().getApplicationContext());
         } catch (Exception e) {
-
         }
         if (bundle == null) {
             bundle = new Bundle();
         } else {
 
         }
-        bundle.putBoolean("sdkNetStatus", netWorkStatus);
+        bundle.putString("sdkNetStatus", netWorkStatus ? "1" : "0");
         mFirebaseAnalytics.logEvent(eventName, bundle);
 
+        try {
+            if (IvySdk.isDebugMode()) {
+                JSONObject data = new JSONObject();
+                for (String s : bundle.keySet()) {
+                    data.put(s, bundle.getString(s, "err"));
+                }
+                Log.e("firebase-event", eventName + ":" + data.toString());
+            }
+        } catch (Exception e) {
+            Log.e("firebase-event", "error---" + e.getMessage());
+        }
     }
 
     public void setUserProperty(String key, String value) {

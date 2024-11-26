@@ -1,4 +1,4 @@
-//package com.ivy.AIHelp;
-//
-//public class IAIHelp {
-//}
+package com.ivy.AIHelp;
+
+public class IAIHelp {
+}

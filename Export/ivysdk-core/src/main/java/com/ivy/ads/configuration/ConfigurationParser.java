@@ -25,9 +25,9 @@ public class ConfigurationParser {
   }
 
   public static void clearPromoteConfigCache() {
-//    if (configCache.containsKey(PromoteConfig.class)) {
-//      configCache.remove(PromoteConfig.class);
-//    }
+    if (configCache.containsKey(PromoteConfig.class)) {
+      configCache.remove(PromoteConfig.class);
+    }
   }
 
   @NonNull

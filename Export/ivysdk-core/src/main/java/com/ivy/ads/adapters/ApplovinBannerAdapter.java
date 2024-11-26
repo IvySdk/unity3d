@@ -111,7 +111,7 @@ public class ApplovinBannerAdapter extends BannerAdapter<BannerAdapter.GridParam
         public String zoneId = "";
 
         public GridParams fromJSON(JSONObject jsonObject) {
-            this.sdkKey = jsonObject.optString("sdkkey");
+            this.sdkKey = jsonObject.optString("sdkKey");
             this.zoneId = jsonObject.optString("zoneId");
             return this;
         }

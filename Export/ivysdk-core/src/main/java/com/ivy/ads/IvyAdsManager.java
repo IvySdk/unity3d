@@ -7,6 +7,7 @@ import android.content.DialogInterface;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Handler;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -16,6 +17,8 @@ import android.widget.Toast;
 
 import com.adsfall.R;
 import com.ivy.IvySdk;
+import com.ivy.ads.adapters.AdmobSplashBannerAdapter;
+import com.ivy.ads.configuration.PromoteConfig;
 import com.ivy.ads.events.EventID;
 import com.ivy.ads.events.EventParams;
 import com.ivy.ads.interfaces.IvyAdCallbacks;
@@ -27,19 +30,23 @@ import com.ivy.ads.interfaces.IvyNativeAd;
 import com.ivy.ads.interfaces.IvyPromote;
 import com.ivy.ads.interfaces.IvySoftCallbacks;
 import com.ivy.ads.managers.CommonAdManager;
+import com.ivy.ads.managers.PromoteAdManager;
 import com.ivy.ads.utils.HandlerFactory;
 import com.ivy.event.CommonEvents;
 import com.ivy.event.EventBus;
 import com.ivy.networks.DownloadFeedback;
 import com.ivy.networks.grid.GridManager;
 import com.ivy.networks.tracker.EventTracker;
-import com.ivy.util.CommonUtil;
 import com.ivy.util.Logger;
+import com.parfka.adjust.sdk.Util;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 public class IvyAdsManager implements IvyAdCallbacks, IvySoftCallbacks {
@@ -68,9 +75,11 @@ public class IvyAdsManager implements IvyAdCallbacks, IvySoftCallbacks {
 
     private volatile boolean willDisplayingAd = false;
 
+    private AdmobSplashBannerAdapter admobSplashBannerAdapter = null;
+
     public void onCreate(Activity main, EventTracker eventLogger, GridManager gridManager) {
         this.main = main;
-
+        initSplashBanner(eventLogger);
         IvyAds.init(main, eventLogger, gridManager);
 
         this.mInterstitialAds = IvyAds.getInterstitials();
@@ -229,7 +238,7 @@ public class IvyAdsManager implements IvyAdCallbacks, IvySoftCallbacks {
                 fetchInterstitial(activity);
 
                 Log.d(TAG, "mInterstitialAds not ready");
-                int connectivity_type = CommonUtil.getConnectivityType(activity);
+                int connectivity_type = Util.getConnectivityType(activity);
 
                 bundle.putInt("connectivity", connectivity_type);
                 boolean isLoading = this.mInterstitialAds.isLoading();
@@ -260,47 +269,46 @@ public class IvyAdsManager implements IvyAdCallbacks, IvySoftCallbacks {
     }
 
     public boolean haveNative() {
+        if (this.mNativeAds == null) {
+            Logger.error(TAG, "Native ad not defined");
+            return false;
+        }
+
+        boolean result = this.mNativeAds.isLoaded();
+        if (result) {
+            Logger.debug(TAG, "Native ad already loaded");
+            return true;
+        }
+
+        JSONObject gridData = GridManager.getGridData();
+        if (gridData == null) {
+            return false;
+        }
+
+        boolean preFillNative = gridData.optBoolean("preFillNative", true);
+        if (!preFillNative) {
+            Logger.debug(TAG, "preFillNative: false");
+            return false;
+        }
+
+        if (mPromote == null || !(mPromote instanceof CommonAdManager)) {
+            Logger.error(TAG, "Invalid Promote");
+            return false;
+        }
+
+        PromoteConfig promoteConfig = ((CommonAdManager) mPromote).getPromiteConfig();
+        if (promoteConfig == null) {
+            Logger.error(TAG, "Invalid PromoteConfig");
+            return false;
+        }
+
+        JSONObject app = promoteConfig.selectOne(main, PromoteConfig.IMAGE_TYPE_BANNER, false);
+        if (app != null) {
+            Logger.error(TAG, "No banner app defined for native promote");
+
+            return true;
+        }
         return false;
-//        if (this.mNativeAds == null) {
-//            Logger.error(TAG, "Native ad not defined");
-//            return false;
-//        }
-//
-//        boolean result = this.mNativeAds.isLoaded();
-//        if (result) {
-//            Logger.debug(TAG, "Native ad already loaded");
-//            return true;
-//        }
-//
-//        JSONObject gridData = GridManager.getGridData();
-//        if (gridData == null) {
-//            return false;
-//        }
-//
-//        boolean preFillNative = gridData.optBoolean("preFillNative", true);
-//        if (!preFillNative) {
-//            Logger.debug(TAG, "preFillNative: false");
-//            return false;
-//        }
-//
-//        if (mPromote == null || !(mPromote instanceof CommonAdManager)) {
-//            Logger.error(TAG, "Invalid Promote");
-//            return false;
-//        }
-//
-//        PromoteConfig promoteConfig = ((CommonAdManager) mPromote).getPromiteConfig();
-//        if (promoteConfig == null) {
-//            Logger.error(TAG, "Invalid PromoteConfig");
-//            return false;
-//        }
-//
-//        JSONObject app = promoteConfig.selectOne(main, PromoteConfig.IMAGE_TYPE_BANNER, false);
-//        if (app != null) {
-//            Logger.error(TAG, "No banner app defined for native promote");
-//
-//            return true;
-//        }
-//        return false;
     }
 
     public void fetchRewarded(Activity activity) {
@@ -340,7 +348,7 @@ public class IvyAdsManager implements IvyAdCallbacks, IvySoftCallbacks {
                 this.fetchRewarded(activity);
 
                 Log.d(TAG, "Reward ad not ready");
-                int connectivity_type = CommonUtil.getConnectivityType(activity);
+                int connectivity_type = Util.getConnectivityType(activity);
                 bundle.putInt("connectivity", connectivity_type);
                 boolean isLoading = this.mRewardedAds.isLoading();
                 if (isLoading) {
@@ -465,7 +473,7 @@ public class IvyAdsManager implements IvyAdCallbacks, IvySoftCallbacks {
                 fetchRewardedInterstitial(main);
             }
         } catch (Exception ex) {
-            // ex.printStackTrace();
+            ex.printStackTrace();
         }
     }
 
@@ -622,65 +630,65 @@ public class IvyAdsManager implements IvyAdCallbacks, IvySoftCallbacks {
      * preload promote creative in background, so display directly
      */
     private void preloadPromoteCreativeInBackground() {
-//    if (promoteCreativePreloaded) {
-//      return;
-//    }
-//
-//    JSONObject promote = GridManager.getGridData().optJSONObject("promote");
-//    if (promote == null) {
-//      return;
-//    }
-//    JSONObject apps = promote.has("apps") ? promote.optJSONObject("apps") : null;
-//    if (apps == null) {
-//      return;
-//    }
-//    // load cover, banner, icon
-//    List<String> urls = new ArrayList<>();
-//    Iterator<String> it = apps.keys();
-//
-//    while (it.hasNext()) {
-//      JSONObject app = apps.optJSONObject(it.next());
-//      if (app != null) {
-//        String url = app.optString("icon");
+        if (promoteCreativePreloaded) {
+            return;
+        }
+
+        JSONObject promote = GridManager.getGridData().optJSONObject("promote");
+        if (promote == null) {
+            return;
+        }
+        JSONObject apps = promote.has("apps") ? promote.optJSONObject("apps") : null;
+        if (apps == null) {
+            return;
+        }
+        // load cover, banner, icon
+        List<String> urls = new ArrayList<>();
+        Iterator<String> it = apps.keys();
+
+        while (it.hasNext()) {
+            JSONObject app = apps.optJSONObject(it.next());
+            if (app != null) {
+                String url = app.optString("icon");
+                if (url != null && !"".equals(url)) {
+                    urls.add(url);
+                }
+                url = app.optString("cover");
+                if (url != null && !"".equals(url)) {
+                    urls.add(url);
+                }
+                url = app.optString("banner");
+                if (url != null && !"".equals(url)) {
+                    urls.add(url);
+                }
+//        url = app.optString("gificon");
 //        if (url != null && !"".equals(url)) {
 //          urls.add(url);
 //        }
-//        url = app.optString("cover");
-//        if (url != null && !"".equals(url)) {
-//          urls.add(url);
-//        }
-//        url = app.optString("banner");
-//        if (url != null && !"".equals(url)) {
-//          urls.add(url);
-//        }
-////        url = app.optString("gificon");
-////        if (url != null && !"".equals(url)) {
-////          urls.add(url);
-////        }
-//        url = app.optString("delicious_banner");
-//        if (url != null && !"".equals(url)) {
-//          urls.add(url);
-//        }
-//
-//        url = app.optString("banner_ad");
-//        if (url != null && !"".equals(url)) {
-//          urls.add(url);
-//        }
-//      }
-//    }
-//    // only preload 10 urls
-//    int startedDownloadCounts = 10;
-//    for (String url : urls) {
-//      boolean started = ((PromoteAdManager) mPromote).getCreativePath(url, null);
-//      if (started) {
-//        startedDownloadCounts++;
-//      }
-//      // 只启动10个下载，其他下载等下次打开或者按需触发吧
-//      if (startedDownloadCounts > 10) {
-//        break;
-//      }
-//    }
-//    promoteCreativePreloaded = true;
+                url = app.optString("delicious_banner");
+                if (url != null && !"".equals(url)) {
+                    urls.add(url);
+                }
+
+                url = app.optString("banner_ad");
+                if (url != null && !"".equals(url)) {
+                    urls.add(url);
+                }
+            }
+        }
+        // only preload 10 urls
+        int startedDownloadCounts = 0;
+        for (String url : urls) {
+            boolean started = ((PromoteAdManager) mPromote).getCreativePath(url, null);
+            if (started) {
+                startedDownloadCounts++;
+            }
+            // 只启动10个下载，其他下载等下次打开或者按需触发吧
+            if (startedDownloadCounts > 10) {
+                break;
+            }
+        }
+        promoteCreativePreloaded = true;
     }
 
     /**
@@ -760,9 +768,9 @@ public class IvyAdsManager implements IvyAdCallbacks, IvySoftCallbacks {
     }
 
     public void getCreativePath(String url, DownloadFeedback downloadFeedback) {
-//    if (mPromote != null) {
-//      ((PromoteAdManager) mPromote).getCreativePath(url, downloadFeedback);
-//    }
+        if (mPromote != null) {
+            ((PromoteAdManager) mPromote).getCreativePath(url, downloadFeedback);
+        }
     }
 
     public JSONObject getPromoteApp(String packageName) {
@@ -837,4 +845,38 @@ public class IvyAdsManager implements IvyAdCallbacks, IvySoftCallbacks {
             this.loadingDialog = null;
         }
     }
+
+    private void initSplashBanner(EventTracker eventLogger) {
+        try {
+
+            if (GridManager.getGridData().has("splashBanner")) {
+                JSONArray ads = GridManager.getGridData().optJSONArray("splashBanner");
+                int size = ads.length();
+                for (int i = 0; i < size; i++) {
+                    JSONObject adapterSetting = ads.optJSONObject(i);
+                    JSONObject placementSettings = adapterSetting.optJSONObject("p");
+                    String placementId = placementSettings.getString("placement");
+                    if (!TextUtils.isEmpty(placementId)) {
+                        admobSplashBannerAdapter = new AdmobSplashBannerAdapter(eventLogger, placementId);
+                    }
+                }
+            }
+        } catch (Exception e) {
+            admobSplashBannerAdapter = null;
+            Logger.error("init splash banner error::" + e.getMessage());
+        }
+    }
+
+    public void showSplashBanner(FrameLayout mBannerContainer) {
+        if (admobSplashBannerAdapter != null) {
+            admobSplashBannerAdapter.show(mBannerContainer);
+        }
+    }
+
+    public void closeSplashBanner() {
+        if (admobSplashBannerAdapter != null) {
+            admobSplashBannerAdapter.close();
+        }
+    }
+
 }

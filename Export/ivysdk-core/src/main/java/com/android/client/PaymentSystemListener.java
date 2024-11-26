@@ -10,6 +10,14 @@ public class PaymentSystemListener { // implements PaymentListener {
 
   }
 
+
+  public void onPaymentSuccessWithOrderId(int bill, String orderId) {
+  }
+
+  public void onPaymentSuccessWithOrderId(int bill, String payload, String orderId) {
+
+  }
+
   public void onPaymentSuccess(int bill, String payload, String orderInfo) {
 
   }

@@ -3,7 +3,11 @@ package com.ivy.networks.tracker;
 import android.app.Activity;
 import android.os.Bundle;
 
+import com.appsflyer.MediationNetwork;
 import com.ivy.event.EventListener;
+
+import java.util.Currency;
+import java.util.Map;
 
 public abstract  class EventTracker implements EventListener {
   public static final String KEY_EVENT_PRIPORITY = "ep_now";
@@ -26,7 +30,7 @@ public abstract  class EventTracker implements EventListener {
   public abstract void logToFirebase(String eventId, Bundle bundle);
   public abstract void logEvent(String eventId);
 
-  public abstract void afAdImpressionPing(Bundle bundle, double revenue);
+  public abstract void afAdImpressionPing(String monetizationNetwork, MediationNetwork mediationNetwork, String currency, double revenue, Map<String, Object> params);
 
   public abstract void logPurchase(String contentType, String contentId, String currency, float revenue);
 

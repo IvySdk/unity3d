@@ -6,10 +6,12 @@ import android.os.Handler;
 import androidx.annotation.Nullable;
 
 import com.ivy.ads.adapters.AdOpenCloseCallback;
+import com.ivy.ads.adapters.AdsfallNonRewardedAdapter;
 import com.ivy.ads.adapters.BaseAdapter;
 import com.ivy.ads.adproviders.AdProvidersRegistry;
 import com.ivy.ads.configuration.BaseConfig;
 import com.ivy.ads.configuration.ConfigurationParser;
+import com.ivy.ads.configuration.PromoteConfig;
 import com.ivy.ads.events.BaseEventHandler;
 import com.ivy.ads.interfaces.IvyAd;
 import com.ivy.ads.interfaces.IvyAdCallbacks;
@@ -216,9 +218,9 @@ public abstract class CommonAdManager<T extends BaseConfig> implements IvyAd {
     return getConfigurationParser().getConfig(getManagerConfigClass());
   }
 
-//  public PromoteConfig getPromiteConfig() {
-//    return getConfigurationParser().getConfig(PromoteConfig.class);
-//  }
+  public PromoteConfig getPromiteConfig() {
+    return getConfigurationParser().getConfig(PromoteConfig.class);
+  }
 
   @Nullable
   public IvyAdCallbacks getCallback() {
@@ -266,28 +268,28 @@ public abstract class CommonAdManager<T extends BaseConfig> implements IvyAd {
   }
 
   public void showAdsFallInterstitial(final Activity activity) {
-//    final AdsfallNonRewardedAdapter offlineNonRewardedAdapter = (AdsfallNonRewardedAdapter) this.getAdProvidersMap().get("adsfall");
-//    if (offlineNonRewardedAdapter != null) {
-//      offlineNonRewardedAdapter.setPromoteConfig(this.getPromiteConfig());
-//      offlineNonRewardedAdapter.resetOperationCount();
-//      offlineNonRewardedAdapter.setEventHandler(this.getEventHandler());
-//    }
-//    this.mUiHandler.post(new Runnable() {
-//      public void run() {
-//        if (offlineNonRewardedAdapter != null) {
-//          offlineNonRewardedAdapter.fetch(activity, new AdSelectorCallback() {
-//            public void adLoadSuccess(BaseAdapter adapter) {
-//              Logger.debug(TAG, "Offline interstitial fetched. Now showing it");
-//              offlineNonRewardedAdapter.show(activity, (NonRewardedAdManager)CommonAdManager.this);
-//            }
-//
-//            public void adLoadFailed(BaseAdapter adapter) {
-//              Logger.debug(TAG, "Offline interstitial fetch failed. Probably missing creative");
-//            }
-//          });
-//        }
-//      }
-//    });
+    final AdsfallNonRewardedAdapter offlineNonRewardedAdapter = (AdsfallNonRewardedAdapter) this.getAdProvidersMap().get("adsfall");
+    if (offlineNonRewardedAdapter != null) {
+      offlineNonRewardedAdapter.setPromoteConfig(this.getPromiteConfig());
+      offlineNonRewardedAdapter.resetOperationCount();
+      offlineNonRewardedAdapter.setEventHandler(this.getEventHandler());
+    }
+    this.mUiHandler.post(new Runnable() {
+      public void run() {
+        if (offlineNonRewardedAdapter != null) {
+          offlineNonRewardedAdapter.fetch(activity, new AdSelectorCallback() {
+            public void adLoadSuccess(BaseAdapter adapter) {
+              Logger.debug(TAG, "Offline interstitial fetched. Now showing it");
+              offlineNonRewardedAdapter.show(activity, (NonRewardedAdManager)CommonAdManager.this);
+            }
+
+            public void adLoadFailed(BaseAdapter adapter) {
+              Logger.debug(TAG, "Offline interstitial fetch failed. Probably missing creative");
+            }
+          });
+        }
+      }
+    });
   }
 
 }

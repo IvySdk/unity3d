@@ -2,6 +2,10 @@ package com.ivy.ads.adapters;
 
 import android.app.Activity;
 import android.content.Context;
+import android.os.Bundle;
+import android.util.DisplayMetrics;
+import android.util.Log;
+import android.view.Display;
 import android.view.View;
 
 import androidx.annotation.NonNull;
@@ -9,8 +13,8 @@ import androidx.annotation.Nullable;
 
 import com.ivy.ads.interfaces.IvyAdType;
 import com.ivy.util.Logger;
-import com.yandex.mobile.ads.banner.AdSize;
 import com.yandex.mobile.ads.banner.BannerAdEventListener;
+import com.yandex.mobile.ads.banner.BannerAdSize;
 import com.yandex.mobile.ads.banner.BannerAdView;
 import com.yandex.mobile.ads.common.AdRequest;
 import com.yandex.mobile.ads.common.AdRequestError;
@@ -51,7 +55,13 @@ public class YandexBannerAdapter extends BannerAdapter<BannerAdapter.GridParams>
         }
         this.mAdview = new BannerAdView(activity);
         this.mAdview.setAdUnitId(placement);
-        this.mAdview.setAdSize(AdSize.BANNER_320x50);
+        Display display = activity.getWindowManager().getDefaultDisplay();
+        DisplayMetrics outMetrics = new DisplayMetrics();
+        display.getMetrics(outMetrics);
+        float widthPixels = outMetrics.widthPixels;
+        float density = outMetrics.density;
+        int adWidth = (int) (widthPixels / density);
+        this.mAdview.setAdSize(BannerAdSize.stickySize(activity.getApplicationContext(), adWidth));
         // Creating an ad targeting object.
         final AdRequest adRequest = new AdRequest.Builder().build();
         this.mAdview.setBannerAdEventListener(new BannerAdEventListener() {
@@ -87,9 +97,37 @@ public class YandexBannerAdapter extends BannerAdapter<BannerAdapter.GridParams>
             public void onImpression(@Nullable ImpressionData impressionData) {
 //        logAdShowEvent("yandex", "banner", "banner", placement);
                 YandexBannerAdapter.this.onAdShowSuccess();
+
+                try{
+                    assert impressionData != null;
+                    JSONObject data = new JSONObject(impressionData.getRawData());
+                    JSONObject network = data.getJSONObject("network");
+
+                    if (adBundle == null) {
+                        adBundle = new Bundle();
+                    } else {
+                        adBundle.clear();
+                    }
+                    String ad_network = network.getString("adapter");
+                    String adUnitId = network.getString("ad_unit_id");
+                    double revenue = data.getDouble("revenueUSD");
+                    adBundle.putString("ad_network", ad_network);
+                    adBundle.putString("ad_source_instance", ad_network);
+                    adBundle.putString("mediation_group", network.getString("name"));
+
+                    onGMSPaidTrackEvent(ad_network, "banner", "banner", adUnitId,"USD", 1, (float) revenue);
+                } catch (Exception e){
+
+                }
+
             }
         });
         this.mAdview.loadAd(adRequest);
+    }
+
+    @Override
+    public String getMediation() {
+        return "yandex";
     }
 
     @Override

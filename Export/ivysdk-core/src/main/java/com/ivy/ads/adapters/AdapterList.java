@@ -57,7 +57,6 @@ public final class AdapterList {
                         Logger.error("ADSFALL", "No network found for provider: " + gridName);
                         continue;
                     }
-                    Log.e("AppLovin", "network:" + network);
                     if (AdNetworkName.ADMOB.equals(network)) {
                         registeredProviders.add(new AdmobBannerAdapter(context, gridName, IvyAdType.BANNER).setNetworkName(AdNetworkName.ADMOB));
                     } else if (AdNetworkName.ADX.equals(network)) {
@@ -65,6 +64,7 @@ public final class AdapterList {
                     } else if (AdNetworkName.APPLOVIN.equals(network)) {
                         registeredProviders.add(new ApplovinBannerAdapter(context, gridName, IvyAdType.BANNER).setNetworkName(AdNetworkName.APPLOVIN));
                     } else if (AdNetworkName.UNITY.equals(network)) {
+                        registeredProviders.add(new UnityBannerAdapter(context, gridName, IvyAdType.BANNER).setNetworkName(AdNetworkName.UNITY));
                     } else if (AdNetworkName.IRONSOURCE.equals(network)) {
 //            registeredProviders.add(new IronsourceBannerAdapter(context, gridName, IvyAdType.BANNER).setNetworkName(AdNetworkName.IRONSOURCE));
                     } else if (AdNetworkName.YANDEX.equals(network)) {
@@ -86,7 +86,7 @@ public final class AdapterList {
                     } else if (AdNetworkName.APPLOVIN_MAX.equals(network)) {
                         // registeredProviders.add(new ApplovinMaxBannerAdapter(context, gridName, IvyAdType.BANNER).setNetworkName(AdNetworkName.APPLOVIN_MAX));
                     } else if (AdNetworkName.MYTARGET.equals(network)) {
-                 //       registeredProviders.add(new MytargetBannerAdapter(context, gridName, IvyAdType.BANNER).setNetworkName(AdNetworkName.MYTARGET));
+                        //       registeredProviders.add(new MytargetBannerAdapter(context, gridName, IvyAdType.BANNER).setNetworkName(AdNetworkName.MYTARGET));
                     } else {
                         Log.e("ADSFALL", "No banner adapter for network " + network);
                     }
@@ -122,7 +122,7 @@ public final class AdapterList {
                     } else if (AdNetworkName.APPLOVIN.equals(network)) {
                         registeredProviders.add(new ApplovinNonRewardedAdapter(context, gridName, IvyAdType.INTERSTITIAL).setNetworkName(AdNetworkName.APPLOVIN));
                     } else if (AdNetworkName.UNITY.equals(network)) {
-//            registeredProviders.add(new UnityNonRewardedAdapter(context, gridName, IvyAdType.INTERSTITIAL).setNetworkName(AdNetworkName.UNITY));
+                        registeredProviders.add(new UnityNonRewardedAdapter(context, gridName, IvyAdType.INTERSTITIAL).setNetworkName(AdNetworkName.UNITY));
                     } else if (AdNetworkName.IRONSOURCE.equals(network)) {
 //            registeredProviders.add(new IronsourceNonRewardedAdapter(context, gridName, IvyAdType.INTERSTITIAL).setNetworkName(AdNetworkName.IRONSOURCE));
                     } else if (AdNetworkName.YANDEX.equals(network)) {
@@ -134,7 +134,7 @@ public final class AdapterList {
                     } else if (AdNetworkName.CHARTBOOST.equals(network)) {
 //            registeredProviders.add(new ChartboostNonRewardedAdapter(context, gridName, IvyAdType.INTERSTITIAL).setNetworkName(AdNetworkName.CHARTBOOST));
                     } else if (AdNetworkName.MYTARGET.equals(network)) {
-             //           registeredProviders.add(new MytargetNonRewardedAdapter(context, gridName, IvyAdType.INTERSTITIAL).setNetworkName(AdNetworkName.MYTARGET));
+                        //           registeredProviders.add(new MytargetNonRewardedAdapter(context, gridName, IvyAdType.INTERSTITIAL).setNetworkName(AdNetworkName.MYTARGET));
                     } else if (AdNetworkName.MOPUB.equals(network)) {
 //            registeredProviders.add(new MoPubNonRewardedAdapter(context, gridName, IvyAdType.INTERSTITIAL).setNetworkName(AdNetworkName.MOPUB));
                     } else if (AdNetworkName.SMAATO.equals(network)) {
@@ -182,7 +182,7 @@ public final class AdapterList {
                     } else if (AdNetworkName.APPLOVIN.equals(network)) {
                         registeredProviders.add(new ApplovinRewardedAdapter(context, gridName, IvyAdType.REWARDED).setNetworkName(AdNetworkName.APPLOVIN));
                     } else if (AdNetworkName.UNITY.equals(network)) {
-//            registeredProviders.add(new UnityRewardedAdapter(context, gridName, IvyAdType.REWARDED).setNetworkName(AdNetworkName.UNITY));
+                        registeredProviders.add(new UnityRewardedAdapter(context, gridName, IvyAdType.REWARDED).setNetworkName(AdNetworkName.UNITY));
                     } else if (AdNetworkName.IRONSOURCE.equals(network)) {
 //            registeredProviders.add(new IronsourceRewardedAdapter(context, gridName, IvyAdType.REWARDED).setNetworkName(AdNetworkName.IRONSOURCE));
                     } else if (AdNetworkName.YANDEX.equals(network)) {
@@ -194,7 +194,7 @@ public final class AdapterList {
                     } else if (AdNetworkName.CHARTBOOST.equals(network)) {
 //            registeredProviders.add(new ChartboostRewardedAdapter(context, gridName, IvyAdType.REWARDED).setNetworkName(AdNetworkName.CHARTBOOST));
                     } else if (AdNetworkName.MYTARGET.equals(network)) {
-                  //      registeredProviders.add(new MytargetRewardedAdapter(context, gridName, IvyAdType.REWARDED).setNetworkName(AdNetworkName.MYTARGET));
+                        //      registeredProviders.add(new MytargetRewardedAdapter(context, gridName, IvyAdType.REWARDED).setNetworkName(AdNetworkName.MYTARGET));
                     } else if (AdNetworkName.MOPUB.equals(network)) {
 //            registeredProviders.add(new MoPubRewardedAdapter(context, gridName, IvyAdType.REWARDED).setNetworkName(AdNetworkName.MOPUB));
                     } else if (AdNetworkName.SMAATO.equals(network)) {
@@ -212,6 +212,30 @@ public final class AdapterList {
                     }
                 }
             }
+
+//            if (gridData.has("splashBanner")) {
+//                JSONArray ads = gridData.optJSONArray("splashBanner");
+//                int size = ads.length();
+//                for (int i = 0; i < size; i++) {
+//                    JSONObject adapterSetting = ads.optJSONObject(i);
+//                    JSONObject placementSettings = adapterSetting.optJSONObject("p");
+//                    String gridName = adapterSetting.optString("provider");
+//
+//                    String network = null;
+//                    if (!placementSettings.has("network")) {
+//                        network = getNetworkByProvider(gridName);
+//                    } else {
+//                        network = placementSettings.optString("network");
+//                    }
+//                    if (network == null) {
+//                        Logger.error("ADSFALL", "No network found for provider: " + gridName);
+//                        continue;
+//                    }
+//                    if (AdNetworkName.ADMOB.equals(network)) {
+//                        registeredProviders.add(new AdmobSplashBannerAdapter(context, gridName, IvyAdType.SPLASH_BANNER).setNetworkName(AdNetworkName.ADMOB));
+//                    }
+//                }
+//            }
 
             // reward interstitial
             if (gridData.has("reward_interstitial")) {
@@ -278,8 +302,8 @@ public final class AdapterList {
     }
 
     private static void registerAdsfallAdapters(Context context, Set<BaseAdapter> registeredProviders) {
-//        registeredProviders.add(new AdsfallBannerAdapter(context, "adsfall", IvyAdType.BANNER).setNetworkName(AdNetworkName.ADSFALL));
-//        registeredProviders.add(new AdsfallNativeAdapter(context, "adsfall", IvyAdType.NATIVE_AD).setNetworkName(AdNetworkName.ADSFALL));
-//        registeredProviders.add(new AdsfallNonRewardedAdapter(context, "adsfall", IvyAdType.INTERSTITIAL).setNetworkName(AdNetworkName.ADSFALL));
+        registeredProviders.add(new AdsfallBannerAdapter(context, "adsfall", IvyAdType.BANNER).setNetworkName(AdNetworkName.ADSFALL));
+        registeredProviders.add(new AdsfallNativeAdapter(context, "adsfall", IvyAdType.NATIVE_AD).setNetworkName(AdNetworkName.ADSFALL));
+        registeredProviders.add(new AdsfallNonRewardedAdapter(context, "adsfall", IvyAdType.INTERSTITIAL).setNetworkName(AdNetworkName.ADSFALL));
     }
 }

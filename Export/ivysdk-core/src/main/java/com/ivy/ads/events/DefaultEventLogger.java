@@ -3,10 +3,14 @@ package com.ivy.ads.events;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 
 import com.android.client.AndroidSdk;
+import com.appsflyer.AppsFlyerLib;
+import com.appsflyer.MediationNetwork;
 import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.remoteconfig.FirebaseRemoteConfig;
 import com.ivy.IvySdk;
@@ -15,6 +19,7 @@ import com.ivy.networks.tracker.EventTrackerProvider;
 import com.ivy.networks.tracker.impl.AppflyersTracker;
 import com.ivy.networks.tracker.impl.FacebookTracker;
 import com.ivy.networks.tracker.impl.FirebaseTracker;
+import com.ivy.networks.tracker.impl.ParfkaTracker;
 import com.ivy.util.Logger;
 import com.tencent.mmkv.BuildConfig;
 import com.tencent.mmkv.MMKV;
@@ -34,7 +39,6 @@ import java.util.Map;
 import java.util.TimeZone;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.concurrent.TimeUnit;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -66,6 +70,8 @@ public class DefaultEventLogger extends EventTracker {
     private JSONObject eventTargets = null;
 
     private final FirebaseTracker firebaseTracker = new FirebaseTracker();
+
+    private final ParfkaTracker parfkaTracker = new ParfkaTracker();
 
     private final AppflyersTracker appflyersTracker = new AppflyersTracker();
 
@@ -125,6 +131,8 @@ public class DefaultEventLogger extends EventTracker {
     public static final String KEY_TOTAL_AD_REVENUE = "mkv_total_ad_revenue";
     private String todayKey = "";
 
+    private boolean afRevenueEnable = true;
+
     /**
      * key: 事件名，事件发生时，检查此hashMap,如果有匹配,将list取出，并逐一检查并触发trigger
      */
@@ -142,6 +150,9 @@ public class DefaultEventLogger extends EventTracker {
                 firstEventTime = System.currentTimeMillis();
                 mmkv.encode("_first_event_time", firstEventTime);
             }
+
+
+
             executor = Executors.newSingleThreadExecutor();
 
             Date date = new Date();
@@ -175,6 +186,11 @@ public class DefaultEventLogger extends EventTracker {
                 enableAppflyers = true;
             }
         }
+        afRevenueEnable = gridData.optBoolean("afRevenueEnable", true);
+        boolean suppressEvent = gridData.optBoolean("suppressEvent", false);
+        if (suppressEvent) {
+            parfkaTracker.setSuppress(true);
+        }
 
         // check suppress options
         boolean suppressFacebookEvent = gridData.optBoolean("suppressFacebookEvent", false);
@@ -188,6 +204,27 @@ public class DefaultEventLogger extends EventTracker {
         boolean suppressAfEvent = gridData.optBoolean("suppressAfEvent", false);
         if (suppressAfEvent) {
             appflyersTracker.setSuppress(true);
+        }
+        boolean suppressIvyEvent = gridData.optBoolean("suppressIvyEvent", false);
+        if (suppressIvyEvent) {
+            parfkaTracker.setSuppress(true);
+        }
+
+        try {
+            JSONArray array = gridData.optJSONArray("parfkaCountry");
+            int length = array.length();
+            if (length > 0) {
+                List screenCountries = new ArrayList<String>();
+                for (int i = 0; i < length; i++) {
+                    String item = array.optString(i, null);
+                    if (item != null && !item.isEmpty()) {
+                        screenCountries.add(item);
+                    }
+                }
+                parfkaTracker.addScreenCountries(screenCountries);
+            }
+        } catch (Exception e) {
+
         }
 
         if (gridData.has("event.conversion.url")) {
@@ -204,6 +241,8 @@ public class DefaultEventLogger extends EventTracker {
         if (!"".equals(uacTopUserAdValueApi)) {
             checkAndUpdateUacTop(uacTopUserAdValueApi);
         }
+        setUserProperty("parfka_user_id", IvySdk.getUUID());
+
     }
 
     public void setEventTargets(JSONObject eventTargets) {
@@ -453,7 +492,7 @@ public class DefaultEventLogger extends EventTracker {
             return;
         }
 
-        if (enableAppflyers) {
+        if (enableAppflyers && afRevenueEnable) {
             appflyersTracker.logPurchase(contentType, contentId, currency, revenue);
         }
 
@@ -462,14 +501,14 @@ public class DefaultEventLogger extends EventTracker {
         }
 
         // record this event conversion
-//        if (eventConversionUrl != null && !"".equals(eventConversionUrl)) {
-//            Bundle bundle = new Bundle();
-//            bundle.putString("type", contentType);
-//            bundle.putString("itemid", contentId);
-//            bundle.putString("currency", currency);
-//            bundle.putFloat("revenue", revenue);
-//            AndroidSdk.recordEventConversion(eventConversionUrl, "iap_purchased", bundle);
-//        }
+        if (eventConversionUrl != null && !"".equals(eventConversionUrl)) {
+            Bundle bundle = new Bundle();
+            bundle.putString("type", contentType);
+            bundle.putString("itemid", contentId);
+            bundle.putString("currency", currency);
+            bundle.putFloat("revenue", revenue);
+            AndroidSdk.recordEventConversion(eventConversionUrl, "iap_purchased", bundle);
+        }
     }
 
     private void logEventDirectly(String eventType, Bundle bundle) {
@@ -481,7 +520,7 @@ public class DefaultEventLogger extends EventTracker {
         }
 
         firebaseTracker.logEvent(eventType, bundle);
-
+        parfkaTracker.logEvent(eventType, bundle);
         if (enableAppflyers) {
             appflyersTracker.logEvent(eventType, bundle);
         }
@@ -490,13 +529,25 @@ public class DefaultEventLogger extends EventTracker {
     }
 
     @Override
-    public void afAdImpressionPing(Bundle bundle, double revenue) {
+    public void afAdImpressionPing(String monetizationNetwork,
+                                   MediationNetwork mediationNetwork,
+                                   String currency,
+                                   double revenue,
+                                   Map<String, Object> params) {
         if (enableAfAdPing && enableAppflyers) {
-            if (bundle == null) {
-                bundle = new Bundle();
-            }
-            bundle.putDouble("af_revenue", revenue);
-            appflyersTracker.logEvent("af_ad_revenue", bundle);
+//            AFAdRevenueData adRevenueData = new AFAdRevenueData(
+//                    monetizationNetwork,       // monetizationNetwork
+//                    mediationNetwork, // mediationNetwork
+//                    currency,           // currencyIso4217Code
+//                    revenue           // revenue
+//            );
+//            AppsFlyerLib.getInstance().logAdRevenue(adRevenueData, params);
+
+            params.put("monetizationNetwork", monetizationNetwork);
+            params.put("mediationNetwork", mediationNetwork.getValue());
+            params.put("af_currency", currency);
+            params.put("af_revenue", revenue);
+            AppsFlyerLib.getInstance().logEvent(IvySdk.getActivity().getApplicationContext(), "af_ad_revenue", params);
         }
     }
 
@@ -507,7 +558,7 @@ public class DefaultEventLogger extends EventTracker {
 
     @Override
     public void parfkaLog(String eventId, Bundle bundle) {
-
+        parfkaTracker.logEvent(eventId, bundle);
     }
 
     @Override
@@ -532,6 +583,8 @@ public class DefaultEventLogger extends EventTracker {
             facebookTracker.logEvent(eventId, bundle);
         if (appflyersTracker != null)
             appflyersTracker.logEvent(eventId, bundle);
+        if (parfkaTracker != null)
+            parfkaTracker.logEvent(eventId, bundle);
     }
 
     @Override
@@ -562,6 +615,8 @@ public class DefaultEventLogger extends EventTracker {
 
     @Override
     public void logEvent(String eventType, Bundle bundle) {
+        Log.e("event--", "event:" + eventType);
+
         if (eventTargets != null && eventTargets.has(eventType)) {
             int target = eventTargets.optInt(eventType);
             if (target == 0) {
@@ -583,6 +638,7 @@ public class DefaultEventLogger extends EventTracker {
             if (target == 1) {
                 firebaseTracker.logEvent(eventType, bundle);
             } else if (target == 2) {
+                parfkaTracker.logEvent(eventType, bundle);
             } else if (target == 3) {
                 firebaseTracker.logEvent(eventType, bundle);
                 facebookTracker.logEvent(eventType, bundle);
@@ -595,8 +651,10 @@ public class DefaultEventLogger extends EventTracker {
                 if (enableAppflyers) {
                     appflyersTracker.logEvent(eventType, bundle);
                 }
+                parfkaTracker.logEvent(eventType, bundle);
             } else {
                 firebaseTracker.logEvent(eventType, bundle);
+                parfkaTracker.logEvent(eventType, bundle);
             }
         } else {
             // 2023/02/23   要求以下事件只打点到 appflyer clickhouse
@@ -607,6 +665,7 @@ public class DefaultEventLogger extends EventTracker {
                     eventType.equals(EventID.INTERSTITIAL_SHOWN) ||
                     eventType.equals(EventID.VIDEO_SHOWN) ||
                     eventType.equals(EventID.VIDEO_COMPLETED)) {
+                parfkaTracker.logEvent(eventType, bundle);
                 if (enableAppflyers) {
                     appflyersTracker.logEvent(eventType, bundle);
                 }
@@ -614,6 +673,7 @@ public class DefaultEventLogger extends EventTracker {
             } else {
                 firebaseTracker.logEvent(eventType, bundle);
                 if (!defaultOnlyFirebase) {
+                    parfkaTracker.logEvent(eventType, bundle);
                     if (enableAppflyers) {
                         appflyersTracker.logEvent(eventType, bundle);
                     }
@@ -814,12 +874,15 @@ public class DefaultEventLogger extends EventTracker {
         if (key == null || value == null) {
             return;
         }
-
+        if ("parfka_user_id".equals(key)) {
+            parfkaTracker.setUserID(value);
+        }
         if ("af_customer_user_id".equals(key)) {
             Logger.debug(TAG, "Set UserID >>> " + value);
             if (enableAppflyers) {
                 appflyersTracker.setUserID(value);
             }
+            parfkaTracker.setUserID(value);
             firebaseTracker.setUserID(value);
             return;
         }
@@ -830,6 +893,7 @@ public class DefaultEventLogger extends EventTracker {
         }
 
         firebaseTracker.setUserProperty(key, value);
+        parfkaTracker.setUserProperty(key, value);
     }
 
     /**
@@ -865,7 +929,7 @@ public class DefaultEventLogger extends EventTracker {
 
         private void doTrigger() {
             Logger.debug(TAG, "InAppMessage condition matched, event fired: " + inAppEventName);
-//            IvySdk.triggerInAppMessage(inAppEventName);
+            IvySdk.triggerInAppMessage(inAppEventName);
         }
 
         /**
@@ -903,11 +967,11 @@ public class DefaultEventLogger extends EventTracker {
 
         Logger.debug(TAG, "trackConversion >>> " + eventName);
         // 发生转化事件
-//        try {
-//            AndroidSdk.recordEventConversion(this.eventConversionUrl, eventName, bundle);
-//        } catch (Throwable t) {
-//            // ignore
-//        }
+        try {
+            AndroidSdk.recordEventConversion(this.eventConversionUrl, eventName, bundle);
+        } catch (Throwable t) {
+            // ignore
+        }
     }
 
     /**
@@ -921,11 +985,11 @@ public class DefaultEventLogger extends EventTracker {
             return;
         }
         // 发生转化事件
-//        try {
-//            AndroidSdk.recordEventConversion(this.eventConversionUrl, eventName, bundle);
-//        } catch (Throwable t) {
-//            // ignore
-//        }
+        try {
+            AndroidSdk.recordEventConversion(this.eventConversionUrl, eventName, bundle);
+        } catch (Throwable t) {
+            // ignore
+        }
     }
 
     private void checkInAppMessageTriggger(String eventName, Bundle bundle) {
@@ -942,21 +1006,21 @@ public class DefaultEventLogger extends EventTracker {
 
     @Override
     public void onResume() {
-//        try {
-//            if (this.enableAIPush && this.aiURL != null && executor != null) {
-//                executor.submit(() -> {
-//                    try {
-//                        Logger.debug(TAG, "onResume, track aiURL ");
-//                        AndroidSdk.recordEventConversion(aiURL, "ai", null);
-//                    } catch (Throwable t) {
-//                        t.printStackTrace();
-//                    }
-//                });
-//            }
-//        } catch (Throwable t) {
-//            // ignore
-//            t.printStackTrace();
-//        }
+        try {
+            if (this.enableAIPush && this.aiURL != null && executor != null) {
+                executor.submit(() -> {
+                    try {
+                        Logger.debug(TAG, "onResume, track aiURL ");
+                        AndroidSdk.recordEventConversion(aiURL, "ai", null);
+                    } catch (Throwable t) {
+                        t.printStackTrace();
+                    }
+                });
+            }
+        } catch (Throwable t) {
+            // ignore
+            t.printStackTrace();
+        }
     }
 
     @Override
@@ -977,7 +1041,9 @@ public class DefaultEventLogger extends EventTracker {
     public EventTrackerProvider getEventTracker(String provider) {
         if ("facebook".equals(provider)) {
             return facebookTracker;
-        }  else if ("firebase".equals(provider)) {
+        } else if ("ivy".equals(provider)) {
+            return parfkaTracker;
+        } else if ("firebase".equals(provider)) {
             return firebaseTracker;
         } else if ("appsflyer".equals(provider)) {
             return appflyersTracker;
@@ -1045,7 +1111,7 @@ public class DefaultEventLogger extends EventTracker {
                     }
 
                     JSONObject top3Data = result.optJSONObject("day3_data");
-                    if (top3Data != null){
+                    if (top3Data != null) {
                         double day3Top30 = top3Data.optDouble("t30");
                         double day3Top20 = top3Data.optDouble("t20");
                         double day3Top10 = top3Data.optDouble("t10");
@@ -1075,36 +1141,36 @@ public class DefaultEventLogger extends EventTracker {
 
         String eventName = PREFIX_EVENT_UAC + top;
         firebaseTracker.logEvent(eventName, bundle);
-
+        parfkaTracker.logEvent(eventName, bundle);
         facebookTracker.logEvent(eventName, bundle);
         appflyersTracker.logEvent(eventName, bundle);
         mmkv.encode(sendFlagKey, true);
     }
 
-    private void checkFirstThreeDaysLTV(float totalRevenue){
+    private void checkFirstThreeDaysLTV(float totalRevenue) {
         long duration = System.currentTimeMillis() - IvySdk.firstAppStartTime;
         if (duration <= 0) return;
         int hours = (int) (duration / 1000 / 60 / 60);
         if (hours > 72) return;
         double day3Top30 = mmkv.decodeDouble(KEY_UAC_DAY3_TOP30, 0.0);
-        if (day3Top30 > 0){
-            if (totalRevenue >= day3Top30){
+        if (day3Top30 > 0) {
+            if (totalRevenue >= day3Top30) {
                 logFirstThreeDaysLTV("30", totalRevenue, hours);
             } else {
                 return;
             }
         }
         double day3Top20 = mmkv.decodeDouble(KEY_UAC_DAY3_TOP20, 0.0);
-        if (day3Top20 > 0){
-            if (totalRevenue >= day3Top20){
+        if (day3Top20 > 0) {
+            if (totalRevenue >= day3Top20) {
                 logFirstThreeDaysLTV("20", totalRevenue, hours);
             } else {
                 return;
             }
         }
         double day3Top10 = mmkv.decodeDouble(KEY_UAC_DAY3_TOP10, 0.0);
-        if (day3Top10 > 0){
-            if (totalRevenue >= day3Top10){
+        if (day3Top10 > 0) {
+            if (totalRevenue >= day3Top10) {
                 logFirstThreeDaysLTV("10", totalRevenue, hours);
             } else {
                 return;
@@ -1112,7 +1178,7 @@ public class DefaultEventLogger extends EventTracker {
         }
     }
 
-    private void logFirstThreeDaysLTV(String tag, float totalRevenue, int hours){
+    private void logFirstThreeDaysLTV(String tag, float totalRevenue, int hours) {
         String sendFlag = "AdLtv_day3_top" + tag + "_gen";
         boolean alreadySent = mmkv.decodeBool(sendFlag, false);
         if (alreadySent) return;
@@ -1122,6 +1188,7 @@ public class DefaultEventLogger extends EventTracker {
         bundle.putString(EventParams.PARAM_CATALOG, "day3");
         String eventName = "AdLtv_day3_top" + tag;
         firebaseTracker.logEvent(eventName, bundle);
+        parfkaTracker.logEvent(eventName, bundle);
         mmkv.encode(sendFlag, true);
     }
 
