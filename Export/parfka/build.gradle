@@ -1,0 +1,59 @@
+apply plugin: 'com.android.library'
+
+//apply plugin: 'maven'
+//
+//// This needs to be included
+//version '6.0.2'
+
+//project.group 'com.parfka'
+
+android {
+  compileSdkVersion 29
+
+  defaultConfig {
+    minSdkVersion 14
+    targetSdkVersion 29
+    versionCode 3
+    versionName "1.1"
+    consumerProguardFiles 'release-proguard.pro'
+  }
+
+  packagingOptions {
+    exclude '**/BuildConfig.class'
+  }
+
+  lintOptions {
+    abortOnError true
+    disable 'GradleDependency'
+  }
+
+  buildTypes {
+    debug {
+      testCoverageEnabled = true
+    }
+  }
+
+  lintOptions {
+    abortOnError true
+  }
+}
+
+
+dependencies {
+//    implementation 'com.adsfall:adsfallsdk:0.9.70981-transsion-test1'
+  implementation 'com.squareup.okhttp3:okhttp:3.14.9'
+  implementation 'com.android.installreferrer:installreferrer:2.2'
+}
+
+
+//group 'com.parfka'
+//
+//uploadArchives {
+//    repositories {
+//        mavenDeployer {
+//            repository(url: nexusUrl) {
+//                authentication(userName: nexusUserName, password: nexusPassword)
+//            }
+//        }
+//    }
+//}

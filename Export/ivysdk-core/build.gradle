@@ -76,11 +76,12 @@ android {
 
 dependencies {
 
+    implementation project(':parfka')
     compileOnly files('libs/unity3d.jar')
 
 //    implementation project(':parfka')
 
-    implementation 'com.parfka:parfka:6.0.2'
+//    implementation 'com.parfka:parfka:6.0.2'
 
 //    implementation 'com.squareup.okhttp3:okhttp:3.12.12'
 //    implementation 'com.squareup.okio:okio:1.17.5'

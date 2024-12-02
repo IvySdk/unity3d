@@ -1,1 +1,2 @@
 include ':launcher', ':unityLibrary', 'ivysdk-core'
+include ':parfka'
