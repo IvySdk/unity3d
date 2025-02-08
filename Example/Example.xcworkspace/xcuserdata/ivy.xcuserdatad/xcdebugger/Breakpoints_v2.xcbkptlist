@@ -94,9 +94,9 @@
             filePath = "../IvyiOSSDK/Classes/Core/SDKFacade.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "4694"
-            endingLineNumber = "4694"
-            landmarkName = "-logEvent:"
+            startingLineNumber = "4723"
+            endingLineNumber = "4723"
+            landmarkName = "-logError:errorDomain:reason:description:suggest:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

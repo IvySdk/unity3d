@@ -2283,38 +2283,67 @@ static NSString * CRASH_EMAIL_ADDR;
                     if (self->_isFirstOpen) {
                         [self logEvent:@"sdk_first_open"];
                         // iAd归因统计
-                        // Check for iOS 10 attribution implementation
-//                        if ([[ADClient sharedClient] respondsToSelector:@selector(requestAttributionDetailsWithBlock:)]) {
-//                            DLog(@"iOS 10 call exists");
-//                            [[ADClient sharedClient] requestAttributionDetailsWithBlock:^(NSDictionary *attributionDetails, NSError *error) {
-//                                // Look inside of the returned dictionary for all attribution details
-//                                if (attributionDetails) {
-//                                    DLog(@"iAd Attribution Dictionary: %@", attributionDetails);
-//                                    for (NSString *key in attributionDetails) {
-//                                        id tmp = attributionDetails[key];
-//                                        if ([tmp isKindOfClass:NSDictionary.class]) {
-//                                            if ([tmp objectForKey:@"iad-attribution"] != nil) {
-//                                                [self logEvent:@"iad_referrer" withData:tmp];
-//                                                
-//                                                NSString *iad_campaign_id = [tmp objectForKey:@"iad-campaign-id"];
-//                                                [self setUserPropertyString:iad_campaign_id forName:@"iad-campaign-id"];
-//                                                
-//                                                NSString *iad_adgroup_id = [tmp objectForKey:@"iad-adgroup-id"];
-//                                                [self setUserPropertyString:iad_adgroup_id forName:@"iad-adgroup-id"];
-//                                                
-//                                                NSString *iad_keyword_id = [tmp objectForKey:@"iad-keyword-id"];
-//                                                [self setUserPropertyString:iad_keyword_id forName:@"iad-keyword-id"];
-//                                                
-//                                                NSString *iad_creativeset_id = [tmp objectForKey:@"iad-creativeset-id"];
-//                                                [self setUserPropertyString:iad_creativeset_id forName:@"iad-creativeset-id"];
-//                                                
-//                                                break;
+                        if (@available(iOS 14.3, *)) {
+                            @try {
+                                NSError* error;
+                                NSString* token = [AAAttribution attributionTokenWithError:&error];
+                                if (token != nil) {
+                                    [self sendToken:token completeBlock:^(NSDictionary *tmp) {
+                                        if ([tmp objectForKey:@"attribution"] != nil) {
+                                            [self logEvent:@"iad_referrer" withData:tmp];
+                                            
+                                            NSString *iad_campaign_id = [tmp objectForKey:@"campaignId"];
+                                            [self setUserPropertyString:iad_campaign_id forName:@"campaignId"];
+                                            
+                                            NSString *iad_adgroup_id = [tmp objectForKey:@"adGroupId"];
+                                            [self setUserPropertyString:iad_adgroup_id forName:@"adGroupId"];
+                                            
+                                            NSString *iad_keyword_id = [tmp objectForKey:@"keywordId"];
+                                            [self setUserPropertyString:iad_keyword_id forName:@"keywordId"];
+                                            
+                                            NSString *iad_creativeset_id = [tmp objectForKey:@"creativeSetId"];
+                                            [self setUserPropertyString:iad_creativeset_id forName:@"creativeSetId"];
+                                            
+                                        }
+                                    }];
+                                }
+                            } @catch (NSException *exception) {
+                                
+                            }
+                        }else {
+                            // Check for iOS 10 attribution implementation
+//                            if ([[ADClient sharedClient] respondsToSelector:@selector(requestAttributionDetailsWithBlock:)]) {
+//                                DLog(@"iOS 10 call exists");
+//                                [[ADClient sharedClient] requestAttributionDetailsWithBlock:^(NSDictionary *attributionDetails, NSError *error) {
+//                                    // Look inside of the returned dictionary for all attribution details
+//                                    if (attributionDetails) {
+//                                        DLog(@"iAd Attribution Dictionary: %@", attributionDetails);
+//                                        for (NSString *key in attributionDetails) {
+//                                            id tmp = attributionDetails[key];
+//                                            if ([tmp isKindOfClass:NSDictionary.class]) {
+//                                                if ([tmp objectForKey:@"iad-attribution"] != nil) {
+//                                                    [self logEvent:@"iad_referrer" withData:tmp];
+//
+//                                                    NSString *iad_campaign_id = [tmp objectForKey:@"iad-campaign-id"];
+//                                                    [self setUserPropertyString:iad_campaign_id forName:@"iad-campaign-id"];
+//
+//                                                    NSString *iad_adgroup_id = [tmp objectForKey:@"iad-adgroup-id"];
+//                                                    [self setUserPropertyString:iad_adgroup_id forName:@"iad-adgroup-id"];
+//
+//                                                    NSString *iad_keyword_id = [tmp objectForKey:@"iad-keyword-id"];
+//                                                    [self setUserPropertyString:iad_keyword_id forName:@"iad-keyword-id"];
+//
+//                                                    NSString *iad_creativeset_id = [tmp objectForKey:@"iad-creativeset-id"];
+//                                                    [self setUserPropertyString:iad_creativeset_id forName:@"iad-creativeset-id"];
+//
+//                                                    break;
+//                                                }
 //                                            }
 //                                        }
 //                                    }
-//                                }
-//                            }];
-//                        }
+//                                }];
+//                            }
+                        }
                     }
                     NSArray *arr = [[SDKFacade sharedInstance] getTrackAdCountArray:@"op"];
                     if (arr && arr.count > 0) {
