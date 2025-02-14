@@ -120,7 +120,7 @@ dependencies {
 
     implementation 'com.google.ads.mediation:facebook:6.17.0.0'
     implementation 'com.google.ads.mediation:unity:4.12.1.0'
-    implementation 'com.google.ads.mediation:applovin:12.6.0.0'
+    implementation 'com.google.ads.mediation:applovin:13.0.0.0'
     //noinspection MobileAdsSdkOutdatedVersion
     implementation 'com.yandex.android:mobileads:6.3.0'
 
