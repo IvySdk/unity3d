@@ -13,13 +13,10 @@ import androidx.work.WorkerParameters;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
-
 public class NotificationResourceTask extends Worker {
-
     public NotificationResourceTask(@NonNull Context context, @NonNull WorkerParameters workerParams) {
         super(context, workerParams);
     }
-
     public Bitmap downloadImage(Context context, String imageUrl) {
         Bitmap bitmap = null;
         try {
@@ -29,12 +26,10 @@ public class NotificationResourceTask extends Worker {
             connection.connect();
             InputStream input = connection.getInputStream();
             bitmap = BitmapFactory.decodeStream(input);
-
         } catch (Exception e) {
         }
         return bitmap;
     }
-
     @NonNull
     @Override
     public Result doWork() {
@@ -46,6 +41,7 @@ public class NotificationResourceTask extends Worker {
             String subtitle = data.getString("subtitle");
             String action = data.getString("clickAction");
             String bigText = data.getString("bigText");
+            String smallIcon = data.getString("smallIcon");
             String largeIcon = data.getString("largeIcon");
             String bigPicture = data.getString("bigPicture");
             String sound = data.getString("sound");
@@ -59,7 +55,6 @@ public class NotificationResourceTask extends Worker {
                 bitmap_big_picture = downloadImage(getApplicationContext(), bigPicture);
             }
             NotificationUtil.showNotification(getApplicationContext(), channelId, channelName, title, subtitle, bigText, bitmap_large_icon, bitmap_big_picture, autoClose, action);
-
             return Result.success();
         } catch (Exception e) {
             e.printStackTrace();

@@ -1,16 +1,23 @@
 package com.android.client;
+
 import android.text.TextUtils;
 
 import com.android.billingclient.api.BillingClient;
 import com.android.billingclient.api.ProductDetails;
+
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.List;
+
 public class SKUDetail {
   private String mSku;
   private String mType;
   private String mPrice;
   private long mPriceAmountMicros;
   private String mPriceCurrencyCode;
+
+
   private long mOriginalPriceAmountMicros;
   private String mOriginalPrice;
   private String mTitle;
@@ -38,10 +45,21 @@ public class SKUDetail {
       this.mPriceAmountMicros = productDetails.getOneTimePurchaseOfferDetails().getPriceAmountMicros();
       this.mPriceCurrencyCode = productDetails.getOneTimePurchaseOfferDetails().getPriceCurrencyCode();
     } else if (BillingClient.ProductType.SUBS.equals(productDetails.getProductType())) {
-      ProductDetails.PricingPhase pricingPhase = productDetails.getSubscriptionOfferDetails().get(0).getPricingPhases().getPricingPhaseList().get(0);
-      this.mPrice = pricingPhase.getFormattedPrice();
-      this.mPriceAmountMicros = pricingPhase.getPriceAmountMicros();
-      this.mPriceCurrencyCode = pricingPhase.getPriceCurrencyCode();
+      List<ProductDetails.SubscriptionOfferDetails> details = productDetails.getSubscriptionOfferDetails();
+      if (details != null && !details.isEmpty()) {
+        ProductDetails.PricingPhase pricingPhase = details.get(0).getPricingPhases().getPricingPhaseList().get(0);
+        this.mPrice = pricingPhase.getFormattedPrice();
+        this.mPriceAmountMicros = pricingPhase.getPriceAmountMicros();
+        this.mPriceCurrencyCode = pricingPhase.getPriceCurrencyCode();
+        if (this.mPriceAmountMicros == 0 && details.size() >= 2) {
+          try {
+            ProductDetails.PricingPhase secondPricingPhase = details.get(1).getPricingPhases().getPricingPhaseList().get(0);
+            this.mOriginalPrice = secondPricingPhase.getFormattedPrice();
+            this.mOriginalPriceAmountMicros = secondPricingPhase.getPriceAmountMicros();
+          } catch (Exception e) {
+          }
+        }
+      }
     }
 //    this.mPrice = skuDetails.getPrice();
 //    this.mPriceAmountMicros = skuDetails.getPriceAmountMicros();
@@ -84,6 +102,7 @@ public class SKUDetail {
       }
       json.put("price_amount", this.mPriceAmountMicros / 1000000.0f);
       json.put("original_price_amount", this.mOriginalPriceAmountMicros / 1000000.0f);
+
       json.put("currency", this.mPriceCurrencyCode);
       json.put("title", this.mTitle);
       json.put("desc", this.mDescription);

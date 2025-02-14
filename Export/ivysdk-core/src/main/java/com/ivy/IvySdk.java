@@ -9,7 +9,6 @@ import android.content.SharedPreferences;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
-import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Handler;
@@ -23,7 +22,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ProgressBar;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -35,6 +33,7 @@ import com.alibaba.fastjson.JSON;
 import com.android.client.AndroidSdk;
 import com.android.client.GoogleListener;
 import com.android.client.InAppMessageClickListener;
+import com.android.client.OnAccountSignedInListener;
 import com.android.client.OnCloudFunctionResult;
 import com.android.client.OnSkuDetailsListener;
 import com.android.client.PlayGameProfileListener;
@@ -80,6 +79,11 @@ import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.PlayGamesAuthProvider;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.functions.FirebaseFunctions;
 import com.google.firebase.inappmessaging.FirebaseInAppMessaging;
 import com.google.firebase.inappmessaging.FirebaseInAppMessagingDisplay;
@@ -119,6 +123,7 @@ import com.ivy.networks.util.Util;
 import com.ivy.notification.NotificationMan;
 import com.ivy.notification.NotificationPermissionUtil;
 import com.ivy.payermax.PayerMaxPurchaseImpl;
+import com.ivy.shortCut.Shortcut;
 import com.ivy.util.DLog;
 import com.ivy.util.Logger;
 import com.parfka.adjust.sdk.Adjust;
@@ -181,7 +186,7 @@ public final class IvySdk {
     public static final String KEY_VIRUTAL_CURRENCY = "internal_virtual_currency";
 
     private static final String KEY_AUTO_INAPP_MESSAGE_EVENT = "auto_inapp_message_event";
-
+    public static final String KEY_LAST_SIGNIN_PROVIDER = "_last_signin_provider";
     public static boolean skipPauseOnce = false;
     public static boolean skipResumeOnce = false;
 
@@ -209,6 +214,9 @@ public final class IvySdk {
     private static String ID_MMKV_GAMEDATA = "_gamedata_";
 
     private static String userAttributeUrl = null;
+
+    private static boolean realTimeMessageCheckerStarted = false;
+    private static boolean onlineStatusChecker = false;
 
 
     public static synchronized boolean isInitialized() {
@@ -3126,7 +3134,6 @@ public final class IvySdk {
         if (mFirebaseRemoteConfig != null) {
             return mFirebaseRemoteConfig.getString(key);
         }
-
         JSONObject gridData = GridManager.getGridData();
         if (gridData == null) {
             return EMPTY;
@@ -3775,12 +3782,31 @@ public final class IvySdk {
         gameDataMMKV.encode(key, value);
     }
 
+    public static void mmSetStringValueWithExpiredSeconds(String key, String value, int seconds) {
+        if (gameDataMMKV == null) {
+            Log.e(TAG, "gameDataMMKV invalid");
+            return;
+        }
+        gameDataMMKV.encode(key, value, seconds);
+    }
+
     public static String mmGetStringValue(String key, String defaultValue) {
         if (gameDataMMKV == null) {
             Log.e(TAG, "gameDataMMKV invalid");
             return defaultValue;
         }
         return gameDataMMKV.decodeString(key, defaultValue);
+    }
+
+    public static JSONObject mmGetJsonValue(String paramString) {
+        if (gameDataMMKV == null)
+            return null;
+        try {
+            String value = gameDataMMKV.decodeString(paramString);
+            return new JSONObject(value);
+        } catch (Exception e) {
+        }
+        return null;
     }
 
     public static boolean mmContainsKey(String key) {
@@ -4232,6 +4258,7 @@ public final class IvySdk {
                                                 String title,
                                                 String subtitle,
                                                 String bigText,
+                                                String smallIcon,
                                                 String largeIcon,
                                                 String bigPicture,
                                                 String action,
@@ -4251,8 +4278,7 @@ public final class IvySdk {
                 NotificationPermissionUtil.enablePermission(activity);
                 return false;
             }
-            NotificationMan.pushMessage(activity.getApplicationContext(), tag, title, subtitle, bigText, largeIcon, bigPicture, delay, autoCancel, action, repeat, onNetWorkOn, requireCharging);
-
+            NotificationMan.pushMessage(activity.getApplicationContext(), tag, title, subtitle, bigText, smallIcon, largeIcon, bigPicture, delay, autoCancel, action, repeat, onNetWorkOn, requireCharging);
             return true;
         } catch (Exception e) {
             Logger.error("error to push local notification::" + e.getMessage());
@@ -4270,6 +4296,168 @@ public final class IvySdk {
             }
         } catch (Exception e){
             e.printStackTrace();
+        }
+    }
+
+    public static void onAccountSignedIn(OnAccountSignedInListener listener) {
+        Logger.debug("IVYSDK", "onAccount Signed In");
+        try {
+            checkOnlineStatus(listener);
+            startCheckRealtimeInAppMessage(listener);
+        } catch (Exception e) {
+        }
+    }
+    private static void startCheckRealtimeInAppMessage(OnAccountSignedInListener listener) {
+        if (!getGridConfigBoolean("realtime.appmessage.check") || realTimeMessageCheckerStarted)
+            return;
+        String str;
+        if ((str = FirebaseAuth.getInstance().getUid()) == null)
+            return;
+        Logger.debug("IVYSDK", "startCheckRealtimeInAppMessage");
+        realTimeMessageCheckerStarted = true;
+        final DatabaseReference msgRef;
+        String path = "message/" + str;
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference(path);
+        databaseReference.addChildEventListener(new ChildEventListener() {
+            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String param1String) {
+                Logger.debug("IVYSDK", "onChildAdded");
+                Object o = snapshot.getValue();
+                if (o instanceof Map) {
+                    try {
+                        String id = snapshot.getKey();
+                        JSONObject resultObject = new JSONObject((Map<String, Object>) o);
+                        resultObject.put("_id", id);
+                        resultObject.put("path", path);
+                        listener.onMessage("onChatMessage", resultObject.toString());
+                    } catch (Throwable e) {
+                        Logger.error(TAG, "OnChatMessage exception", e);
+                    }
+                }
+            }
+            public void onChildChanged(@NonNull DataSnapshot param1DataSnapshot, @Nullable String param1String) {
+                Logger.debug("IVYSDK", "onChildChanged");
+            }
+            public void onChildRemoved(@NonNull DataSnapshot param1DataSnapshot) {
+                Logger.debug("IVYSDK", "onChildRemoved");
+            }
+            public void onChildMoved(@NonNull DataSnapshot param1DataSnapshot, @Nullable String param1String) {
+                Logger.debug("IVYSDK", "onChildMoved");
+            }
+            public void onCancelled(@NonNull DatabaseError param1DatabaseError) {
+                Logger.debug("IVYSDK", "onCancelled");
+            }
+        });
+    }
+    private static void checkOnlineStatus(OnAccountSignedInListener listener) {
+        try {
+            if (!getGridConfigBoolean("online.status.check") || onlineStatusChecker)
+                return;
+            String str;
+            if ((str = FirebaseAuth.getInstance().getUid()) == null)
+                return;
+            Logger.debug("IVYSDK", "start online status monitor " + str);
+            onlineStatusChecker = true;
+
+            DatabaseReference databaseReference2 = FirebaseDatabase.getInstance().getReference("users/" + str + "/connections");
+            DatabaseReference databaseReference1 = FirebaseDatabase.getInstance().getReference("users/" + str + "/lastOnline");
+            databaseReference1.addChildEventListener(new ChildEventListener() {
+                @Override
+                public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                    Object o = snapshot.getValue();
+                    if (o instanceof Map) {
+                        try {
+                            String id = snapshot.getKey();
+                            JSONObject resultObject = new JSONObject((Map<String, Object>) o);
+                            resultObject.put("_id", id);
+                            resultObject.put("path", "users/" + str + "/connections");
+                            listener.onMessage("onChatMessage", resultObject.toString());
+                        } catch (Throwable e) {
+                            Logger.error(TAG, "OnChatMessage exception", e);
+                        }
+                    }
+                }
+
+                @Override
+                public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+                }
+
+                @Override
+                public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+
+                }
+
+                @Override
+                public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
+            databaseReference2.addChildEventListener(new ChildEventListener() {
+                @Override
+                public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                    Object o = snapshot.getValue();
+                    if (o instanceof Map) {
+                        try {
+                            String id = snapshot.getKey();
+                            JSONObject resultObject = new JSONObject((Map<String, Object>) o);
+                            resultObject.put("_id", id);
+                            resultObject.put("path", "users/" + str + "/connections");
+                            listener.onMessage("onChatMessage", resultObject.toString());
+                        } catch (Throwable e) {
+                            Logger.error(TAG, "OnChatMessage exception", e);
+                        }
+                    }
+                }
+
+                @Override
+                public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+                }
+
+                @Override
+                public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+
+                }
+
+                @Override
+                public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
+        } finally {
+            Exception exception = null;
+        }
+    }
+
+    public static void addShortcut(String id, int order, String shortLabel, String longLabel, String icon, String action) {
+        if (IvySdk.getActivity() != null) {
+            Shortcut.add(IvySdk.getActivity().getApplicationContext(), id, order, shortLabel, longLabel, icon, action);
+        } else {
+            Logger.error("shortcut", "invalid context");
+        }
+    }
+    public static void updateShortcut(String id, int order, String shortLabel, String longLabel, String icon, String action) {
+        if (IvySdk.getActivity() != null) {
+            Shortcut.update(IvySdk.getActivity().getApplicationContext(), id, order, shortLabel, longLabel, icon, action);
+        } else {
+            Logger.error("shortcut", "invalid context");
+        }
+    }
+    public static void deleteShortcut(String id) {
+        if (IvySdk.getActivity() != null) {
+            Shortcut.delete(IvySdk.getActivity().getApplicationContext(), id);
+        } else {
+            Logger.error("shortcut", "invalid context");
         }
     }
 

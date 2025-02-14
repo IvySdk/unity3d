@@ -1,0 +1,36 @@
+{
+    "logs": [
+        {
+            "outputFile": "D:\\UnityProject\\unity3d\\Export\\Android\\testapp\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-land\\values-land.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\ivy\\.gradle\\caches\\transforms-2\\files-2.1\\2e6d3b0a36667e63fb3d4c7e362ab023\\appcompat-1.4.1\\res\\values-land\\values-land.xml",
+                    "from": {
+                        "startLines": "2,3,4",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "55,125,196",
+                        "endColumns": "69,70,67",
+                        "endOffsets": "120,191,259"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\ivy\\.gradle\\caches\\transforms-2\\files-2.1\\4c4283f680bb35c7afdfaf58af0e2372\\jetified-applovin-sdk-11.9.0\\res\\values-land\\values-land.xml",
+                    "from": {
+                        "startLines": "2,3",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,134",
+                        "endColumns": "78,84",
+                        "endOffsets": "129,214"
+                    },
+                    "to": {
+                        "startLines": "5,6",
+                        "startColumns": "4,4",
+                        "startOffsets": "264,343",
+                        "endColumns": "78,84",
+                        "endOffsets": "338,423"
+                    }
+                }
+            ]
+        }
+    ]
+}

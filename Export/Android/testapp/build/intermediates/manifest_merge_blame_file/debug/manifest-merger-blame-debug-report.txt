@@ -1,0 +1,950 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.ivy.test"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="21"
+8-->D:\UnityProject\unity3d\Export\Android\testapp\src\main\AndroidManifest.xml
+9        android:targetSdkVersion="33" />
+9-->D:\UnityProject\unity3d\Export\Android\testapp\src\main\AndroidManifest.xml
+10
+11    <uses-permission android:name="android.permission.INTERNET" />
+11-->[:ivysdk-ad] D:\UnityProject\unity3d\Export\Android\ivysdk-ad\build\intermediates\merged_manifest\debug\AndroidManifest.xml:8:5-67
+11-->[:ivysdk-ad] D:\UnityProject\unity3d\Export\Android\ivysdk-ad\build\intermediates\merged_manifest\debug\AndroidManifest.xml:8:22-64
+12    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+12-->[:ivysdk-ad] D:\UnityProject\unity3d\Export\Android\ivysdk-ad\build\intermediates\merged_manifest\debug\AndroidManifest.xml:9:5-79
+12-->[:ivysdk-ad] D:\UnityProject\unity3d\Export\Android\ivysdk-ad\build\intermediates\merged_manifest\debug\AndroidManifest.xml:9:22-76
+13    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+13-->[:ivysdk-ad] D:\UnityProject\unity3d\Export\Android\ivysdk-ad\build\intermediates\merged_manifest\debug\AndroidManifest.xml:10:5-76
+13-->[:ivysdk-ad] D:\UnityProject\unity3d\Export\Android\ivysdk-ad\build\intermediates\merged_manifest\debug\AndroidManifest.xml:10:22-73
+14    <uses-permission android:name="com.google.android.gms.permission.AD_ID" /> <!-- 如果有视频相关的广告且使用textureView播放，请务必添加，否则黑屏 -->
+14-->[:ivysdk-ad] D:\UnityProject\unity3d\Export\Android\ivysdk-ad\build\intermediates\merged_manifest\debug\AndroidManifest.xml:11:5-79
+14-->[:ivysdk-ad] D:\UnityProject\unity3d\Export\Android\ivysdk-ad\build\intermediates\merged_manifest\debug\AndroidManifest.xml:11:22-76
+15    <uses-permission android:name="android.permission.WAKE_LOCK" />
+15-->[:ivysdk-ad] D:\UnityProject\unity3d\Export\Android\ivysdk-ad\build\intermediates\merged_manifest\debug\AndroidManifest.xml:13:5-68
+15-->[:ivysdk-ad] D:\UnityProject\unity3d\Export\Android\ivysdk-ad\build\intermediates\merged_manifest\debug\AndroidManifest.xml:13:22-65
+16
+17    <queries>
+17-->[com.facebook.android:facebook-common:14.1.1] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\793d7f7e3ed74140c173fa9fcf9b7617\jetified-facebook-common-14.1.1\AndroidManifest.xml:29:5-31:15
+18        <package android:name="com.facebook.katana" />
+18-->[com.facebook.android:facebook-common:14.1.1] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\793d7f7e3ed74140c173fa9fcf9b7617\jetified-facebook-common-14.1.1\AndroidManifest.xml:30:9-55
+18-->[com.facebook.android:facebook-common:14.1.1] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\793d7f7e3ed74140c173fa9fcf9b7617\jetified-facebook-common-14.1.1\AndroidManifest.xml:30:18-52
+19
+20        <intent>
+20-->[com.appsflyer:af-android-sdk:6.12.1] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\7f0bc4ceb00f4224ce7d9263f2029d19\jetified-af-android-sdk-6.12.1\AndroidManifest.xml:12:9-14:18
+21            <action android:name="com.appsflyer.referrer.INSTALL_PROVIDER" />
+21-->[com.appsflyer:af-android-sdk:6.12.1] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\7f0bc4ceb00f4224ce7d9263f2029d19\jetified-af-android-sdk-6.12.1\AndroidManifest.xml:13:13-78
+21-->[com.appsflyer:af-android-sdk:6.12.1] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\7f0bc4ceb00f4224ce7d9263f2029d19\jetified-af-android-sdk-6.12.1\AndroidManifest.xml:13:21-75
+22        </intent> <!-- For browser content -->
+23        <intent>
+23-->[com.google.android.gms:play-services-ads-lite:22.0.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\55f103e914cb708a358c7a2e30949b88\jetified-play-services-ads-lite-22.0.0\AndroidManifest.xml:35:9-41:18
+24            <action android:name="android.intent.action.VIEW" />
+24-->[com.facebook.android:facebook-common:14.1.1] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\793d7f7e3ed74140c173fa9fcf9b7617\jetified-facebook-common-14.1.1\AndroidManifest.xml:44:17-69
+24-->[com.facebook.android:facebook-common:14.1.1] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\793d7f7e3ed74140c173fa9fcf9b7617\jetified-facebook-common-14.1.1\AndroidManifest.xml:44:25-66
+25
+26            <category android:name="android.intent.category.BROWSABLE" />
+26-->[com.facebook.android:facebook-common:14.1.1] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\793d7f7e3ed74140c173fa9fcf9b7617\jetified-facebook-common-14.1.1\AndroidManifest.xml:47:17-78
+26-->[com.facebook.android:facebook-common:14.1.1] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\793d7f7e3ed74140c173fa9fcf9b7617\jetified-facebook-common-14.1.1\AndroidManifest.xml:47:27-75
+27
+28            <data android:scheme="https" />
+28-->[com.facebook.android:facebook-common:14.1.1] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\793d7f7e3ed74140c173fa9fcf9b7617\jetified-facebook-common-14.1.1\AndroidManifest.xml:49:17-51:50
+28-->[com.facebook.android:facebook-common:14.1.1] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\793d7f7e3ed74140c173fa9fcf9b7617\jetified-facebook-common-14.1.1\AndroidManifest.xml:51:21-47
+29        </intent> <!-- End of browser content -->
+30        <!-- For CustomTabsService -->
+31        <intent>
+31-->[com.google.android.gms:play-services-ads-lite:22.0.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\55f103e914cb708a358c7a2e30949b88\jetified-play-services-ads-lite-22.0.0\AndroidManifest.xml:44:9-46:18
+32            <action android:name="android.support.customtabs.action.CustomTabsService" />
+32-->[com.google.android.gms:play-services-ads-lite:22.0.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\55f103e914cb708a358c7a2e30949b88\jetified-play-services-ads-lite-22.0.0\AndroidManifest.xml:45:13-90
+32-->[com.google.android.gms:play-services-ads-lite:22.0.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\55f103e914cb708a358c7a2e30949b88\jetified-play-services-ads-lite-22.0.0\AndroidManifest.xml:45:21-87
+33        </intent>
+34        <intent>
+34-->[com.applovin:applovin-sdk:11.9.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\4c4283f680bb35c7afdfaf58af0e2372\jetified-applovin-sdk-11.9.0\AndroidManifest.xml:12:9-14:18
+35            <action android:name="com.applovin.am.intent.action.APPHUB_SERVICE" />
+35-->[com.applovin:applovin-sdk:11.9.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\4c4283f680bb35c7afdfaf58af0e2372\jetified-applovin-sdk-11.9.0\AndroidManifest.xml:13:13-83
+35-->[com.applovin:applovin-sdk:11.9.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\4c4283f680bb35c7afdfaf58af0e2372\jetified-applovin-sdk-11.9.0\AndroidManifest.xml:13:21-80
+36        </intent>
+37    </queries>
+38
+39    <uses-permission android:name="com.applovin.array.apphub.permission.BIND_APPHUB_SERVICE" />
+39-->[com.applovin:applovin-sdk:11.9.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\4c4283f680bb35c7afdfaf58af0e2372\jetified-applovin-sdk-11.9.0\AndroidManifest.xml:20:5-96
+39-->[com.applovin:applovin-sdk:11.9.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\4c4283f680bb35c7afdfaf58af0e2372\jetified-applovin-sdk-11.9.0\AndroidManifest.xml:20:22-93
+40    <uses-permission android:name="com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE" />
+40-->[com.google.android.gms:play-services-measurement:21.5.1] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\7b0dc45fe28ff29d3dad862f668f8ce5\jetified-play-services-measurement-21.5.1\AndroidManifest.xml:26:5-110
+40-->[com.google.android.gms:play-services-measurement:21.5.1] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\7b0dc45fe28ff29d3dad862f668f8ce5\jetified-play-services-measurement-21.5.1\AndroidManifest.xml:26:22-107
+41    <uses-permission android:name="android.permission.ACCESS_ADSERVICES_ATTRIBUTION" />
+41-->[com.google.android.gms:play-services-measurement-api:21.5.1] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\ba560a516ff6e7350e85a56f7c708493\jetified-play-services-measurement-api-21.5.1\AndroidManifest.xml:26:5-88
+41-->[com.google.android.gms:play-services-measurement-api:21.5.1] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\ba560a516ff6e7350e85a56f7c708493\jetified-play-services-measurement-api-21.5.1\AndroidManifest.xml:26:22-85
+42    <uses-permission android:name="android.permission.ACCESS_ADSERVICES_AD_ID" />
+42-->[com.google.android.gms:play-services-measurement-api:21.5.1] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\ba560a516ff6e7350e85a56f7c708493\jetified-play-services-measurement-api-21.5.1\AndroidManifest.xml:27:5-82
+42-->[com.google.android.gms:play-services-measurement-api:21.5.1] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\ba560a516ff6e7350e85a56f7c708493\jetified-play-services-measurement-api-21.5.1\AndroidManifest.xml:27:22-79
+43    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+43-->[androidx.work:work-runtime:2.7.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\3a650c1bdedafd8e4171986ed2bca5eb\work-runtime-2.7.0\AndroidManifest.xml:28:5-77
+43-->[androidx.work:work-runtime:2.7.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\3a650c1bdedafd8e4171986ed2bca5eb\work-runtime-2.7.0\AndroidManifest.xml:28:22-74
+44
+45    <permission
+45-->[androidx.core:core:1.9.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\a7f6935bb06cf0703f3b7b0a0d91d045\core-1.9.0\AndroidManifest.xml:22:5-24:47
+46        android:name="com.ivy.test.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+46-->[androidx.core:core:1.9.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\a7f6935bb06cf0703f3b7b0a0d91d045\core-1.9.0\AndroidManifest.xml:23:9-81
+47        android:protectionLevel="signature" />
+47-->[androidx.core:core:1.9.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\a7f6935bb06cf0703f3b7b0a0d91d045\core-1.9.0\AndroidManifest.xml:24:9-44
+48
+49    <uses-permission android:name="com.ivy.test.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+49-->[androidx.core:core:1.9.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\a7f6935bb06cf0703f3b7b0a0d91d045\core-1.9.0\AndroidManifest.xml:26:5-97
+49-->[androidx.core:core:1.9.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\a7f6935bb06cf0703f3b7b0a0d91d045\core-1.9.0\AndroidManifest.xml:26:22-94
+50
+51    <application
+51-->D:\UnityProject\unity3d\Export\Android\testapp\src\main\AndroidManifest.xml:4:5-21:19
+52        android:allowBackup="true"
+52-->D:\UnityProject\unity3d\Export\Android\testapp\src\main\AndroidManifest.xml:5:9-35
+53        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+53-->[androidx.core:core:1.9.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\a7f6935bb06cf0703f3b7b0a0d91d045\core-1.9.0\AndroidManifest.xml:28:18-86
+54        android:debuggable="true"
+55        android:fullBackupContent="@xml/sdk_full_backup_contents"
+55-->[:ivysdk-ad] D:\UnityProject\unity3d\Export\Android\ivysdk-ad\build\intermediates\merged_manifest\debug\AndroidManifest.xml:16:9-66
+56        android:hardwareAccelerated="true"
+56-->[:ivysdk-ad] D:\UnityProject\unity3d\Export\Android\ivysdk-ad\build\intermediates\merged_manifest\debug\AndroidManifest.xml:17:9-43
+57        android:icon="@mipmap/ic_launcher"
+57-->D:\UnityProject\unity3d\Export\Android\testapp\src\main\AndroidManifest.xml:6:9-43
+58        android:label="@string/app_name"
+58-->D:\UnityProject\unity3d\Export\Android\testapp\src\main\AndroidManifest.xml:7:9-41
+59        android:networkSecurityConfig="@xml/network_security_config"
+59-->[:ivysdk-ad] D:\UnityProject\unity3d\Export\Android\ivysdk-ad\build\intermediates\merged_manifest\debug\AndroidManifest.xml:18:9-69
+60        android:roundIcon="@mipmap/ic_launcher_round"
+60-->D:\UnityProject\unity3d\Export\Android\testapp\src\main\AndroidManifest.xml:8:9-54
+61        android:supportsRtl="true"
+61-->D:\UnityProject\unity3d\Export\Android\testapp\src\main\AndroidManifest.xml:9:9-35
+62        android:testOnly="true"
+63        android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
+63-->D:\UnityProject\unity3d\Export\Android\testapp\src\main\AndroidManifest.xml:10:9-68
+64        android:usesCleartextTraffic="true" >
+64-->[:ivysdk-ad] D:\UnityProject\unity3d\Export\Android\ivysdk-ad\build\intermediates\merged_manifest\debug\AndroidManifest.xml:19:9-44
+65        <activity
+65-->D:\UnityProject\unity3d\Export\Android\testapp\src\main\AndroidManifest.xml:12:9-18:20
+66            android:name="com.ivy.test.MainActivity"
+66-->D:\UnityProject\unity3d\Export\Android\testapp\src\main\AndroidManifest.xml:12:19-47
+67            android:exported="true" >
+67-->D:\UnityProject\unity3d\Export\Android\testapp\src\main\AndroidManifest.xml:13:13-36
+68            <intent-filter>
+68-->D:\UnityProject\unity3d\Export\Android\testapp\src\main\AndroidManifest.xml:14:13-17:29
+69                <action android:name="android.intent.action.MAIN" />
+69-->D:\UnityProject\unity3d\Export\Android\testapp\src\main\AndroidManifest.xml:15:17-69
+69-->D:\UnityProject\unity3d\Export\Android\testapp\src\main\AndroidManifest.xml:15:25-66
+70
+71                <category android:name="android.intent.category.LAUNCHER" />
+71-->D:\UnityProject\unity3d\Export\Android\testapp\src\main\AndroidManifest.xml:16:17-77
+71-->D:\UnityProject\unity3d\Export\Android\testapp\src\main\AndroidManifest.xml:16:27-74
+72            </intent-filter>
+73        </activity>
+74
+75        <meta-data
+75-->[:ivysdk-ad] D:\UnityProject\unity3d\Export\Android\ivysdk-ad\build\intermediates\merged_manifest\debug\AndroidManifest.xml:21:9-23:69
+76            android:name="com.google.android.gms.version"
+76-->[:ivysdk-ad] D:\UnityProject\unity3d\Export\Android\ivysdk-ad\build\intermediates\merged_manifest\debug\AndroidManifest.xml:22:13-58
+77            android:value="@integer/google_play_services_version" />
+77-->[:ivysdk-ad] D:\UnityProject\unity3d\Export\Android\ivysdk-ad\build\intermediates\merged_manifest\debug\AndroidManifest.xml:23:13-66
+78        <meta-data
+78-->[:ivysdk-ad] D:\UnityProject\unity3d\Export\Android\ivysdk-ad\build\intermediates\merged_manifest\debug\AndroidManifest.xml:24:9-26:62
+79            android:name="com.google.android.gms.ads.APPLICATION_ID"
+79-->[:ivysdk-ad] D:\UnityProject\unity3d\Export\Android\ivysdk-ad\build\intermediates\merged_manifest\debug\AndroidManifest.xml:25:13-69
+80            android:value="ca-app-pub-1914768831611213~5856809174" />
+80-->[:ivysdk-ad] D:\UnityProject\unity3d\Export\Android\ivysdk-ad\build\intermediates\merged_manifest\debug\AndroidManifest.xml:26:13-59
+81        <meta-data
+81-->[:ivysdk-ad] D:\UnityProject\unity3d\Export\Android\ivysdk-ad\build\intermediates\merged_manifest\debug\AndroidManifest.xml:27:9-29:44
+82            android:name="ivy.debug"
+82-->[:ivysdk-ad] D:\UnityProject\unity3d\Export\Android\ivysdk-ad\build\intermediates\merged_manifest\debug\AndroidManifest.xml:28:13-37
+83            android:value="true" />
+83-->[:ivysdk-ad] D:\UnityProject\unity3d\Export\Android\ivysdk-ad\build\intermediates\merged_manifest\debug\AndroidManifest.xml:29:13-41
+84        <meta-data
+84-->[:ivysdk-ad] D:\UnityProject\unity3d\Export\Android\ivysdk-ad\build\intermediates\merged_manifest\debug\AndroidManifest.xml:30:9-32:36
+85            android:name="com.google.android.gms.ads.AD_MANAGER_APP"
+85-->[:ivysdk-ad] D:\UnityProject\unity3d\Export\Android\ivysdk-ad\build\intermediates\merged_manifest\debug\AndroidManifest.xml:31:13-69
+86            android:value="true" />
+86-->[:ivysdk-ad] D:\UnityProject\unity3d\Export\Android\ivysdk-ad\build\intermediates\merged_manifest\debug\AndroidManifest.xml:32:13-33
+87        <meta-data
+87-->[:ivysdk-ad] D:\UnityProject\unity3d\Export\Android\ivysdk-ad\build\intermediates\merged_manifest\debug\AndroidManifest.xml:33:9-35:36
+88            android:name="com.google.android.gms.ads.flag.OPTIMIZE_INITIALIZATION"
+88-->[:ivysdk-ad] D:\UnityProject\unity3d\Export\Android\ivysdk-ad\build\intermediates\merged_manifest\debug\AndroidManifest.xml:34:13-83
+89            android:value="true" />
+89-->[:ivysdk-ad] D:\UnityProject\unity3d\Export\Android\ivysdk-ad\build\intermediates\merged_manifest\debug\AndroidManifest.xml:35:13-33
+90        <meta-data
+90-->[:ivysdk-ad] D:\UnityProject\unity3d\Export\Android\ivysdk-ad\build\intermediates\merged_manifest\debug\AndroidManifest.xml:36:9-38:36
+91            android:name="com.google.android.gms.ads.flag.OPTIMIZE_AD_LOADING"
+91-->[:ivysdk-ad] D:\UnityProject\unity3d\Export\Android\ivysdk-ad\build\intermediates\merged_manifest\debug\AndroidManifest.xml:37:13-79
+92            android:value="true" />
+92-->[:ivysdk-ad] D:\UnityProject\unity3d\Export\Android\ivysdk-ad\build\intermediates\merged_manifest\debug\AndroidManifest.xml:38:13-33
+93
+94        <activity
+94-->[com.facebook.android:facebook-common:14.1.1] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\793d7f7e3ed74140c173fa9fcf9b7617\jetified-facebook-common-14.1.1\AndroidManifest.xml:34:9-37:66
+95            android:name="com.facebook.FacebookActivity"
+95-->[com.facebook.android:facebook-common:14.1.1] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\793d7f7e3ed74140c173fa9fcf9b7617\jetified-facebook-common-14.1.1\AndroidManifest.xml:35:13-57
+96            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+96-->[com.facebook.android:facebook-common:14.1.1] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\793d7f7e3ed74140c173fa9fcf9b7617\jetified-facebook-common-14.1.1\AndroidManifest.xml:36:13-96
+97            android:theme="@style/com_facebook_activity_theme" />
+97-->[com.facebook.android:facebook-common:14.1.1] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\793d7f7e3ed74140c173fa9fcf9b7617\jetified-facebook-common-14.1.1\AndroidManifest.xml:37:13-63
+98        <activity android:name="com.facebook.CustomTabMainActivity" />
+98-->[com.facebook.android:facebook-common:14.1.1] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\793d7f7e3ed74140c173fa9fcf9b7617\jetified-facebook-common-14.1.1\AndroidManifest.xml:38:9-71
+98-->[com.facebook.android:facebook-common:14.1.1] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\793d7f7e3ed74140c173fa9fcf9b7617\jetified-facebook-common-14.1.1\AndroidManifest.xml:38:19-68
+99        <activity
+99-->[com.facebook.android:facebook-common:14.1.1] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\793d7f7e3ed74140c173fa9fcf9b7617\jetified-facebook-common-14.1.1\AndroidManifest.xml:39:9-53:20
+100            android:name="com.facebook.CustomTabActivity"
+100-->[com.facebook.android:facebook-common:14.1.1] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\793d7f7e3ed74140c173fa9fcf9b7617\jetified-facebook-common-14.1.1\AndroidManifest.xml:40:13-58
+101            android:exported="true" >
+101-->[com.facebook.android:facebook-common:14.1.1] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\793d7f7e3ed74140c173fa9fcf9b7617\jetified-facebook-common-14.1.1\AndroidManifest.xml:41:13-36
+102            <intent-filter>
+102-->[com.facebook.android:facebook-common:14.1.1] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\793d7f7e3ed74140c173fa9fcf9b7617\jetified-facebook-common-14.1.1\AndroidManifest.xml:43:13-52:29
+103                <action android:name="android.intent.action.VIEW" />
+103-->[com.facebook.android:facebook-common:14.1.1] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\793d7f7e3ed74140c173fa9fcf9b7617\jetified-facebook-common-14.1.1\AndroidManifest.xml:44:17-69
+103-->[com.facebook.android:facebook-common:14.1.1] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\793d7f7e3ed74140c173fa9fcf9b7617\jetified-facebook-common-14.1.1\AndroidManifest.xml:44:25-66
+104
+105                <category android:name="android.intent.category.DEFAULT" />
+105-->[com.facebook.android:facebook-common:14.1.1] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\793d7f7e3ed74140c173fa9fcf9b7617\jetified-facebook-common-14.1.1\AndroidManifest.xml:46:17-76
+105-->[com.facebook.android:facebook-common:14.1.1] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\793d7f7e3ed74140c173fa9fcf9b7617\jetified-facebook-common-14.1.1\AndroidManifest.xml:46:27-73
+106                <category android:name="android.intent.category.BROWSABLE" />
+106-->[com.facebook.android:facebook-common:14.1.1] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\793d7f7e3ed74140c173fa9fcf9b7617\jetified-facebook-common-14.1.1\AndroidManifest.xml:47:17-78
+106-->[com.facebook.android:facebook-common:14.1.1] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\793d7f7e3ed74140c173fa9fcf9b7617\jetified-facebook-common-14.1.1\AndroidManifest.xml:47:27-75
+107
+108                <data
+108-->[com.facebook.android:facebook-common:14.1.1] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\793d7f7e3ed74140c173fa9fcf9b7617\jetified-facebook-common-14.1.1\AndroidManifest.xml:49:17-51:50
+109                    android:host="cct.com.ivy.test"
+109-->[com.facebook.android:facebook-common:14.1.1] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\793d7f7e3ed74140c173fa9fcf9b7617\jetified-facebook-common-14.1.1\AndroidManifest.xml:50:21-56
+110                    android:scheme="fbconnect" />
+110-->[com.facebook.android:facebook-common:14.1.1] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\793d7f7e3ed74140c173fa9fcf9b7617\jetified-facebook-common-14.1.1\AndroidManifest.xml:51:21-47
+111            </intent-filter>
+112        </activity>
+113        <activity
+113-->[com.yandex.android:mobileads:5.8.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\a302be5376bea0a8d9359a96a99a3ea5\jetified-mobileads-5.8.0\AndroidManifest.xml:25:9-28:75
+114            android:name="com.yandex.mobile.ads.common.AdActivity"
+114-->[com.yandex.android:mobileads:5.8.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\a302be5376bea0a8d9359a96a99a3ea5\jetified-mobileads-5.8.0\AndroidManifest.xml:26:13-67
+115            android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
+115-->[com.yandex.android:mobileads:5.8.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\a302be5376bea0a8d9359a96a99a3ea5\jetified-mobileads-5.8.0\AndroidManifest.xml:27:13-122
+116            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+116-->[com.yandex.android:mobileads:5.8.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\a302be5376bea0a8d9359a96a99a3ea5\jetified-mobileads-5.8.0\AndroidManifest.xml:28:13-72
+117
+118        <provider
+118-->[com.yandex.android:mobileads:5.8.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\a302be5376bea0a8d9359a96a99a3ea5\jetified-mobileads-5.8.0\AndroidManifest.xml:30:9-33:40
+119            android:name="com.yandex.mobile.ads.core.initializer.MobileAdsInitializeProvider"
+119-->[com.yandex.android:mobileads:5.8.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\a302be5376bea0a8d9359a96a99a3ea5\jetified-mobileads-5.8.0\AndroidManifest.xml:31:13-94
+120            android:authorities="com.ivy.test.MobileAdsInitializeProvider"
+120-->[com.yandex.android:mobileads:5.8.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\a302be5376bea0a8d9359a96a99a3ea5\jetified-mobileads-5.8.0\AndroidManifest.xml:32:13-79
+121            android:exported="false" />
+121-->[com.yandex.android:mobileads:5.8.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\a302be5376bea0a8d9359a96a99a3ea5\jetified-mobileads-5.8.0\AndroidManifest.xml:33:13-37
+122
+123        <service
+123-->[com.google.firebase:firebase-config:21.6.1] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\5cf40bc8e8e65c59160b7d8c8eae3568\jetified-firebase-config-21.6.1\AndroidManifest.xml:26:9-35:19
+124            android:name="com.google.firebase.components.ComponentDiscoveryService"
+124-->[com.google.firebase:firebase-config:21.6.1] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\5cf40bc8e8e65c59160b7d8c8eae3568\jetified-firebase-config-21.6.1\AndroidManifest.xml:27:13-84
+125            android:directBootAware="true"
+125-->[com.google.firebase:firebase-common:20.4.2] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\ff39be41fd21fca73c09cdcab0969169\jetified-firebase-common-20.4.2\AndroidManifest.xml:32:13-43
+126            android:exported="false" >
+126-->[com.google.firebase:firebase-config:21.6.1] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\5cf40bc8e8e65c59160b7d8c8eae3568\jetified-firebase-config-21.6.1\AndroidManifest.xml:28:13-37
+127            <meta-data
+127-->[com.google.firebase:firebase-config:21.6.1] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\5cf40bc8e8e65c59160b7d8c8eae3568\jetified-firebase-config-21.6.1\AndroidManifest.xml:29:13-31:85
+128                android:name="com.google.firebase.components:com.google.firebase.remoteconfig.FirebaseRemoteConfigKtxRegistrar"
+128-->[com.google.firebase:firebase-config:21.6.1] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\5cf40bc8e8e65c59160b7d8c8eae3568\jetified-firebase-config-21.6.1\AndroidManifest.xml:30:17-128
+129                android:value="com.google.firebase.components.ComponentRegistrar" />
+129-->[com.google.firebase:firebase-config:21.6.1] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\5cf40bc8e8e65c59160b7d8c8eae3568\jetified-firebase-config-21.6.1\AndroidManifest.xml:31:17-82
+130            <meta-data
+130-->[com.google.firebase:firebase-config:21.6.1] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\5cf40bc8e8e65c59160b7d8c8eae3568\jetified-firebase-config-21.6.1\AndroidManifest.xml:32:13-34:85
+131                android:name="com.google.firebase.components:com.google.firebase.remoteconfig.RemoteConfigRegistrar"
+131-->[com.google.firebase:firebase-config:21.6.1] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\5cf40bc8e8e65c59160b7d8c8eae3568\jetified-firebase-config-21.6.1\AndroidManifest.xml:33:17-117
+132                android:value="com.google.firebase.components.ComponentRegistrar" />
+132-->[com.google.firebase:firebase-config:21.6.1] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\5cf40bc8e8e65c59160b7d8c8eae3568\jetified-firebase-config-21.6.1\AndroidManifest.xml:34:17-82
+133            <meta-data
+133-->[com.google.android.gms:play-services-measurement-api:21.5.1] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\ba560a516ff6e7350e85a56f7c708493\jetified-play-services-measurement-api-21.5.1\AndroidManifest.xml:37:13-39:85
+134                android:name="com.google.firebase.components:com.google.firebase.analytics.connector.internal.AnalyticsConnectorRegistrar"
+134-->[com.google.android.gms:play-services-measurement-api:21.5.1] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\ba560a516ff6e7350e85a56f7c708493\jetified-play-services-measurement-api-21.5.1\AndroidManifest.xml:38:17-139
+135                android:value="com.google.firebase.components.ComponentRegistrar" />
+135-->[com.google.android.gms:play-services-measurement-api:21.5.1] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\ba560a516ff6e7350e85a56f7c708493\jetified-play-services-measurement-api-21.5.1\AndroidManifest.xml:39:17-82
+136            <meta-data
+136-->[com.google.firebase:firebase-abt:21.1.1] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\d7ec0196aaa5096d154decb9996f64bb\jetified-firebase-abt-21.1.1\AndroidManifest.xml:12:13-14:85
+137                android:name="com.google.firebase.components:com.google.firebase.abt.component.AbtRegistrar"
+137-->[com.google.firebase:firebase-abt:21.1.1] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\d7ec0196aaa5096d154decb9996f64bb\jetified-firebase-abt-21.1.1\AndroidManifest.xml:13:17-109
+138                android:value="com.google.firebase.components.ComponentRegistrar" />
+138-->[com.google.firebase:firebase-abt:21.1.1] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\d7ec0196aaa5096d154decb9996f64bb\jetified-firebase-abt-21.1.1\AndroidManifest.xml:14:17-82
+139            <meta-data
+139-->[com.google.firebase:firebase-installations:17.2.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\e5744fa8bd873ef90d22e701e5db594e\jetified-firebase-installations-17.2.0\AndroidManifest.xml:15:13-17:85
+140                android:name="com.google.firebase.components:com.google.firebase.installations.FirebaseInstallationsKtxRegistrar"
+140-->[com.google.firebase:firebase-installations:17.2.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\e5744fa8bd873ef90d22e701e5db594e\jetified-firebase-installations-17.2.0\AndroidManifest.xml:16:17-130
+141                android:value="com.google.firebase.components.ComponentRegistrar" />
+141-->[com.google.firebase:firebase-installations:17.2.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\e5744fa8bd873ef90d22e701e5db594e\jetified-firebase-installations-17.2.0\AndroidManifest.xml:17:17-82
+142            <meta-data
+142-->[com.google.firebase:firebase-installations:17.2.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\e5744fa8bd873ef90d22e701e5db594e\jetified-firebase-installations-17.2.0\AndroidManifest.xml:18:13-20:85
+143                android:name="com.google.firebase.components:com.google.firebase.installations.FirebaseInstallationsRegistrar"
+143-->[com.google.firebase:firebase-installations:17.2.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\e5744fa8bd873ef90d22e701e5db594e\jetified-firebase-installations-17.2.0\AndroidManifest.xml:19:17-127
+144                android:value="com.google.firebase.components.ComponentRegistrar" />
+144-->[com.google.firebase:firebase-installations:17.2.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\e5744fa8bd873ef90d22e701e5db594e\jetified-firebase-installations-17.2.0\AndroidManifest.xml:20:17-82
+145            <meta-data
+145-->[com.google.firebase:firebase-common-ktx:20.4.2] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\c6be52c0a471394c357a8821648ca539\jetified-firebase-common-ktx-20.4.2\AndroidManifest.xml:12:13-14:85
+146                android:name="com.google.firebase.components:com.google.firebase.ktx.FirebaseCommonLegacyRegistrar"
+146-->[com.google.firebase:firebase-common-ktx:20.4.2] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\c6be52c0a471394c357a8821648ca539\jetified-firebase-common-ktx-20.4.2\AndroidManifest.xml:13:17-116
+147                android:value="com.google.firebase.components.ComponentRegistrar" />
+147-->[com.google.firebase:firebase-common-ktx:20.4.2] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\c6be52c0a471394c357a8821648ca539\jetified-firebase-common-ktx-20.4.2\AndroidManifest.xml:14:17-82
+148            <meta-data
+148-->[com.google.firebase:firebase-common:20.4.2] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\ff39be41fd21fca73c09cdcab0969169\jetified-firebase-common-20.4.2\AndroidManifest.xml:35:13-37:85
+149                android:name="com.google.firebase.components:com.google.firebase.FirebaseCommonKtxRegistrar"
+149-->[com.google.firebase:firebase-common:20.4.2] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\ff39be41fd21fca73c09cdcab0969169\jetified-firebase-common-20.4.2\AndroidManifest.xml:36:17-109
+150                android:value="com.google.firebase.components.ComponentRegistrar" />
+150-->[com.google.firebase:firebase-common:20.4.2] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\ff39be41fd21fca73c09cdcab0969169\jetified-firebase-common-20.4.2\AndroidManifest.xml:37:17-82
+151        </service> <!-- Include the AdActivity and InAppPurchaseActivity configChanges and themes. -->
+152        <activity
+152-->[com.google.android.gms:play-services-ads-lite:22.0.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\55f103e914cb708a358c7a2e30949b88\jetified-play-services-ads-lite-22.0.0\AndroidManifest.xml:53:9-58:43
+153            android:name="com.google.android.gms.ads.AdActivity"
+153-->[com.google.android.gms:play-services-ads-lite:22.0.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\55f103e914cb708a358c7a2e30949b88\jetified-play-services-ads-lite-22.0.0\AndroidManifest.xml:54:13-65
+154            android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
+154-->[com.google.android.gms:play-services-ads-lite:22.0.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\55f103e914cb708a358c7a2e30949b88\jetified-play-services-ads-lite-22.0.0\AndroidManifest.xml:55:13-122
+155            android:exported="false"
+155-->[com.google.android.gms:play-services-ads-lite:22.0.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\55f103e914cb708a358c7a2e30949b88\jetified-play-services-ads-lite-22.0.0\AndroidManifest.xml:56:13-37
+156            android:theme="@android:style/Theme.Translucent" />
+156-->[com.google.android.gms:play-services-ads-lite:22.0.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\55f103e914cb708a358c7a2e30949b88\jetified-play-services-ads-lite-22.0.0\AndroidManifest.xml:57:13-61
+157
+158        <provider
+158-->[com.google.android.gms:play-services-ads-lite:22.0.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\55f103e914cb708a358c7a2e30949b88\jetified-play-services-ads-lite-22.0.0\AndroidManifest.xml:60:9-65:43
+159            android:name="com.google.android.gms.ads.MobileAdsInitProvider"
+159-->[com.google.android.gms:play-services-ads-lite:22.0.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\55f103e914cb708a358c7a2e30949b88\jetified-play-services-ads-lite-22.0.0\AndroidManifest.xml:61:13-76
+160            android:authorities="com.ivy.test.mobileadsinitprovider"
+160-->[com.google.android.gms:play-services-ads-lite:22.0.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\55f103e914cb708a358c7a2e30949b88\jetified-play-services-ads-lite-22.0.0\AndroidManifest.xml:62:13-73
+161            android:exported="false"
+161-->[com.google.android.gms:play-services-ads-lite:22.0.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\55f103e914cb708a358c7a2e30949b88\jetified-play-services-ads-lite-22.0.0\AndroidManifest.xml:63:13-37
+162            android:initOrder="100" />
+162-->[com.google.android.gms:play-services-ads-lite:22.0.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\55f103e914cb708a358c7a2e30949b88\jetified-play-services-ads-lite-22.0.0\AndroidManifest.xml:64:13-36
+163
+164        <service
+164-->[com.google.android.gms:play-services-ads-lite:22.0.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\55f103e914cb708a358c7a2e30949b88\jetified-play-services-ads-lite-22.0.0\AndroidManifest.xml:67:9-71:43
+165            android:name="com.google.android.gms.ads.AdService"
+165-->[com.google.android.gms:play-services-ads-lite:22.0.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\55f103e914cb708a358c7a2e30949b88\jetified-play-services-ads-lite-22.0.0\AndroidManifest.xml:68:13-64
+166            android:enabled="true"
+166-->[com.google.android.gms:play-services-ads-lite:22.0.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\55f103e914cb708a358c7a2e30949b88\jetified-play-services-ads-lite-22.0.0\AndroidManifest.xml:69:13-35
+167            android:exported="false" />
+167-->[com.google.android.gms:play-services-ads-lite:22.0.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\55f103e914cb708a358c7a2e30949b88\jetified-play-services-ads-lite-22.0.0\AndroidManifest.xml:70:13-37
+168
+169        <activity
+169-->[com.google.android.gms:play-services-ads-lite:22.0.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\55f103e914cb708a358c7a2e30949b88\jetified-play-services-ads-lite-22.0.0\AndroidManifest.xml:73:9-77:43
+170            android:name="com.google.android.gms.ads.OutOfContextTestingActivity"
+170-->[com.google.android.gms:play-services-ads-lite:22.0.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\55f103e914cb708a358c7a2e30949b88\jetified-play-services-ads-lite-22.0.0\AndroidManifest.xml:74:13-82
+171            android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
+171-->[com.google.android.gms:play-services-ads-lite:22.0.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\55f103e914cb708a358c7a2e30949b88\jetified-play-services-ads-lite-22.0.0\AndroidManifest.xml:75:13-122
+172            android:exported="false" />
+172-->[com.google.android.gms:play-services-ads-lite:22.0.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\55f103e914cb708a358c7a2e30949b88\jetified-play-services-ads-lite-22.0.0\AndroidManifest.xml:76:13-37
+173        <activity
+173-->[com.unity3d.ads:unity-ads:4.6.1] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\5e578073c564e7bcb208ded5cd5b50b3\jetified-unity-ads-4.6.1\AndroidManifest.xml:15:9-20:74
+174            android:name="com.unity3d.services.ads.adunit.AdUnitActivity"
+174-->[com.unity3d.ads:unity-ads:4.6.1] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\5e578073c564e7bcb208ded5cd5b50b3\jetified-unity-ads-4.6.1\AndroidManifest.xml:16:13-74
+175            android:configChanges="fontScale|keyboard|keyboardHidden|locale|mnc|mcc|navigation|orientation|screenLayout|screenSize|smallestScreenSize|uiMode|touchscreen"
+175-->[com.unity3d.ads:unity-ads:4.6.1] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\5e578073c564e7bcb208ded5cd5b50b3\jetified-unity-ads-4.6.1\AndroidManifest.xml:17:13-170
+176            android:exported="false"
+176-->[com.unity3d.ads:unity-ads:4.6.1] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\5e578073c564e7bcb208ded5cd5b50b3\jetified-unity-ads-4.6.1\AndroidManifest.xml:18:13-37
+177            android:hardwareAccelerated="true"
+177-->[com.unity3d.ads:unity-ads:4.6.1] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\5e578073c564e7bcb208ded5cd5b50b3\jetified-unity-ads-4.6.1\AndroidManifest.xml:19:13-47
+178            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
+178-->[com.unity3d.ads:unity-ads:4.6.1] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\5e578073c564e7bcb208ded5cd5b50b3\jetified-unity-ads-4.6.1\AndroidManifest.xml:20:13-71
+179        <activity
+179-->[com.unity3d.ads:unity-ads:4.6.1] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\5e578073c564e7bcb208ded5cd5b50b3\jetified-unity-ads-4.6.1\AndroidManifest.xml:21:9-26:86
+180            android:name="com.unity3d.services.ads.adunit.AdUnitTransparentActivity"
+180-->[com.unity3d.ads:unity-ads:4.6.1] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\5e578073c564e7bcb208ded5cd5b50b3\jetified-unity-ads-4.6.1\AndroidManifest.xml:22:13-85
+181            android:configChanges="fontScale|keyboard|keyboardHidden|locale|mnc|mcc|navigation|orientation|screenLayout|screenSize|smallestScreenSize|uiMode|touchscreen"
+181-->[com.unity3d.ads:unity-ads:4.6.1] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\5e578073c564e7bcb208ded5cd5b50b3\jetified-unity-ads-4.6.1\AndroidManifest.xml:23:13-170
+182            android:exported="false"
+182-->[com.unity3d.ads:unity-ads:4.6.1] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\5e578073c564e7bcb208ded5cd5b50b3\jetified-unity-ads-4.6.1\AndroidManifest.xml:24:13-37
+183            android:hardwareAccelerated="true"
+183-->[com.unity3d.ads:unity-ads:4.6.1] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\5e578073c564e7bcb208ded5cd5b50b3\jetified-unity-ads-4.6.1\AndroidManifest.xml:25:13-47
+184            android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen" />
+184-->[com.unity3d.ads:unity-ads:4.6.1] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\5e578073c564e7bcb208ded5cd5b50b3\jetified-unity-ads-4.6.1\AndroidManifest.xml:26:13-83
+185        <activity
+185-->[com.unity3d.ads:unity-ads:4.6.1] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\5e578073c564e7bcb208ded5cd5b50b3\jetified-unity-ads-4.6.1\AndroidManifest.xml:27:9-32:86
+186            android:name="com.unity3d.services.ads.adunit.AdUnitTransparentSoftwareActivity"
+186-->[com.unity3d.ads:unity-ads:4.6.1] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\5e578073c564e7bcb208ded5cd5b50b3\jetified-unity-ads-4.6.1\AndroidManifest.xml:28:13-93
+187            android:configChanges="fontScale|keyboard|keyboardHidden|locale|mnc|mcc|navigation|orientation|screenLayout|screenSize|smallestScreenSize|uiMode|touchscreen"
+187-->[com.unity3d.ads:unity-ads:4.6.1] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\5e578073c564e7bcb208ded5cd5b50b3\jetified-unity-ads-4.6.1\AndroidManifest.xml:29:13-170
+188            android:exported="false"
+188-->[com.unity3d.ads:unity-ads:4.6.1] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\5e578073c564e7bcb208ded5cd5b50b3\jetified-unity-ads-4.6.1\AndroidManifest.xml:30:13-37
+189            android:hardwareAccelerated="false"
+189-->[com.unity3d.ads:unity-ads:4.6.1] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\5e578073c564e7bcb208ded5cd5b50b3\jetified-unity-ads-4.6.1\AndroidManifest.xml:31:13-48
+190            android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen" />
+190-->[com.unity3d.ads:unity-ads:4.6.1] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\5e578073c564e7bcb208ded5cd5b50b3\jetified-unity-ads-4.6.1\AndroidManifest.xml:32:13-83
+191        <activity
+191-->[com.unity3d.ads:unity-ads:4.6.1] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\5e578073c564e7bcb208ded5cd5b50b3\jetified-unity-ads-4.6.1\AndroidManifest.xml:33:9-38:74
+192            android:name="com.unity3d.services.ads.adunit.AdUnitSoftwareActivity"
+192-->[com.unity3d.ads:unity-ads:4.6.1] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\5e578073c564e7bcb208ded5cd5b50b3\jetified-unity-ads-4.6.1\AndroidManifest.xml:34:13-82
+193            android:configChanges="fontScale|keyboard|keyboardHidden|locale|mnc|mcc|navigation|orientation|screenLayout|screenSize|smallestScreenSize|uiMode|touchscreen"
+193-->[com.unity3d.ads:unity-ads:4.6.1] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\5e578073c564e7bcb208ded5cd5b50b3\jetified-unity-ads-4.6.1\AndroidManifest.xml:35:13-170
+194            android:exported="false"
+194-->[com.unity3d.ads:unity-ads:4.6.1] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\5e578073c564e7bcb208ded5cd5b50b3\jetified-unity-ads-4.6.1\AndroidManifest.xml:36:13-37
+195            android:hardwareAccelerated="false"
+195-->[com.unity3d.ads:unity-ads:4.6.1] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\5e578073c564e7bcb208ded5cd5b50b3\jetified-unity-ads-4.6.1\AndroidManifest.xml:37:13-48
+196            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
+196-->[com.unity3d.ads:unity-ads:4.6.1] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\5e578073c564e7bcb208ded5cd5b50b3\jetified-unity-ads-4.6.1\AndroidManifest.xml:38:13-71
+197
+198        <provider
+198-->[com.unity3d.ads:unity-ads:4.6.1] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\5e578073c564e7bcb208ded5cd5b50b3\jetified-unity-ads-4.6.1\AndroidManifest.xml:40:9-50:20
+199            android:name="androidx.startup.InitializationProvider"
+199-->[com.unity3d.ads:unity-ads:4.6.1] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\5e578073c564e7bcb208ded5cd5b50b3\jetified-unity-ads-4.6.1\AndroidManifest.xml:41:13-67
+200            android:authorities="com.ivy.test.androidx-startup"
+200-->[com.unity3d.ads:unity-ads:4.6.1] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\5e578073c564e7bcb208ded5cd5b50b3\jetified-unity-ads-4.6.1\AndroidManifest.xml:42:13-68
+201            android:exported="false" >
+201-->[androidx.emoji2:emoji2:1.0.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\0538c2b11e1cb80068f564332695b647\jetified-emoji2-1.0.0\AndroidManifest.xml:29:13-37
+202            <meta-data
+202-->[com.unity3d.ads:unity-ads:4.6.1] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\5e578073c564e7bcb208ded5cd5b50b3\jetified-unity-ads-4.6.1\AndroidManifest.xml:44:13-46:52
+203                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+203-->[com.unity3d.ads:unity-ads:4.6.1] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\5e578073c564e7bcb208ded5cd5b50b3\jetified-unity-ads-4.6.1\AndroidManifest.xml:45:17-78
+204                android:value="androidx.startup" />
+204-->[com.unity3d.ads:unity-ads:4.6.1] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\5e578073c564e7bcb208ded5cd5b50b3\jetified-unity-ads-4.6.1\AndroidManifest.xml:46:17-49
+205            <meta-data
+205-->[com.unity3d.ads:unity-ads:4.6.1] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\5e578073c564e7bcb208ded5cd5b50b3\jetified-unity-ads-4.6.1\AndroidManifest.xml:47:13-49:52
+206                android:name="com.unity3d.services.core.configuration.AdsSdkInitializer"
+206-->[com.unity3d.ads:unity-ads:4.6.1] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\5e578073c564e7bcb208ded5cd5b50b3\jetified-unity-ads-4.6.1\AndroidManifest.xml:48:17-89
+207                android:value="androidx.startup" />
+207-->[com.unity3d.ads:unity-ads:4.6.1] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\5e578073c564e7bcb208ded5cd5b50b3\jetified-unity-ads-4.6.1\AndroidManifest.xml:49:17-49
+208            <meta-data
+208-->[androidx.emoji2:emoji2:1.0.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\0538c2b11e1cb80068f564332695b647\jetified-emoji2-1.0.0\AndroidManifest.xml:31:13-33:52
+209                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+209-->[androidx.emoji2:emoji2:1.0.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\0538c2b11e1cb80068f564332695b647\jetified-emoji2-1.0.0\AndroidManifest.xml:32:17-75
+210                android:value="androidx.startup" />
+210-->[androidx.emoji2:emoji2:1.0.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\0538c2b11e1cb80068f564332695b647\jetified-emoji2-1.0.0\AndroidManifest.xml:33:17-49
+211            <meta-data
+211-->[androidx.work:work-runtime:2.7.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\3a650c1bdedafd8e4171986ed2bca5eb\work-runtime-2.7.0\AndroidManifest.xml:36:13-38:52
+212                android:name="androidx.work.WorkManagerInitializer"
+212-->[androidx.work:work-runtime:2.7.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\3a650c1bdedafd8e4171986ed2bca5eb\work-runtime-2.7.0\AndroidManifest.xml:37:17-68
+213                android:value="androidx.startup" />
+213-->[androidx.work:work-runtime:2.7.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\3a650c1bdedafd8e4171986ed2bca5eb\work-runtime-2.7.0\AndroidManifest.xml:38:17-49
+214            <meta-data
+214-->[com.unity3d.services.identifiers:unity-services-identifiers:1.0.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\67d6cf4bb3112d7efe97f76f3191d893\jetified-unity-services-identifiers-1.0.0\AndroidManifest.xml:16:13-18:52
+215                android:name="com.unity3d.services.identifiers.UnitySharedLibraryInitializer"
+215-->[com.unity3d.services.identifiers:unity-services-identifiers:1.0.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\67d6cf4bb3112d7efe97f76f3191d893\jetified-unity-services-identifiers-1.0.0\AndroidManifest.xml:17:17-94
+216                android:value="androidx.startup" />
+216-->[com.unity3d.services.identifiers:unity-services-identifiers:1.0.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\67d6cf4bb3112d7efe97f76f3191d893\jetified-unity-services-identifiers-1.0.0\AndroidManifest.xml:18:17-49
+217        </provider>
+218        <provider
+218-->[com.applovin:applovin-sdk:11.9.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\4c4283f680bb35c7afdfaf58af0e2372\jetified-applovin-sdk-11.9.0\AndroidManifest.xml:26:9-30:39
+219            android:name="com.applovin.sdk.AppLovinInitProvider"
+219-->[com.applovin:applovin-sdk:11.9.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\4c4283f680bb35c7afdfaf58af0e2372\jetified-applovin-sdk-11.9.0\AndroidManifest.xml:27:13-65
+220            android:authorities="com.ivy.test.applovininitprovider"
+220-->[com.applovin:applovin-sdk:11.9.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\4c4283f680bb35c7afdfaf58af0e2372\jetified-applovin-sdk-11.9.0\AndroidManifest.xml:28:13-72
+221            android:exported="false"
+221-->[com.applovin:applovin-sdk:11.9.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\4c4283f680bb35c7afdfaf58af0e2372\jetified-applovin-sdk-11.9.0\AndroidManifest.xml:29:13-37
+222            android:initOrder="101" /> <!-- Init order is 101 so we're before Firebase/Google which uses 100 -->
+222-->[com.applovin:applovin-sdk:11.9.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\4c4283f680bb35c7afdfaf58af0e2372\jetified-applovin-sdk-11.9.0\AndroidManifest.xml:30:13-36
+223        <activity
+223-->[com.applovin:applovin-sdk:11.9.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\4c4283f680bb35c7afdfaf58af0e2372\jetified-applovin-sdk-11.9.0\AndroidManifest.xml:32:9-38:50
+224            android:name="com.applovin.adview.AppLovinFullscreenActivity"
+224-->[com.applovin:applovin-sdk:11.9.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\4c4283f680bb35c7afdfaf58af0e2372\jetified-applovin-sdk-11.9.0\AndroidManifest.xml:33:13-74
+225            android:configChanges="fontScale|keyboard|keyboardHidden|locale|orientation|screenLayout|screenSize|smallestScreenSize|uiMode"
+225-->[com.applovin:applovin-sdk:11.9.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\4c4283f680bb35c7afdfaf58af0e2372\jetified-applovin-sdk-11.9.0\AndroidManifest.xml:34:13-139
+226            android:exported="false"
+226-->[com.applovin:applovin-sdk:11.9.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\4c4283f680bb35c7afdfaf58af0e2372\jetified-applovin-sdk-11.9.0\AndroidManifest.xml:35:13-37
+227            android:hardwareAccelerated="true"
+227-->[com.applovin:applovin-sdk:11.9.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\4c4283f680bb35c7afdfaf58af0e2372\jetified-applovin-sdk-11.9.0\AndroidManifest.xml:36:13-47
+228            android:launchMode="singleTop"
+228-->[com.applovin:applovin-sdk:11.9.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\4c4283f680bb35c7afdfaf58af0e2372\jetified-applovin-sdk-11.9.0\AndroidManifest.xml:37:13-43
+229            android:screenOrientation="behind" />
+229-->[com.applovin:applovin-sdk:11.9.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\4c4283f680bb35c7afdfaf58af0e2372\jetified-applovin-sdk-11.9.0\AndroidManifest.xml:38:13-47
+230        <activity
+230-->[com.applovin:applovin-sdk:11.9.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\4c4283f680bb35c7afdfaf58af0e2372\jetified-applovin-sdk-11.9.0\AndroidManifest.xml:39:9-41:142
+231            android:name="com.applovin.sdk.AppLovinWebViewActivity"
+231-->[com.applovin:applovin-sdk:11.9.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\4c4283f680bb35c7afdfaf58af0e2372\jetified-applovin-sdk-11.9.0\AndroidManifest.xml:40:13-68
+232            android:configChanges="fontScale|keyboard|keyboardHidden|locale|orientation|screenLayout|screenSize|smallestScreenSize|uiMode" /> <!-- Hybrid Ad Activities -->
+232-->[com.applovin:applovin-sdk:11.9.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\4c4283f680bb35c7afdfaf58af0e2372\jetified-applovin-sdk-11.9.0\AndroidManifest.xml:41:13-139
+233        <activity
+233-->[com.applovin:applovin-sdk:11.9.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\4c4283f680bb35c7afdfaf58af0e2372\jetified-applovin-sdk-11.9.0\AndroidManifest.xml:44:9-46:142
+234            android:name="com.applovin.mediation.hybridAds.MaxHybridMRecAdActivity"
+234-->[com.applovin:applovin-sdk:11.9.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\4c4283f680bb35c7afdfaf58af0e2372\jetified-applovin-sdk-11.9.0\AndroidManifest.xml:45:13-84
+235            android:configChanges="fontScale|keyboard|keyboardHidden|locale|orientation|screenLayout|screenSize|smallestScreenSize|uiMode" />
+235-->[com.applovin:applovin-sdk:11.9.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\4c4283f680bb35c7afdfaf58af0e2372\jetified-applovin-sdk-11.9.0\AndroidManifest.xml:46:13-139
+236        <activity
+236-->[com.applovin:applovin-sdk:11.9.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\4c4283f680bb35c7afdfaf58af0e2372\jetified-applovin-sdk-11.9.0\AndroidManifest.xml:47:9-49:142
+237            android:name="com.applovin.mediation.hybridAds.MaxHybridNativeAdActivity"
+237-->[com.applovin:applovin-sdk:11.9.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\4c4283f680bb35c7afdfaf58af0e2372\jetified-applovin-sdk-11.9.0\AndroidManifest.xml:48:13-86
+238            android:configChanges="fontScale|keyboard|keyboardHidden|locale|orientation|screenLayout|screenSize|smallestScreenSize|uiMode" /> <!-- Mediation Debugger Activities -->
+238-->[com.applovin:applovin-sdk:11.9.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\4c4283f680bb35c7afdfaf58af0e2372\jetified-applovin-sdk-11.9.0\AndroidManifest.xml:49:13-139
+239        <activity
+239-->[com.applovin:applovin-sdk:11.9.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\4c4283f680bb35c7afdfaf58af0e2372\jetified-applovin-sdk-11.9.0\AndroidManifest.xml:52:9-55:87
+240            android:name="com.applovin.mediation.MaxDebuggerActivity"
+240-->[com.applovin:applovin-sdk:11.9.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\4c4283f680bb35c7afdfaf58af0e2372\jetified-applovin-sdk-11.9.0\AndroidManifest.xml:53:13-70
+241            android:configChanges="fontScale|keyboard|keyboardHidden|locale|orientation|screenLayout|screenSize|smallestScreenSize|uiMode"
+241-->[com.applovin:applovin-sdk:11.9.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\4c4283f680bb35c7afdfaf58af0e2372\jetified-applovin-sdk-11.9.0\AndroidManifest.xml:54:13-139
+242            android:theme="@style/com.applovin.mediation.MaxDebuggerActivity.Theme" />
+242-->[com.applovin:applovin-sdk:11.9.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\4c4283f680bb35c7afdfaf58af0e2372\jetified-applovin-sdk-11.9.0\AndroidManifest.xml:55:13-84
+243        <activity
+243-->[com.applovin:applovin-sdk:11.9.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\4c4283f680bb35c7afdfaf58af0e2372\jetified-applovin-sdk-11.9.0\AndroidManifest.xml:56:9-59:87
+244            android:name="com.applovin.mediation.MaxDebuggerDetailActivity"
+244-->[com.applovin:applovin-sdk:11.9.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\4c4283f680bb35c7afdfaf58af0e2372\jetified-applovin-sdk-11.9.0\AndroidManifest.xml:57:13-76
+245            android:configChanges="fontScale|keyboard|keyboardHidden|locale|orientation|screenLayout|screenSize|smallestScreenSize|uiMode"
+245-->[com.applovin:applovin-sdk:11.9.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\4c4283f680bb35c7afdfaf58af0e2372\jetified-applovin-sdk-11.9.0\AndroidManifest.xml:58:13-139
+246            android:theme="@style/com.applovin.mediation.MaxDebuggerActivity.Theme" />
+246-->[com.applovin:applovin-sdk:11.9.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\4c4283f680bb35c7afdfaf58af0e2372\jetified-applovin-sdk-11.9.0\AndroidManifest.xml:59:13-84
+247        <activity
+247-->[com.applovin:applovin-sdk:11.9.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\4c4283f680bb35c7afdfaf58af0e2372\jetified-applovin-sdk-11.9.0\AndroidManifest.xml:60:9-63:87
+248            android:name="com.applovin.mediation.MaxDebuggerMultiAdActivity"
+248-->[com.applovin:applovin-sdk:11.9.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\4c4283f680bb35c7afdfaf58af0e2372\jetified-applovin-sdk-11.9.0\AndroidManifest.xml:61:13-77
+249            android:configChanges="fontScale|keyboard|keyboardHidden|locale|orientation|screenLayout|screenSize|smallestScreenSize|uiMode"
+249-->[com.applovin:applovin-sdk:11.9.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\4c4283f680bb35c7afdfaf58af0e2372\jetified-applovin-sdk-11.9.0\AndroidManifest.xml:62:13-139
+250            android:theme="@style/com.applovin.mediation.MaxDebuggerActivity.Theme" />
+250-->[com.applovin:applovin-sdk:11.9.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\4c4283f680bb35c7afdfaf58af0e2372\jetified-applovin-sdk-11.9.0\AndroidManifest.xml:63:13-84
+251        <activity
+251-->[com.applovin:applovin-sdk:11.9.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\4c4283f680bb35c7afdfaf58af0e2372\jetified-applovin-sdk-11.9.0\AndroidManifest.xml:64:9-67:87
+252            android:name="com.applovin.mediation.MaxDebuggerAdUnitsListActivity"
+252-->[com.applovin:applovin-sdk:11.9.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\4c4283f680bb35c7afdfaf58af0e2372\jetified-applovin-sdk-11.9.0\AndroidManifest.xml:65:13-81
+253            android:configChanges="fontScale|keyboard|keyboardHidden|locale|orientation|screenLayout|screenSize|smallestScreenSize|uiMode"
+253-->[com.applovin:applovin-sdk:11.9.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\4c4283f680bb35c7afdfaf58af0e2372\jetified-applovin-sdk-11.9.0\AndroidManifest.xml:66:13-139
+254            android:theme="@style/com.applovin.mediation.MaxDebuggerActivity.Theme" />
+254-->[com.applovin:applovin-sdk:11.9.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\4c4283f680bb35c7afdfaf58af0e2372\jetified-applovin-sdk-11.9.0\AndroidManifest.xml:67:13-84
+255        <activity
+255-->[com.applovin:applovin-sdk:11.9.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\4c4283f680bb35c7afdfaf58af0e2372\jetified-applovin-sdk-11.9.0\AndroidManifest.xml:68:9-71:87
+256            android:name="com.applovin.mediation.MaxDebuggerAdUnitDetailActivity"
+256-->[com.applovin:applovin-sdk:11.9.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\4c4283f680bb35c7afdfaf58af0e2372\jetified-applovin-sdk-11.9.0\AndroidManifest.xml:69:13-82
+257            android:configChanges="fontScale|keyboard|keyboardHidden|locale|orientation|screenLayout|screenSize|smallestScreenSize|uiMode"
+257-->[com.applovin:applovin-sdk:11.9.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\4c4283f680bb35c7afdfaf58af0e2372\jetified-applovin-sdk-11.9.0\AndroidManifest.xml:70:13-139
+258            android:theme="@style/com.applovin.mediation.MaxDebuggerActivity.Theme" />
+258-->[com.applovin:applovin-sdk:11.9.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\4c4283f680bb35c7afdfaf58af0e2372\jetified-applovin-sdk-11.9.0\AndroidManifest.xml:71:13-84
+259        <activity
+259-->[com.applovin:applovin-sdk:11.9.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\4c4283f680bb35c7afdfaf58af0e2372\jetified-applovin-sdk-11.9.0\AndroidManifest.xml:72:9-75:87
+260            android:name="com.applovin.mediation.MaxDebuggerTestLiveNetworkActivity"
+260-->[com.applovin:applovin-sdk:11.9.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\4c4283f680bb35c7afdfaf58af0e2372\jetified-applovin-sdk-11.9.0\AndroidManifest.xml:73:13-85
+261            android:configChanges="fontScale|keyboard|keyboardHidden|locale|orientation|screenLayout|screenSize|smallestScreenSize|uiMode"
+261-->[com.applovin:applovin-sdk:11.9.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\4c4283f680bb35c7afdfaf58af0e2372\jetified-applovin-sdk-11.9.0\AndroidManifest.xml:74:13-139
+262            android:theme="@style/com.applovin.mediation.MaxDebuggerActivity.Theme" />
+262-->[com.applovin:applovin-sdk:11.9.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\4c4283f680bb35c7afdfaf58af0e2372\jetified-applovin-sdk-11.9.0\AndroidManifest.xml:75:13-84
+263        <activity
+263-->[com.applovin:applovin-sdk:11.9.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\4c4283f680bb35c7afdfaf58af0e2372\jetified-applovin-sdk-11.9.0\AndroidManifest.xml:76:9-79:87
+264            android:name="com.applovin.mediation.MaxDebuggerTestModeNetworkActivity"
+264-->[com.applovin:applovin-sdk:11.9.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\4c4283f680bb35c7afdfaf58af0e2372\jetified-applovin-sdk-11.9.0\AndroidManifest.xml:77:13-85
+265            android:configChanges="fontScale|keyboard|keyboardHidden|locale|orientation|screenLayout|screenSize|smallestScreenSize|uiMode"
+265-->[com.applovin:applovin-sdk:11.9.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\4c4283f680bb35c7afdfaf58af0e2372\jetified-applovin-sdk-11.9.0\AndroidManifest.xml:78:13-139
+266            android:theme="@style/com.applovin.mediation.MaxDebuggerActivity.Theme" />
+266-->[com.applovin:applovin-sdk:11.9.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\4c4283f680bb35c7afdfaf58af0e2372\jetified-applovin-sdk-11.9.0\AndroidManifest.xml:79:13-84
+267        <activity
+267-->[com.applovin:applovin-sdk:11.9.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\4c4283f680bb35c7afdfaf58af0e2372\jetified-applovin-sdk-11.9.0\AndroidManifest.xml:80:9-83:91
+268            android:name="com.applovin.creative.MaxCreativeDebuggerActivity"
+268-->[com.applovin:applovin-sdk:11.9.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\4c4283f680bb35c7afdfaf58af0e2372\jetified-applovin-sdk-11.9.0\AndroidManifest.xml:81:13-77
+269            android:configChanges="fontScale|keyboard|keyboardHidden|locale|orientation|screenLayout|screenSize|smallestScreenSize|uiMode"
+269-->[com.applovin:applovin-sdk:11.9.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\4c4283f680bb35c7afdfaf58af0e2372\jetified-applovin-sdk-11.9.0\AndroidManifest.xml:82:13-139
+270            android:theme="@style/com.applovin.creative.CreativeDebuggerActivity.Theme" />
+270-->[com.applovin:applovin-sdk:11.9.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\4c4283f680bb35c7afdfaf58af0e2372\jetified-applovin-sdk-11.9.0\AndroidManifest.xml:83:13-88
+271        <activity
+271-->[com.applovin:applovin-sdk:11.9.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\4c4283f680bb35c7afdfaf58af0e2372\jetified-applovin-sdk-11.9.0\AndroidManifest.xml:84:9-87:91
+272            android:name="com.applovin.creative.MaxCreativeDebuggerDisplayedAdActivity"
+272-->[com.applovin:applovin-sdk:11.9.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\4c4283f680bb35c7afdfaf58af0e2372\jetified-applovin-sdk-11.9.0\AndroidManifest.xml:85:13-88
+273            android:configChanges="fontScale|keyboard|keyboardHidden|locale|orientation|screenLayout|screenSize|smallestScreenSize|uiMode"
+273-->[com.applovin:applovin-sdk:11.9.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\4c4283f680bb35c7afdfaf58af0e2372\jetified-applovin-sdk-11.9.0\AndroidManifest.xml:86:13-139
+274            android:theme="@style/com.applovin.creative.CreativeDebuggerActivity.Theme" /> <!-- Services -->
+274-->[com.applovin:applovin-sdk:11.9.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\4c4283f680bb35c7afdfaf58af0e2372\jetified-applovin-sdk-11.9.0\AndroidManifest.xml:87:13-88
+275        <service
+275-->[com.applovin:applovin-sdk:11.9.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\4c4283f680bb35c7afdfaf58af0e2372\jetified-applovin-sdk-11.9.0\AndroidManifest.xml:90:9-93:44
+276            android:name="com.applovin.impl.sdk.utils.AppKilledService"
+276-->[com.applovin:applovin-sdk:11.9.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\4c4283f680bb35c7afdfaf58af0e2372\jetified-applovin-sdk-11.9.0\AndroidManifest.xml:91:13-72
+277            android:exported="false"
+277-->[com.applovin:applovin-sdk:11.9.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\4c4283f680bb35c7afdfaf58af0e2372\jetified-applovin-sdk-11.9.0\AndroidManifest.xml:92:13-37
+278            android:stopWithTask="false" />
+278-->[com.applovin:applovin-sdk:11.9.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\4c4283f680bb35c7afdfaf58af0e2372\jetified-applovin-sdk-11.9.0\AndroidManifest.xml:93:13-41
+279        <service
+279-->[com.applovin:applovin-sdk:11.9.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\4c4283f680bb35c7afdfaf58af0e2372\jetified-applovin-sdk-11.9.0\AndroidManifest.xml:94:9-97:44
+280            android:name="com.applovin.impl.adview.activity.FullscreenAdService"
+280-->[com.applovin:applovin-sdk:11.9.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\4c4283f680bb35c7afdfaf58af0e2372\jetified-applovin-sdk-11.9.0\AndroidManifest.xml:95:13-81
+281            android:exported="false"
+281-->[com.applovin:applovin-sdk:11.9.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\4c4283f680bb35c7afdfaf58af0e2372\jetified-applovin-sdk-11.9.0\AndroidManifest.xml:96:13-37
+282            android:stopWithTask="false" />
+282-->[com.applovin:applovin-sdk:11.9.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\4c4283f680bb35c7afdfaf58af0e2372\jetified-applovin-sdk-11.9.0\AndroidManifest.xml:97:13-41
+283
+284        <receiver
+284-->[com.google.android.gms:play-services-measurement:21.5.1] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\7b0dc45fe28ff29d3dad862f668f8ce5\jetified-play-services-measurement-21.5.1\AndroidManifest.xml:29:9-33:20
+285            android:name="com.google.android.gms.measurement.AppMeasurementReceiver"
+285-->[com.google.android.gms:play-services-measurement:21.5.1] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\7b0dc45fe28ff29d3dad862f668f8ce5\jetified-play-services-measurement-21.5.1\AndroidManifest.xml:30:13-85
+286            android:enabled="true"
+286-->[com.google.android.gms:play-services-measurement:21.5.1] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\7b0dc45fe28ff29d3dad862f668f8ce5\jetified-play-services-measurement-21.5.1\AndroidManifest.xml:31:13-35
+287            android:exported="false" >
+287-->[com.google.android.gms:play-services-measurement:21.5.1] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\7b0dc45fe28ff29d3dad862f668f8ce5\jetified-play-services-measurement-21.5.1\AndroidManifest.xml:32:13-37
+288        </receiver>
+289
+290        <service
+290-->[com.google.android.gms:play-services-measurement:21.5.1] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\7b0dc45fe28ff29d3dad862f668f8ce5\jetified-play-services-measurement-21.5.1\AndroidManifest.xml:35:9-38:40
+291            android:name="com.google.android.gms.measurement.AppMeasurementService"
+291-->[com.google.android.gms:play-services-measurement:21.5.1] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\7b0dc45fe28ff29d3dad862f668f8ce5\jetified-play-services-measurement-21.5.1\AndroidManifest.xml:36:13-84
+292            android:enabled="true"
+292-->[com.google.android.gms:play-services-measurement:21.5.1] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\7b0dc45fe28ff29d3dad862f668f8ce5\jetified-play-services-measurement-21.5.1\AndroidManifest.xml:37:13-35
+293            android:exported="false" />
+293-->[com.google.android.gms:play-services-measurement:21.5.1] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\7b0dc45fe28ff29d3dad862f668f8ce5\jetified-play-services-measurement-21.5.1\AndroidManifest.xml:38:13-37
+294        <service
+294-->[com.google.android.gms:play-services-measurement:21.5.1] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\7b0dc45fe28ff29d3dad862f668f8ce5\jetified-play-services-measurement-21.5.1\AndroidManifest.xml:39:9-43:72
+295            android:name="com.google.android.gms.measurement.AppMeasurementJobService"
+295-->[com.google.android.gms:play-services-measurement:21.5.1] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\7b0dc45fe28ff29d3dad862f668f8ce5\jetified-play-services-measurement-21.5.1\AndroidManifest.xml:40:13-87
+296            android:enabled="true"
+296-->[com.google.android.gms:play-services-measurement:21.5.1] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\7b0dc45fe28ff29d3dad862f668f8ce5\jetified-play-services-measurement-21.5.1\AndroidManifest.xml:41:13-35
+297            android:exported="false"
+297-->[com.google.android.gms:play-services-measurement:21.5.1] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\7b0dc45fe28ff29d3dad862f668f8ce5\jetified-play-services-measurement-21.5.1\AndroidManifest.xml:42:13-37
+298            android:permission="android.permission.BIND_JOB_SERVICE" />
+298-->[com.google.android.gms:play-services-measurement:21.5.1] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\7b0dc45fe28ff29d3dad862f668f8ce5\jetified-play-services-measurement-21.5.1\AndroidManifest.xml:43:13-69
+299
+300        <property
+300-->[com.google.android.gms:play-services-measurement-api:21.5.1] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\ba560a516ff6e7350e85a56f7c708493\jetified-play-services-measurement-api-21.5.1\AndroidManifest.xml:30:9-32:61
+301            android:name="android.adservices.AD_SERVICES_CONFIG"
+301-->[com.google.android.gms:play-services-measurement-api:21.5.1] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\ba560a516ff6e7350e85a56f7c708493\jetified-play-services-measurement-api-21.5.1\AndroidManifest.xml:31:13-65
+302            android:resource="@xml/ga_ad_services_config" /> <!-- Yandex Mobile Metrica Analytics: common service -->
+302-->[com.google.android.gms:play-services-measurement-api:21.5.1] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\ba560a516ff6e7350e85a56f7c708493\jetified-play-services-measurement-api-21.5.1\AndroidManifest.xml:32:13-58
+303        <service
+303-->[com.yandex.android:mobmetricalib:5.0.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\b7db3cb7582197afd13219b1128e0da3\jetified-mobmetricalib-5.0.0\AndroidManifest.xml:28:9-44:19
+304            android:name="com.yandex.metrica.MetricaService"
+304-->[com.yandex.android:mobmetricalib:5.0.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\b7db3cb7582197afd13219b1128e0da3\jetified-mobmetricalib-5.0.0\AndroidManifest.xml:29:13-61
+305            android:enabled="true"
+305-->[com.yandex.android:mobmetricalib:5.0.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\b7db3cb7582197afd13219b1128e0da3\jetified-mobmetricalib-5.0.0\AndroidManifest.xml:30:13-35
+306            android:exported="false"
+306-->[com.yandex.android:mobmetricalib:5.0.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\b7db3cb7582197afd13219b1128e0da3\jetified-mobmetricalib-5.0.0\AndroidManifest.xml:31:13-37
+307            android:process=":Metrica" >
+307-->[com.yandex.android:mobmetricalib:5.0.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\b7db3cb7582197afd13219b1128e0da3\jetified-mobmetricalib-5.0.0\AndroidManifest.xml:32:13-39
+308            <intent-filter>
+308-->[com.yandex.android:mobmetricalib:5.0.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\b7db3cb7582197afd13219b1128e0da3\jetified-mobmetricalib-5.0.0\AndroidManifest.xml:33:13-39:29
+309                <category android:name="android.intent.category.DEFAULT" />
+309-->[com.facebook.android:facebook-common:14.1.1] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\793d7f7e3ed74140c173fa9fcf9b7617\jetified-facebook-common-14.1.1\AndroidManifest.xml:46:17-76
+309-->[com.facebook.android:facebook-common:14.1.1] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\793d7f7e3ed74140c173fa9fcf9b7617\jetified-facebook-common-14.1.1\AndroidManifest.xml:46:27-73
+310
+311                <action android:name="com.yandex.metrica.IMetricaService" />
+311-->[com.yandex.android:mobmetricalib:5.0.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\b7db3cb7582197afd13219b1128e0da3\jetified-mobmetricalib-5.0.0\AndroidManifest.xml:36:17-77
+311-->[com.yandex.android:mobmetricalib:5.0.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\b7db3cb7582197afd13219b1128e0da3\jetified-mobmetricalib-5.0.0\AndroidManifest.xml:36:25-74
+312
+313                <data android:scheme="metrica" />
+313-->[com.facebook.android:facebook-common:14.1.1] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\793d7f7e3ed74140c173fa9fcf9b7617\jetified-facebook-common-14.1.1\AndroidManifest.xml:49:17-51:50
+313-->[com.facebook.android:facebook-common:14.1.1] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\793d7f7e3ed74140c173fa9fcf9b7617\jetified-facebook-common-14.1.1\AndroidManifest.xml:51:21-47
+314            </intent-filter>
+315
+316            <meta-data
+316-->[com.yandex.android:mobmetricalib:5.0.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\b7db3cb7582197afd13219b1128e0da3\jetified-mobmetricalib-5.0.0\AndroidManifest.xml:41:13-43:39
+317                android:name="metrica:api:level"
+317-->[com.yandex.android:mobmetricalib:5.0.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\b7db3cb7582197afd13219b1128e0da3\jetified-mobmetricalib-5.0.0\AndroidManifest.xml:42:17-49
+318                android:value="105" />
+318-->[com.yandex.android:mobmetricalib:5.0.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\b7db3cb7582197afd13219b1128e0da3\jetified-mobmetricalib-5.0.0\AndroidManifest.xml:43:17-36
+319        </service>
+320        <service
+320-->[com.yandex.android:mobmetricalib:5.0.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\b7db3cb7582197afd13219b1128e0da3\jetified-mobmetricalib-5.0.0\AndroidManifest.xml:45:9-59:19
+321            android:name="com.yandex.metrica.ConfigurationService"
+321-->[com.yandex.android:mobmetricalib:5.0.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\b7db3cb7582197afd13219b1128e0da3\jetified-mobmetricalib-5.0.0\AndroidManifest.xml:46:13-67
+322            android:enabled="true"
+322-->[com.yandex.android:mobmetricalib:5.0.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\b7db3cb7582197afd13219b1128e0da3\jetified-mobmetricalib-5.0.0\AndroidManifest.xml:47:13-35
+323            android:exported="false"
+323-->[com.yandex.android:mobmetricalib:5.0.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\b7db3cb7582197afd13219b1128e0da3\jetified-mobmetricalib-5.0.0\AndroidManifest.xml:48:13-37
+324            android:process=":Metrica" >
+324-->[com.yandex.android:mobmetricalib:5.0.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\b7db3cb7582197afd13219b1128e0da3\jetified-mobmetricalib-5.0.0\AndroidManifest.xml:49:13-39
+325            <meta-data
+325-->[com.yandex.android:mobmetricalib:5.0.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\b7db3cb7582197afd13219b1128e0da3\jetified-mobmetricalib-5.0.0\AndroidManifest.xml:50:13-52:37
+326                android:name="metrica:configuration:api:level"
+326-->[com.yandex.android:mobmetricalib:5.0.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\b7db3cb7582197afd13219b1128e0da3\jetified-mobmetricalib-5.0.0\AndroidManifest.xml:51:17-63
+327                android:value="3" />
+327-->[com.yandex.android:mobmetricalib:5.0.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\b7db3cb7582197afd13219b1128e0da3\jetified-mobmetricalib-5.0.0\AndroidManifest.xml:52:17-34
+328
+329            <intent-filter>
+329-->[com.yandex.android:mobmetricalib:5.0.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\b7db3cb7582197afd13219b1128e0da3\jetified-mobmetricalib-5.0.0\AndroidManifest.xml:54:13-58:29
+330
+331                <!-- <action android:name="com.yandex.metrica.configuration.ACTION_START"/> -->
+332                <action android:name="com.yandex.metrica.configuration.ACTION_INIT" />
+332-->[com.yandex.android:mobmetricalib:5.0.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\b7db3cb7582197afd13219b1128e0da3\jetified-mobmetricalib-5.0.0\AndroidManifest.xml:57:17-87
+332-->[com.yandex.android:mobmetricalib:5.0.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\b7db3cb7582197afd13219b1128e0da3\jetified-mobmetricalib-5.0.0\AndroidManifest.xml:57:25-84
+333            </intent-filter>
+334        </service>
+335        <service
+335-->[com.yandex.android:mobmetricalib:5.0.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\b7db3cb7582197afd13219b1128e0da3\jetified-mobmetricalib-5.0.0\AndroidManifest.xml:60:9-66:19
+336            android:name="com.yandex.metrica.ConfigurationJobService"
+336-->[com.yandex.android:mobmetricalib:5.0.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\b7db3cb7582197afd13219b1128e0da3\jetified-mobmetricalib-5.0.0\AndroidManifest.xml:61:13-70
+337            android:enabled="true"
+337-->[com.yandex.android:mobmetricalib:5.0.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\b7db3cb7582197afd13219b1128e0da3\jetified-mobmetricalib-5.0.0\AndroidManifest.xml:62:13-35
+338            android:exported="false"
+338-->[com.yandex.android:mobmetricalib:5.0.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\b7db3cb7582197afd13219b1128e0da3\jetified-mobmetricalib-5.0.0\AndroidManifest.xml:63:13-37
+339            android:permission="android.permission.BIND_JOB_SERVICE"
+339-->[com.yandex.android:mobmetricalib:5.0.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\b7db3cb7582197afd13219b1128e0da3\jetified-mobmetricalib-5.0.0\AndroidManifest.xml:64:13-69
+340            android:process=":Metrica" >
+340-->[com.yandex.android:mobmetricalib:5.0.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\b7db3cb7582197afd13219b1128e0da3\jetified-mobmetricalib-5.0.0\AndroidManifest.xml:65:13-39
+341        </service> <!-- To track preinstallations -->
+342        <provider
+342-->[com.yandex.android:mobmetricalib:5.0.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\b7db3cb7582197afd13219b1128e0da3\jetified-mobmetricalib-5.0.0\AndroidManifest.xml:69:9-75:54
+343            android:name="com.yandex.metrica.PreloadInfoContentProvider"
+343-->[com.yandex.android:mobmetricalib:5.0.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\b7db3cb7582197afd13219b1128e0da3\jetified-mobmetricalib-5.0.0\AndroidManifest.xml:70:13-73
+344            android:authorities="com.ivy.test.appmetrica.preloadinfo.retail"
+344-->[com.yandex.android:mobmetricalib:5.0.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\b7db3cb7582197afd13219b1128e0da3\jetified-mobmetricalib-5.0.0\AndroidManifest.xml:71:13-81
+345            android:enabled="true"
+345-->[com.yandex.android:mobmetricalib:5.0.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\b7db3cb7582197afd13219b1128e0da3\jetified-mobmetricalib-5.0.0\AndroidManifest.xml:72:13-35
+346            android:exported="true"
+346-->[com.yandex.android:mobmetricalib:5.0.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\b7db3cb7582197afd13219b1128e0da3\jetified-mobmetricalib-5.0.0\AndroidManifest.xml:73:13-36
+347            android:process=":Metrica" />
+347-->[com.yandex.android:mobmetricalib:5.0.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\b7db3cb7582197afd13219b1128e0da3\jetified-mobmetricalib-5.0.0\AndroidManifest.xml:74:13-39
+348        <!--
+349         The initialization ContentProvider will call FacebookSdk.sdkInitialize automatically
+350         with the application context. This config is merged in with the host app's manifest,
+351         but there can only be one provider with the same authority activated at any given
+352         point; so if the end user has two or more different apps that use Facebook SDK, only the
+353         first one will be able to use the provider. To work around this problem, we use the
+354         following placeholder in the authority to identify each host application as if it was
+355         a completely different provider.
+356        -->
+357        <provider
+357-->[com.facebook.android:facebook-core:14.1.1] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\b34573b993b5d96e9666ea7d7c7fa730\jetified-facebook-core-14.1.1\AndroidManifest.xml:41:9-44:40
+358            android:name="com.facebook.internal.FacebookInitProvider"
+358-->[com.facebook.android:facebook-core:14.1.1] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\b34573b993b5d96e9666ea7d7c7fa730\jetified-facebook-core-14.1.1\AndroidManifest.xml:42:13-70
+359            android:authorities="com.ivy.test.FacebookInitProvider"
+359-->[com.facebook.android:facebook-core:14.1.1] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\b34573b993b5d96e9666ea7d7c7fa730\jetified-facebook-core-14.1.1\AndroidManifest.xml:43:13-72
+360            android:exported="false" />
+360-->[com.facebook.android:facebook-core:14.1.1] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\b34573b993b5d96e9666ea7d7c7fa730\jetified-facebook-core-14.1.1\AndroidManifest.xml:44:13-37
+361
+362        <receiver
+362-->[com.facebook.android:facebook-core:14.1.1] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\b34573b993b5d96e9666ea7d7c7fa730\jetified-facebook-core-14.1.1\AndroidManifest.xml:46:9-52:20
+363            android:name="com.facebook.CurrentAccessTokenExpirationBroadcastReceiver"
+363-->[com.facebook.android:facebook-core:14.1.1] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\b34573b993b5d96e9666ea7d7c7fa730\jetified-facebook-core-14.1.1\AndroidManifest.xml:47:13-86
+364            android:exported="false" >
+364-->[com.facebook.android:facebook-core:14.1.1] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\b34573b993b5d96e9666ea7d7c7fa730\jetified-facebook-core-14.1.1\AndroidManifest.xml:48:13-37
+365            <intent-filter>
+365-->[com.facebook.android:facebook-core:14.1.1] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\b34573b993b5d96e9666ea7d7c7fa730\jetified-facebook-core-14.1.1\AndroidManifest.xml:49:13-51:29
+366                <action android:name="com.facebook.sdk.ACTION_CURRENT_ACCESS_TOKEN_CHANGED" />
+366-->[com.facebook.android:facebook-core:14.1.1] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\b34573b993b5d96e9666ea7d7c7fa730\jetified-facebook-core-14.1.1\AndroidManifest.xml:50:17-95
+366-->[com.facebook.android:facebook-core:14.1.1] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\b34573b993b5d96e9666ea7d7c7fa730\jetified-facebook-core-14.1.1\AndroidManifest.xml:50:25-92
+367            </intent-filter>
+368        </receiver>
+369        <receiver
+369-->[com.facebook.android:facebook-core:14.1.1] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\b34573b993b5d96e9666ea7d7c7fa730\jetified-facebook-core-14.1.1\AndroidManifest.xml:53:9-59:20
+370            android:name="com.facebook.AuthenticationTokenManager$CurrentAuthenticationTokenChangedBroadcastReceiver"
+370-->[com.facebook.android:facebook-core:14.1.1] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\b34573b993b5d96e9666ea7d7c7fa730\jetified-facebook-core-14.1.1\AndroidManifest.xml:54:13-118
+371            android:exported="false" >
+371-->[com.facebook.android:facebook-core:14.1.1] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\b34573b993b5d96e9666ea7d7c7fa730\jetified-facebook-core-14.1.1\AndroidManifest.xml:55:13-37
+372            <intent-filter>
+372-->[com.facebook.android:facebook-core:14.1.1] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\b34573b993b5d96e9666ea7d7c7fa730\jetified-facebook-core-14.1.1\AndroidManifest.xml:56:13-58:29
+373                <action android:name="com.facebook.sdk.ACTION_CURRENT_AUTHENTICATION_TOKEN_CHANGED" />
+373-->[com.facebook.android:facebook-core:14.1.1] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\b34573b993b5d96e9666ea7d7c7fa730\jetified-facebook-core-14.1.1\AndroidManifest.xml:57:17-103
+373-->[com.facebook.android:facebook-core:14.1.1] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\b34573b993b5d96e9666ea7d7c7fa730\jetified-facebook-core-14.1.1\AndroidManifest.xml:57:25-100
+374            </intent-filter>
+375        </receiver>
+376
+377        <activity
+377-->[com.facebook.android:audience-network-sdk:6.14.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\898a495f5e1f1f1816274dde1cd1b855\jetified-audience-network-sdk-6.14.0\AndroidManifest.xml:20:9-24:75
+378            android:name="com.facebook.ads.AudienceNetworkActivity"
+378-->[com.facebook.android:audience-network-sdk:6.14.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\898a495f5e1f1f1816274dde1cd1b855\jetified-audience-network-sdk-6.14.0\AndroidManifest.xml:21:13-68
+379            android:configChanges="keyboardHidden|orientation|screenSize"
+379-->[com.facebook.android:audience-network-sdk:6.14.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\898a495f5e1f1f1816274dde1cd1b855\jetified-audience-network-sdk-6.14.0\AndroidManifest.xml:22:13-74
+380            android:exported="false"
+380-->[com.facebook.android:audience-network-sdk:6.14.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\898a495f5e1f1f1816274dde1cd1b855\jetified-audience-network-sdk-6.14.0\AndroidManifest.xml:23:13-37
+381            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+381-->[com.facebook.android:audience-network-sdk:6.14.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\898a495f5e1f1f1816274dde1cd1b855\jetified-audience-network-sdk-6.14.0\AndroidManifest.xml:24:13-72
+382
+383        <provider
+383-->[com.facebook.android:audience-network-sdk:6.14.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\898a495f5e1f1f1816274dde1cd1b855\jetified-audience-network-sdk-6.14.0\AndroidManifest.xml:26:9-29:40
+384            android:name="com.facebook.ads.AudienceNetworkContentProvider"
+384-->[com.facebook.android:audience-network-sdk:6.14.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\898a495f5e1f1f1816274dde1cd1b855\jetified-audience-network-sdk-6.14.0\AndroidManifest.xml:27:13-75
+385            android:authorities="com.ivy.test.AudienceNetworkContentProvider"
+385-->[com.facebook.android:audience-network-sdk:6.14.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\898a495f5e1f1f1816274dde1cd1b855\jetified-audience-network-sdk-6.14.0\AndroidManifest.xml:28:13-82
+386            android:exported="false" />
+386-->[com.facebook.android:audience-network-sdk:6.14.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\898a495f5e1f1f1816274dde1cd1b855\jetified-audience-network-sdk-6.14.0\AndroidManifest.xml:29:13-37
+387        <provider
+387-->[com.google.firebase:firebase-common:20.4.2] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\ff39be41fd21fca73c09cdcab0969169\jetified-firebase-common-20.4.2\AndroidManifest.xml:23:9-28:39
+388            android:name="com.google.firebase.provider.FirebaseInitProvider"
+388-->[com.google.firebase:firebase-common:20.4.2] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\ff39be41fd21fca73c09cdcab0969169\jetified-firebase-common-20.4.2\AndroidManifest.xml:24:13-77
+389            android:authorities="com.ivy.test.firebaseinitprovider"
+389-->[com.google.firebase:firebase-common:20.4.2] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\ff39be41fd21fca73c09cdcab0969169\jetified-firebase-common-20.4.2\AndroidManifest.xml:25:13-72
+390            android:directBootAware="true"
+390-->[com.google.firebase:firebase-common:20.4.2] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\ff39be41fd21fca73c09cdcab0969169\jetified-firebase-common-20.4.2\AndroidManifest.xml:26:13-43
+391            android:exported="false"
+391-->[com.google.firebase:firebase-common:20.4.2] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\ff39be41fd21fca73c09cdcab0969169\jetified-firebase-common-20.4.2\AndroidManifest.xml:27:13-37
+392            android:initOrder="100" />
+392-->[com.google.firebase:firebase-common:20.4.2] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\ff39be41fd21fca73c09cdcab0969169\jetified-firebase-common-20.4.2\AndroidManifest.xml:28:13-36
+393
+394        <activity
+394-->[com.google.android.gms:play-services-base:18.0.1] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\bba16393989777a6c4d6ba1db6edbd14\jetified-play-services-base-18.0.1\AndroidManifest.xml:20:9-22:45
+395            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+395-->[com.google.android.gms:play-services-base:18.0.1] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\bba16393989777a6c4d6ba1db6edbd14\jetified-play-services-base-18.0.1\AndroidManifest.xml:20:19-85
+396            android:exported="false"
+396-->[com.google.android.gms:play-services-base:18.0.1] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\bba16393989777a6c4d6ba1db6edbd14\jetified-play-services-base-18.0.1\AndroidManifest.xml:22:19-43
+397            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+397-->[com.google.android.gms:play-services-base:18.0.1] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\bba16393989777a6c4d6ba1db6edbd14\jetified-play-services-base-18.0.1\AndroidManifest.xml:21:19-78
+398
+399        <uses-library
+399-->[androidx.privacysandbox.ads:ads-adservices:1.0.0-beta05] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\8597c4b0b2275b4bf6210eb11397c580\jetified-ads-adservices-1.0.0-beta05\AndroidManifest.xml:23:9-25:40
+400            android:name="android.ext.adservices"
+400-->[androidx.privacysandbox.ads:ads-adservices:1.0.0-beta05] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\8597c4b0b2275b4bf6210eb11397c580\jetified-ads-adservices-1.0.0-beta05\AndroidManifest.xml:24:13-50
+401            android:required="false" />
+401-->[androidx.privacysandbox.ads:ads-adservices:1.0.0-beta05] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\8597c4b0b2275b4bf6210eb11397c580\jetified-ads-adservices-1.0.0-beta05\AndroidManifest.xml:25:13-37
+402
+403        <service
+403-->[androidx.work:work-runtime:2.7.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\3a650c1bdedafd8e4171986ed2bca5eb\work-runtime-2.7.0\AndroidManifest.xml:41:9-46:35
+404            android:name="androidx.work.impl.background.systemalarm.SystemAlarmService"
+404-->[androidx.work:work-runtime:2.7.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\3a650c1bdedafd8e4171986ed2bca5eb\work-runtime-2.7.0\AndroidManifest.xml:42:13-88
+405            android:directBootAware="false"
+405-->[androidx.work:work-runtime:2.7.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\3a650c1bdedafd8e4171986ed2bca5eb\work-runtime-2.7.0\AndroidManifest.xml:43:13-44
+406            android:enabled="@bool/enable_system_alarm_service_default"
+406-->[androidx.work:work-runtime:2.7.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\3a650c1bdedafd8e4171986ed2bca5eb\work-runtime-2.7.0\AndroidManifest.xml:44:13-72
+407            android:exported="false" />
+407-->[androidx.work:work-runtime:2.7.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\3a650c1bdedafd8e4171986ed2bca5eb\work-runtime-2.7.0\AndroidManifest.xml:45:13-37
+408        <service
+408-->[androidx.work:work-runtime:2.7.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\3a650c1bdedafd8e4171986ed2bca5eb\work-runtime-2.7.0\AndroidManifest.xml:47:9-53:35
+409            android:name="androidx.work.impl.background.systemjob.SystemJobService"
+409-->[androidx.work:work-runtime:2.7.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\3a650c1bdedafd8e4171986ed2bca5eb\work-runtime-2.7.0\AndroidManifest.xml:48:13-84
+410            android:directBootAware="false"
+410-->[androidx.work:work-runtime:2.7.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\3a650c1bdedafd8e4171986ed2bca5eb\work-runtime-2.7.0\AndroidManifest.xml:49:13-44
+411            android:enabled="@bool/enable_system_job_service_default"
+411-->[androidx.work:work-runtime:2.7.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\3a650c1bdedafd8e4171986ed2bca5eb\work-runtime-2.7.0\AndroidManifest.xml:50:13-70
+412            android:exported="true"
+412-->[androidx.work:work-runtime:2.7.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\3a650c1bdedafd8e4171986ed2bca5eb\work-runtime-2.7.0\AndroidManifest.xml:51:13-36
+413            android:permission="android.permission.BIND_JOB_SERVICE" />
+413-->[androidx.work:work-runtime:2.7.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\3a650c1bdedafd8e4171986ed2bca5eb\work-runtime-2.7.0\AndroidManifest.xml:52:13-69
+414        <service
+414-->[androidx.work:work-runtime:2.7.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\3a650c1bdedafd8e4171986ed2bca5eb\work-runtime-2.7.0\AndroidManifest.xml:54:9-59:35
+415            android:name="androidx.work.impl.foreground.SystemForegroundService"
+415-->[androidx.work:work-runtime:2.7.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\3a650c1bdedafd8e4171986ed2bca5eb\work-runtime-2.7.0\AndroidManifest.xml:55:13-81
+416            android:directBootAware="false"
+416-->[androidx.work:work-runtime:2.7.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\3a650c1bdedafd8e4171986ed2bca5eb\work-runtime-2.7.0\AndroidManifest.xml:56:13-44
+417            android:enabled="@bool/enable_system_foreground_service_default"
+417-->[androidx.work:work-runtime:2.7.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\3a650c1bdedafd8e4171986ed2bca5eb\work-runtime-2.7.0\AndroidManifest.xml:57:13-77
+418            android:exported="false" />
+418-->[androidx.work:work-runtime:2.7.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\3a650c1bdedafd8e4171986ed2bca5eb\work-runtime-2.7.0\AndroidManifest.xml:58:13-37
+419
+420        <receiver
+420-->[androidx.work:work-runtime:2.7.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\3a650c1bdedafd8e4171986ed2bca5eb\work-runtime-2.7.0\AndroidManifest.xml:61:9-66:35
+421            android:name="androidx.work.impl.utils.ForceStopRunnable$BroadcastReceiver"
+421-->[androidx.work:work-runtime:2.7.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\3a650c1bdedafd8e4171986ed2bca5eb\work-runtime-2.7.0\AndroidManifest.xml:62:13-88
+422            android:directBootAware="false"
+422-->[androidx.work:work-runtime:2.7.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\3a650c1bdedafd8e4171986ed2bca5eb\work-runtime-2.7.0\AndroidManifest.xml:63:13-44
+423            android:enabled="true"
+423-->[androidx.work:work-runtime:2.7.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\3a650c1bdedafd8e4171986ed2bca5eb\work-runtime-2.7.0\AndroidManifest.xml:64:13-35
+424            android:exported="false" />
+424-->[androidx.work:work-runtime:2.7.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\3a650c1bdedafd8e4171986ed2bca5eb\work-runtime-2.7.0\AndroidManifest.xml:65:13-37
+425        <receiver
+425-->[androidx.work:work-runtime:2.7.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\3a650c1bdedafd8e4171986ed2bca5eb\work-runtime-2.7.0\AndroidManifest.xml:67:9-77:20
+426            android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$BatteryChargingProxy"
+426-->[androidx.work:work-runtime:2.7.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\3a650c1bdedafd8e4171986ed2bca5eb\work-runtime-2.7.0\AndroidManifest.xml:68:13-106
+427            android:directBootAware="false"
+427-->[androidx.work:work-runtime:2.7.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\3a650c1bdedafd8e4171986ed2bca5eb\work-runtime-2.7.0\AndroidManifest.xml:69:13-44
+428            android:enabled="false"
+428-->[androidx.work:work-runtime:2.7.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\3a650c1bdedafd8e4171986ed2bca5eb\work-runtime-2.7.0\AndroidManifest.xml:70:13-36
+429            android:exported="false" >
+429-->[androidx.work:work-runtime:2.7.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\3a650c1bdedafd8e4171986ed2bca5eb\work-runtime-2.7.0\AndroidManifest.xml:71:13-37
+430            <intent-filter>
+430-->[androidx.work:work-runtime:2.7.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\3a650c1bdedafd8e4171986ed2bca5eb\work-runtime-2.7.0\AndroidManifest.xml:73:13-76:29
+431                <action android:name="android.intent.action.ACTION_POWER_CONNECTED" />
+431-->[androidx.work:work-runtime:2.7.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\3a650c1bdedafd8e4171986ed2bca5eb\work-runtime-2.7.0\AndroidManifest.xml:74:17-87
+431-->[androidx.work:work-runtime:2.7.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\3a650c1bdedafd8e4171986ed2bca5eb\work-runtime-2.7.0\AndroidManifest.xml:74:25-84
+432                <action android:name="android.intent.action.ACTION_POWER_DISCONNECTED" />
+432-->[androidx.work:work-runtime:2.7.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\3a650c1bdedafd8e4171986ed2bca5eb\work-runtime-2.7.0\AndroidManifest.xml:75:17-90
+432-->[androidx.work:work-runtime:2.7.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\3a650c1bdedafd8e4171986ed2bca5eb\work-runtime-2.7.0\AndroidManifest.xml:75:25-87
+433            </intent-filter>
+434        </receiver>
+435        <receiver
+435-->[androidx.work:work-runtime:2.7.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\3a650c1bdedafd8e4171986ed2bca5eb\work-runtime-2.7.0\AndroidManifest.xml:78:9-88:20
+436            android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$BatteryNotLowProxy"
+436-->[androidx.work:work-runtime:2.7.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\3a650c1bdedafd8e4171986ed2bca5eb\work-runtime-2.7.0\AndroidManifest.xml:79:13-104
+437            android:directBootAware="false"
+437-->[androidx.work:work-runtime:2.7.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\3a650c1bdedafd8e4171986ed2bca5eb\work-runtime-2.7.0\AndroidManifest.xml:80:13-44
+438            android:enabled="false"
+438-->[androidx.work:work-runtime:2.7.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\3a650c1bdedafd8e4171986ed2bca5eb\work-runtime-2.7.0\AndroidManifest.xml:81:13-36
+439            android:exported="false" >
+439-->[androidx.work:work-runtime:2.7.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\3a650c1bdedafd8e4171986ed2bca5eb\work-runtime-2.7.0\AndroidManifest.xml:82:13-37
+440            <intent-filter>
+440-->[androidx.work:work-runtime:2.7.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\3a650c1bdedafd8e4171986ed2bca5eb\work-runtime-2.7.0\AndroidManifest.xml:84:13-87:29
+441                <action android:name="android.intent.action.BATTERY_OKAY" />
+441-->[androidx.work:work-runtime:2.7.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\3a650c1bdedafd8e4171986ed2bca5eb\work-runtime-2.7.0\AndroidManifest.xml:85:17-77
+441-->[androidx.work:work-runtime:2.7.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\3a650c1bdedafd8e4171986ed2bca5eb\work-runtime-2.7.0\AndroidManifest.xml:85:25-74
+442                <action android:name="android.intent.action.BATTERY_LOW" />
+442-->[androidx.work:work-runtime:2.7.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\3a650c1bdedafd8e4171986ed2bca5eb\work-runtime-2.7.0\AndroidManifest.xml:86:17-76
+442-->[androidx.work:work-runtime:2.7.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\3a650c1bdedafd8e4171986ed2bca5eb\work-runtime-2.7.0\AndroidManifest.xml:86:25-73
+443            </intent-filter>
+444        </receiver>
+445        <receiver
+445-->[androidx.work:work-runtime:2.7.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\3a650c1bdedafd8e4171986ed2bca5eb\work-runtime-2.7.0\AndroidManifest.xml:89:9-99:20
+446            android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$StorageNotLowProxy"
+446-->[androidx.work:work-runtime:2.7.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\3a650c1bdedafd8e4171986ed2bca5eb\work-runtime-2.7.0\AndroidManifest.xml:90:13-104
+447            android:directBootAware="false"
+447-->[androidx.work:work-runtime:2.7.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\3a650c1bdedafd8e4171986ed2bca5eb\work-runtime-2.7.0\AndroidManifest.xml:91:13-44
+448            android:enabled="false"
+448-->[androidx.work:work-runtime:2.7.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\3a650c1bdedafd8e4171986ed2bca5eb\work-runtime-2.7.0\AndroidManifest.xml:92:13-36
+449            android:exported="false" >
+449-->[androidx.work:work-runtime:2.7.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\3a650c1bdedafd8e4171986ed2bca5eb\work-runtime-2.7.0\AndroidManifest.xml:93:13-37
+450            <intent-filter>
+450-->[androidx.work:work-runtime:2.7.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\3a650c1bdedafd8e4171986ed2bca5eb\work-runtime-2.7.0\AndroidManifest.xml:95:13-98:29
+451                <action android:name="android.intent.action.DEVICE_STORAGE_LOW" />
+451-->[androidx.work:work-runtime:2.7.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\3a650c1bdedafd8e4171986ed2bca5eb\work-runtime-2.7.0\AndroidManifest.xml:96:17-83
+451-->[androidx.work:work-runtime:2.7.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\3a650c1bdedafd8e4171986ed2bca5eb\work-runtime-2.7.0\AndroidManifest.xml:96:25-80
+452                <action android:name="android.intent.action.DEVICE_STORAGE_OK" />
+452-->[androidx.work:work-runtime:2.7.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\3a650c1bdedafd8e4171986ed2bca5eb\work-runtime-2.7.0\AndroidManifest.xml:97:17-82
+452-->[androidx.work:work-runtime:2.7.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\3a650c1bdedafd8e4171986ed2bca5eb\work-runtime-2.7.0\AndroidManifest.xml:97:25-79
+453            </intent-filter>
+454        </receiver>
+455        <receiver
+455-->[androidx.work:work-runtime:2.7.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\3a650c1bdedafd8e4171986ed2bca5eb\work-runtime-2.7.0\AndroidManifest.xml:100:9-109:20
+456            android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$NetworkStateProxy"
+456-->[androidx.work:work-runtime:2.7.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\3a650c1bdedafd8e4171986ed2bca5eb\work-runtime-2.7.0\AndroidManifest.xml:101:13-103
+457            android:directBootAware="false"
+457-->[androidx.work:work-runtime:2.7.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\3a650c1bdedafd8e4171986ed2bca5eb\work-runtime-2.7.0\AndroidManifest.xml:102:13-44
+458            android:enabled="false"
+458-->[androidx.work:work-runtime:2.7.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\3a650c1bdedafd8e4171986ed2bca5eb\work-runtime-2.7.0\AndroidManifest.xml:103:13-36
+459            android:exported="false" >
+459-->[androidx.work:work-runtime:2.7.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\3a650c1bdedafd8e4171986ed2bca5eb\work-runtime-2.7.0\AndroidManifest.xml:104:13-37
+460            <intent-filter>
+460-->[androidx.work:work-runtime:2.7.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\3a650c1bdedafd8e4171986ed2bca5eb\work-runtime-2.7.0\AndroidManifest.xml:106:13-108:29
+461                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+461-->[androidx.work:work-runtime:2.7.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\3a650c1bdedafd8e4171986ed2bca5eb\work-runtime-2.7.0\AndroidManifest.xml:107:17-79
+461-->[androidx.work:work-runtime:2.7.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\3a650c1bdedafd8e4171986ed2bca5eb\work-runtime-2.7.0\AndroidManifest.xml:107:25-76
+462            </intent-filter>
+463        </receiver>
+464        <receiver
+464-->[androidx.work:work-runtime:2.7.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\3a650c1bdedafd8e4171986ed2bca5eb\work-runtime-2.7.0\AndroidManifest.xml:110:9-121:20
+465            android:name="androidx.work.impl.background.systemalarm.RescheduleReceiver"
+465-->[androidx.work:work-runtime:2.7.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\3a650c1bdedafd8e4171986ed2bca5eb\work-runtime-2.7.0\AndroidManifest.xml:111:13-88
+466            android:directBootAware="false"
+466-->[androidx.work:work-runtime:2.7.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\3a650c1bdedafd8e4171986ed2bca5eb\work-runtime-2.7.0\AndroidManifest.xml:112:13-44
+467            android:enabled="false"
+467-->[androidx.work:work-runtime:2.7.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\3a650c1bdedafd8e4171986ed2bca5eb\work-runtime-2.7.0\AndroidManifest.xml:113:13-36
+468            android:exported="false" >
+468-->[androidx.work:work-runtime:2.7.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\3a650c1bdedafd8e4171986ed2bca5eb\work-runtime-2.7.0\AndroidManifest.xml:114:13-37
+469            <intent-filter>
+469-->[androidx.work:work-runtime:2.7.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\3a650c1bdedafd8e4171986ed2bca5eb\work-runtime-2.7.0\AndroidManifest.xml:116:13-120:29
+470                <action android:name="android.intent.action.BOOT_COMPLETED" />
+470-->[androidx.work:work-runtime:2.7.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\3a650c1bdedafd8e4171986ed2bca5eb\work-runtime-2.7.0\AndroidManifest.xml:117:17-79
+470-->[androidx.work:work-runtime:2.7.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\3a650c1bdedafd8e4171986ed2bca5eb\work-runtime-2.7.0\AndroidManifest.xml:117:25-76
+471                <action android:name="android.intent.action.TIME_SET" />
+471-->[androidx.work:work-runtime:2.7.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\3a650c1bdedafd8e4171986ed2bca5eb\work-runtime-2.7.0\AndroidManifest.xml:118:17-73
+471-->[androidx.work:work-runtime:2.7.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\3a650c1bdedafd8e4171986ed2bca5eb\work-runtime-2.7.0\AndroidManifest.xml:118:25-70
+472                <action android:name="android.intent.action.TIMEZONE_CHANGED" />
+472-->[androidx.work:work-runtime:2.7.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\3a650c1bdedafd8e4171986ed2bca5eb\work-runtime-2.7.0\AndroidManifest.xml:119:17-81
+472-->[androidx.work:work-runtime:2.7.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\3a650c1bdedafd8e4171986ed2bca5eb\work-runtime-2.7.0\AndroidManifest.xml:119:25-78
+473            </intent-filter>
+474        </receiver>
+475        <receiver
+475-->[androidx.work:work-runtime:2.7.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\3a650c1bdedafd8e4171986ed2bca5eb\work-runtime-2.7.0\AndroidManifest.xml:122:9-131:20
+476            android:name="androidx.work.impl.background.systemalarm.ConstraintProxyUpdateReceiver"
+476-->[androidx.work:work-runtime:2.7.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\3a650c1bdedafd8e4171986ed2bca5eb\work-runtime-2.7.0\AndroidManifest.xml:123:13-99
+477            android:directBootAware="false"
+477-->[androidx.work:work-runtime:2.7.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\3a650c1bdedafd8e4171986ed2bca5eb\work-runtime-2.7.0\AndroidManifest.xml:124:13-44
+478            android:enabled="@bool/enable_system_alarm_service_default"
+478-->[androidx.work:work-runtime:2.7.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\3a650c1bdedafd8e4171986ed2bca5eb\work-runtime-2.7.0\AndroidManifest.xml:125:13-72
+479            android:exported="false" >
+479-->[androidx.work:work-runtime:2.7.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\3a650c1bdedafd8e4171986ed2bca5eb\work-runtime-2.7.0\AndroidManifest.xml:126:13-37
+480            <intent-filter>
+480-->[androidx.work:work-runtime:2.7.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\3a650c1bdedafd8e4171986ed2bca5eb\work-runtime-2.7.0\AndroidManifest.xml:128:13-130:29
+481                <action android:name="androidx.work.impl.background.systemalarm.UpdateProxies" />
+481-->[androidx.work:work-runtime:2.7.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\3a650c1bdedafd8e4171986ed2bca5eb\work-runtime-2.7.0\AndroidManifest.xml:129:17-98
+481-->[androidx.work:work-runtime:2.7.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\3a650c1bdedafd8e4171986ed2bca5eb\work-runtime-2.7.0\AndroidManifest.xml:129:25-95
+482            </intent-filter>
+483        </receiver>
+484        <receiver
+484-->[androidx.work:work-runtime:2.7.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\3a650c1bdedafd8e4171986ed2bca5eb\work-runtime-2.7.0\AndroidManifest.xml:132:9-142:20
+485            android:name="androidx.work.impl.diagnostics.DiagnosticsReceiver"
+485-->[androidx.work:work-runtime:2.7.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\3a650c1bdedafd8e4171986ed2bca5eb\work-runtime-2.7.0\AndroidManifest.xml:133:13-78
+486            android:directBootAware="false"
+486-->[androidx.work:work-runtime:2.7.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\3a650c1bdedafd8e4171986ed2bca5eb\work-runtime-2.7.0\AndroidManifest.xml:134:13-44
+487            android:enabled="true"
+487-->[androidx.work:work-runtime:2.7.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\3a650c1bdedafd8e4171986ed2bca5eb\work-runtime-2.7.0\AndroidManifest.xml:135:13-35
+488            android:exported="true"
+488-->[androidx.work:work-runtime:2.7.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\3a650c1bdedafd8e4171986ed2bca5eb\work-runtime-2.7.0\AndroidManifest.xml:136:13-36
+489            android:permission="android.permission.DUMP" >
+489-->[androidx.work:work-runtime:2.7.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\3a650c1bdedafd8e4171986ed2bca5eb\work-runtime-2.7.0\AndroidManifest.xml:137:13-57
+490            <intent-filter>
+490-->[androidx.work:work-runtime:2.7.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\3a650c1bdedafd8e4171986ed2bca5eb\work-runtime-2.7.0\AndroidManifest.xml:139:13-141:29
+491                <action android:name="androidx.work.diagnostics.REQUEST_DIAGNOSTICS" />
+491-->[androidx.work:work-runtime:2.7.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\3a650c1bdedafd8e4171986ed2bca5eb\work-runtime-2.7.0\AndroidManifest.xml:140:17-88
+491-->[androidx.work:work-runtime:2.7.0] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\3a650c1bdedafd8e4171986ed2bca5eb\work-runtime-2.7.0\AndroidManifest.xml:140:25-85
+492            </intent-filter>
+493        </receiver>
+494
+495        <service
+495-->[androidx.room:room-runtime:2.2.5] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\f3e89ef2aea5cfa57fc024f9aa1b17d3\room-runtime-2.2.5\AndroidManifest.xml:25:9-28:40
+496            android:name="androidx.room.MultiInstanceInvalidationService"
+496-->[androidx.room:room-runtime:2.2.5] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\f3e89ef2aea5cfa57fc024f9aa1b17d3\room-runtime-2.2.5\AndroidManifest.xml:26:13-74
+497            android:directBootAware="true"
+497-->[androidx.room:room-runtime:2.2.5] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\f3e89ef2aea5cfa57fc024f9aa1b17d3\room-runtime-2.2.5\AndroidManifest.xml:27:13-43
+498            android:exported="false" />
+498-->[androidx.room:room-runtime:2.2.5] C:\Users\ivy\.gradle\caches\transforms-2\files-2.1\f3e89ef2aea5cfa57fc024f9aa1b17d3\room-runtime-2.2.5\AndroidManifest.xml:28:13-37
+499    </application>
+500
+501</manifest>

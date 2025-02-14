@@ -285,6 +285,11 @@ public class Cocos {
                         Log.w(TAG, "deliciouseiconclicked not defined");
                     }
                 }
+            }).setFilterActionListener(new IFilterActionListener() {
+                @Override
+                public void onAction(String action) {
+
+                }
             });
 
             AndroidSdk.onCreate(activity, builder);
@@ -578,6 +583,7 @@ public class Cocos {
                                                            String title,
                                                            String subtitle,
                                                            String bigText,
+                                                           String smallIcon,
                                                            String largeIcon,
                                                            String action,
                                                            boolean autoCancel,
@@ -585,12 +591,12 @@ public class Cocos {
                                                            boolean repeat,
                                                            boolean onNetWorkOn,
                                                            boolean requireCharging) {
-        return AndroidSdk.pushLocalNotification(tag, title, subtitle, bigText, largeIcon, null, action, autoCancel, delay, repeat, onNetWorkOn, requireCharging);
+        return AndroidSdk.pushLocalNotification(tag, title, subtitle, bigText, smallIcon, largeIcon, null, action, autoCancel, delay, repeat, onNetWorkOn, requireCharging);
     }
-
     public static boolean pushLocalNotificationWithBigPicture(String tag,
                                                               String title,
                                                               String subtitle,
+                                                              String smallIcon,
                                                               String largeIcon,
                                                               String bigPicture,
                                                               String action,
@@ -599,11 +605,42 @@ public class Cocos {
                                                               boolean repeat,
                                                               boolean onNetWorkOn,
                                                               boolean requireCharging) {
-        return AndroidSdk.pushLocalNotification(tag, title, subtitle, null, largeIcon, bigPicture, action, autoCancel, delay, repeat, onNetWorkOn, requireCharging);
+        return AndroidSdk.pushLocalNotification(tag, title, subtitle, null, smallIcon, largeIcon, bigPicture, action, autoCancel, delay, repeat, onNetWorkOn, requireCharging);
     }
-
     public static void cancelLocalNotification(String key){
         AndroidSdk.cancelLocalNotification(key);
+    }
+
+    /**
+     *  添加3D touch 按钮
+     * @param id                按钮唯一 id
+     * @param order             排序 序号
+     * @param shortLabel        短称
+     * @param longLabel         长称
+     * @param icon              图标 ；放置再assets目录下的图片文件的全名
+     * @param action            行为
+     */
+    public static void addShortcut(String id, int order, String shortLabel, String longLabel, String icon, String action) {
+        AndroidSdk.addShortcut(id, order, shortLabel, longLabel, icon, action);
+    }
+    /**
+     * 更新3D touch 按钮
+     * @param id
+     * @param order
+     * @param shortLabel
+     * @param longLabel
+     * @param icon
+     * @param action
+     */
+    public static void updateShortcut(String id, int order, String shortLabel, String longLabel, String icon, String action) {
+        AndroidSdk.updateShortcut(id, order, shortLabel, longLabel, icon, action);
+    }
+    /**
+     * 删除3D touch 按钮
+     * @param id
+     */
+    public static void deleteShortcut(String id) {
+        AndroidSdk.deleteShortcut(id);
     }
 
     public static void support(String email, String extra) {

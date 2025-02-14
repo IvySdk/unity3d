@@ -43,9 +43,9 @@ class ApplovinManager {
                         AppLovinPrivacySettings.setHasUserConsent(true, activity.getApplicationContext());
                     }
 
-                    if (!AppLovinPrivacySettings.isAgeRestrictedUser(activity.getApplicationContext())) {
-                        AppLovinPrivacySettings.setIsAgeRestrictedUser(false, activity.getApplicationContext());
-                    }
+//                    if (!AppLovinPrivacySettings.isAgeRestrictedUser(activity.getApplicationContext())) {
+//                        AppLovinPrivacySettings.setIsAgeRestrictedUser(false, activity.getApplicationContext());
+//                    }
 
                     if (!AppLovinPrivacySettings.isDoNotSellSet(activity.getApplicationContext())) {
                         AppLovinPrivacySettings.setDoNotSell(true, activity.getApplicationContext());

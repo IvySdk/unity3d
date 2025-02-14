@@ -1,0 +1,76 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    xmlns:tools="http://schemas.android.com/tools"
+4    package="com.ivy" >
+5
+6    <uses-sdk android:minSdkVersion="21" />
+6-->D:\UnityProject\unity3d\Export\Android\ivysdk-ad\src\main\AndroidManifest.xml
+7
+8    <uses-permission android:name="android.permission.INTERNET" />
+8-->D:\UnityProject\unity3d\Export\Android\ivysdk-ad\src\main\AndroidManifest.xml:6:5-67
+8-->D:\UnityProject\unity3d\Export\Android\ivysdk-ad\src\main\AndroidManifest.xml:6:22-64
+9    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+9-->D:\UnityProject\unity3d\Export\Android\ivysdk-ad\src\main\AndroidManifest.xml:7:5-79
+9-->D:\UnityProject\unity3d\Export\Android\ivysdk-ad\src\main\AndroidManifest.xml:7:22-76
+10    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+10-->D:\UnityProject\unity3d\Export\Android\ivysdk-ad\src\main\AndroidManifest.xml:8:5-76
+10-->D:\UnityProject\unity3d\Export\Android\ivysdk-ad\src\main\AndroidManifest.xml:8:22-73
+11    <uses-permission android:name="com.google.android.gms.permission.AD_ID" />
+11-->D:\UnityProject\unity3d\Export\Android\ivysdk-ad\src\main\AndroidManifest.xml:9:5-79
+11-->D:\UnityProject\unity3d\Export\Android\ivysdk-ad\src\main\AndroidManifest.xml:9:22-76
+12    <!-- 如果有视频相关的广告且使用textureView播放，请务必添加，否则黑屏 -->
+13    <uses-permission android:name="android.permission.WAKE_LOCK" />
+13-->D:\UnityProject\unity3d\Export\Android\ivysdk-ad\src\main\AndroidManifest.xml:11:5-68
+13-->D:\UnityProject\unity3d\Export\Android\ivysdk-ad\src\main\AndroidManifest.xml:11:22-65
+14
+15    <application
+15-->D:\UnityProject\unity3d\Export\Android\ivysdk-ad\src\main\AndroidManifest.xml:13:5-34:19
+16        android:fullBackupContent="@xml/sdk_full_backup_contents"
+16-->D:\UnityProject\unity3d\Export\Android\ivysdk-ad\src\main\AndroidManifest.xml:15:9-66
+17        android:hardwareAccelerated="true"
+17-->D:\UnityProject\unity3d\Export\Android\ivysdk-ad\src\main\AndroidManifest.xml:17:9-43
+18        android:networkSecurityConfig="@xml/network_security_config"
+18-->D:\UnityProject\unity3d\Export\Android\ivysdk-ad\src\main\AndroidManifest.xml:18:9-69
+19        android:usesCleartextTraffic="true"
+19-->D:\UnityProject\unity3d\Export\Android\ivysdk-ad\src\main\AndroidManifest.xml:16:9-44
+20        tools:replace="android:fullBackupContent" >
+20-->D:\UnityProject\unity3d\Export\Android\ivysdk-ad\src\main\AndroidManifest.xml:14:9-50
+21        <meta-data
+21-->D:\UnityProject\unity3d\Export\Android\ivysdk-ad\src\main\AndroidManifest.xml:20:9-122
+22            android:name="com.google.android.gms.version"
+22-->D:\UnityProject\unity3d\Export\Android\ivysdk-ad\src\main\AndroidManifest.xml:20:20-65
+23            android:value="@integer/google_play_services_version" />
+23-->D:\UnityProject\unity3d\Export\Android\ivysdk-ad\src\main\AndroidManifest.xml:20:66-119
+24        <meta-data
+24-->D:\UnityProject\unity3d\Export\Android\ivysdk-ad\src\main\AndroidManifest.xml:21:9-23:62
+25            android:name="com.google.android.gms.ads.APPLICATION_ID"
+25-->D:\UnityProject\unity3d\Export\Android\ivysdk-ad\src\main\AndroidManifest.xml:22:13-69
+26            android:value="${google_admob_application_id}" />
+26-->D:\UnityProject\unity3d\Export\Android\ivysdk-ad\src\main\AndroidManifest.xml:23:13-59
+27        <meta-data
+27-->D:\UnityProject\unity3d\Export\Android\ivysdk-ad\src\main\AndroidManifest.xml:24:9-75
+28            android:name="ivy.debug"
+28-->D:\UnityProject\unity3d\Export\Android\ivysdk-ad\src\main\AndroidManifest.xml:24:20-44
+29            android:value="${ivy_debug}" />
+29-->D:\UnityProject\unity3d\Export\Android\ivysdk-ad\src\main\AndroidManifest.xml:24:45-73
+30        <meta-data
+30-->D:\UnityProject\unity3d\Export\Android\ivysdk-ad\src\main\AndroidManifest.xml:25:9-100
+31            android:name="com.google.android.gms.ads.AD_MANAGER_APP"
+31-->D:\UnityProject\unity3d\Export\Android\ivysdk-ad\src\main\AndroidManifest.xml:25:20-76
+32            android:value="true" />
+32-->D:\UnityProject\unity3d\Export\Android\ivysdk-ad\src\main\AndroidManifest.xml:25:77-97
+33        <meta-data
+33-->D:\UnityProject\unity3d\Export\Android\ivysdk-ad\src\main\AndroidManifest.xml:26:9-28:35
+34            android:name="com.google.android.gms.ads.flag.OPTIMIZE_INITIALIZATION"
+34-->D:\UnityProject\unity3d\Export\Android\ivysdk-ad\src\main\AndroidManifest.xml:27:13-83
+35            android:value="true" />
+35-->D:\UnityProject\unity3d\Export\Android\ivysdk-ad\src\main\AndroidManifest.xml:28:13-33
+36        <meta-data
+36-->D:\UnityProject\unity3d\Export\Android\ivysdk-ad\src\main\AndroidManifest.xml:29:9-31:35
+37            android:name="com.google.android.gms.ads.flag.OPTIMIZE_AD_LOADING"
+37-->D:\UnityProject\unity3d\Export\Android\ivysdk-ad\src\main\AndroidManifest.xml:30:13-79
+38            android:value="true" />
+38-->D:\UnityProject\unity3d\Export\Android\ivysdk-ad\src\main\AndroidManifest.xml:31:13-33
+39    </application>
+40
+41</manifest>

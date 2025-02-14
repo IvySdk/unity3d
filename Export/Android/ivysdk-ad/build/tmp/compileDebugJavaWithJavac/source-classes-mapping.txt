@@ -1,0 +1,333 @@
+com/ivy/ads/adapters/AdmobNonRewardedAdapter.java
+ com.ivy.ads.adapters.AdmobNonRewardedAdapter
+ com.ivy.ads.adapters.AdmobNonRewardedAdapter$1
+ com.ivy.ads.adapters.AdmobNonRewardedAdapter$2
+ com.ivy.ads.adapters.AdmobNonRewardedAdapter$GridParams
+com/ivy/ads/selectors/AdSelectorCallback.java
+ com.ivy.ads.selectors.AdSelectorCallback
+com/ivy/ads/models/AdProviderGridPayload.java
+ com.ivy.ads.models.AdProviderGridPayload
+ com.ivy.ads.models.AdProviderGridPayload$AdRequestTimeout
+com/ivy/ads/adapters/ApplovinBannerAdapter.java
+ com.ivy.ads.adapters.ApplovinBannerAdapter
+ com.ivy.ads.adapters.ApplovinBannerAdapter$GridParams
+com/ivy/ads/adapters/AdmobBannerAdapter.java
+ com.ivy.ads.adapters.AdmobBannerAdapter
+ com.ivy.ads.adapters.AdmobBannerAdapter$1
+ com.ivy.ads.adapters.AdmobBannerAdapter$2
+ com.ivy.ads.adapters.AdmobBannerAdapter$GridParams
+com/ivy/ads/selectors/AdapterSkipReason.java
+ com.ivy.ads.selectors.AdapterSkipReason
+com/ivy/ads/adapters/YandexBannerAdapter.java
+ com.ivy.ads.adapters.YandexBannerAdapter
+ com.ivy.ads.adapters.YandexBannerAdapter$1
+ com.ivy.ads.adapters.YandexBannerAdapter$GridParams
+com/ivy/ads/adapters/AdmobRewardedAdapter.java
+ com.ivy.ads.adapters.AdmobRewardedAdapter
+ com.ivy.ads.adapters.AdmobRewardedAdapter$1
+ com.ivy.ads.adapters.AdmobRewardedAdapter$2
+ com.ivy.ads.adapters.AdmobRewardedAdapter$3
+ com.ivy.ads.adapters.AdmobRewardedAdapter$GridParams
+com/android/client/AdEventListener.java
+ com.android.client.AdEventListener
+com/ivy/ads/IvyAds.java
+ com.ivy.ads.IvyAds
+com/ivy/IvyUtils.java
+ com.ivy.IvyUtils
+com/ivy/networks/IvyNetworks.java
+ com.ivy.networks.IvyNetworks
+com/ivy/networks/tracker/impl/FacebookTracker.java
+ com.ivy.networks.tracker.impl.FacebookTracker
+com/android/client/IInitResultListener.java
+ com.android.client.IInitResultListener
+com/ivy/ads/adapters/AdxNonRewardedAdapter.java
+ com.ivy.ads.adapters.AdxNonRewardedAdapter
+ com.ivy.ads.adapters.AdxNonRewardedAdapter$1
+ com.ivy.ads.adapters.AdxNonRewardedAdapter$2
+ com.ivy.ads.adapters.AdxNonRewardedAdapter$GridParams
+com/ivy/ads/events/RewardedInterstitialEventHandler.java
+ com.ivy.ads.events.RewardedInterstitialEventHandler
+com/ivy/ads/selectors/WaterfallAdSelector.java
+ com.ivy.ads.selectors.WaterfallAdSelector
+com/ivy/ads/managers/RewardedAdManager.java
+ com.ivy.ads.managers.RewardedAdManager
+com/ivy/ads/managers/BannerAdManager.java
+ com.ivy.ads.managers.BannerAdManager
+com/ivy/ads/interfaces/IvyPromote.java
+ com.ivy.ads.interfaces.IvyPromote
+com/ivy/ads/configuration/ConfigurationParser.java
+ com.ivy.ads.configuration.ConfigurationParser
+com/ivy/ads/adapters/NativeAdapter.java
+ com.ivy.ads.adapters.NativeAdapter
+com/ivy/CommonUtil.java
+ com.ivy.CommonUtil
+com/ivy/ads/managers/FullpageAdManager.java
+ com.ivy.ads.managers.FullpageAdManager
+com/ivy/networks/grid/GridManager.java
+ com.ivy.networks.grid.GridManager
+ com.ivy.networks.grid.GridManager$1
+ com.ivy.networks.grid.GridManager$AdProvidersCallback
+com/ivy/ads/configuration/NativeAdsConfig.java
+ com.ivy.ads.configuration.NativeAdsConfig
+ com.ivy.ads.configuration.NativeAdsConfig$Ad
+com/ivy/event/EventListenerList.java
+ com.ivy.event.EventListenerList
+com/ivy/ads/events/RewardedEventHandler.java
+ com.ivy.ads.events.RewardedEventHandler
+com/ivy/ads/interfaces/IvyBannerAd.java
+ com.ivy.ads.interfaces.IvyBannerAd
+com/ivy/ads/configuration/BaseConfig.java
+ com.ivy.ads.configuration.BaseConfig
+ com.ivy.ads.configuration.BaseConfig$Ad
+com/ivy/ads/interfaces/IvyNativeAd.java
+ com.ivy.ads.interfaces.IvyNativeAd
+com/ivy/cmp/CMPUtil.java
+ com.ivy.cmp.CMPUtil
+com/ivy/ads/adapters/ApplovinManager.java
+ com.ivy.ads.adapters.ApplovinManager
+com/ivy/ads/interfaces/IvyFullpageAd.java
+ com.ivy.ads.interfaces.IvyFullpageAd
+com/ivy/ads/utils/HandlerFactory.java
+ com.ivy.ads.utils.HandlerFactory
+com/ivy/ads/summary/AdSummaryEventFileHandler.java
+ com.ivy.ads.summary.AdSummaryEventFileHandler
+com/ivy/ads/managers/ManagerRegistry.java
+ com.ivy.ads.managers.ManagerRegistry
+com/ivy/ads/configuration/InterstitialConfig.java
+ com.ivy.ads.configuration.InterstitialConfig
+ com.ivy.ads.configuration.InterstitialConfig$Ac
+ com.ivy.ads.configuration.InterstitialConfig$Ad
+ com.ivy.ads.configuration.InterstitialConfig$ISTs
+com/ivy/ads/adapters/AdOpenCloseCallback.java
+ com.ivy.ads.adapters.AdOpenCloseCallback
+com/ivy/ads/adapters/AdmobManager.java
+ com.ivy.ads.adapters.AdmobManager
+com/ivy/ads/adapters/ApplovinRewardedAdapter.java
+ com.ivy.ads.adapters.ApplovinRewardedAdapter
+ com.ivy.ads.adapters.ApplovinRewardedAdapter$GridParams
+com/ivy/ads/interfaces/IvyShowFailStatus.java
+ com.ivy.ads.interfaces.IvyShowFailStatus
+com/ivy/ads/configuration/PromoteConfig.java
+ com.ivy.ads.configuration.PromoteConfig
+com/ivy/ads/configuration/RewardedInterstitialConfig.java
+ com.ivy.ads.configuration.RewardedInterstitialConfig
+com/ivy/ads/adproviders/AdProvidersRegistry.java
+ com.ivy.ads.adproviders.AdProvidersRegistry
+com/ivy/ads/selectors/AdSelector.java
+ com.ivy.ads.selectors.AdSelector
+com/ivy/ads/interfaces/IvyAdInfo.java
+ com.ivy.ads.interfaces.IvyAdInfo
+com/ivy/ads/selectors/NativeAdWaterfallAdSelector.java
+ com.ivy.ads.selectors.NativeAdWaterfallAdSelector
+com/ivy/ads/adapters/AdxBannerAdapter.java
+ com.ivy.ads.adapters.AdxBannerAdapter
+ com.ivy.ads.adapters.AdxBannerAdapter$1
+ com.ivy.ads.adapters.AdxBannerAdapter$GridParams
+com/ivy/ads/adapters/BaseAdapter.java
+ com.ivy.ads.adapters.BaseAdapter
+ com.ivy.ads.adapters.BaseAdapter$1
+ com.ivy.ads.adapters.BaseAdapter$2
+ com.ivy.ads.adapters.BaseAdapter$GridParams
+com/ivy/event/EventBus.java
+ com.ivy.event.EventBus
+ com.ivy.event.EventBus$1
+com/ivy/event/EventListener.java
+ com.ivy.event.EventListener
+com/ivy/ads/adapters/AdapterList.java
+ com.ivy.ads.adapters.AdapterList
+com/ivy/ads/adapters/FullpageAdapter.java
+ com.ivy.ads.adapters.FullpageAdapter
+com/ivy/ads/adapters/YandexRewardedAdapter.java
+ com.ivy.ads.adapters.YandexRewardedAdapter
+ com.ivy.ads.adapters.YandexRewardedAdapter$1
+ com.ivy.ads.adapters.YandexRewardedAdapter$GridParams
+com/ivy/ads/managers/PromoteAdManager.java
+ com.ivy.ads.managers.PromoteAdManager
+ com.ivy.ads.managers.PromoteAdManager$1
+com/ivy/ads/interfaces/IvyAdType.java
+ com.ivy.ads.interfaces.IvyAdType
+com/ivy/ads/managers/NonRewardedAdManager.java
+ com.ivy.ads.managers.NonRewardedAdManager
+com/ivy/ads/events/NativeEventHandler.java
+ com.ivy.ads.events.NativeEventHandler
+com/ivy/ads/events/DefaultEventLogger.java
+ com.ivy.ads.events.DefaultEventLogger
+ com.ivy.ads.events.DefaultEventLogger$InAppMessageTrigger
+com/ivy/ads/selectors/NonRewardedWaterfallAdSelector.java
+ com.ivy.ads.selectors.NonRewardedWaterfallAdSelector
+com/android/client/IGMSPaidEventListener.java
+ com.android.client.IGMSPaidEventListener
+com/ivy/ads/configuration/ClipConfig.java
+ com.ivy.ads.configuration.ClipConfig
+ com.ivy.ads.configuration.ClipConfig$Ad
+ com.ivy.ads.configuration.ClipConfig$Ad$Cap
+com/ivy/networks/tracker/impl/FirebaseTracker.java
+ com.ivy.networks.tracker.impl.FirebaseTracker
+com/ivy/Logger.java
+ com.ivy.Logger
+com/ivy/ads/managers/NativeAdManager.java
+ com.ivy.ads.managers.NativeAdManager
+ com.ivy.ads.managers.NativeAdManager$1
+com/ivy/networks/tracker/EventTrackerProvider.java
+ com.ivy.networks.tracker.EventTrackerProvider
+com/ivy/ads/events/EventParams.java
+ com.ivy.ads.events.EventParams
+com/ivy/ads/adapters/AdxRewardedAdapter.java
+ com.ivy.ads.adapters.AdxRewardedAdapter
+ com.ivy.ads.adapters.AdxRewardedAdapter$1
+ com.ivy.ads.adapters.AdxRewardedAdapter$2
+ com.ivy.ads.adapters.AdxRewardedAdapter$3
+ com.ivy.ads.adapters.AdxRewardedAdapter$GridParams
+com/ivy/ads/events/BannerEventHandler.java
+ com.ivy.ads.events.BannerEventHandler
+com/ivy/ads/events/EventID.java
+ com.ivy.ads.events.EventID
+com/ivy/ads/managers/Clip.java
+ com.ivy.ads.managers.Clip
+com/ivy/ads/adapters/AdmobNativeAdapter.java
+ com.ivy.ads.adapters.AdmobNativeAdapter
+ com.ivy.ads.adapters.AdmobNativeAdapter$1
+ com.ivy.ads.adapters.AdmobNativeAdapter$2
+ com.ivy.ads.adapters.AdmobNativeAdapter$GridParams
+com/ivy/networks/tracker/EventTracker.java
+ com.ivy.networks.tracker.EventTracker
+com/ivy/ads/managers/CommonFullpageAdManager.java
+ com.ivy.ads.managers.CommonFullpageAdManager
+ com.ivy.ads.managers.CommonFullpageAdManager$1
+ com.ivy.ads.managers.CommonFullpageAdManager$1$1
+ com.ivy.ads.managers.CommonFullpageAdManager$2
+com/ivy/ads/managers/CommonAdManager.java
+ com.ivy.ads.managers.CommonAdManager
+ com.ivy.ads.managers.CommonAdManager$1
+ com.ivy.ads.managers.CommonAdManager$2
+com/ivy/ads/models/InterstitialTransition.java
+ com.ivy.ads.models.InterstitialTransition
+com/android/client/AndroidSDK.java
+ com.android.client.AndroidSDK
+ com.android.client.AndroidSDK$1
+ com.android.client.AndroidSDK$2
+ com.android.client.AndroidSDK$3
+ com.android.client.AndroidSDK$4
+ com.android.client.AndroidSDK$5
+ com.android.client.AndroidSDK$6
+ com.android.client.AndroidSDK$Builder
+com/ivy/ads/selectors/RewardedWaterfallAdSelector.java
+ com.ivy.ads.selectors.RewardedWaterfallAdSelector
+com/ivy/ads/adapters/BannerAdapter.java
+ com.ivy.ads.adapters.BannerAdapter
+com/ivy/networks/DownloadFeedback.java
+ com.ivy.networks.DownloadFeedback
+com/ivy/IvySdk.java
+ com.ivy.IvySdk
+ com.ivy.IvySdk$1
+ com.ivy.IvySdk$1$1
+ com.ivy.IvySdk$10
+ com.ivy.IvySdk$11
+ com.ivy.IvySdk$12
+ com.ivy.IvySdk$13
+ com.ivy.IvySdk$14
+ com.ivy.IvySdk$2
+ com.ivy.IvySdk$3
+ com.ivy.IvySdk$4
+ com.ivy.IvySdk$5
+ com.ivy.IvySdk$6
+ com.ivy.IvySdk$7
+ com.ivy.IvySdk$8
+ com.ivy.IvySdk$9
+ com.ivy.IvySdk$InitializeCallback
+com/ivy/ads/events/NonRewardedEventHandler.java
+ com.ivy.ads.events.NonRewardedEventHandler
+com/ivy/networks/grid/GridSetup.java
+ com.ivy.networks.grid.GridSetup
+com/ivy/cmp/ICMPCallback.java
+ com.ivy.cmp.ICMPCallback
+com/ivy/event/CommonEvents.java
+ com.ivy.event.CommonEvents
+com/ivy/BuildConfig.java
+ com.ivy.BuildConfig
+com/ivy/ads/adapters/AdNetworkName.java
+ com.ivy.ads.adapters.AdNetworkName
+com/ivy/ads/adapters/ApplovinNonRewardedAdapter.java
+ com.ivy.ads.adapters.ApplovinNonRewardedAdapter
+ com.ivy.ads.adapters.ApplovinNonRewardedAdapter$GridParams
+com/ivy/ads/interfaces/IvyAd.java
+ com.ivy.ads.interfaces.IvyAd
+com/ivy/ads/interfaces/IvyAdCallbacks.java
+ com.ivy.ads.interfaces.IvyAdCallbacks
+com/ivy/ads/summary/AdSummaryEventHandler.java
+ com.ivy.ads.summary.AdSummaryEventHandler
+com/ivy/task/TaskFeedback.java
+ com.ivy.task.TaskFeedback
+com/ivy/ads/adapters/YandexManager.java
+ com.ivy.ads.adapters.YandexManager
+com/ivy/event/ActivityResult.java
+ com.ivy.event.ActivityResult
+com/ivy/ads/interfaces/IvyLoadStatus.java
+ com.ivy.ads.interfaces.IvyLoadStatus
+com/android/client/AdListener.java
+ com.android.client.AdListener
+com/ivy/ads/selectors/BannerWaterfallAdSelector.java
+ com.ivy.ads.selectors.BannerWaterfallAdSelector
+com/ivy/ads/interfaces/IvyAdapterInfo.java
+ com.ivy.ads.interfaces.IvyAdapterInfo
+com/ivy/ads/adrollers/BannerAdRoller.java
+ com.ivy.ads.adrollers.BannerAdRoller
+ com.ivy.ads.adrollers.BannerAdRoller$1
+ com.ivy.ads.adrollers.BannerAdRoller$2
+ com.ivy.ads.adrollers.BannerAdRoller$3
+com/ivy/networks/util/Util.java
+ com.ivy.networks.util.Util
+ com.ivy.networks.util.Util$1
+ com.ivy.networks.util.Util$1$1
+ com.ivy.networks.util.Util$1$2
+com/ivy/ads/adapters/AdmobRewardedInterstitialAdapter.java
+ com.ivy.ads.adapters.AdmobRewardedInterstitialAdapter
+ com.ivy.ads.adapters.AdmobRewardedInterstitialAdapter$1
+ com.ivy.ads.adapters.AdmobRewardedInterstitialAdapter$2
+ com.ivy.ads.adapters.AdmobRewardedInterstitialAdapter$GridParams
+com/ivy/ads/selectors/RewardedInterstitialWaterfallAdSelector.java
+ com.ivy.ads.selectors.RewardedInterstitialWaterfallAdSelector
+com/ivy/ads/interfaces/IvySoftCallbacks.java
+ com.ivy.ads.interfaces.IvySoftCallbacks
+com/ivy/ads/managers/Interstitial.java
+ com.ivy.ads.managers.Interstitial
+com/ivy/ads/interfaces/Adapter.java
+ com.ivy.ads.interfaces.Adapter
+com/ivy/ads/ui/PagerIndicator.java
+ com.ivy.ads.ui.PagerIndicator
+com/ivy/ads/utils/Stopwatch.java
+ com.ivy.ads.utils.Stopwatch
+com/ivy/ads/configuration/BannerConfig.java
+ com.ivy.ads.configuration.BannerConfig
+ com.ivy.ads.configuration.BannerConfig$Ad
+ com.ivy.ads.configuration.BannerConfig$Ad$U
+com/android/client/AdLoadedListener.java
+ com.android.client.AdLoadedListener
+com/ivy/ads/events/BaseEventHandler.java
+ com.ivy.ads.events.BaseEventHandler
+com/ivy/ads/IvyAdsManager.java
+ com.ivy.ads.IvyAdsManager
+ com.ivy.ads.IvyAdsManager$1
+ com.ivy.ads.IvyAdsManager$2
+ com.ivy.ads.IvyAdsManager$3
+ com.ivy.ads.IvyAdsManager$4
+ com.ivy.ads.IvyAdsManager$5
+ com.ivy.ads.IvyAdsManager$6
+ com.ivy.ads.IvyAdsManager$7
+com/ivy/ads/managers/RewardedInterstitialAdManager.java
+ com.ivy.ads.managers.RewardedInterstitialAdManager
+com/ivy/ads/models/AdProviderGridDetails.java
+ com.ivy.ads.models.AdProviderGridDetails
+ com.ivy.ads.models.AdProviderGridDetails$IntegrationData
+ com.ivy.ads.models.AdProviderGridDetails$IntegrationType
+com/ivy/networks/tracker/impl/AppflyersTracker.java
+ com.ivy.networks.tracker.impl.AppflyersTracker
+com/ivy/ads/models/GridAdShowTimeoutPayload.java
+ com.ivy.ads.models.GridAdShowTimeoutPayload
+ com.ivy.ads.models.GridAdShowTimeoutPayload$Ac
+ com.ivy.ads.models.GridAdShowTimeoutPayload$Ad
+ com.ivy.ads.models.GridAdShowTimeoutPayload$ISTs
+com/ivy/ads/adapters/YandexNonRewardedAdapter.java
+ com.ivy.ads.adapters.YandexNonRewardedAdapter
+ com.ivy.ads.adapters.YandexNonRewardedAdapter$1
+ com.ivy.ads.adapters.YandexNonRewardedAdapter$GridParams

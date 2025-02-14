@@ -51,7 +51,6 @@ import com.ivy.facebook.FacebookUserManager;
 import com.ivy.help.TiledeskActivity;
 import com.ivy.internal.WebViewActivity;
 import com.ivy.networks.grid.GridManager;
-import com.ivy.notification.NotificationMan;
 import com.ivy.notification.NotificationPermissionUtil;
 import com.ivy.util.CommonUtil;
 import com.ivy.util.DLog;
@@ -121,7 +120,7 @@ public class AndroidSdk {
         InAppMessageClickListener inAppMessageClickListener;
         OnHelpEngagementListener onHelpEngagementListener;
         GoogleListener googleListener;
-
+        IFilterActionListener filterActionListener;
         public Builder setPaymentListener(PaymentSystemListener listener) {
             this.paymentResultListener = listener;
             return this;
@@ -193,6 +192,11 @@ public class AndroidSdk {
 
         public Builder setHelpEngagementListener(OnHelpEngagementListener onHelpEngagementListener) {
             this.onHelpEngagementListener = onHelpEngagementListener;
+            return this;
+        }
+
+        public Builder setFilterActionListener(IFilterActionListener listener) {
+            this.filterActionListener = listener;
             return this;
         }
 
@@ -629,13 +633,13 @@ public class AndroidSdk {
                                                 boolean repeat,
                                                 boolean onNetWorkOn,
                                                 boolean requireCharging) {
-        return IvySdk.pushLocalNotification(tag, title, subtitle, null, null, null, action, autoCancel, delay, repeat, onNetWorkOn, requireCharging);
+        return IvySdk.pushLocalNotification(tag, title, subtitle, null, null, null, null, action, autoCancel, delay, repeat, onNetWorkOn, requireCharging);
     }
-
     public static boolean pushLocalNotification(String tag,
                                                 String title,
                                                 String subtitle,
                                                 String bigText,
+                                                String smallIcon,
                                                 String largeIcon,
                                                 String bigPicture,
                                                 String action,
@@ -644,7 +648,7 @@ public class AndroidSdk {
                                                 boolean repeat,
                                                 boolean onNetWorkOn,
                                                 boolean requireCharging) {
-        return IvySdk.pushLocalNotification(tag, title, subtitle, bigText, largeIcon, bigPicture, action, autoCancel, delay, repeat, onNetWorkOn, requireCharging);
+        return IvySdk.pushLocalNotification(tag, title, subtitle, bigText, smallIcon,largeIcon, bigPicture, action, autoCancel, delay, repeat, onNetWorkOn, requireCharging);
     }
 
     public static void cancelLocalNotification(String key){
@@ -740,8 +744,6 @@ public class AndroidSdk {
 
     public static boolean hasFull(String tag) {
         try {
-
-
             boolean got = IvySdk.haveInterstitial();
             if (!got) {
                 Logger.debug(TAG, "No full, try to fetch one");
@@ -2744,6 +2746,23 @@ public class AndroidSdk {
                 Logger.debug(TAG, "message payload >>> " + payload);
                 handleInAppMessagePayload(bundle);
             }
+
+            if (bundle.containsKey("notification_data")) {
+                String notificationAction = bundle.getString("notification_data");
+                if (!TextUtils.isEmpty(notificationAction)) {
+                    if (builder != null && builder.filterActionListener != null) {
+                        builder.filterActionListener.onAction(notificationAction);
+                    }
+                }
+            }
+            if (bundle.containsKey("shortcut_action")) {
+                String shortcutAction = bundle.getString("shortcut_action");
+                if (!TextUtils.isEmpty(shortcutAction)) {
+                    if (builder != null && builder.filterActionListener != null) {
+                        builder.filterActionListener.onAction(shortcutAction);
+                    }
+                }
+            }
         }
     }
 
@@ -3223,6 +3242,18 @@ public class AndroidSdk {
         } catch (Exception var4) {
             return 0L;
         }
+    }
+
+    public static void addShortcut(String id, int order, String shortLabel, String longLabel, String icon, String action) {
+        IvySdk.addShortcut(id, order, shortLabel, longLabel, icon, action);
+    }
+
+    public static void updateShortcut(String id, int order, String shortLabel, String longLabel, String icon, String action) {
+        IvySdk.updateShortcut(id, order, shortLabel, longLabel, icon, action);
+    }
+
+    public static void deleteShortcut(String id) {
+        IvySdk.deleteShortcut(id);
     }
 
 }

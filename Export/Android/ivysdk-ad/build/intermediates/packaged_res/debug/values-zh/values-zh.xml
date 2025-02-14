@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="android_sdk_download">下载</string>
+    <string name="android_sdk_exit"><u>退出</u></string>
+    <string name="android_sdk_exit_confirm">现在退出游戏吗?</string>
+    <string name="android_sdk_expired">过期</string>
+    <string name="android_sdk_guess_you_like">您可能喜欢我们的其他游戏</string>
+    <string name="android_sdk_more">更多游戏</string>
+    <string name="android_sdk_return">返回</string>
+    <string name="banner_placeholder">Google Play Store搜索IVY获得更多精彩游戏!</string>
+    <string name="banner_title_placeholder">下载更多精彩游戏</string>
+    <string name="google_leaderboard_not_available">您的设备不支持Google游戏服务排行榜!</string>
+    <string name="google_signin_other_error">登录Google Play账户失败!</string>
+    <string name="google_signin_title">登录Google账号</string>
+    <string name="ok">确定</string>
+    <string name="promotion_skip_format">跳过 | %s</string>
+    <string name="reward_loading_title">加载视频…</string>
+    <string name="reward_video_load_failed">现在没有激励视频，请稍后再试!</string>
+    <string name="risesdk_ad_disabled">感谢您的支持, 已为您关闭广告展示!</string>
+    <string name="risesdk_gameactivity_title">看看我们准备的其他游戏吧!</string>
+    <string name="risesdk_install">现在玩</string>
+    <string name="risesdk_payment_received">感谢您的购买!</string>
+    <string name="risesdk_reward_install">安装</string>
+    <string name="show_saved_game_title">我的游戏存档</string>
+    <string name="transaction_cannot_be_completed">交易无法完成.</string>
+    <string name="user_survey">帮我们提升</string>
+</resources>

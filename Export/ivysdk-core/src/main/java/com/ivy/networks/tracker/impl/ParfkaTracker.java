@@ -2,8 +2,11 @@ package com.ivy.networks.tracker.impl;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 
+import com.appsflyer.AppsFlyerLib;
+import com.ivy.IvySdk;
 import com.ivy.ads.IvyAds;
 import com.ivy.networks.tracker.EventTrackerProvider;
 import com.parfka.adjust.sdk.Adjust;
@@ -71,6 +74,12 @@ public class ParfkaTracker implements EventTrackerProvider {
                 }
             }
         }
+        try {
+            String appsflyer_id = AppsFlyerLib.getInstance().getAppsFlyerUID(IvySdk.getActivity());
+            if (!TextUtils.isEmpty(appsflyer_id)){
+                adjustEvent.addPartnerParameter("af_appsflyer_id", appsflyer_id);
+            }
+        } catch (Exception e){}
         if (userId != null) {
             adjustEvent.addPartnerParameter("roleId", userId);
         }

@@ -1,0 +1,10 @@
+com/ivy/test/BuildConfig.java
+ com.ivy.test.BuildConfig
+com/ivy/test/MainActivity.java
+ com.ivy.test.MainActivity
+ com.ivy.test.MainActivity$1
+ com.ivy.test.MainActivity$2
+ com.ivy.test.MainActivity$3
+ com.ivy.test.MainActivity$4
+ com.ivy.test.MainActivity$5
+ com.ivy.test.MainActivity$6

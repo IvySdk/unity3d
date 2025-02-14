@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <bool name="barcodeContainerAboveBanner">true</bool>
+    <bool name="isSmartBannerEnabled">true</bool>
+    <color name="black">#000000</color>
+    <color name="btn_div">#e9eaed</color>
+    <color name="buttonGray">#555555</color>
+    <color name="buttonLightGray">#bbbbbb</color>
+    <color name="buttonVeryLightGray">#ddd</color>
+    <color name="button_text_style_black">#000000</color>
+    <color name="button_text_style_gold">#423600</color>
+    <color name="button_text_style_grey">#333333</color>
+    <color name="button_text_style_nobutton">#000000</color>
+    <color name="button_text_style_sky">#3d4243</color>
+    <color name="button_text_style_white">#000000</color>
+    <color name="button_text_style_white_black">#000000</color>
+    <color name="button_text_style_white_red">#ff0000</color>
+    <color name="button_text_style_yellow">#423600</color>
+    <color name="cardview_dark_background">#ff424242</color>
+    <color name="cardview_light_background">#ffffffff</color>
+    <color name="cardview_shadow_end_color">#03000000</color>
+    <color name="cardview_shadow_start_color">#37000000</color>
+    <color name="com_smart_login_code">#3c6499</color>
+    <color name="continue_click">#6d737b</color>
+    <color name="dark_bg_color">#ebecf0</color>
+    <color name="exo_edit_mode_background_color">#fff4f3f0</color>
+    <color name="exo_error_message_background_color">#aa000000</color>
+    <color name="free_button_color">#000000</color>
+    <color name="gray_color">#7d7d7d</color>
+    <color name="green">#008000</color>
+    <color name="grey">#5f6061</color>
+    <color name="lollipop_notification_color">#1987e1</color>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="red_color">#d63633</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="text_color">#373f54</color>
+    <color name="video_controls_bg">#4d000000</color>
+    <color name="view_color">#b9b9b9</color>
+    <color name="white">#ffffff</color>
+    <color name="white_color">#ffffff</color>
+    <dimen name="buttonDefaultSizeHeight">54dp</dimen>
+    <dimen name="buttonDefaultSizeWidth">234dp</dimen>
+    <dimen name="button_size">40dp</dimen>
+    <dimen name="dialog_content_padding">16dp</dimen>
+    <dimen name="header_close_bias">0.35</dimen>
+    <dimen name="header_close_factor">1.2</dimen>
+    <dimen name="header_title_bias">0.45</dimen>
+    <dimen name="news_title_text_size">24dp</dimen>
+    <dimen name="normal_text_size">15dp</dimen>
+    <dimen name="permissionDialogWidth">300dp</dimen>
+    <dimen name="picker_buttons_margin_padding">5dp</dimen>
+    <dimen name="push_dialog_title_size">23dp</dimen>
+    <dimen name="rate_close_margin">-7dp</dimen>
+    <dimen name="rate_container_edittext_padding">5dp</dimen>
+    <dimen name="rate_container_margin">15dp</dimen>
+    <dimen name="rate_container_padding">20dp</dimen>
+    <dimen name="style_big_text_size">25dp</dimen>
+    <dimen name="view_height">480dp</dimen>
+    <dimen name="view_width">320dp</dimen>
+    <string name="android_sdk_download">Download</string>
+    <string name="android_sdk_exit"><u>Quit</u></string>
+    <string name="android_sdk_exit_confirm">Do you want to exit?</string>
+    <string name="android_sdk_expired">Expired</string>
+    <string name="android_sdk_guess_you_like">You may like this game</string>
+    <string name="android_sdk_more">More Games</string>
+    <string name="android_sdk_return">Return</string>
+    <string name="banner_placeholder">Search IVY in Google Play Store to get more addictive games.</string>
+    <string name="banner_title_placeholder">Find more games</string>
+    <string name="facebook_app_id" translatable="false"/>
+    <string name="gms_games_app_id" translatable="false"/>
+    <string name="google_admob_application_id" translatable="false"/>
+    <string name="google_leaderboard_not_available">Google leaderboards not available on this device.</string>
+    <string name="google_play_service_appid" translatable="false">847297611955</string>
+    <string name="google_signin_other_error">Google Sign in Error</string>
+    <string name="google_signin_title">Google Sign In</string>
+    <string name="ok">OK</string>
+    <string name="promotion_skip_format">Skip | %s</string>
+    <string name="reward_loading_title">Loading Offers…</string>
+    <string name="reward_video_load_failed">No reward video available now, please try again later.</string>
+    <string name="risesdk_ad_disabled">Thanks for your support, Ad will be not displayed.</string>
+    <string name="risesdk_gameactivity_title">Download these apps for free</string>
+    <string name="risesdk_install">Play</string>
+    <string name="risesdk_payment_received">Thanks for your payment!</string>
+    <string name="risesdk_reward_install">Install</string>
+    <string name="show_saved_game_title">Show My Game Savings</string>
+    <string name="transaction_cannot_be_completed">Transaction cannot be completed.</string>
+    <string name="user_survey">Help us improve</string>
+    <style name="DialogAnimationUpDown">
+        <item name="android:windowEnterAnimation">@anim/slide_up</item>
+        <item name="android:windowExitAnimation">@anim/slide_bottom</item>
+    </style>
+    <style name="DialogStyle">
+        <item name="android:windowEnterAnimation">@android:anim/fade_in</item>
+        <item name="android:windowExitAnimation">@android:anim/fade_out</item>
+    </style>
+    <style name="ProgressHUD">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
+        <item name="android:windowSoftInputMode">adjustUnspecified|stateVisible|adjustResize</item>
+    </style>
+    <style name="RateThisAppButtonStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+    <style name="RateThisAppDialogStarsLayout">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+    </style>
+    <style name="RateThisAppEmptySpace">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">0dp</item>
+    </style>
+    <style name="RateThisAppTitleStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+    <style name="Theme.HelpDeskTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">#ffffff</item>
+        <item name="colorPrimaryDark">#2a6ac1</item>
+    </style>
+    <style name="TransAlertDialog" parent="@android:style/Theme.Holo.Dialog">
+        <item name="android:windowBackground">@android:color/transparent</item><!-- 内容区域背景透明 -->
+        <item name="android:backgroundDimEnabled">false</item><!-- 背景不模糊 -->
+    </style>
+    <style name="bigBlackText">
+        <item name="android:textSize">@dimen/style_big_text_size</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/big_black_text</item>
+        <item name="android:gravity">left|center_horizontal|clip_horizontal</item>
+    </style>
+    <style name="bigBlackTextWithShadow">
+        <item name="android:shadowColor">#ffffffff</item>
+        <item name="android:shadowDy">1</item>
+        <item name="android:shadowRadius">2</item>
+    </style>
+    <style name="bigWhiteText">
+        <item name="android:textSize">@dimen/style_big_text_size</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:gravity">left|center_horizontal|clip_horizontal</item>
+        <item name="android:singleLine">true</item>
+    </style>
+    <style name="bigWhiteTextWithShadow">
+        <item name="android:textSize">@dimen/style_big_text_size</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:gravity">left|center_horizontal|clip_horizontal</item>
+        <item name="android:singleLine">true</item>
+    </style>
+    <style name="bigWhiteTextWithShadowClickable">
+        <item name="android:textColor">@color/white_button_text</item>
+    </style>
+    <style name="blackTextBold">
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="blackTextClickable">
+        <item name="android:textColor">@color/big_black_text</item>
+    </style>
+    <style name="blackTextWithShadow">
+        <item name="android:gravity">left|center_horizontal|clip_horizontal</item>
+        <item name="android:shadowColor">#ffffffff</item>
+        <item name="android:shadowDy">1</item>
+        <item name="android:shadowRadius">2</item>
+    </style>
+    <style name="mediumBlackTextWithShadow">
+        <item name="android:shadowColor">#ffffffff</item>
+        <item name="android:shadowDy">1</item>
+        <item name="android:shadowRadius">2</item>
+    </style>
+    <style name="mediumWhiteTextWithShadow">
+        <item name="android:shadowColor">#ff000000</item>
+        <item name="android:shadowDy">1</item>
+        <item name="android:shadowRadius">2</item>
+    </style>
+    <style name="mediumWhiteTextWithShadowBold">
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="splashScreenTipStyle">
+        <item name="android:textSize">@dimen/style_big_text_size</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:singleLine">false</item>
+    </style>
+    <style name="tooltip_bubble_text">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:gravity">left</item>
+        <item name="android:shadowColor">#40000000</item>
+        <item name="android:shadowDy">-1</item>
+        <item name="android:shadowRadius">0.25</item>
+    </style>
+    <style name="whiteTextClickable">
+        <item name="android:textColor">@color/white_button_text</item>
+    </style>
+    <style name="whiteTextWithShadow">
+        <item name="android:shadowColor">#ff000000</item>
+        <item name="android:shadowDy">1</item>
+        <item name="android:shadowRadius">2</item>
+    </style>
+    <style name="whiteTextWithShadowClickable">
+        <item name="android:textColor">@color/white_button_text</item>
+    </style>
+</resources>
