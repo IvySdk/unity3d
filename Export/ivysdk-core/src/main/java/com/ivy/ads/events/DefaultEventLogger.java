@@ -8,7 +8,6 @@ import androidx.annotation.NonNull;
 
 import com.android.client.AndroidSdk;
 import com.google.firebase.analytics.FirebaseAnalytics;
-import com.google.firebase.remoteconfig.FirebaseRemoteConfig;
 import com.ivy.IvySdk;
 import com.ivy.networks.tracker.EventTracker;
 import com.ivy.networks.tracker.EventTrackerProvider;
@@ -210,146 +209,146 @@ public class DefaultEventLogger extends EventTracker {
         this.eventTargets = eventTargets;
     }
 
-    public void overrideConfigByRemoteConfig(FirebaseRemoteConfig remoteConfig) {
-        if (remoteConfig == null) {
-            Logger.error(TAG, "RemoteConfig disabled");
-            return;
-        }
-
-        double remoteAdPingThreshold = remoteConfig.getDouble("ad_ping_threshold");
-        if (remoteAdPingThreshold > 0) {
-            this.adPingThreshold = remoteAdPingThreshold;
-        }
-
-        // inapp_message_trigger
-        String inAppMessageTriggerConfig = remoteConfig.getString("inapp_message_trigger");
-        if (!"".equals(inAppMessageTriggerConfig)) {
-            try {
-                inAppMessageTriggerMap = new HashMap<>();
-
-                JSONObject jsonObject = new JSONObject(inAppMessageTriggerConfig);
-                Iterator<String> it = jsonObject.keys();
-                while (it.hasNext()) {
-                    String triggerResult = it.next();
-                    JSONObject triggerConditionConfig = jsonObject.optJSONObject(triggerResult);
-                    Iterator<String> eventIt = triggerConditionConfig.keys();
-                    while (eventIt.hasNext()) {
-                        String orgEventName = eventIt.next();
-                        JSONObject orgEventCondition = triggerConditionConfig.optJSONObject(orgEventName);
-
-                        if (!inAppMessageTriggerMap.containsKey(orgEventName)) {
-                            inAppMessageTriggerMap.put(orgEventName, new ArrayList<>());
-                        }
-
-                        InAppMessageTrigger inAppMessageTrigger = new InAppMessageTrigger(triggerResult);
-                        inAppMessageTrigger.addConditionsFromJsonObject(orgEventCondition);
-
-                        inAppMessageTriggerMap.get(orgEventName).add(inAppMessageTrigger);
-                    }
-                }
-            } catch (Throwable t) {
-                // ignore
-            }
-        }
-
-        // 转化事件， 如果配置了inapp_conversions
-        String inAppConversions = remoteConfig.getString("inapp_conversions");
-        if (!"".equals(inAppConversions)) {
-            Logger.debug(TAG, "inAppConversions >>> " + inAppConversions);
-            try {
-                JSONArray jsonArray = new JSONArray(inAppConversions);
-                if (jsonArray.length() > 0) {
-                    inAppConversionEvents = new HashMap<>();
-                    for (int i = 0; i < jsonArray.length(); i++) {
-                        String eventName = jsonArray.optString(i);
-                        if (eventName != null && !"".equals(eventName)) {
-                            inAppConversionEvents.put(eventName, 1);
-                        }
-                    }
-                }
-            } catch (Throwable t) {
-                // ignore
-            }
-        }
-
-        // remote config event override
-        String remoteRemoteConfigEvent = remoteConfig.getString("remote_config_event");
-        if (!"".equals(remoteRemoteConfigEvent)) {
-            try {
-                remoteConfigEventMap = new JSONObject(remoteRemoteConfigEvent);
-            } catch (Throwable t) {
-                // ignore
-            }
-        }
-
-        String remoteEventValues = remoteConfig.getString("eventValues");
-        if (!"".equals(remoteEventValues) && !"{}".equals(remoteEventValues)) {
-            try {
-                eventValues = new JSONObject(remoteEventValues);
-            } catch (Throwable t) {
-                // ignore
-            }
-        }
-
-        String remoteAIUrl = remoteConfig.getString("aiURL");
-        if (!"".equals(remoteAIUrl)) {
-            this.aiURL = remoteAIUrl;
-        }
-
-        this.enableAIPush = remoteConfig.getBoolean("enableAIPush");
-    }
-
-
-    /**
-     * 检查Remote config的设置会不会触发到预测事件，如果触发到，则生成事件
-     */
-    public void checkRemoteConfigEvents(FirebaseRemoteConfig remoteConfig) {
-        try {
-            if (remoteConfigEventMap == null || remoteConfigEventMap.length() == 0 || mmkv == null) {
-                return;
-            }
-
-            Iterator<String> it = remoteConfigEventMap.keys();
-            while (it.hasNext()) {
-                String remoteConfigEventName = it.next();
-                if (remoteConfigEventName == null || "".equals(remoteConfigEventName)) {
-                    continue;
-                }
-                JSONObject remoteConfigCheckEventParams = remoteConfigEventMap.optJSONObject(remoteConfigEventName);
-                boolean alreadySent = mmkv.decodeBool("ev_" + remoteConfigEventName, false);
-                if (alreadySent) {
-                    continue;
-                }
-                Iterator<String> conditionIt = remoteConfigCheckEventParams.keys();
-                boolean remoteConditionMatched = true;
-                while (conditionIt.hasNext()) {
-                    String remoteConfigKey = conditionIt.next();
-                    int remoteConfigValue = remoteConfigCheckEventParams.optInt(remoteConfigKey, 0);
-                    if (remoteConfig.getLong(remoteConfigKey) != remoteConfigValue) {
-                        remoteConditionMatched = false;
-                        break;
-                    }
-                }
-                if (remoteConditionMatched) {
-                    logEventDirectly(remoteConfigEventName, new Bundle());
-                    mmkv.encode("ev_" + remoteConfigEventName, true);
-                }
-            }
-
-            // auto event trigger
-            String autoEventTriggerName = remoteConfig.getString("auto_event_trigger");
-            if (!"".equals(autoEventTriggerName)) {
-                // 是否仅打一次事件, 默认仅一次
-                boolean alreadySent = mmkv.decodeBool("sent_" + autoEventTriggerName, false);
-                if (!alreadySent) {
-                    logEventDirectly(autoEventTriggerName, null);
-                    mmkv.encode("sent_" + autoEventTriggerName, true);
-                }
-            }
-        } catch (Throwable t) {
-            Logger.error(TAG, "checkRemoteConfigEvents exception", t);
-        }
-    }
+//    public void overrideConfigByRemoteConfig(FirebaseRemoteConfig remoteConfig) {
+//        if (remoteConfig == null) {
+//            Logger.error(TAG, "RemoteConfig disabled");
+//            return;
+//        }
+//
+//        double remoteAdPingThreshold = remoteConfig.getDouble("ad_ping_threshold");
+//        if (remoteAdPingThreshold > 0) {
+//            this.adPingThreshold = remoteAdPingThreshold;
+//        }
+//
+//        // inapp_message_trigger
+//        String inAppMessageTriggerConfig = remoteConfig.getString("inapp_message_trigger");
+//        if (!"".equals(inAppMessageTriggerConfig)) {
+//            try {
+//                inAppMessageTriggerMap = new HashMap<>();
+//
+//                JSONObject jsonObject = new JSONObject(inAppMessageTriggerConfig);
+//                Iterator<String> it = jsonObject.keys();
+//                while (it.hasNext()) {
+//                    String triggerResult = it.next();
+//                    JSONObject triggerConditionConfig = jsonObject.optJSONObject(triggerResult);
+//                    Iterator<String> eventIt = triggerConditionConfig.keys();
+//                    while (eventIt.hasNext()) {
+//                        String orgEventName = eventIt.next();
+//                        JSONObject orgEventCondition = triggerConditionConfig.optJSONObject(orgEventName);
+//
+//                        if (!inAppMessageTriggerMap.containsKey(orgEventName)) {
+//                            inAppMessageTriggerMap.put(orgEventName, new ArrayList<>());
+//                        }
+//
+//                        InAppMessageTrigger inAppMessageTrigger = new InAppMessageTrigger(triggerResult);
+//                        inAppMessageTrigger.addConditionsFromJsonObject(orgEventCondition);
+//
+//                        inAppMessageTriggerMap.get(orgEventName).add(inAppMessageTrigger);
+//                    }
+//                }
+//            } catch (Throwable t) {
+//                // ignore
+//            }
+//        }
+//
+//        // 转化事件， 如果配置了inapp_conversions
+//        String inAppConversions = remoteConfig.getString("inapp_conversions");
+//        if (!"".equals(inAppConversions)) {
+//            Logger.debug(TAG, "inAppConversions >>> " + inAppConversions);
+//            try {
+//                JSONArray jsonArray = new JSONArray(inAppConversions);
+//                if (jsonArray.length() > 0) {
+//                    inAppConversionEvents = new HashMap<>();
+//                    for (int i = 0; i < jsonArray.length(); i++) {
+//                        String eventName = jsonArray.optString(i);
+//                        if (eventName != null && !"".equals(eventName)) {
+//                            inAppConversionEvents.put(eventName, 1);
+//                        }
+//                    }
+//                }
+//            } catch (Throwable t) {
+//                // ignore
+//            }
+//        }
+//
+//        // remote config event override
+//        String remoteRemoteConfigEvent = remoteConfig.getString("remote_config_event");
+//        if (!"".equals(remoteRemoteConfigEvent)) {
+//            try {
+//                remoteConfigEventMap = new JSONObject(remoteRemoteConfigEvent);
+//            } catch (Throwable t) {
+//                // ignore
+//            }
+//        }
+//
+//        String remoteEventValues = remoteConfig.getString("eventValues");
+//        if (!"".equals(remoteEventValues) && !"{}".equals(remoteEventValues)) {
+//            try {
+//                eventValues = new JSONObject(remoteEventValues);
+//            } catch (Throwable t) {
+//                // ignore
+//            }
+//        }
+//
+//        String remoteAIUrl = remoteConfig.getString("aiURL");
+//        if (!"".equals(remoteAIUrl)) {
+//            this.aiURL = remoteAIUrl;
+//        }
+//
+//        this.enableAIPush = remoteConfig.getBoolean("enableAIPush");
+//    }
+//
+//
+//    /**
+//     * 检查Remote config的设置会不会触发到预测事件，如果触发到，则生成事件
+//     */
+//    public void checkRemoteConfigEvents(FirebaseRemoteConfig remoteConfig) {
+//        try {
+//            if (remoteConfigEventMap == null || remoteConfigEventMap.length() == 0 || mmkv == null) {
+//                return;
+//            }
+//
+//            Iterator<String> it = remoteConfigEventMap.keys();
+//            while (it.hasNext()) {
+//                String remoteConfigEventName = it.next();
+//                if (remoteConfigEventName == null || "".equals(remoteConfigEventName)) {
+//                    continue;
+//                }
+//                JSONObject remoteConfigCheckEventParams = remoteConfigEventMap.optJSONObject(remoteConfigEventName);
+//                boolean alreadySent = mmkv.decodeBool("ev_" + remoteConfigEventName, false);
+//                if (alreadySent) {
+//                    continue;
+//                }
+//                Iterator<String> conditionIt = remoteConfigCheckEventParams.keys();
+//                boolean remoteConditionMatched = true;
+//                while (conditionIt.hasNext()) {
+//                    String remoteConfigKey = conditionIt.next();
+//                    int remoteConfigValue = remoteConfigCheckEventParams.optInt(remoteConfigKey, 0);
+//                    if (remoteConfig.getLong(remoteConfigKey) != remoteConfigValue) {
+//                        remoteConditionMatched = false;
+//                        break;
+//                    }
+//                }
+//                if (remoteConditionMatched) {
+//                    logEventDirectly(remoteConfigEventName, new Bundle());
+//                    mmkv.encode("ev_" + remoteConfigEventName, true);
+//                }
+//            }
+//
+//            // auto event trigger
+//            String autoEventTriggerName = remoteConfig.getString("auto_event_trigger");
+//            if (!"".equals(autoEventTriggerName)) {
+//                // 是否仅打一次事件, 默认仅一次
+//                boolean alreadySent = mmkv.decodeBool("sent_" + autoEventTriggerName, false);
+//                if (!alreadySent) {
+//                    logEventDirectly(autoEventTriggerName, null);
+//                    mmkv.encode("sent_" + autoEventTriggerName, true);
+//                }
+//            }
+//        } catch (Throwable t) {
+//            Logger.error(TAG, "checkRemoteConfigEvents exception", t);
+//        }
+//    }
 
     public void setSummaryEventSettings(JSONObject summaryEventSettings) {
         if (summaryEventSettings == null) {

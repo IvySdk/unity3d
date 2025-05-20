@@ -1,6 +1,5 @@
 package com.ivy;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
@@ -34,11 +33,7 @@ import com.google.android.gms.ads.OnAdInspectorClosedListener;
 import com.google.android.gms.ads.initialization.AdapterStatus;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseApp;
-import com.google.firebase.remoteconfig.FirebaseRemoteConfig;
-import com.google.firebase.remoteconfig.FirebaseRemoteConfigValue;
 import com.ivy.ads.IvyAds;
 import com.ivy.ads.IvyAdsManager;
 import com.ivy.ads.adapters.AdmobManager;
@@ -194,8 +189,8 @@ public final class IvySdk {
         }
     }
 
-    @SuppressLint("StaticFieldLeak")
-    private static FirebaseRemoteConfig mFirebaseRemoteConfig;
+//    @SuppressLint("StaticFieldLeak")
+//    private static FirebaseRemoteConfig mFirebaseRemoteConfig;
 
 //    private static final String SP_KEY_PARFKA_URL = "_parfka_url";
 //    private static final String SP_KEY_PARFKA_URL2 = "_parfka_url_2";
@@ -255,7 +250,6 @@ public final class IvySdk {
 
             gameDataMMKV = MMKV.mmkvWithID(ID_MMKV_GAMEDATA);
 
-            mFirebaseRemoteConfig = FirebaseRemoteConfig.getInstance();
 
         } catch (Throwable t) {
             Logger.error(TAG, "initialize MMKV exception", t);
@@ -362,54 +356,54 @@ public final class IvySdk {
                             e.printStackTrace();
                         }
                     }
-                    mFirebaseRemoteConfig.setDefaultsAsync(map);
+                 //   mFirebaseRemoteConfig.setDefaultsAsync(map);
                 }
             }
 
             final boolean inDebugMode = debugMode;
-            long minimumFetchIntervalInSeconds = debugMode ? 60 : 3600 * 2;
-            if (gridData.has("remoteConfigFetchInterval")) {
-                minimumFetchIntervalInSeconds = gridData.optInt("remoteConfigFetchInterval", 3600 * 2);
-            }
-            mFirebaseRemoteConfig.fetch(minimumFetchIntervalInSeconds).addOnCompleteListener(new OnCompleteListener<Void>() {
-                @Override
-                public void onComplete(@NonNull Task<Void> task) {
-                    if (task.isSuccessful()) {
-                        mFirebaseRemoteConfig.activate();
-                        Log.w(TAG, "Remote config fetched");
-                        if (eventTracker != null) {
-                            eventTracker.overrideConfigByRemoteConfig(mFirebaseRemoteConfig);
-                            eventTracker.checkRemoteConfigEvents(mFirebaseRemoteConfig);
-                        }
-
-//                        String autoInAppMessageEvent = mFirebaseRemoteConfig.getString(KEY_AUTO_INAPP_MESSAGE_EVENT);
-//                        if (!"".equals(autoInAppMessageEvent)) {
-//                            triggerInAppMessage(autoInAppMessageEvent);
+//            long minimumFetchIntervalInSeconds = debugMode ? 60 : 3600 * 2;
+//            if (gridData.has("remoteConfigFetchInterval")) {
+//                minimumFetchIntervalInSeconds = gridData.optInt("remoteConfigFetchInterval", 3600 * 2);
+//            }
+//            mFirebaseRemoteConfig.fetch(minimumFetchIntervalInSeconds).addOnCompleteListener(new OnCompleteListener<Void>() {
+//                @Override
+//                public void onComplete(@NonNull Task<Void> task) {
+//                    if (task.isSuccessful()) {
+//                        mFirebaseRemoteConfig.activate();
+//                        Log.w(TAG, "Remote config fetched");
+//                        if (eventTracker != null) {
+//                            eventTracker.overrideConfigByRemoteConfig(mFirebaseRemoteConfig);
+//                            eventTracker.checkRemoteConfigEvents(mFirebaseRemoteConfig);
 //                        }
-
-                        if (inDebugMode) {
-                            Map<String, FirebaseRemoteConfigValue> allConfigs = mFirebaseRemoteConfig.getAll();
-                            if (allConfigs != null) {
-                                Iterator<String> keys = allConfigs.keySet().iterator();
-                                while (keys.hasNext()) {
-                                    String key = keys.next();
-                                    FirebaseRemoteConfigValue value = allConfigs.get(key);
-                                    Logger.debug(TAG, "Remote Config, " + key + " =====> " + (value != null ? value.asString() : " null"));
-                                }
-                            }
-                        }
-
-                        if (callback != null) {
-                            callback.onRemoteConfigUpdated();
-                        }
-                    } else {
-                        Exception ex = task.getException();
-                        if (ex != null) {
-                            Log.e(TAG, "fetch remote config failed: ", ex);
-                        }
-                    }
-                }
-            });
+//
+////                        String autoInAppMessageEvent = mFirebaseRemoteConfig.getString(KEY_AUTO_INAPP_MESSAGE_EVENT);
+////                        if (!"".equals(autoInAppMessageEvent)) {
+////                            triggerInAppMessage(autoInAppMessageEvent);
+////                        }
+//
+//                        if (inDebugMode) {
+//                            Map<String, FirebaseRemoteConfigValue> allConfigs = mFirebaseRemoteConfig.getAll();
+//                            if (allConfigs != null) {
+//                                Iterator<String> keys = allConfigs.keySet().iterator();
+//                                while (keys.hasNext()) {
+//                                    String key = keys.next();
+//                                    FirebaseRemoteConfigValue value = allConfigs.get(key);
+//                                    Logger.debug(TAG, "Remote Config, " + key + " =====> " + (value != null ? value.asString() : " null"));
+//                                }
+//                            }
+//                        }
+//
+//                        if (callback != null) {
+//                            callback.onRemoteConfigUpdated();
+//                        }
+//                    } else {
+//                        Exception ex = task.getException();
+//                        if (ex != null) {
+//                            Log.e(TAG, "fetch remote config failed: ", ex);
+//                        }
+//                    }
+//                }
+//            });
         } catch (Throwable ex) {
             Logger.error(TAG, "Remote Config failed", ex);
         }
@@ -2620,9 +2614,9 @@ public final class IvySdk {
     }
 
     public static int getRemoteConfigAsInt(String key) {
-        if (mFirebaseRemoteConfig != null) {
-            return (int) (mFirebaseRemoteConfig.getLong(key));
-        }
+//        if (mFirebaseRemoteConfig != null) {
+//            return (int) (mFirebaseRemoteConfig.getLong(key));
+//        }
 
         JSONObject gridData = GridManager.getGridData();
         if (gridData == null) {
@@ -2636,9 +2630,9 @@ public final class IvySdk {
     }
 
     public static long getRemoteConfigAsLong(String key) {
-        if (mFirebaseRemoteConfig != null) {
-            return mFirebaseRemoteConfig.getLong(key);
-        }
+//        if (mFirebaseRemoteConfig != null) {
+//            return mFirebaseRemoteConfig.getLong(key);
+//        }
 
         JSONObject gridData = GridManager.getGridData();
         if (gridData == null) {
@@ -2653,14 +2647,14 @@ public final class IvySdk {
 
     public static String getFirebaseRemoteConfigAsString(String key, String defaultValue) {
         try {
-            if (mFirebaseRemoteConfig == null) {
-                Logger.error(TAG, "Remote Config not initialized");
-                return defaultValue;
-            }
-            String valueInFirebase = mFirebaseRemoteConfig.getString(key);
-            if (!FirebaseRemoteConfig.DEFAULT_VALUE_FOR_STRING.equals(valueInFirebase)) {
-                return valueInFirebase;
-            }
+//            if (mFirebaseRemoteConfig == null) {
+//                Logger.error(TAG, "Remote Config not initialized");
+//                return defaultValue;
+//            }
+//            String valueInFirebase = mFirebaseRemoteConfig.getString(key);
+//            if (!FirebaseRemoteConfig.DEFAULT_VALUE_FOR_STRING.equals(valueInFirebase)) {
+//                return valueInFirebase;
+//            }
             return defaultValue;
         } catch (Throwable t) {
             Logger.error(TAG, "getFirebaseRemoteConfigAsString exception", defaultValue);
@@ -2670,13 +2664,13 @@ public final class IvySdk {
 
     public static double getFirebaseRemoteConfigAsDouble(String key, double defaultValue) {
         try {
-            if (mFirebaseRemoteConfig == null) {
-                return defaultValue;
-            }
-            double valueInFirebase = mFirebaseRemoteConfig.getDouble(key);
-            if (valueInFirebase > FirebaseRemoteConfig.DEFAULT_VALUE_FOR_DOUBLE) {
-                return valueInFirebase;
-            }
+//            if (mFirebaseRemoteConfig == null) {
+//                return defaultValue;
+//            }
+//            double valueInFirebase = mFirebaseRemoteConfig.getDouble(key);
+//            if (valueInFirebase > FirebaseRemoteConfig.DEFAULT_VALUE_FOR_DOUBLE) {
+//                return valueInFirebase;
+//            }
             return defaultValue;
         } catch (Throwable t) {
             Logger.error(TAG, "getFirebaseRemoteConfigAsDouble exception", defaultValue);
@@ -2685,9 +2679,9 @@ public final class IvySdk {
     }
 
     public static double getRemoteConfigAsDouble(String key) {
-        if (mFirebaseRemoteConfig != null) {
-            return mFirebaseRemoteConfig.getDouble(key);
-        }
+//        if (mFirebaseRemoteConfig != null) {
+//            return mFirebaseRemoteConfig.getDouble(key);
+//        }
 
         JSONObject gridData = GridManager.getGridData();
         if (gridData == null) {
@@ -2701,9 +2695,9 @@ public final class IvySdk {
     }
 
     public static boolean getRemoteConfigAsBoolean(String key) {
-        if (mFirebaseRemoteConfig != null) {
-            return mFirebaseRemoteConfig.getBoolean(key);
-        }
+//        if (mFirebaseRemoteConfig != null) {
+//            return mFirebaseRemoteConfig.getBoolean(key);
+//        }
 
         JSONObject gridData = GridManager.getGridData();
         if (gridData == null) {
@@ -2719,9 +2713,9 @@ public final class IvySdk {
     private static final String EMPTY = "";
 
     public static String getRemoteConfigAsString(String key) {
-        if (mFirebaseRemoteConfig != null) {
-            return mFirebaseRemoteConfig.getString(key);
-        }
+//        if (mFirebaseRemoteConfig != null) {
+//            return mFirebaseRemoteConfig.getString(key);
+//        }
 
         JSONObject gridData = GridManager.getGridData();
         if (gridData == null) {
@@ -3194,9 +3188,9 @@ public final class IvySdk {
         lastErrorLoggedTime = System.currentTimeMillis();
     }
 
-    public static FirebaseRemoteConfig getFirebaseRemoteConfig() {
-        return mFirebaseRemoteConfig;
-    }
+//    public static FirebaseRemoteConfig getFirebaseRemoteConfig() {
+//        return mFirebaseRemoteConfig;
+//    }
 
     public static long mmActualSize() {
         return gameDataMMKV.actualSize();
