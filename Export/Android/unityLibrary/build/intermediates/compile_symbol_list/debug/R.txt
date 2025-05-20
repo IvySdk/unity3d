@@ -2209,6 +2209,18 @@ int string abc_activity_chooser_view_see_all 0x0
 int string abc_activitychooserview_choose_application 0x0
 int string abc_capital_off 0x0
 int string abc_capital_on 0x0
+int string abc_font_family_body_1_material 0x0
+int string abc_font_family_body_2_material 0x0
+int string abc_font_family_button_material 0x0
+int string abc_font_family_caption_material 0x0
+int string abc_font_family_display_1_material 0x0
+int string abc_font_family_display_2_material 0x0
+int string abc_font_family_display_3_material 0x0
+int string abc_font_family_display_4_material 0x0
+int string abc_font_family_headline_material 0x0
+int string abc_font_family_menu_material 0x0
+int string abc_font_family_subhead_material 0x0
+int string abc_font_family_title_material 0x0
 int string abc_menu_alt_shortcut_label 0x0
 int string abc_menu_ctrl_shortcut_label 0x0
 int string abc_menu_delete_shortcut_label 0x0
@@ -2377,6 +2389,7 @@ int string facebook_app_id 0x0
 int string fallback_menu_item_copy_link 0x0
 int string fallback_menu_item_open_in_browser 0x0
 int string fallback_menu_item_share_link 0x0
+int string fcm_fallback_notification_channel_label 0x0
 int string gms_games_app_id 0x0
 int string google_admob_application_id 0x0
 int string google_leaderboard_not_available 0x0
@@ -3685,7 +3698,9 @@ int styleable com_facebook_login_view_com_facebook_tooltip_mode 5
 int[] styleable com_facebook_profile_picture_view { 0x0, 0x0 }
 int styleable com_facebook_profile_picture_view_com_facebook_is_cropped 0
 int styleable com_facebook_profile_picture_view_com_facebook_preset_size 1
+int xml appsflyer_backup_rules 0x0
 int xml file_paths 0x0
+int xml ga_ad_services_config 0x0
 int xml image_share_filepaths 0x0
 int xml log_paths 0x0
 int xml network_security_config 0x0

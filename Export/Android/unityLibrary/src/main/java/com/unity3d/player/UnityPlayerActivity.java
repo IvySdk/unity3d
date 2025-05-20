@@ -15,7 +15,6 @@ import android.os.Process;
 import android.widget.Button;
 import android.widget.FrameLayout;
 
-import com.android.client.Unity;
 
 public class UnityPlayerActivity extends Activity implements IUnityPlayerLifecycleEvents
 {

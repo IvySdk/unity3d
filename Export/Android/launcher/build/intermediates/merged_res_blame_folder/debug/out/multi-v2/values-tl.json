@@ -1,78 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/ivy/Desktop/project/unity/RiseSdkDemo/Export/Android/launcher/build/intermediates/incremental/mergeDebugResources/merged.dir/values-tl/values-tl.xml",
+            "outputFile": "D:\\AndroidProject\\unity3d\\Export\\Android\\launcher\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-tl\\values-tl.xml",
             "map": [
                 {
-                    "source": "/Users/ivy/.gradle/caches/transforms-2/files-2.1/7a6c27276c2e74dfa3c5145ff256bed0/jetified-play-services-basement-18.1.0/res/values-tl/values.xml",
-                    "from": {
-                        "startLines": "4",
-                        "startColumns": "0",
-                        "startOffsets": "195",
-                        "endColumns": "140",
-                        "endOffsets": "335"
-                    },
-                    "to": {
-                        "startLines": "59",
-                        "startColumns": "4",
-                        "startOffsets": "6418",
-                        "endColumns": "144",
-                        "endOffsets": "6558"
-                    }
-                },
-                {
-                    "source": "/Users/ivy/.gradle/caches/transforms-2/files-2.1/bba16393989777a6c4d6ba1db6edbd14/jetified-play-services-base-18.0.1/res/values-tl/values.xml",
-                    "from": {
-                        "startLines": "4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20",
-                        "startColumns": "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0",
-                        "startOffsets": "193,296,468,602,707,861,993,1111,1220,1395,1498,1672,1806,1964,2139,2203,2265",
-                        "endColumns": "102,171,133,104,153,131,117,108,174,102,173,133,157,174,63,61,76",
-                        "endOffsets": "295,467,601,706,860,992,1110,1219,1394,1497,1671,1805,1963,2138,2202,2264,2341"
-                    },
-                    "to": {
-                        "startLines": "51,52,53,54,55,56,57,58,60,61,62,63,64,65,66,67,68",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "5359,5466,5642,5780,5889,6047,6183,6305,6563,6742,6849,7027,7165,7327,7506,7574,7640",
-                        "endColumns": "106,175,137,108,157,135,121,112,178,106,177,137,161,178,67,65,80",
-                        "endOffsets": "5461,5637,5775,5884,6042,6178,6300,6413,6737,6844,7022,7160,7322,7501,7569,7635,7716"
-                    }
-                },
-                {
-                    "source": "/Users/ivy/.gradle/caches/transforms-2/files-2.1/b75ba57266ff9f44ab357d430044a365/browser-1.4.0/res/values-tl/values-tl.xml",
-                    "from": {
-                        "startLines": "2,3,4,5",
-                        "startColumns": "4,4,4,4",
-                        "startOffsets": "55,158,263,374",
-                        "endColumns": "102,104,110,104",
-                        "endOffsets": "153,258,369,474"
-                    },
-                    "to": {
-                        "startLines": "69,70,71,72",
-                        "startColumns": "4,4,4,4",
-                        "startOffsets": "7721,7824,7929,8040",
-                        "endColumns": "102,104,110,104",
-                        "endOffsets": "7819,7924,8035,8140"
-                    }
-                },
-                {
-                    "source": "/Users/ivy/.gradle/caches/transforms-2/files-2.1/e63cf1dbe0894d140fd45f012d474aef/jetified-play-services-ads-22.0.0/res/values-tl/values.xml",
-                    "from": {
-                        "startLines": "4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21",
-                        "startColumns": "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0",
-                        "startOffsets": "199,245,294,350,425,522,572,693,754,872,956,1002,1094,1131,1168,1225,1306,1348",
-                        "endColumns": "45,48,55,74,96,49,120,60,117,83,45,91,36,36,56,80,41,55",
-                        "endOffsets": "244,293,349,424,521,571,692,753,871,955,1001,1093,1130,1167,1224,1305,1347,1403"
-                    },
-                    "to": {
-                        "startLines": "73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,92",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "8145,8195,8248,8308,8387,8488,8542,8667,8732,8854,8942,8992,9088,9129,9170,9231,9316,9548",
-                        "endColumns": "49,52,59,78,100,53,124,64,121,87,49,95,40,40,60,84,45,59",
-                        "endOffsets": "8190,8243,8303,8382,8483,8537,8662,8727,8849,8937,8987,9083,9124,9165,9226,9311,9357,9603"
-                    }
-                },
-                {
-                    "source": "/Users/ivy/.gradle/caches/transforms-2/files-2.1/2e6d3b0a36667e63fb3d4c7e362ab023/appcompat-1.4.1/res/values-tl/values-tl.xml",
+                    "source": "C:\\Users\\ivy\\.gradle\\caches\\transforms-2\\files-2.1\\f8f1b23f187ed66b73fd14f243a024e7\\appcompat-1.2.0\\res\\values-tl\\values-tl.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -89,7 +21,58 @@
                     }
                 },
                 {
-                    "source": "/Users/ivy/.gradle/caches/transforms-2/files-2.1/654e7a6a5fe26ec2ed9a911b22876745/jetified-facebook-login-14.1.1/res/values-tl/values-tl.xml",
+                    "source": "C:\\Users\\ivy\\.gradle\\caches\\transforms-2\\files-2.1\\bba16393989777a6c4d6ba1db6edbd14\\jetified-play-services-base-18.0.1\\res\\values-tl\\values.xml",
+                    "from": {
+                        "startLines": "4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20",
+                        "startColumns": "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0",
+                        "startOffsets": "193,296,468,602,707,861,993,1111,1220,1395,1498,1672,1806,1964,2139,2203,2265",
+                        "endColumns": "102,171,133,104,153,131,117,108,174,102,173,133,157,174,63,61,76",
+                        "endOffsets": "295,467,601,706,860,992,1110,1219,1394,1497,1671,1805,1963,2138,2202,2264,2341"
+                    },
+                    "to": {
+                        "startLines": "51,52,53,54,55,56,57,58,60,61,62,63,64,65,66,67,68",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "5359,5466,5642,5780,5889,6047,6183,6305,6563,6742,6849,7027,7165,7327,7506,7574,7640",
+                        "endColumns": "106,175,137,108,157,135,121,112,178,106,177,137,161,178,67,65,80",
+                        "endOffsets": "5461,5637,5775,5884,6042,6178,6300,6413,6737,6844,7022,7160,7322,7501,7569,7635,7716"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\ivy\\.gradle\\caches\\transforms-2\\files-2.1\\b75ba57266ff9f44ab357d430044a365\\browser-1.4.0\\res\\values-tl\\values-tl.xml",
+                    "from": {
+                        "startLines": "2,3,4,5",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "55,158,263,374",
+                        "endColumns": "102,104,110,104",
+                        "endOffsets": "153,258,369,474"
+                    },
+                    "to": {
+                        "startLines": "69,70,71,72",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "7721,7824,7929,8040",
+                        "endColumns": "102,104,110,104",
+                        "endOffsets": "7819,7924,8035,8140"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\ivy\\.gradle\\caches\\transforms-2\\files-2.1\\a7f6935bb06cf0703f3b7b0a0d91d045\\core-1.9.0\\res\\values-tl\\values-tl.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "100",
+                        "endOffsets": "151"
+                    },
+                    "to": {
+                        "startLines": "91",
+                        "startColumns": "4",
+                        "startOffsets": "9447",
+                        "endColumns": "100",
+                        "endOffsets": "9543"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\ivy\\.gradle\\caches\\transforms-2\\files-2.1\\654e7a6a5fe26ec2ed9a911b22876745\\jetified-facebook-login-14.1.1\\res\\values-tl\\values-tl.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -106,20 +89,37 @@
                     }
                 },
                 {
-                    "source": "/Users/ivy/.gradle/caches/transforms-2/files-2.1/089743ee9f136bf03923fb1ff18ad281/core-1.7.0/res/values-tl/values-tl.xml",
+                    "source": "C:\\Users\\ivy\\.gradle\\caches\\transforms-2\\files-2.1\\e63cf1dbe0894d140fd45f012d474aef\\jetified-play-services-ads-22.0.0\\res\\values-tl\\values.xml",
                     "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endColumns": "100",
-                        "endOffsets": "151"
+                        "startLines": "4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21",
+                        "startColumns": "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0",
+                        "startOffsets": "199,245,294,350,425,522,572,693,754,872,956,1002,1094,1131,1168,1225,1306,1348",
+                        "endColumns": "45,48,55,74,96,49,120,60,117,83,45,91,36,36,56,80,41,55",
+                        "endOffsets": "244,293,349,424,521,571,692,753,871,955,1001,1093,1130,1167,1224,1305,1347,1403"
                     },
                     "to": {
-                        "startLines": "91",
+                        "startLines": "73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,92",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "8145,8195,8248,8308,8387,8488,8542,8667,8732,8854,8942,8992,9088,9129,9170,9231,9316,9548",
+                        "endColumns": "49,52,59,78,100,53,124,64,121,87,49,95,40,40,60,84,45,59",
+                        "endOffsets": "8190,8243,8303,8382,8483,8537,8662,8727,8849,8937,8987,9083,9124,9165,9226,9311,9357,9603"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\ivy\\.gradle\\caches\\transforms-2\\files-2.1\\7a6c27276c2e74dfa3c5145ff256bed0\\jetified-play-services-basement-18.1.0\\res\\values-tl\\values.xml",
+                    "from": {
+                        "startLines": "4",
+                        "startColumns": "0",
+                        "startOffsets": "195",
+                        "endColumns": "140",
+                        "endOffsets": "335"
+                    },
+                    "to": {
+                        "startLines": "59",
                         "startColumns": "4",
-                        "startOffsets": "9447",
-                        "endColumns": "100",
-                        "endOffsets": "9543"
+                        "startOffsets": "6418",
+                        "endColumns": "144",
+                        "endOffsets": "6558"
                     }
                 }
             ]

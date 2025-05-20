@@ -6,7 +6,6 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.util.Log;
 
-import com.google.firebase.remoteconfig.FirebaseRemoteConfig;
 import com.ivy.IvySdk;
 import com.ivy.IvyUtils;
 import com.ivy.Logger;
@@ -113,7 +112,7 @@ public final class GridManager {
         try {
             if (gridString != null) {
                 GridManager.gridData = new JSONObject(gridString);
-                mergeGridWithRemoteConfig();
+                //mergeGridWithRemoteConfig();
             }
         } catch (Throwable ex) {
             ex.printStackTrace();
@@ -220,8 +219,8 @@ public final class GridManager {
         // 尝试从多个服务器节点下载新的
         try {
             String localDomain = gridData.optString("domain");
-
-            String url = FirebaseRemoteConfig.getInstance().getString("json_domain");
+            String url = null;
+     //       String url = FirebaseRemoteConfig.getInstance().getString("json_domain");
             if (url == null || "".equals(url)) {
                 url = localDomain;
             }
@@ -349,7 +348,7 @@ public final class GridManager {
 
         Logger.debug("new grid saved");
         gridData = json;
-        mergeGridWithRemoteConfig();
+//        mergeGridWithRemoteConfig();
         ConfigurationParser.clearCache();
 
         // log the grid update event
@@ -416,78 +415,78 @@ public final class GridManager {
     /**
      * 从remote config中读取部分配置并覆盖
      */
-    private void mergeGridWithRemoteConfig() {
-        FirebaseRemoteConfig firebaseRemoteConfig = FirebaseRemoteConfig.getInstance();
-        String remoteGridData = firebaseRemoteConfig.getString("config_grid_data_android");
-        if (!FirebaseRemoteConfig.DEFAULT_VALUE_FOR_STRING.equals(remoteGridData)) {
-            try {
-                JSONObject jsonObject = new JSONObject(remoteGridData);
-                if (jsonObject.has("v_api")) {
-                    gridData = jsonObject;
-                }
-            } catch (Throwable t) {
-                Logger.error("remote grid data exception::" + t.getMessage());
-            }
-        }
-
-        // banner配置 ad_config_banner
-        String bannerConfig = firebaseRemoteConfig.getString("ad_config_banner");
-        if (!FirebaseRemoteConfig.DEFAULT_VALUE_FOR_STRING.equals(bannerConfig)) {
-            try {
-                JSONObject jsonObject = new JSONObject(bannerConfig);
-                if (jsonObject.has("ads")) {
-                    JSONArray banner = jsonObject.optJSONArray("ads");
-                    if (banner != null && banner.length() > 0) {
-                        gridData.put("banner", banner);
-                        if (jsonObject.has("bannerLoadTimeoutSeconds")) {
-                            int bannerLoadTimeoutSeconds = jsonObject.optInt("bannerLoadTimeoutSeconds", 0);
-                            if (bannerLoadTimeoutSeconds > 0) {
-                                gridData.put("bannerLoadTimeoutSeconds", bannerLoadTimeoutSeconds);
-                            }
-                        }
-                        if (jsonObject.has("adRefreshInterval")) {
-                            int adRefreshInterval = jsonObject.optInt("adRefreshInterval", 0);
-                            if (adRefreshInterval > 0) {
-                                gridData.put("adRefreshInterval", adRefreshInterval);
-                            }
-                        }
-                    }
-                }
-            } catch (Throwable t) {
-                Logger.error(TAG, "ad_config_banner data error");
-            }
-        }
-
-        // 插屏配置 ad_config_full
-        String fullConfig = firebaseRemoteConfig.getString("ad_config_full");
-        if (!FirebaseRemoteConfig.DEFAULT_VALUE_FOR_STRING.equals(fullConfig)) {
-            try {
-                JSONObject jsonObject = new JSONObject(fullConfig);
-                if (jsonObject.has("ads")) {
-                    JSONArray full = jsonObject.optJSONArray("ads");
-                    if (full != null && full.length() > 0) {
-                        gridData.put("full", full);
-                    }
-                }
-            } catch (Throwable t) {
-                Logger.error(TAG, "ad_config_full data error");
-            }
-        }
-
-        // 激励视频配置
-        String rewardedConfig = firebaseRemoteConfig.getString("ad_config_video");
-        if (!FirebaseRemoteConfig.DEFAULT_VALUE_FOR_STRING.equals(rewardedConfig)) {
-            try {
-                JSONObject jsonObject = new JSONObject(rewardedConfig);
-                if (jsonObject.has("ads")) {
-                    JSONArray video = jsonObject.optJSONArray("ads");
-                    if (video != null && video.length() > 0) {
-                        gridData.put("video", video);
-                    }
-                }
-            } catch (Throwable t) {
-                Logger.error(TAG, "ad_config_video data error");
-            }
-        }
-    }
+//    private void mergeGridWithRemoteConfig() {
+//        FirebaseRemoteConfig firebaseRemoteConfig = FirebaseRemoteConfig.getInstance();
+//        String remoteGridData = firebaseRemoteConfig.getString("config_grid_data_android");
+//        if (!FirebaseRemoteConfig.DEFAULT_VALUE_FOR_STRING.equals(remoteGridData)) {
+//            try {
+//                JSONObject jsonObject = new JSONObject(remoteGridData);
+//                if (jsonObject.has("v_api")) {
+//                    gridData = jsonObject;
+//                }
+//            } catch (Throwable t) {
+//                Logger.error("remote grid data exception::" + t.getMessage());
+//            }
+//        }
+//
+//        // banner配置 ad_config_banner
+//        String bannerConfig = firebaseRemoteConfig.getString("ad_config_banner");
+//        if (!FirebaseRemoteConfig.DEFAULT_VALUE_FOR_STRING.equals(bannerConfig)) {
+//            try {
+//                JSONObject jsonObject = new JSONObject(bannerConfig);
+//                if (jsonObject.has("ads")) {
+//                    JSONArray banner = jsonObject.optJSONArray("ads");
+//                    if (banner != null && banner.length() > 0) {
+//                        gridData.put("banner", banner);
+//                        if (jsonObject.has("bannerLoadTimeoutSeconds")) {
+//                            int bannerLoadTimeoutSeconds = jsonObject.optInt("bannerLoadTimeoutSeconds", 0);
+//                            if (bannerLoadTimeoutSeconds > 0) {
+//                                gridData.put("bannerLoadTimeoutSeconds", bannerLoadTimeoutSeconds);
+//                            }
+//                        }
+//                        if (jsonObject.has("adRefreshInterval")) {
+//                            int adRefreshInterval = jsonObject.optInt("adRefreshInterval", 0);
+//                            if (adRefreshInterval > 0) {
+//                                gridData.put("adRefreshInterval", adRefreshInterval);
+//                            }
+//                        }
+//                    }
+//                }
+//            } catch (Throwable t) {
+//                Logger.error(TAG, "ad_config_banner data error");
+//            }
+//        }
+//
+//        // 插屏配置 ad_config_full
+//        String fullConfig = firebaseRemoteConfig.getString("ad_config_full");
+//        if (!FirebaseRemoteConfig.DEFAULT_VALUE_FOR_STRING.equals(fullConfig)) {
+//            try {
+//                JSONObject jsonObject = new JSONObject(fullConfig);
+//                if (jsonObject.has("ads")) {
+//                    JSONArray full = jsonObject.optJSONArray("ads");
+//                    if (full != null && full.length() > 0) {
+//                        gridData.put("full", full);
+//                    }
+//                }
+//            } catch (Throwable t) {
+//                Logger.error(TAG, "ad_config_full data error");
+//            }
+//        }
+//
+//        // 激励视频配置
+//        String rewardedConfig = firebaseRemoteConfig.getString("ad_config_video");
+//        if (!FirebaseRemoteConfig.DEFAULT_VALUE_FOR_STRING.equals(rewardedConfig)) {
+//            try {
+//                JSONObject jsonObject = new JSONObject(rewardedConfig);
+//                if (jsonObject.has("ads")) {
+//                    JSONArray video = jsonObject.optJSONArray("ads");
+//                    if (video != null && video.length() > 0) {
+//                        gridData.put("video", video);
+//                    }
+//                }
+//            } catch (Throwable t) {
+//                Logger.error(TAG, "ad_config_video data error");
+//            }
+//        }
+//    }
 }

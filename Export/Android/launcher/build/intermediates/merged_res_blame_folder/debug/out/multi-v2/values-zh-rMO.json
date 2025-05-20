@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/ivy/Desktop/project/unity/RiseSdkDemo/Export/Android/launcher/build/intermediates/incremental/mergeDebugResources/merged.dir/values-zh-rMO/values-zh-rMO.xml",
+            "outputFile": "D:\\AndroidProject\\unity3d\\Export\\Android\\launcher\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-zh-rMO\\values-zh-rMO.xml",
             "map": [
                 {
-                    "source": "/Users/ivy/.gradle/caches/transforms-2/files-2.1/4c4283f680bb35c7afdfaf58af0e2372/jetified-applovin-sdk-11.9.0/res/values-zh-rMO/values-zh-rMO.xml",
+                    "source": "C:\\Users\\ivy\\.gradle\\caches\\transforms-2\\files-2.1\\4c4283f680bb35c7afdfaf58af0e2372\\jetified-applovin-sdk-11.9.0\\res\\values-zh-rMO\\values-zh-rMO.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",

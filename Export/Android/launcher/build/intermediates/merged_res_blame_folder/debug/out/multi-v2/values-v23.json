@@ -1,29 +1,20 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/ivy/Desktop/project/unity/RiseSdkDemo/Export/Android/launcher/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v23/values-v23.xml",
+            "outputFile": "D:\\AndroidProject\\unity3d\\Export\\Android\\launcher\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v23\\values-v23.xml",
             "map": [
                 {
-                    "source": "/Users/ivy/.gradle/caches/transforms-2/files-2.1/ecf98a767bfd9d07ab17531b0ad200f2/cardview-1.0.0/res/values-v23/values-v23.xml",
+                    "source": "C:\\Users\\ivy\\.gradle\\caches\\transforms-2\\files-2.1\\3a650c1bdedafd8e4171986ed2bca5eb\\work-runtime-2.7.0\\res\\values-v23\\values-v23.xml",
                     "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endLines": "4",
-                        "endColumns": "12",
-                        "endOffsets": "200"
-                    },
-                    "to": {
-                        "startLines": "52",
-                        "startColumns": "4",
-                        "startOffsets": "3653",
-                        "endLines": "54",
-                        "endColumns": "12",
-                        "endOffsets": "3798"
+                        "startLines": "2,3",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,121",
+                        "endColumns": "65,62",
+                        "endOffsets": "116,179"
                     }
                 },
                 {
-                    "source": "/Users/ivy/.gradle/caches/transforms-2/files-2.1/2e6d3b0a36667e63fb3d4c7e362ab023/appcompat-1.4.1/res/values-v23/values-v23.xml",
+                    "source": "C:\\Users\\ivy\\.gradle\\caches\\transforms-2\\files-2.1\\f8f1b23f187ed66b73fd14f243a024e7\\appcompat-1.2.0\\res\\values-v23\\values-v23.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,20,34,35,36,39,43,44,45,46",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -42,13 +33,22 @@
                     }
                 },
                 {
-                    "source": "/Users/ivy/.gradle/caches/transforms-2/files-2.1/3a650c1bdedafd8e4171986ed2bca5eb/work-runtime-2.7.0/res/values-v23/values-v23.xml",
+                    "source": "C:\\Users\\ivy\\.gradle\\caches\\transforms-2\\files-2.1\\ecf98a767bfd9d07ab17531b0ad200f2\\cardview-1.0.0\\res\\values-v23\\values-v23.xml",
                     "from": {
-                        "startLines": "2,3",
-                        "startColumns": "4,4",
-                        "startOffsets": "55,121",
-                        "endColumns": "65,62",
-                        "endOffsets": "116,179"
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endLines": "4",
+                        "endColumns": "12",
+                        "endOffsets": "200"
+                    },
+                    "to": {
+                        "startLines": "52",
+                        "startColumns": "4",
+                        "startOffsets": "3653",
+                        "endLines": "54",
+                        "endColumns": "12",
+                        "endOffsets": "3798"
                     }
                 }
             ]

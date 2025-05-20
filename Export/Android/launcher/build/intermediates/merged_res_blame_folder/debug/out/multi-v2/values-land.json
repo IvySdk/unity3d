@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/ivy/Desktop/project/unity/RiseSdkDemo/Export/Android/launcher/build/intermediates/incremental/mergeDebugResources/merged.dir/values-land/values-land.xml",
+            "outputFile": "D:\\AndroidProject\\unity3d\\Export\\Android\\launcher\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-land\\values-land.xml",
             "map": [
                 {
-                    "source": "/Users/ivy/.gradle/caches/transforms-2/files-2.1/4c4283f680bb35c7afdfaf58af0e2372/jetified-applovin-sdk-11.9.0/res/values-land/values-land.xml",
+                    "source": "C:\\Users\\ivy\\.gradle\\caches\\transforms-2\\files-2.1\\4c4283f680bb35c7afdfaf58af0e2372\\jetified-applovin-sdk-11.9.0\\res\\values-land\\values-land.xml",
                     "from": {
                         "startLines": "2,3",
                         "startColumns": "4,4",
@@ -21,7 +21,7 @@
                     }
                 },
                 {
-                    "source": "/Users/ivy/.gradle/caches/transforms-2/files-2.1/2e6d3b0a36667e63fb3d4c7e362ab023/appcompat-1.4.1/res/values-land/values-land.xml",
+                    "source": "C:\\Users\\ivy\\.gradle\\caches\\transforms-2\\files-2.1\\f8f1b23f187ed66b73fd14f243a024e7\\appcompat-1.2.0\\res\\values-land\\values-land.xml",
                     "from": {
                         "startLines": "2,3,4",
                         "startColumns": "4,4,4",

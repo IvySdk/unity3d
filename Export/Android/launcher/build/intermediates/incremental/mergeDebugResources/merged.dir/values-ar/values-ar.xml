@@ -7,7 +7,7 @@
     <string msgid="1189761859438369441" name="abc_activity_chooser_view_see_all">"عرض الكل"</string>
     <string msgid="2165779757652331008" name="abc_activitychooserview_choose_application">"اختيار تطبيق"</string>
     <string msgid="4215997306490295099" name="abc_capital_off">"إيقاف"</string>
-    <string msgid="884982626291842264" name="abc_capital_on">"مفعّلة"</string>
+    <string msgid="884982626291842264" name="abc_capital_on">"تفعيل"</string>
     <string msgid="8833365367933412986" name="abc_menu_alt_shortcut_label">"Alt+"</string>
     <string msgid="2223301931652355242" name="abc_menu_ctrl_shortcut_label">"Ctrl+"</string>
     <string msgid="838001238306846836" name="abc_menu_delete_shortcut_label">"حذف"</string>

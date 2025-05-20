@@ -4,11 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
-
 import com.google.firebase.analytics.FirebaseAnalytics;
-import com.google.firebase.remoteconfig.FirebaseRemoteConfig;
-import com.ivy.IvySdk;
 import com.ivy.Logger;
 import com.ivy.networks.tracker.EventTracker;
 import com.ivy.networks.tracker.EventTrackerProvider;
@@ -17,11 +13,9 @@ import com.ivy.networks.tracker.impl.FacebookTracker;
 import com.ivy.networks.tracker.impl.FirebaseTracker;
 import com.tencent.mmkv.MMKV;
 
-
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -203,7 +197,7 @@ public class DefaultEventLogger extends EventTracker {
         this.eventTargets = eventTargets;
     }
 
-    public void overrideConfigByRemoteConfig(FirebaseRemoteConfig remoteConfig) {
+//    public void overrideConfigByRemoteConfig(FirebaseRemoteConfig remoteConfig) {
 //        if (remoteConfig == null) {
 ////            Logger.error(TAG, "RemoteConfig disabled");
 //            return;
@@ -290,13 +284,13 @@ public class DefaultEventLogger extends EventTracker {
 //        }
 //
 //        this.enableAIPush = remoteConfig.getBoolean("enableAIPush");
-    }
+//    }
 
 
     /**
      * 检查Remote config的设置会不会触发到预测事件，如果触发到，则生成事件
      */
-    public void checkRemoteConfigEvents(FirebaseRemoteConfig remoteConfig) {
+//    public void checkRemoteConfigEvents(FirebaseRemoteConfig remoteConfig) {
 //        try {
 //            if (remoteConfigEventMap == null || remoteConfigEventMap.length() == 0 || mmkv == null) {
 //                return;
@@ -342,7 +336,7 @@ public class DefaultEventLogger extends EventTracker {
 //        } catch (Throwable t) {
 //            Logger.error(TAG, "checkRemoteConfigEvents exception", t);
 //        }
-    }
+//    }
 
     public void setSummaryEventSettings(JSONObject summaryEventSettings) {
         if (summaryEventSettings == null) {

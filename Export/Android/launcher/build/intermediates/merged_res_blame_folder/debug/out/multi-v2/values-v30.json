@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/ivy/Desktop/project/unity/RiseSdkDemo/Export/Android/launcher/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v30/values-v30.xml",
+            "outputFile": "D:\\AndroidProject\\unity3d\\Export\\Android\\launcher\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v30\\values-v30.xml",
             "map": [
                 {
-                    "source": "/Users/ivy/Desktop/project/unity/RiseSdkDemo/Export/Android/unityLibrary/build/intermediates/packaged_res/debug/values-v30/values-v30.xml",
+                    "source": "D:\\AndroidProject\\unity3d\\Export\\Android\\unityLibrary\\build\\intermediates\\packaged_res\\debug\\values-v30\\values-v30.xml",
                     "from": {
                         "startLines": "2,3,4,5,6",
                         "startColumns": "4,4,4,4,4",

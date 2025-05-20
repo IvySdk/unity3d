@@ -24,8 +24,8 @@
     <string msgid="3417662926640357176" name="abc_searchview_description_search">"Iskanje"</string>
     <string msgid="1486535517437947103" name="abc_searchview_description_submit">"Pošiljanje poizvedbe"</string>
     <string msgid="2293578557972875415" name="abc_searchview_description_voice">"Glasovno iskanje"</string>
-    <string msgid="8875138169939072951" name="abc_shareactionprovider_share_with">"Deljenje z:"</string>
-    <string msgid="9055268688411532828" name="abc_shareactionprovider_share_with_application">"Deljenje z drugimi prek aplikacije <ns1:g id="APPLICATION_NAME">%s</ns1:g>"</string>
+    <string msgid="8875138169939072951" name="abc_shareactionprovider_share_with">"Skupna raba z:"</string>
+    <string msgid="9055268688411532828" name="abc_shareactionprovider_share_with_application">"Skupna raba z drugimi prek aplikacije <ns1:g id="APPLICATION_NAME">%s</ns1:g>"</string>
     <string msgid="1656852541809559762" name="abc_toolbar_collapse_description">"Strnitev"</string>
     <string msgid="2523291102206661146" name="common_google_play_services_enable_button">Omogoči</string>
     <string msgid="227660514972886228" name="common_google_play_services_enable_text">Aplikacija %1$s ne bo delovala, če ne omogočite storitev Google Play.</string>

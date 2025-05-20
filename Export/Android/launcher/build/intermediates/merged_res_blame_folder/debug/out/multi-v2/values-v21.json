@@ -1,29 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/ivy/Desktop/project/unity/RiseSdkDemo/Export/Android/launcher/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v21/values-v21.xml",
+            "outputFile": "D:\\AndroidProject\\unity3d\\Export\\Android\\launcher\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v21\\values-v21.xml",
             "map": [
                 {
-                    "source": "/Users/ivy/.gradle/caches/transforms-2/files-2.1/089743ee9f136bf03923fb1ff18ad281/core-1.7.0/res/values-v21/values-v21.xml",
-                    "from": {
-                        "startLines": "2,3,4,5,6,7,8,9,10,13",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "55,173,237,304,368,484,610,736,864,1036",
-                        "endLines": "2,3,4,5,6,7,8,9,12,17",
-                        "endColumns": "117,63,66,63,115,125,125,127,12,12",
-                        "endOffsets": "168,232,299,363,479,605,731,859,1031,1383"
-                    },
-                    "to": {
-                        "startLines": "2,3,4,5,266,267,274,278,282,285",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "55,173,237,304,19388,19504,19961,20255,20550,20722",
-                        "endLines": "2,3,4,5,266,267,274,278,284,289",
-                        "endColumns": "117,63,66,63,115,125,125,127,12,12",
-                        "endOffsets": "168,232,299,363,19499,19625,20082,20378,20717,21069"
-                    }
-                },
-                {
-                    "source": "/Users/ivy/.gradle/caches/transforms-2/files-2.1/f60fb00a54b567e537d8652056b0dc80/media-1.0.0/res/values-v21/values-v21.xml",
+                    "source": "C:\\Users\\ivy\\.gradle\\caches\\transforms-2\\files-2.1\\f60fb00a54b567e537d8652056b0dc80\\media-1.0.0\\res\\values-v21\\values-v21.xml",
                     "from": {
                         "startLines": "2,5,8,11",
                         "startColumns": "4,4,4,4",
@@ -42,45 +23,7 @@
                     }
                 },
                 {
-                    "source": "/Users/ivy/.gradle/caches/transforms-2/files-2.1/4c4283f680bb35c7afdfaf58af0e2372/jetified-applovin-sdk-11.9.0/res/values-v21/values-v21.xml",
-                    "from": {
-                        "startLines": "2,9,12,19,25,28",
-                        "startColumns": "4,4,4,4,4,4",
-                        "startOffsets": "55,681,939,1446,1925,2179",
-                        "endLines": "8,11,18,24,27,32",
-                        "endColumns": "12,12,12,12,12,12",
-                        "endOffsets": "676,934,1441,1920,2174,2567"
-                    },
-                    "to": {
-                        "startLines": "305,312,315,322,328,331",
-                        "startColumns": "4,4,4,4,4,4",
-                        "startOffsets": "22154,22780,23038,23545,24024,24278",
-                        "endLines": "311,314,321,327,330,335",
-                        "endColumns": "12,12,12,12,12,12",
-                        "endOffsets": "22775,23033,23540,24019,24273,24666"
-                    }
-                },
-                {
-                    "source": "/Users/ivy/Desktop/project/unity/RiseSdkDemo/Export/Android/launcher/src/main/res/values-v21/styles.xml",
-                    "from": {
-                        "startLines": "2",
-                        "startColumns": "0",
-                        "startOffsets": "53",
-                        "endLines": "3",
-                        "endColumns": "8",
-                        "endOffsets": "153"
-                    },
-                    "to": {
-                        "startLines": "226",
-                        "startColumns": "4",
-                        "startOffsets": "16935",
-                        "endLines": "227",
-                        "endColumns": "8",
-                        "endOffsets": "17034"
-                    }
-                },
-                {
-                    "source": "/Users/ivy/.gradle/caches/transforms-2/files-2.1/2e6d3b0a36667e63fb3d4c7e362ab023/appcompat-1.4.1/res/values-v21/values-v21.xml",
+                    "source": "C:\\Users\\ivy\\.gradle\\caches\\transforms-2\\files-2.1\\f8f1b23f187ed66b73fd14f243a024e7\\appcompat-1.2.0\\res\\values-v21\\values-v21.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,17,19,20,21,22,24,26,27,28,29,30,32,34,36,38,40,42,43,48,50,52,53,54,56,58,59,60,61,62,63,106,109,152,155,158,160,162,164,167,171,174,175,176,179,180,181,182,183,184,187,188,190,192,194,196,200,202,203,204,205,207,211,213,215,216,217,218,219,220,222,223,224,234,235,236,248",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -99,7 +42,7 @@
                     }
                 },
                 {
-                    "source": "/Users/ivy/.gradle/caches/transforms-2/files-2.1/a302be5376bea0a8d9359a96a99a3ea5/jetified-mobileads-5.8.0/res/values-v21/values-v21.xml",
+                    "source": "C:\\Users\\ivy\\.gradle\\caches\\transforms-2\\files-2.1\\a302be5376bea0a8d9359a96a99a3ea5\\jetified-mobileads-5.8.0\\res\\values-v21\\values-v21.xml",
                     "from": {
                         "startLines": "2,5,8,11",
                         "startColumns": "4,4,4,4",
@@ -115,6 +58,63 @@
                         "endLines": "292,295,298,304",
                         "endColumns": "12,12,12,12",
                         "endOffsets": "21267,21467,21675,22149"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\ivy\\.gradle\\caches\\transforms-2\\files-2.1\\4c4283f680bb35c7afdfaf58af0e2372\\jetified-applovin-sdk-11.9.0\\res\\values-v21\\values-v21.xml",
+                    "from": {
+                        "startLines": "2,9,12,19,25,28",
+                        "startColumns": "4,4,4,4,4,4",
+                        "startOffsets": "55,681,939,1446,1925,2179",
+                        "endLines": "8,11,18,24,27,32",
+                        "endColumns": "12,12,12,12,12,12",
+                        "endOffsets": "676,934,1441,1920,2174,2567"
+                    },
+                    "to": {
+                        "startLines": "305,312,315,322,328,331",
+                        "startColumns": "4,4,4,4,4,4",
+                        "startOffsets": "22154,22780,23038,23545,24024,24278",
+                        "endLines": "311,314,321,327,330,335",
+                        "endColumns": "12,12,12,12,12,12",
+                        "endOffsets": "22775,23033,23540,24019,24273,24666"
+                    }
+                },
+                {
+                    "source": "D:\\AndroidProject\\unity3d\\Export\\Android\\launcher\\src\\main\\res\\values-v21\\styles.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "0",
+                        "startOffsets": "53",
+                        "endLines": "3",
+                        "endColumns": "8",
+                        "endOffsets": "153"
+                    },
+                    "to": {
+                        "startLines": "226",
+                        "startColumns": "4",
+                        "startOffsets": "16935",
+                        "endLines": "227",
+                        "endColumns": "8",
+                        "endOffsets": "17034"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\ivy\\.gradle\\caches\\transforms-2\\files-2.1\\a7f6935bb06cf0703f3b7b0a0d91d045\\core-1.9.0\\res\\values-v21\\values-v21.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9,10,13",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,173,237,304,368,484,610,736,864,1036",
+                        "endLines": "2,3,4,5,6,7,8,9,12,17",
+                        "endColumns": "117,63,66,63,115,125,125,127,12,12",
+                        "endOffsets": "168,232,299,363,479,605,731,859,1031,1383"
+                    },
+                    "to": {
+                        "startLines": "2,3,4,5,266,267,274,278,282,285",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,173,237,304,19388,19504,19961,20255,20550,20722",
+                        "endLines": "2,3,4,5,266,267,274,278,284,289",
+                        "endColumns": "117,63,66,63,115,125,125,127,12,12",
+                        "endOffsets": "168,232,299,363,19499,19625,20082,20378,20717,21069"
                     }
                 }
             ]
